@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using CittaErp.Models;
 using System.Data.Entity;
 using CittaErp.utilities;
+using anchor1.Filters;
 
 
 namespace CittaErp.Controllers
@@ -40,6 +41,8 @@ namespace CittaErp.Controllers
         string action_flag = "";
         
         int line_cr = 0;
+
+        [EncryptionActionAttribute]
         public ActionResult Index()
         {
 
@@ -72,6 +75,7 @@ namespace CittaErp.Controllers
 
 
         }
+        [EncryptionActionAttribute]
         public ActionResult QuoteConvert(int key1, string key2, string headtype)
         {
             ViewBag.action_flag = "QuoteConvert";
@@ -89,6 +93,7 @@ namespace CittaErp.Controllers
             }
             return View("QuoteIndex");
         }
+        [EncryptionActionAttribute]
         public ActionResult CreateHeader()
         {
             ViewBag.action_flag = "CreateHeader";
@@ -109,6 +114,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateHeader(vw_genlay glay_in, HttpPostedFileBase[] photofile, string headtype)
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -131,6 +137,7 @@ namespace CittaErp.Controllers
 
         }
 
+        [EncryptionActionAttribute]
         public ActionResult EditHeader()
         {
             ViewBag.action_flag = "EditHeader";
@@ -155,6 +162,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditHeader(vw_genlay glay_in, HttpPostedFileBase[] photofile, string headtype)
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -181,6 +189,7 @@ namespace CittaErp.Controllers
 
         }
 
+        [EncryptionActionAttribute]
         public ActionResult CreateDetails(string headtype = "D")
         {
             ViewBag.action_flag = "CreateDetails";
@@ -204,6 +213,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateDetails(vw_genlay glay_in, string hid_price, string headtype = "D")
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -250,6 +260,7 @@ namespace CittaErp.Controllers
 
         }
 
+        [EncryptionActionAttribute]
         public ActionResult Edit(int key1)
         {
             ViewBag.action_flag = "CreateDetails";
@@ -270,6 +281,7 @@ namespace CittaErp.Controllers
 
         }
 
+        [EncryptionActionAttribute]
         public ActionResult EditDetails(int key1, int key2)
         {
             ViewBag.action_flag = "EditDetails";
@@ -296,6 +308,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditDetails(vw_genlay glay_in, string headtype)
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -335,6 +348,7 @@ namespace CittaErp.Controllers
             return View(glay);
 
         }
+
         private void delete_record()
         {
             AP_002_GRN = db.AP_002_GRN.Find(glay.vwint0, glay.vwint1, 0);
@@ -722,6 +736,7 @@ namespace CittaErp.Controllers
 
         }
 
+        [EncryptionActionAttribute]
         public ActionResult QuoteIndex()
         {
 
@@ -756,6 +771,8 @@ namespace CittaErp.Controllers
 
 
         }
+
+        [EncryptionActionAttribute]
         public ActionResult Expired()
         {
 
@@ -789,6 +806,8 @@ namespace CittaErp.Controllers
 
 
         }
+
+        [EncryptionActionAttribute]
         public ActionResult ConfirmOrder()
         {
 
@@ -822,6 +841,7 @@ namespace CittaErp.Controllers
 
 
         }
+
         private void waredefault()
         {
             string wdefault = (from bg in db.IV_001_WAREH

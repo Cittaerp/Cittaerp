@@ -1,5 +1,6 @@
 ﻿using CittaErp.Models;
 using CittaErp.utilities;
+using anchor1.Filters;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,7 @@ namespace CittaErp.Controllers
         string action_flag = "";
         //
         // GET: /Citta/
+        [EncryptionActionAttribute]
         public ActionResult Index()
         {
             util.init_values();
@@ -44,7 +46,8 @@ namespace CittaErp.Controllers
 
 
         }
-   
+
+        [EncryptionActionAttribute]
         public ActionResult Create()
         {
             ViewBag.action_flag = "Create";
@@ -53,6 +56,7 @@ namespace CittaErp.Controllers
             return View(glay);
         }
 
+        [EncryptionActionAttribute]
         public ActionResult periodmenu()
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -63,6 +67,8 @@ namespace CittaErp.Controllers
                 return RedirectToAction("Prd");
 
         }
+
+        [EncryptionActionAttribute]
         public ActionResult Prd()
         {
             ViewBag.action_flag = "Create";
@@ -70,7 +76,9 @@ namespace CittaErp.Controllers
             psess = (psess)Session["psess"];
             return View(glay);
         }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create (vw_genlay glay_in)
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -85,6 +93,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Prd(vw_genlay glay_in)
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -117,6 +126,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(vw_genlay glay_in, string id_xhrt)
         {
             pubsess = (pubsess)Session["pubsess"];
@@ -136,6 +146,7 @@ namespace CittaErp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult period_calp(string num_prd)
         {
             psess = (psess)Session["psess"];

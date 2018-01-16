@@ -1,0 +1,42 @@
+﻿@model CittaErp.Models.vw_collect 
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()    
+
+        <p></p><p>
+            <input class="btn btn-info" type="submit"  name= "Command" value="Select Report" />
+        </p>
+
+    <fieldset>
+    <table class="table-edit">
+<tr>
+    <td>Report Name</td>
+    <td>@Html.DropDownList("ws_string1", @ViewBag.report as SelectList, new { size = 15 })
+    </td>
+    </tr>
+    <tr>
+
+
+        </table>
+
+   </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1" data-request-daily="@Url.Action("DailyList")"></div>
+
+@section Scripts {
+
+
+<script>
+
+</script>
+}

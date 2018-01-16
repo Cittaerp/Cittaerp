@@ -1,0 +1,99 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+
+
+        <div>
+            <div class="row form-group">
+                <label for="warehouse" class="col-sm-5 control-label"> Numeric Size</label>
+                <div class="col-sm-1">
+                    @Html.TextBoxFor(m => m.vwint0, new { @class = "form-control", style = "width : 50px", @maxlength = 1})
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="control-label col-sm-5">Single Numbering Sequence?</label>
+                <div class="col-sm-5 myradio">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring0, "Y", new { @id = "yess" }) Yes
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring0, "N", new { @id = "noo" }) No
+                    </label>
+                </div>
+                @Html.HiddenFor(m => m.vwstring0, new { id = "single" })
+            </div>
+            <div class="form-group headercol headerfont">
+                <label for="DateTo" class="col-sm-2"> Order Type </label>
+                <label for="DateTo" class="col-sm-3 "> Prefix</label>
+                <label for="DateTo" class="col-sm-3 "> Sequence </label>
+
+            </div>
+
+            <div class="row form-group" style="display:none;" id="lick">
+                <div class="row form-group">
+                    <label for="DateTo" class="col-sm-2 control-label"> Single Numbering</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 5 })
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwint1, new { @class = "form-control", @maxlength = 9 })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group" style="display:none;" id="lick1">
+                
+
+                <div class="row form-group">
+                    <label for="DateTo" class="col-sm-2 control-label"> Quote</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control", @maxlength = 5 })
+                    </div>
+
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwint2, new { @class = "form-control", @maxlength = 9 })
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <label for="DateTo" class="col-sm-2 control-label"> Order</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control", @maxlength = 5 })
+                    </div>
+
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwint3, new { @class = "form-control", @maxlength = 9 })
+                    </div>
+
+
+                </div>
+            
+                <div class="row form-group">
+                    <label for="DateTo" class="col-sm-2 control-label"> Waybill </label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control", @maxlength = 5 })
+                    </div>
+
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwint4, new { @class = "form-control", @maxlength = 9 })
+                    </div>
+
+                </div>
+
+                <div class="row form-group">
+                    <label for="DateTo" class="col-sm-2 control-label"> Invoice </label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring5, new { @class = "form-control", @maxlength = 5 })
+                    </div>
+
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwint5, new { @class = "form-control", @maxlength = 9 })
+                    </div>
+
+                </div>
+
+            </div>
+
+    </div>

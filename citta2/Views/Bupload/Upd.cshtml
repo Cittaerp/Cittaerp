@@ -1,0 +1,63 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+        <div>
+            <div class="form-group">
+                <label for="TermCode" class="col-sm-3 control-label">Bank ID</label>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(m => m.vwstring0, ViewBag.bank as SelectList, "select", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled" })
+                    @Html.ValidationMessageFor(m => m.vwstring0)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-3 control-label">Transaction Date</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control datet"})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="NumberDays" class="col-sm-3 control-label">Reference Number</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwint0, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-3 control-label">Description </label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-3 control-label">Debit Amount</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-3 control-label">Credit Amount</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control numformat" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-3 control-label">Value Date</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control datet" })
+                </div>
+            </div>
+         <div class="row form-group">
+                <label class="col-sm-5 control-label">Post CheckBox</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring4, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        
+        </div>

@@ -1,0 +1,165 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "item Maintenance";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Item Maintainance</h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Itm")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+            </div>
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+        @Html.HiddenFor(m => m.vwstrarray0[7], "")
+    </form>
+</div>
+
+<div id="loader3" data-request-ajax3="@Url.Action("itempreload")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("get_currency")"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            hideall();
+            var itemtype = $("#itemtype").val();
+
+
+            if (itemtype=="I"){
+                $("#click6").show();
+                $("#click7").show();
+                $("#click8").show();
+                $(".fifo").show();
+                $(".iss_hide").show();
+                
+            }
+            if (itemtype == "P") {
+                $("#pty").show();
+            }
+           
+            var costmth = $("#costmth").val();
+
+            if (costmth=="C") {
+                $("#click11").show('slow');
+            }
+
+           
+            if (costmth == "S") {
+                $("#click9").show('slow');
+                $("#click10").show('slow');
+
+            }
+
+            var price = $("#price").val();
+
+            if (price == "Y") {
+                $("#click").show('slow');
+
+            }
+            var discount = $("#discount").val();
+
+            if (discount =="Y"){
+                $("#click1").show('slow');
+
+            }
+
+            $("#taxy").click(function () {
+                $("#click2").show();
+            });
+
+            $("#id_ave").click(function () {
+                $("#id_avcost").show();
+                $("#id_stcost").hide();
+            });
+            $("#now6").click(function () {
+                $("#id_avcost").show();
+                $("#id_stcost").hide();
+            });
+            $("#taxn").click(function () {
+                $('#vwstrarray0_18_ option:eq(0)').attr('Selected', 'selected');
+                $('#vwstrarray0_19_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_20_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_21_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_22_ option:eq(0)').attr('selected', 'selected');
+
+                $("#click2").hide();
+            });
+
+
+            var tax = $("#tax").val();
+
+            if (tax =="Y") {
+                $("#click2").show();
+
+            } else if (tax == "N") {
+                $('#vwstrarray0_18_ option:eq(0)').attr('Selected', 'selected');
+                $('#vwstrarray0_19_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_20_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_21_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_22_ option:eq(0)').attr('selected', 'selected');
+
+                $("#click2").hide();
+            }
+
+
+            function hideall()
+            {
+                $("#click").hide('slow');
+                $("#click1").hide('slow');
+                $("#click2").hide('slow');
+                $("#click8").hide('slow');
+                $("#click6").hide('slow');
+                $("#click7").hide('slow');
+                $("#click9").hide('slow');
+                $("#click10").hide('slow');
+                $("#click11").hide('slow');
+            }
+
+            $(".now1").click(function () {
+                $(".fifo").hide();
+                $(".iss_hide").hide();
+                $("#pty").hide();
+            });
+
+            $("#now").click(function () {
+                $(".fifo").show();
+                $("#pty").hide();
+            });
+
+            $("#rate").click(function () {
+                $(".fifo").show();
+            });
+            $("#prop").click(function () {
+                $("#pty").show();
+                $("#click6").hide();
+            });
+            $("#id_int").click(function () {
+                $("#shw_int").show();
+                $("#shw_mtg").hide();
+            });
+            $("#id_mtg").click(function () {
+                $("#shw_mtg").show();
+                $("#shw_int").hide();
+            });
+            $("#ypoi").click(function () {
+                $("#shwpoi").show();
+            }); $("#npoi").click(function () {
+                $("#shwpoi").hide();
+            });
+
+
+        });
+
+    </script>
+}

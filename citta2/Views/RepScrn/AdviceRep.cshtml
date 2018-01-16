@@ -1,0 +1,51 @@
+﻿@model CittaErp.Models.vw_collect 
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_MailReportBtn")
+
+    <fieldset>
+    <div class="container-fluid table-edit">
+
+    @if(Model.ws_string7 != "PEN")
+    {    
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Pay Period</div>
+            <div class="col-sm-2">
+                @Html.DropDownListFor(model => Model.ws_string2, @ViewBag.pmonth as SelectList,new { @class = " form-control mypadding " })
+
+            </div><div class="col-sm-1">
+                @Html.DropDownListFor(model => Model.ws_string3, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })
+            </div>    
+        </div>
+    }
+
+        @Html.Partial("_RepSelViewnp", @Model)
+
+        </div>
+
+    @Html.HiddenFor(model => model.ws_string1 )
+    @Html.Hidden("rtype2",Model.tx_string2[0])
+
+   </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+    <script>
+    rep_query($("#rtype1").val());
+
+    </script>
+}

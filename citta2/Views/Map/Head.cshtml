@@ -1,0 +1,50 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    string mandate_id = "";
+    SelectList[] head_det = (SelectList[])Session["head_det"];
+        
+    
+    
+}
+        <div>
+            <div class="form-group">
+                <label for="MainHeader" class="col-sm-5 control-label">Transaction Type</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring0, ViewBag.parameter as SelectList, "Select Type", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @required = "required" ,id="id_trans"} : new { @class = "form-control",@disabled = "disabled" })
+                    @Html.ValidationMessageFor(m => m.vwstring0)
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-2 title_head"></div>
+            <div class="col-sm-3 title_head"> Analysis Category </div>
+            <div class="col-sm-7 title_head"> Analysis</div>
+
+      
+            @for (int wctr = 0; wctr < 10; wctr++)
+            {
+                if (Model.vwlist0[wctr] != null)
+                {
+                    mandate_id = "mandate" + @wctr.ToString();
+                    <div class="row form-group">
+                        <label for="Description" class="col-sm-2 control-label" >@(wctr).</label>
+                        <label class="col-sm-3 control-label"> @Model.vwstrarray5[wctr] </label>
+                        <div class="col-sm-7">
+                            @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList(Model.vwlist0[wctr], "query0", "query1", Model.vwstrarray6[wctr]), " ", new { @class = "form-control analy", id = @mandate_id })
+                            @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                        </div>
+                    </div>
+                }else
+                {
+                    @Html.HiddenFor(m=>m.vwstrarray6[wctr])
+                 @Html.HiddenFor(m=>m.vwstrarray4[wctr])
+               // @Html.HiddenFor(m=>m.vwstring1)
+                }
+               
+            }
+            @*<div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring1, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>*@
+        </div>

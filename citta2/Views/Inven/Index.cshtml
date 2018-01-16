@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "sales";
+}
+@*Html.Partial("menu")*@
+<h3>Inventory Transaction </h3>
+@Html.ActionLink("Add New", "CreateHeader", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Transaction Type</th>
+            <th>Manual Reference</th>
+            <th>Description</th>
+            <th>Transation Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring1</td>
+                <td>@item.vwstring2</td>
+                <td>@item.vwstring3</td>
+                <td>@item.vwdate1.ToString("dd/MM/yyyy")</td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwint0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+
+     
+    </script>
+}

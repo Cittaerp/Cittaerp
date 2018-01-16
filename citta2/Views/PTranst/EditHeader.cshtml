@@ -1,0 +1,34 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    ViewBag.action_flag = "EditHeader";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>@psess.temp1    </h3>
+
+        @Html.Partial("Tran")
+
+
+    </form>
+    @Html.HiddenFor(m=>m.vwstring9)
+    @Html.HiddenFor(m=>m.vwdecimal4)
+    @Html.HiddenFor(m=>m.vwdecimal5)
+
+</div>
+
+<div id="loader1" data-request-ajax1="@Url.Action("budget_cal")"></div>
+<div id="loader4" data-request-ajax4="@Url.Action("ac_code")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("ac_curen")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("b_amt")"></div>
+
+@section Scripts {
+    <script>
+
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/transt.js")"></script>
+}

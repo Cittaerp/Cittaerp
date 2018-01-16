@@ -1,0 +1,61 @@
+﻿
+@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Discount_application_selection";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        <h2>Discount application selection</h2>
+        @*<div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">*@
+                <button type="submit" class="btn btn-success btn-default">Submit</button>
+                <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+            @*</div>
+        </div>*@
+        @Html.ValidationSummary(true)
+        <hr />
+        @*<h3>@plabel Setting</h3>*@
+        @Html.Partial("Discount_application_selection")
+       
+    </form>
+</div>
+
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+
+@section Scripts {
+
+    <script>
+
+        $(function () {
+            $("#discount").change(function () {
+                var URL = $('#loader1').data('request-ajax1');
+                var URLext = $('#discount').val();
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        $.each(data, function (i, state) {
+                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                        });
+                        $("#selectc").html(items);
+                    }
+                });
+            });
+        });
+
+
+    </script>
+}
+
+
+

@@ -1,0 +1,10 @@
+﻿@using anchor1.Helpers
+@{
+    anchor1.Models.worksess worksess = (anchor1.Models.worksess)Session["worksess"];
+}
+
+<span class="opt-title1"> @worksess.ptitle</span>
+
+<span>@Html.EncodedActionLink(" ", "Create",null, new {xy=1}, new { @class=" create_logo lgtime ", title = "New Record" }) </span>
+<span>@Html.EncodedActionLink(" ", "preport", "ptransfer", new { pc = @worksess.idrep }, new { @class=" report_logo lgtime", title = "View Report" }) </span>
+

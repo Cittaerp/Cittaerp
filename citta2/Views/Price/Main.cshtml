@@ -1,0 +1,100 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    string[] head_dat = new string[20];
+
+}
+
+<div class="tabbable">
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Price Information</a></li>
+        <li><a href="#tab2" data-toggle="tab">Document Management</a></li>
+
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div>
+                <div class="row form-group">
+                    <label for="TermCode" class="col-sm-5 control-label">Item</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring0, ViewBag.item_code as SelectList, "Select Item", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", id = "priceitem" } : new { @disabled = "disabled" })
+                        @Html.ValidationMessageFor(m => m.vwstring0)
+                    </div>
+               
+                </div>
+                <div class="row form-group">
+                    <label for="AnalysisHeader" class="col-sm-5 control-label">Analysis</label>
+                    <div class="col-sm-3">
+                      @*  @Html.DropDownListFor(m => m.vwstring1, ViewBag.header_sequence as SelectList, "Select Analysis Header", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", id = "pricehead" } : new { @disabled = "disabled" })*@
+                        @Html.TextBoxFor(m =>m.vwstring5, new { @class = "form-control", maxlength = 50, @disabled = "disabled" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwstring1, new { })
+                </div>
+                <div class="row form-group">
+                    <label for="AnalysisHeader" class="col-sm-5 control-label"> Detail</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring2, ViewBag.analysis_code as SelectList, "", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", id = "pricedetail" } : new { @disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Price Inclusive of Tax?</label>
+                    <div class="col-sm-7 myradio">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.vwstring3, "Y") Yes
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring3, "N") No
+                        </label>
+                    </div>
+                </div>
+                
+                @for (int wctr = 0; wctr < 6; wctr++)
+                {
+                    if (!(string.IsNullOrWhiteSpace(Model.vwstrarray4[wctr])))
+                    {
+                        <div class="row form-group">
+                            <label class="col-sm-5 control-label"> @Model.vwstrarray4[wctr] </label>
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.vwdclarray0[wctr], new { @class = "form-control numformat", maxlength = 20})
+
+                            </div>
+                        </div>
+                    }
+                }
+
+
+                <div class="row form-group">
+                    <label for="Note" class="col-sm-5 control-label"> Note</label>
+                    <div class="col-sm-5">
+                        @Html.TextAreaFor(m => m.vwstring4, new { @class = "form-control", rows = "6" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 control-label">Inactive</label>
+                    <div class="col-sm-6 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                        <label for="activate_yesno">
+                            @( Model.vwbool0 ? "On" : "Off")
+                        </label>
+                    </div>
+                </div>
+              
+                @Html.Partial("_navbuttonsNext")
+            </div>
+        </div>
+        <div class="tab-pane" id="tab2">
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Documents</label>
+                <div class="col-sm-5">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+      </div>
+    </div>
+

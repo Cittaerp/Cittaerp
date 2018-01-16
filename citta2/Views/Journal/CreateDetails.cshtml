@@ -1,0 +1,73 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Price";
+    ViewBag.action_flag = "CreateDetails";
+    string plabel = ViewBag.plabel;
+}
+
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        @Html.ValidationSummary(true)
+
+        <h3>Journal Entries  </h3>
+
+        @Html.Partial("Jon")
+         
+
+    </form>
+    @Html.HiddenFor(m => m.vwstring9)
+    @Html.HiddenFor(m => m.vwdecimal4)
+    @Html.HiddenFor(m => m.vwdecimal5)
+   
+</div>
+
+<div id="loader4" data-request-ajax4="@Url.Action("trancode")"></div>
+<div id="loader1" data-request-ajax1="@Url.Action("budget_cal")"></div>
+<div id="loader2" data-request-ajax2="@Url.Action("delete_detail")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("ac_curen")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("b_amt")"></div>
+<div id="loader3" data-request-ajax3="@Url.Action("class_fid")"></div>
+
+
+@section Scripts {
+    <script>
+        
+        $(document).ready(function () {
+            $("#changer").hide();
+            $("#id_base").hide();
+
+
+            $("#submit").hide();
+
+            $("#hide_details").click(function () {
+                $("#submit").show();
+                $("#hide_details").hide();
+            });
+
+            $("#submit").click(function () {
+                $("#details").show();
+                $("#submit").hide();
+                $("#hide_details").show();
+
+            });
+
+            var dis_rate = $("#fx_flag").val();
+            if (dis_rate == "Y") {
+                $("#changer").show();
+                $("#id_base").show();
+            }
+            else {
+                $("#changer").hide();
+                $("#id_base").hide();
+            }
+
+            $("#id_tran").hide();
+        });
+   </script>
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/journal.js")"></script>
+}
+
+
+ 

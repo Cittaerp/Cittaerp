@@ -1,0 +1,18 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Exchange rate";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        <h3>Exchange Rate</h3>
+        @Html.ValidationSummary(true)
+        @Html.Partial("_listsubmit")
+        <hr />
+        @Html.Partial("Exchange_rate")
+       
+    </form>
+</div>
+

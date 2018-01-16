@@ -1,0 +1,86 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "sales";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Sales Transaction Type Maintainance</h3>
+
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Sls")
+
+
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var s = $(".order_class").val();
+          if (s)
+              $("#order_confirm").show();
+          else
+              $("#order_confirm").hide();
+
+          $(".order_class").click(function () {
+                $("#order_confirm").show();
+          })
+          $("input[type=checkbox]").click(function () {
+              var lblid = $(this).attr('id');
+              if (!(lblid == null || lblid == "") && lblid == "quot_yesno") {
+                  var ab = $("label[for=" + lblid + "]").text().trim();
+                  if (ab == "On")
+                      $("#order_confirm").show();
+                  else {
+                      $("#order_confirm").hide();
+                      $("#restock").hide();
+                  }
+              }
+
+          })
+            //var pos_yes = lblid.indexOf("_yesno");
+          $("input[type=checkbox]").click(function () {
+              var lblid = $(this).attr('id');
+              if (!(lblid == null || lblid == "") && lblid == "order_yesno") {
+                  var ab = $("label[for=" + lblid + "]").text().trim();
+                  if (ab == "On") {
+                      $("#restock").show();
+                      $("label[for= restock_yesno]").text("On");
+                  }
+                  else {
+                      $("#restock").hide();
+                      $("label[for= restock_yesno]").text("Off");
+                  }
+              }
+
+          })
+
+            $("#confirm").click(function () {
+                $("#restock").show();
+            })
+            $("#unconfirm").click(function () {
+                $("#restock").hide();
+            })
+            $("input[type=checkbox]").click(function () {
+                var lblid = $(this).attr('id');
+                if (!(lblid == null || lblid == "")) {
+                    //var pos_yes = lblid.indexOf("_yesno");
+                    if (lblid >= 0) {
+                        var ab = $("label[for=" + lblid + "]").text().trim();
+                        if (ab == "On")
+                            $("order_confirm").show();
+                        else
+                            $("order_confirm").hide();
+                    }
+                }
+
+            })
+
+        })
+    </script>
+}

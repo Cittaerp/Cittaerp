@@ -1,0 +1,36 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+<table id="myTable1" class="table table-bordred table-striped">
+
+    <thead>
+        <tr>
+
+            <th>Stock Sheet Number </th>
+            <th>Item </th>
+            <th>Quantity</th>
+            <th>Physical Count</th>
+            <th>Difference </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring6</td>
+                <td>@item.vwint2</td>
+                <td>@item.vwint3</td>
+                <td>@item.vwint4</td>
+                <td>
+                    @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwstring0, key2 = @item.vwstring1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring1"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

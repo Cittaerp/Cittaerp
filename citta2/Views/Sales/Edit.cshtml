@@ -1,0 +1,42 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "sales";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Sales Transaction Type Maintainance</h3>
+
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Sls")
+
+        <div class="form-group">
+
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+
+            var tax = $(".tax").val();
+            if (tax == "Y")
+                $("#click4").show('slow');
+
+         
+
+        });
+    </script>
+}

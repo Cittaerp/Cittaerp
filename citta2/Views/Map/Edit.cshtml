@@ -1,0 +1,29 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "analysis";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Dimension Mapping</h3>
+            <button type="submit" class="btn btn-success btn-default">Update</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+        <br />
+        <br />
+
+        @Html.Partial("Head")
+
+        <div class="form-group">
+            
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>

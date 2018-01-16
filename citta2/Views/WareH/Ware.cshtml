@@ -1,0 +1,102 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+<div class="tabbable">
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Warehouse Information</a></li>
+        <li><a href="#tab2" data-toggle="tab">Contact Information</a></li>
+
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="form-group">
+                <label for="warehouse" class="col-sm-5 control-label">Warehouse ID</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled" })
+                    @Html.ValidationMessageFor(m => m.vwstring0)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="warehouse" class="col-sm-5 control-label"> Name</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 20 })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Designate as Default Warehouse?</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool1, new { @id = "activat_yesno" })
+                    <label for="activat_yesno">
+                        @( Model.vwbool1 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Site</label>
+                <div class="col-sm-7">
+                    @Html.DropDownListFor(m => m.vwstring2, ViewBag.site_code as SelectList, "SELECT", new { @class = "form-control", @required="required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Location</label>
+                <div class="col-sm-7">         
+                  @*  @Html.DropDownListFor(m => m.vwint2, ViewBag.branch as SelectList, "SELECT", new { @class = "form-control", @required= "required" })*@
+                    @Html.TextBoxFor(m => m.vwstring10, new { @class = "form-control", @maxlength = 100, @required = "required" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-7">
+                    @Html.TextAreaFor(m => m.vwstring4, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            @Html.Partial("_navbuttonsNext")
+        </div>
+        <div class="tab-pane " id="tab2">
+            <div class="form-group">
+                <label for="NumberDays" class="col-sm-5 control-label"> Contact Name</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.vwstring6, new { @class = "form-control", maxlength = 20 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Job Title</label>
+                <div class="col-sm-7">
+                    @Html.DropDownListFor(m => m.vwstring9, ViewBag.job as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="NumberDays" class="col-sm-5 control-label">Email</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.vwstring7, new { @class = "form-control", maxlength = 20, type = "email" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="NumberDays" class="col-sm-5 control-label">Phone</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.vwstring8, new { @class = "form-control", maxlength = 20 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Documents</label>
+                <div class="col-sm-7">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+            <br />
+            @Html.Partial("_attachDoc")
+
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+    </div>
+</div>

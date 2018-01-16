@@ -1,0 +1,25 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "delegation";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Approval Delegation Maintainance</h3>
+       @Html.Partial("_listsubmit")
+
+        @Html.Partial("Apv")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+               
+            </div>
+
+        </div>
+    </form>
+</div>

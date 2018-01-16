@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+@{ 
+    anchor1.Models.sideview sidedata = (anchor1.Models.sideview)Session["sidedata"];
+
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<meta http-equiv="refresh" content="0180; URL= ~/Log_in/Index">*@
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>@ViewBag.Title - Cittaerp</title>
+
+    @Scripts.Render("~/bundles/jquerybundle")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/datatables/bundles/cssbundle")
+    @Scripts.Render("~/dataTables/bundles/js1bundle")
+
+    @RenderSection("altscript", required: false)
+
+</head>
+<body>
+        <div class="row">
+            
+            <div align="left" class="col-sm-2">
+                <a href="@Url.Action("Welcome", "log_in")" title="List View" class="links">
+                    <img src="@Url.Action( "Show", "Log_in", new { id = "COMPANY11" })" width="140" height="50" id="logo" />
+                </a>
+            </div>
+            
+            <div align="left" class="col-sm-3">
+                    <img src="@Url.Action( "Show_pict", "Log_in", new { id = "COMPANY11" })" width="140" height="50" id="logo" />
+                &nbsp; &nbsp; &nbsp; @sidedata.ws_code  : @sidedata.ws_string0
+            </div>
+
+            <div align="right" class="col-sm-7">
+                <a href="@Url.Action("Welcome", "log_in")" title="List View" class="links">
+                    <img src="~/image/citta.png" width="140" height="50" id="logo" />
+                </a>
+            </div>
+        </div>
+    <hr class="hr-line" />
+
+    <div class="row">
+        <div class="col-sm-1 ">
+            @Html.Partial("menu")
+        </div>
+        <div class="col-xs-12 col-sm-11 ">
+            @RenderBody()
+        </div>
+    </div>
+
+    @*<div class="container body-content">
+        @RenderBody()
+        
+    </div>*@
+
+    @Scripts.Render("~/bundles/jsuserbundle")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

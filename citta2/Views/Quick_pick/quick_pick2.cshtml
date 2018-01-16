@@ -1,0 +1,100 @@
+﻿
+@model IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "quick_pick2";
+    int counter = 0;
+    int count = 0;
+    
+}
+  
+
+<div id="main_area">
+    <!-- Slider -->
+    <div class="row">     
+        <div class="col-sm-8" id="slider-thumbs">
+            <!-- Bottom switcher of slider -->
+            <ul class="hide-bullets">
+                   
+
+         @foreach (var item in ViewBag.item_pic) {
+
+            // var base64 = Convert.ToBase64String(item.picture12);
+             // var imgscr = string.Format("data:image/png;base64,{0}", base64
+                  
+        var carousel = "carousel-selector" + "-" + @counter;
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="@carousel" data-request-ajax2=@item.item_code>
+                            <img src="@Url.Action("show", new { id = @item.item_code })" style=" height:120px;width:150px;" />
+                            @*<img src="~/pictures/@item.vwstring0" style="height:130px;width:150px;" />*@
+                        </a>
+                    </li>
+             
+             counter = counter + 1;
+        }
+
+              
+            </ul>
+            </div>
+            <div class="col-sm-4">
+                <div class="col-xs-12" id="slider">
+                    <!-- Top part of the slider -->
+                    <div class="row">
+                        <div class="col-sm-12" id="carousel-bounding-box">
+                            <div class="carousel slide" id="myCarousel">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                            @foreach (var item2 in ViewBag.item_pic)
+{
+    //var base65 = Convert.ToBase64String(item2.picture12);
+    // var imgscr1 = string.Format("data:image/png;base64,{0}", base65);
+
+    var read = @count;
+    var loop = "item";
+    if (count == 0)
+        loop = "active" + " " + "item";
+    <div class="@loop" data-slide-number="@count" id="@count" data-request-ajax3=@item2.item_code>
+
+        <img src="@Url.Action("show", new { id = @item2.item_code })" style="height:300px;width:500px;" />
+        @*<img src="@Url.Action("View_pick")" style="height:130px;width:150px;" />*@
+        @*<img src="~/pictures/@item2.vwstring0" style="height:300px;width:500px;" />*@
+    </div>
+        count = count + 1;
+        }
+                                </div>
+                                <!-- Carousel nav -->
+                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="list-group">
+                    <div class="">
+                        <label>Item name</label>
+                        <div id="nam"> </div>
+                    </div>
+                    <div class="list-group">
+                        <label>Retail price</label>
+                        <div id="ret"> </div>
+                    </div>
+                    <div class="list-group">
+                        <label>Quantity on hand</label>
+                        <div id="ret"> </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+            <!--/Slider-->
+        </div>
+   @* <ul id="pagination-demo" class="pagination-sm"></ul>*@
+    </div>
+
+

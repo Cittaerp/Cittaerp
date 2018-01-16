@@ -1,0 +1,75 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+        <div>
+            <div class="form-group">
+                <label for="TermCode" class="col-sm-5 control-label"> ID</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @maxlength = 10 })
+                    @Html.ValidationMessageFor(m => m.vwstring0)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-5 control-label">Description</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength=50 })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Usage:</label>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Spare Part</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[0], new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwblarray0[0] ? "On" : "Off")
+                    </label>
+                </div>
+             </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Sales</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[1], new { @id = "activat_yesno" })
+                    <label for="activat_yesno">
+                        @( Model.vwblarray0[1] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Purchases</label>
+               <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[2], new { @id = "activ_yesno" })
+                    <label for="activ_yesno">
+                        @( Model.vwblarray0[2] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Production</label>
+              <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[3], new { @id = "acti_yesno" })
+                    <label for="acti_yesno">
+                        @( Model.vwblarray0[3] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Consumables</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[4], new { @id = "act_yesno" })
+                    <label for="act_yesno">
+                        @( Model.vwblarray0[4] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Reusable</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[5], new { @id = "at_yesno" })
+                    <label for="at_yesno">
+                        @( Model.vwblarray0[5] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+
+        </div>

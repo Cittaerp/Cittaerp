@@ -1,0 +1,41 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+   // CittaErp.Models.vw_genlay glayhead=(CittaErp.Models.vw_genlay) ViewBag.x2;
+}
+
+<div class="container-fluid">
+        @*<a class="btn  btn-primary btn-default" href="index">Back To List</a>
+        <button type="submit" class="btn btn-default col-sm-offset-11" name="commandn" value="headedit" id="displayh">Edit </button>*@
+
+        
+           <form class="form-horizontal" role="form" method="post" >
+                
+                
+                <div class="form-group" id="id_price_group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Journal Number  </label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control" })
+                        @*@Html.DropDownListFor(m => m.vwstring0, ViewBag.jrnbr as SelectList,"select" , new { @class = "form-control", id = "id_jrnbr" })*@
+                    
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-success col-sm-offset-0" name="commandn" value="headedit" id="displayh">Extract </button>
+                </div>
+             
+            </form>
+         <!-- ./container -->
+
+
+       @Html.Partial("_list")
+       @Html.Partial("_listd")
+    @*<div id="btnReport" class="btn-group">
+        <button id="ExportToXls" type="button" class="btn btn-default" disabled="disabled">Excel WorkBook</button>
+        <button id="ExportToPdf" type="button" class="btn btn-default" disabled="disabled">PDF Document</button>
+    </div>*@
+    <a id="">Export</a> &nbsp;&nbsp;
+    <a id="">PDF</a>&nbsp;&nbsp;
+    <a onclick="myFunction()" class="glyphicon glyphicon-print">Print</a>
+    </div>
+
+
+

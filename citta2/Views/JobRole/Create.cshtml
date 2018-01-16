@@ -1,0 +1,35 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Job Role";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Job Role Maintainance</h3>
+        @Html.Partial("_listsubmit")
+        @Html.Partial("Jor")
+
+    </form>
+</div>
+
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+
+
+
+        });
+
+
+
+    </script>
+}
+
+

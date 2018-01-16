@@ -1,0 +1,20 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Import Consignment";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Consignment Maintenance</h3>
+       @Html.Partial("_listsubmit")
+    
+
+
+        @Html.Partial("Consignment")
+
+    </form>
+</div>

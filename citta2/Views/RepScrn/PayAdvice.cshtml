@@ -1,0 +1,65 @@
+﻿@model CittaErp.Models.vw_collect 
+
+@using (Html.BeginForm("PayAdvice",null,null)) {
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_MailReportBtn")
+
+    <fieldset>
+    <div class="table-edit">
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Staff Name</div>
+        <div class="col-sm-4 ">
+            @*<select  class = " form-control mypadding " id = "staff_number" name="staff_number"><option value="">Select Staff</option> </select>*@
+            @Html.DropDownList("ws_string1", @ViewBag.staff_number as SelectList, new { id = "staff_number", @class = " form-control mypadding " }) 
+            </div><div class="col-sm-2">
+            @Html.TextBox("snumber", "", new {  @maxlength = "10", @Value = Model.ws_string1, id = "snumber", @class = " form-control mypadding " }) 
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Payment Run</div>
+        <div class="col-sm-3 ">
+            @*<select  class = " form-control mypadding " id="select_period" name="ws_string4" ><option></option></select>*@
+            @Html.DropDownList("ws_string4", new SelectList(@ViewBag.update as SelectList, "Value", "Text", @Model.ws_string4), new { id = "select_period", @class = " form-control mypadding " })
+        </div>    
+    </div>    
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Payroll Period</div>
+        <div class="col-sm-2 ">   
+            @*<select  class = " form-control mypadding " id="period_from_mm" name="ws_string2" ><option></option></select>*@
+            @Html.DropDownListFor(m => m.ws_string2, @ViewBag.pmonth as SelectList, new { id = "period_from_mm", @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+            @Html.DropDownListFor(m => m.ws_string3, @ViewBag.pyear as SelectList, new { id = "period_from_yy", @class = " form-control mypadding " })
+        </div>
+    </div>    
+
+
+        </div>
+
+    @Html.HiddenFor(model => Model.ws_string1, new { id = "defsn" })
+   </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1k" data-request-daily="@Url.Action("DailyList")"></div>
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+<script>
+    //default_payment();
+
+</script>
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/CittaErp/pscript5.min.js")"></script>*@
+
+}

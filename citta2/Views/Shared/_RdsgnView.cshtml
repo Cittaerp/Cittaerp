@@ -1,0 +1,39 @@
+﻿@model CittaErp.Models.vw_collect 
+
+        
+        <div class="row rowheader">
+            <div class="col-sm-1 col-sm-offset-1 ">Seq</div>
+            <div class="col-sm-8"> Column Names</div>
+        </div>
+
+        @for (int ctr2 = 0; ctr2 < (@Model.ws_decimal7 - 1); ctr2++)
+        {
+            if (@Model.ar_string1[ctr2] != "")
+            {
+            <div class="row">
+                <div class="col-sm-1 col-sm-text-right">@(ctr2 + 1).</div>
+                <div class="col-sm-1 ">
+                    @Html.TextBoxFor(model => Model.ar_decimal0[ctr2], new { @maxlength = "04", @Value = (Model == null) ? "0" : Model.ar_decimal0[ctr2].ToString(), @class=" seqclass form-control mypadding" })
+                </div>
+                <div class="col-sm-8 ">           
+                    @Model.ar_string1[ctr2]
+                </div>
+             </div>
+            }
+        }
+
+        <div class="row">
+            <div class="col-sm-1 col-sm-text-right "> @(Convert.ToString(Model.ws_decimal7)). </div>
+            <div class="col-sm-1">
+                @Html.TextBoxFor(model => Model.ar_decimal0[Convert.ToInt16(@Model.ws_decimal7)], new {  @maxlength = "4", @class=" seqclass form-control mypadding" })
+            </div>
+        </div>
+        
+    <br />
+        <div class="row">
+            <div class="col-sm-8  color-red"> Use sequence to rearrange columns, a zero in sequence means deletion</div>          
+            <input id = "ws_decimal7" type="text" value="@Html.AttributeEncode(Convert.ToString(@Model.ws_decimal7))" name="ws_decimal7" style = "display:none" />
+        </div>
+        
+
+        

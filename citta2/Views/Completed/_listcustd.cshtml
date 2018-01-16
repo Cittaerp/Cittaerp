@@ -1,0 +1,41 @@
+﻿<table id="myTable1" class="table table-bordred table-striped">
+
+    <thead>
+        <tr>
+
+            <th>Document Number </th>
+            <th>Reference</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Account Name</th>
+            <th>Amount </th>
+            <th>Exch Rate </th>
+            <th>Base Amount</th>
+            @*<th>Edit</th>
+            <th>Delete</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.x2)
+        {
+            <tr>
+                <td>@item.col1</td>
+                <td>@item.col2</td>
+                <td>@item.col3</td>
+                <td>@item.col4</td>
+                <td>@item.col5</td>
+                <td class="numformat">@item.col6</td>
+                <td>@item.col9</td>
+                <td class="numformat">@item.col8</td>
+                @*<td>
+                    @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwstring0, key2 = @item.vwstring1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring1"> <i class="glyphicon glyphicon-trash "></i> </span></td>*@
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

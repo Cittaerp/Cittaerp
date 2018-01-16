@@ -1,0 +1,60 @@
+﻿@model CittaErp.Models.vw_genlay 
+@{
+    string gctr = "";
+}
+<div class="container-fluid table-edit" >
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Id</div>
+        <div class="col-sm-2"> 
+            @Html.TextBoxFor(model => model.vwcode, @Model.datmode == "E" ? (object) new {@disabled="disabled", @class=" form-control mypadding readonly-color"} : new { @maxlength = "10", required="required", @class = " form-control mypadding " }) 
+            @Html.ValidationMessageFor(model => model.vwcode)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Column Description</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(model => model.vwstring0, new {  @maxlength = "40", required="required", @class = " form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.vwstring0)
+        </div>
+    </div>
+    <div class="row">
+        <table>
+            <tr><td></td>
+    <td>Sequence</td>
+    <td>Column Heading</td>
+    <td>Value</td>
+    <td>Period</td>
+    <td>Source</td>
+    <td>Formular</td>
+</tr>
+            @for (int wctr = 0; wctr < 10; wctr++)
+            {
+                <tr>
+                    <td>@(wctr + 1).</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.vwitarray0[wctr], new { style="width:60px", @class = " form-control mypadding digitform ", @maxlength = "4" })
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => Model.vwstrarray4[wctr], new { style = "overflow: auto", cols = "20", rows = "2", @class = " form-control mypadding " })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => Model.vwstrarray0[wctr], new SelectList(ViewBag.lvalue, "Value", "Text", Model.vwstrarray0[wctr]), "", new { @class = " form-control mypadding " })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => Model.vwstrarray1[wctr], new SelectList(ViewBag.lperiod, "Value", "Text", Model.vwstrarray1[wctr]), "", new { @class = " form-control mypadding " })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => Model.vwstrarray2[wctr], new SelectList(ViewBag.lsource, "Value", "Text", Model.vwstrarray2[wctr]), "", new { @class = " form-control mypadding " })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => Model.vwstrarray3[wctr], new SelectList(ViewBag.lcalc, "Value", "Text", Model.vwstrarray3[wctr]), "", new { @class = " form-control mypadding " })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+            @Html.Hidden("rtype1",Model.vwstring10)
+
+  </div>
+

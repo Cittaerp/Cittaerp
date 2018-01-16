@@ -1,0 +1,42 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Discount_application_selection";
+    string dtype = "";
+}
+<div>
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Discount selection basis</label>
+        <div class="col-sm-">
+            @Html.DropDownListFor(m => m.vwstring0, ViewBag.tran as SelectList, "Select", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", placeholder = "discount selection basis", @maxlength = 10, id = "discount" } : new { @disabled = "disabled", @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Selection code</label>
+        <div class="col-sm-2">
+            @*@Html.DropDownListFor(m => m.vwstring2, new SelectList(ViewBag.selection, "item_code", "item_code", Model.vwstring2), "", new { @class = "form-control" })*@
+                 @Html.DropDownListFor(m => m.vwstring2, ViewBag.selection as SelectList, "Select", new { @class = "form-control", required = "required", id = "selectc" } )
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Discount code</label>
+        <div class="col-sm-2">
+            @Html.DropDownListFor(m => m.vwstring3, ViewBag.tanalysis as SelectList, "Select", new { @class = "form-control", required = "required", id = "code" })
+        </div>
+    </div>
+        
+    <div class="row form-group">
+        <label class="col-sm-5 control-label">Inactive</label>
+        <div class="col-sm-6 mycheckq">
+            @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+            <label for="activate_yesno">
+                @( Model.vwbool0 ? "On" : "Off")
+            </label>
+        </div>
+    </div>
+
+
+    </div>
+

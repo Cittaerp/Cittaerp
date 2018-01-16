@@ -1,0 +1,61 @@
+﻿@model CittaErp.Models.vw_collect 
+
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_ReportBtn");
+
+    <fieldset>
+        <legend>Year</legend>
+    <div class="container-fluid table-edit">
+    
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Report Name</div>
+        <div class="col-sm-4">@Html.DropDownList("ws_string1",@ViewBag.report as SelectList,new { @class = " form-control mypadding " })</div>
+        </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Year</div>
+        <div class="col-sm-1">
+            @Html.DropDownList("ws_string2", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string2),new { @class = " form-control mypadding " })
+        </div>
+    </div>    
+    <div class="row" id="row_payrun">
+        <div class="col-sm-3 col-sm-text-right">Payment Run</div>
+        <div class="col-sm-3 ">
+            <select  class = " form-control mypadding " id="rep_payrun" name="ws_string0"><option></option></select>
+@*            @Html.DropDownListFor(model => model.ws_string0, new SelectList(ViewBag.update, "Value", "Text", @Model.ws_string0), "", new { id = "select_period" })*@
+        </div>
+    </div>
+
+        @Html.Partial("_RepSelViewnp", @Model)
+
+
+        </div>
+
+    @Html.Hidden("rtype2",Model.tx_string2[0])
+
+   </fieldset>
+}
+
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+
+
+<script>
+    rep_query("YEARP");
+
+</script>
+}

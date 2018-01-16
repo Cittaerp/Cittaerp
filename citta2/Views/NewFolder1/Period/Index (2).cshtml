@@ -1,0 +1,66 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "PeriodList";
+}
+
+
+<h2>Period Calender</h2>
+<a class="btn btn-default" href="Create">Add New</></a>
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+
+        <table id="mytable" class="table table-bordred table-striped">
+
+            <thead>
+                <tr>
+                    <th>Period Number</th>
+                    <th>Date From</th>
+                    <th>Date To</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.vwint0</td>
+                        <td>@item.vwdate1</td>
+                        <td>@item.vwdate2</td>
+                        <td><a class="btn btn-primary btn-xs glyphicon glyphicon-pencil" href="Edit?key1=@item.vwint0"></a></td>
+                        <td><button class="btn btn-danger btn-xs id_delete2" id="id_delete"> <i class="glyphicon glyphicon-trash "></i> </button></td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+    </div>
+
+@section Scripts {
+    <script>
+
+        $("#id_delete").click(function () {
+            //var $form = $(this).closest('form');
+            bootbox.confirm("message", function (a) {
+                if (a) {
+                    $("#id_xhrt").val("D");
+                    $form.trigger("submit");
+                }
+                else {
+                    $("#id_xhrt").val("X");
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+
+

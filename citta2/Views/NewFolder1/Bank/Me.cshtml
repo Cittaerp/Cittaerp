@@ -1,0 +1,245 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CittaErp.Models.BK_001_BANK
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" action="">
+        <h3>Bank Details</h3>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="code" class="col-sm-3 control-label">Bank Code</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.bank_code, new { @class = "form-control", maxlength = 10 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="PeriodNumber" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-4">
+
+                    @Html.TextBoxFor(m => m.bank_name, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="PeriodNumber" class="col-sm-3 control-label">Branch</label>
+                <div class="col-sm-4">
+
+                    @Html.TextBoxFor(m => m.branch, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Address" class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.address1, new { @class = "form-control", maxlength = 250 })
+                    @Html.TextBoxFor(m => m.address2, new { @class = "form-control", maxlength = 250 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="City" class="col-sm-3 control-label">City</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.city, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postal_code" class="col-sm-3 control-label">Postal Code</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.postal_code, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Country" class="col-sm-3 control-label">Country</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.country, ViewBag.country as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="State" class="col-sm-3 control-label">State</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.state, ViewBag.state as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="website" class="col-sm-3 control-label">Website</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.website, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone number" class="col-sm-3 control-label">Phone Number</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.phone_number, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="account number" class="col-sm-3 control-label">Account Number</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.bank_acc_number, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="account number" class="col-sm-3 control-label">Payment Option</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.default_payment_opt, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-5">Want Analysis?</label>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <label class="radio-inline">
+                                <!--<input type="radio" id="" value="Balance Sheet">Balance Sheet -->
+                                @Html.RadioButtonFor(m => m.header_sequence1, "B", new { @id = "yes" }) Yes
+                            </label>
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="radio-inline">
+                                <!--<input type="radio" id="" value="Income Statement">Income Statement-->
+                                @Html.RadioButtonFor(m => m.header_sequence1, "I", new { @id = "no" }) No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="display:none;" id="click">
+                <div class="form-group">
+                    <label for="Analysis" class="col-sm-5 control-label">Analysis</label>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence1, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code1, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence2, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code2, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="AccountName" class="col-sm-5 control-label">Analysis</label>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence3, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code3, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence4, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code4, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="AccountName" class="col-sm-5 control-label">Analysis</label>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence5, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code5, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence6, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code6, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="AccountName" class="col-sm-5 control-label">Analysis</label>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence7, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code7, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence8, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code8, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="AccountName" class="col-sm-5 control-label">Analysis</label>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence9, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code9, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                    <div class="col-sm-2">
+                        <!--<input type="number" placeholder="Header sequence" class="form-control" autofocus required min="0" max="999">-->
+                        @Html.DropDownListFor(m => m.header_sequence10, ViewBag.header_sequence as SelectList, "Select Header", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.analysis_code10, new { @class = "form-control", maxlength = 10, @placeholder = "Analysis code" })
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <h4>Relationship Person Information</h4>
+            <div class="form-group">
+                <label for="contact name" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.relationship_name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="job title" class="col-sm-3 control-label">Job Title</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.relationship_job_title, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contact email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.relationship_email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contact phone" class="col-sm-3 control-label">Phone</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.relationship_phone, new { @class = "form-control" })
+                </div>
+            </div>
+            <h4>Account Information</h4>
+            <div class="form-group">
+                <label for="currency" class="col-sm-3 control-label">Currency Code</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.currency_code, ViewBag.state as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="currency" class="col-sm-3 control-label">Ledger Code</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.gl_account_code, ViewBag.state as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                <div class="col-sm-7">
+                    @Html.TextAreaFor(m => m.note, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+

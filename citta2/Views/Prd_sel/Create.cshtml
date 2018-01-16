@@ -1,0 +1,108 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "periodsel";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@Html.Partial("menu")
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Period Waiver Maintainance</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Prds")
+
+
+
+        @Html.HiddenFor(m => m.vwstring0)
+    </form>
+
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+<div id="loader2" data-request-ajax2="@Url.Action("pricehead_list2")"></div>
+<div id="loader3" data-request-ajax3="@Url.Action("period_cal")"></div>
+
+
+@section Scripts {
+    <script>
+
+
+        $(function () {
+
+            $("#codft").hide();
+            $(".cal_shw").hide();
+            $(".prd_shw").hide();
+            $("#popft").hide();
+            $("#codft").hide();
+
+            $("#yes2").click(function () {
+                $(".prd_shw").show();
+                $(".cal_shw").hide();
+                $("#codft").hide();
+            })
+
+            $("#no2").click(function () {
+                $(".prd_shw").hide();
+                $(".cal_shw").show();
+                $("#popft").hide();
+            })
+
+            $("#cyes").click(function () {
+                $("#codft").show();
+                $("#popft").hide();
+            })
+
+            $("#cno").click(function () {
+                $("#codft").hide();
+                $("#popft").hide();
+            })
+            $("#pyes").click(function () {
+                $("#codft").hide();
+                $("#popft").show();
+            })
+
+            $("#pno").click(function () {
+                $("#codft").hide();
+                $("#popft").hide();
+            })
+
+            //$("#no2").click(function () {
+            //    var URL = $('#loader3').data('request-ajax3');
+            //    var URLext = $('#id_mthend').val();
+            //    var nump = "12"
+            //    URL = $.trim(URL);
+
+            //    URLext = $.trim(URLext);
+            //    URL = URL;
+            //    $.ajax({
+            //        type: "Post",
+            //        url: URL,
+            //        data: { mthend: URLext },
+            //        error: function (xhr, status, error) {
+            //            alert("Error: " + xhr.status + " - " + error + " - " + URL);
+            //        },
+            //        success: function (data) {
+            //            var items = '';
+            //            $.each(data, function (i, state) {
+            //                items = state.Text;
+            //                if (state.Value == "1") {
+            //                    $("#id_curtp").val(items);
+            //                    $("#id_curtp").attr('disabled', 'disabled');
+            //                }
+            //                else {
+            //                    $("#id_nump").val(items);
+            //                    $("#id_nump").attr('disabled', 'disabled');
+            //                }
+            //            });
+
+
+            //        }
+            //    });
+            //});
+
+        });
+
+
+    </script>
+}

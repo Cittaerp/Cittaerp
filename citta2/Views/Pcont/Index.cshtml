@@ -1,0 +1,65 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "customer";   
+}
+@*Html.Partial("menu")*@
+<h3>Subscribers Form </h3>
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+<p></p>
+
+        <table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Contract ID</th>
+            <th>Name</th>
+            <th>Lead Type</th>
+            <th>Property Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Print</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring5</td>
+                <td>@item.vwstring2</td>
+                <td>@item.vwstring3</td>
+                <td>@item.vwstring4</td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwstring5 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn  btn-xs deleteitem" data-keyg="@item.vwstring5"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+                <td>@Html.ActionLink(".", "Receipt5", "Receipt", new { ptype1 = "PQR" }, new { @class = "btn btnextra btn-xs glyphicon glyphicon-print" })</td>
+            </tr>
+        }
+        @*<a onclick="myFunction()" class="glyphicon glyphicon-print">Print</a>*@
+
+
+    </tbody>
+
+</table>
+        @Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+@section Scripts {
+    <script>
+
+        //$("#id_delete").click(function () {
+        //    //var $form = $(this).closest('form');
+        //    bootbox.confirm("message", function (a) {
+        //        if (a) {
+        //            $("#id_xhrt").val("D");
+        //            $form.trigger("submit");
+        //        }
+        //        else {
+        //            $("#id_xhrt").val("X");
+        //        }
+        //    });
+        //});
+    </script>
+}

@@ -1,0 +1,83 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "customer";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Customer Maintainance</h3>
+        <a class="btn  btn-warning btn-default" href="@Url.Action("Index", "Addrs", new { atype = "CU" })"> <span>Add Address</span></a>
+
+        @Html.Partial("_listupdel")
+      
+        @Html.Partial("Cus")
+
+
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+<div id="loader2" data-request-ajax2="@Url.Action("priceclass")"></div>
+
+@section Scripts {
+    <script>
+        
+        $(document).ready(function () {
+           
+
+            var paytd = $(".paytd").val();
+            if(paytd == "B")
+                $("#click").show('slow');
+
+            var grant_crd = $("#grant_crd").val();
+            if (grant_crd == "Y") {
+                $("#click3").show();
+            }
+
+            var spl_dis = $("#spl_dis").val();
+            if (spl_dis == "Y") {
+                $("#click2").show();
+            }
+            else
+                $("#id_sdper").val(clear_field);
+            $("#no2").click(function () {
+                var clear_field = ""
+                $("#id_sdper").val(clear_field);
+            })
+
+            var bil_loc = $("#bil_loc").val();
+            if (bil_loc == "N") {
+                var clear_field = ""
+                $("#click1").show();
+                $("#id_badd1").val(clear_field);
+                $("#id_badd2").val(clear_field);
+                $("#id_bcity").val(clear_field);
+                $("#id_bpcode").val(clear_field);
+                $("#tab3cty").val(clear_field);
+                $("#tab3state").val(clear_field);
+                $("#id_bemail").val(clear_field);
+                $("#id_bpnum").val(clear_field);
+            }
+            $("#yes1").click(function () {
+                var clear_field = ""
+                $("#id_badd1").val(clear_field);
+                $("#id_badd2").val(clear_field);
+                $("#id_bcity").val(clear_field);
+                $("#id_bpcode").val(clear_field);
+                $("#tab3cty").val(clear_field);
+                $("#tab3state").val(clear_field);
+                $("#id_bemail").val(clear_field);
+                $("#id_bpnum").val(clear_field);
+            })
+
+        });
+
+    </script>
+
+}

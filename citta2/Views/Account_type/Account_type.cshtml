@@ -1,0 +1,60 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Account type";
+}
+       
+            <div class="row form-group">
+                <label for="AccounttypeId" class="col-sm-5 control-label">Account type Id</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", placeholder = "account type sequence", required = "required", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control", @maxlength = 10 })             
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="AccountType" class="col-sm-5 control-label"> Account Type</label>
+            <div class="col-sm-5">
+                @Html.TextBoxFor(m => m.vwstrarray0[0], new { @class = "form-control", required = "required", placeholder = "account type description", @maxlength = 50 })
+            </div>
+        </div>
+
+            <div class="row form-group">
+                <label for="AccountCategory" class="col-sm-5 control-label"> Account Category</label>
+            <div class="col-sm-3">
+                @Html.DropDownListFor(m => m.vwstring2, ViewBag.catg as SelectList, "Select", new { @class = "form-control", required = "required", placeholder = "category sequence" })
+            </div>
+        </div>
+            
+            <div class="row form-group">
+                <label for="Reportingsequence" class="col-sm-5 control-label">Reporting sequence</label>
+            <div class="col-sm-1">
+                @Html.TextBoxFor(m => m.vwint2, new { @class = "form-control", required = "required", placeholder = "account report type sequence" })
+            </div>
+        </div>
+            <div class="row form-group">
+                <label for="Note" class="col-sm-5 control-label">Note</label>
+            <div class="col-sm-5">
+                @Html.TextAreaFor(m => m.vwstrarray0[1], new { @class = "form-control", placeholder = "note", rows = "6" })
+            </div>
+        </div>
+        @*<div class="row form-group">
+            <label class="control-label col-sm-5">Inactive</label>
+            <div class="col-sm-6">
+                <label class="radio-inline">
+                    @Html.CheckBoxFor(m => m.vwbool0, new { type = "checkbox" })
+                </label>
+            </div>
+           </div>*@
+        <div class="row form-group">
+            <label class="col-sm-5 control-label">Inactive</label>
+            <div class="col-sm-6 mycheckq">
+                @Html.CheckBoxFor(model => model.vwbool0, new { @id = "activate_yesno" })
+            <label for="activate_yesno">
+                @( Model.vwbool0 ? "On" : "Off")
+            </label>
+            </div>
+        </div>
+           
+
+          
+       
+    

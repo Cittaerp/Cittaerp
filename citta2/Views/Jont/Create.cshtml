@@ -1,0 +1,31 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "chart";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" >
+        @Html.ValidationSummary(true)
+        <h3>Journal Type  Maintainance</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("JonCht")
+
+       
+    </form>
+</div>
+
+<div id="loader3" data-request-ajax3="@Url.Action("pricehead_list")"></div>
+
+@section Scripts {
+    <script>
+        //$(".nexttab").click(function () {
+        //    $(".nav-tabs > .active").next("li").find("a").trigger("click");
+        //});
+
+    </script>
+}

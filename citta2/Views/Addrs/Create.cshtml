@@ -1,0 +1,63 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Address";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>@Session["aheader"]</h3>
+        @Html.Partial("_listsubmit")
+
+
+
+
+        @Html.Partial("Add")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                
+            </div>
+
+        </div>
+    </form>
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+
+@section Scripts {
+    <script>
+       
+
+
+        $(function () {
+
+            $("#country").change(function () {
+                var URL = $('#loader1').data('request-ajax1');
+                var URLext = $('#country').val();
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        $.each(data, function (i, state) {
+                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                        });
+                        $("#state").html(items);
+                    }
+                });
+            });
+
+
+        });
+        </script>
+        }

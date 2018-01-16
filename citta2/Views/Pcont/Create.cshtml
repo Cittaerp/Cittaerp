@@ -1,0 +1,61 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "customer";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Subscribers Form  </h3>
+        @Html.Partial("_listsubmitsend")
+
+        @Html.Partial("Cus")
+
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck" })
+
+    </form>
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+<div id="loader2" data-request-ajax2="@Url.Action("priceclass")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("get_commision_value")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("get_currency")"></div>
+@section Scripts {
+    <script>
+       
+        $(document).ready(function () {
+            var clear_field = ""
+            $("#no2").click(function () {
+                var clear_field = ""
+                $("#id_sdper").val(clear_field);
+            })
+
+            var grant_crd = $("#grant_crd").val();
+            if (grant_crd == "Y") {
+                $("#click3").show();
+            }
+
+            $("#yes1").click(function () {
+                var clear_field = ""
+                $("#id_badd1").val(clear_field);
+                $("#id_badd2").val(clear_field);
+                $("#id_bcity").val(clear_field);
+                $("#id_bpcode").val(clear_field);
+                $("#tab3cty").val(clear_field);
+                $("#tab3state").val(clear_field);
+                $("#id_bemail").val(clear_field);
+                $("#id_bpnum").val(clear_field);
+            })
+
+            $("#id_cust").change(function () {
+                var $form = $(this).closest('form');
+                $("#id_subcheck").val("RR");
+                $form.trigger("submit");
+
+            });
+        });
+
+
+    </script>
+}

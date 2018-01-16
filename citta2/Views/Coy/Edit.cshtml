@@ -1,0 +1,389 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "company";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" >
+        @Html.ValidationSummary(true)
+
+        <h3>Company Maintainance</h3>
+        <button type="submit" name="coybtn" value="1" class="btn btn-success btn-default">Update</button>
+        &nbsp;&nbsp;&nbsp;
+        <button type="submit" name="coybtn" value="0" class="btn btnextra">Cancel</button>
+
+        @Html.Partial("Cmy")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+            </div>
+
+        </div>
+        @Html.HiddenFor(m =>m.vwstrarray0[0], "")
+        @Html.HiddenFor(m => m.vwblarray0[1], "")
+        @Html.HiddenFor(m => m.vwblarray0[0], "")
+        @Html.HiddenFor(m => m.vwstrarray0[25], "Standard")
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+<div id="loader2" data-request-ajax2="@Url.Action("pricehead_list2")"></div>
+<div id="loader3" data-request-ajax3="@Url.Action("period_cal")"></div>
+<div id="loader4" data-request-ajax4="@Url.Action("period_calp", "PeriodR")"></div>
+
+
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+
+            var multi = $("#id_multi").val();
+            if (multi == "B") {
+                $("#click3").show();
+            }
+            $("#click").hide();
+            var manoth = $("#allow_manual").val();
+            if (manoth =="Y") {
+                $("#click").show();
+            }
+
+            var clear_field = ""
+            $("#prd_shw").hide();
+            $("#num_alt_curshw").hide();
+            $("#popft").hide();
+            $("#id_pcw").hide();
+            $("#id_ppw").hide();
+            $("#codft").hide();
+            var prdcal = $("#prdcal").val();
+            var ppw = $("#ppw").val();
+            var cppw = $("#cppw").val();
+            if ([prdcal == "P"]) {
+                $("#id_ppw").show();
+                $("#id_pcw").hide();
+                $("#cal_shw").hide();
+                $("#prd_shw").show();
+                $("#num_alt_curshw").show();
+            }
+            if (prdcal == "C") {
+                $("#id_pcw").show();
+                $("#id_ppw").hide();
+            }
+            if (cppw == "Y") {
+                $("#prd_shw").hide();
+                $("#cal_shw").show();
+                $("#num_alt_curshw").hide();
+                $("#popft").hide();
+                $("#codft").show();
+            }
+            if (ppw == "Y") {
+                $("#prd_shw").show();
+                $("#cal_shw").hide();
+                $("#num_alt_curshw").show();
+                $("#popft").show();
+                $("#codft").hide();
+            }
+            //$("#pyes").click(function () {
+            //    $("#codft").show();
+            //});
+
+
+            //$("#pno").click(function () {
+            //    $("#codft").hide();
+            //});
+            //var ppw = $("#ppw").val()
+            //if (ppw == "Y") {
+            //    $("#codft").show();
+            //}
+            var id_cdtf = $("#id_cdtf").val()
+            if (id_cdtf == "Y") {
+                $("#click1").show();
+            }
+			var a = $("#single").val();       
+            if (a == "Y") {
+                $("#click").show();
+            }
+
+
+            var elements = document.querySelectorAll(".prevtab, .nexttab, #t1, #t2");
+            for (var i = 0; i < elements.length; i++) {
+
+                elements[i].addEventListener("click", function () {
+                    var a = $("#con").val();
+                    $("#country").val(a);
+                });
+            }
+
+
+            $("#country").change(function () {
+                var URL = $('#loader1').data('request-ajax1');
+                var URLext = $('#country').val();
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        $.each(data, function (i, state) {
+                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                        });
+                        $("#state").html(items);
+                    }
+                });
+            });
+
+
+            $("#con").change(function () {
+                var URL = $('#loader2').data('request-ajax2');
+                var URLext = $('#con').val();
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    async: false,
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        var item2 = '';
+                        $.each(data, function (i, state) {
+                            items = state.Value;
+                            item2 = state.Text;
+                        });
+                        $("#base2").val(item2);
+                        $("#base3").val(items);
+                    }
+                });
+            });
+
+            $("#id_mthend").change(function () {
+                var URL = $('#loader3').data('request-ajax3');
+                var URLext = $('#id_mthend').val();
+                var nump = "12"
+                URL = $.trim(URL);
+
+                URLext = $.trim(URLext);
+                URL = URL;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    data: { mthend: URLext },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        $.each(data, function (i, state) {
+                            items = state.Text;
+                            if (state.Value == "1") {
+                                $("#id_curtp").val(items);
+                                $("#id_curtp").attr('disabled', 'disabled');
+                            }
+                            else {
+                                $("#id_nump").val(items);
+                                $("#id_nump").attr('disabled', 'disabled');
+                            }
+                        });
+
+
+                    }
+                });
+            });
+            $("#yes2").click(function () {
+                var clear_field = ""
+                //var prd = "Will proceed to Period Definition after Update"
+                $('#id_curtp').removeAttr('disabled');
+                $('#id_nump').removeAttr('disabled');
+                $('#id_curtp').val(clear_field);
+                $('#id_nump').val(clear_field);
+                $("#prd_shw").show();
+                $("#cal_shw").hide();
+                //$("#num_alt_curshw").show();
+                //$("#popft").show();
+                $("#codft").hide();
+                //$("#id_opf").val(clear_field);
+                $("#id_pcw").hide();
+                $("#id_ppw").show();
+                $("#num_alt_curshw").show();
+
+            })
+            $("#pyes").click(function () {
+                var clear_field = ""
+                var prd = "Will proceed to Period Definition after Update"
+                $('#id_curtp').removeAttr('disabled');
+                $('#id_nump').removeAttr('disabled');
+                $('#id_curtp').val(clear_field);
+                $('#id_nump').val(clear_field);
+                $("#prd_shw").show();
+                $("#cal_shw").hide();
+                $("#num_alt_curshw").show();
+                $("#popft").show();
+                $("#codft").hide();
+                $("#id_opf").val(clear_field);
+
+            })
+            $("#pno").click(function () {
+                var clear_field = ""
+                var prd = "Will proceed to Period Definition after Update"
+                $('#id_curtp').removeAttr('disabled');
+                $('#id_nump').removeAttr('disabled');
+                $('#id_curtp').val(clear_field);
+                $('#id_nump').val(clear_field);
+                $("#prd_shw").hide();
+                $("#cal_shw").hide();
+                $("#num_alt_curshw").show();
+                $("#popft").hide();
+                $("#codft").hide();
+                $("#id_opf").val(clear_field);
+
+            })
+
+            $("#id_nump").change(function () {
+                var prd = "Period Calender Definition would be available after Update"
+                $('#prd_alert').html(prd);
+            })
+            $("#id_curtp").change(function () {
+                $("#prd_alert").hide();
+            })
+
+            $("#no2").click(function () {
+                //var URL = $('#loader3').data('request-ajax3');
+                //var URLext = $('#id_mthend').val();
+                //var nump = "12"
+                //URL = $.trim(URL);
+
+                //URLext = $.trim(URLext);
+                //URL = URL;
+                //$.ajax({
+                //    type: "Post",
+                //    url: URL,
+                //    data: { mthend: URLext },
+                //    error: function (xhr, status, error) {
+                //        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                //    },
+                //    success: function (data) {
+                //        var items = '';
+                //        $.each(data, function (i, state) {
+                //            items = state.Text;
+                //            if (state.Value == "1") {
+                //                $("#id_curtp").val(items);
+                //                $("#id_curtp").attr('disabled', 'disabled');
+                //            }
+                //            else {
+                //                $("#id_nump").val(items);
+                //                $("#id_nump").attr('disabled', 'disabled');
+                //            }
+                //        });
+                        $("#prd_alert").hide();
+                       $("#prd_shw").hide();
+                       $("#num_alt_curshw").hide();
+                        $("#popft").hide();
+                        $("#id_pcw").show();
+                        $("#id_ppw").hide();
+                          $("#cal_shw").show();
+                //        $("#codft").show();
+
+            });
+            $("#cyes").click(function () {
+                var URL = $('#loader3').data('request-ajax3');
+                var URLext = $('#id_mthend').val();
+                var nump = "12"
+                URL = $.trim(URL);
+
+                URLext = $.trim(URLext);
+                URL = URL;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    data: { mthend: URLext },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        $.each(data, function (i, state) {
+                            items = state.Text;
+                            if (state.Value == "1") {
+                                $("#id_curtp").val(items);
+                                $("#id_curtp").attr('disabled', 'disabled');
+                            }
+                            else {
+                                $("#id_nump").val(items);
+                                $("#id_nump").attr('disabled', 'disabled');
+                            }
+                        });
+                        $("#prd_alert").hide();
+                        $("#prd_shw").hide();
+                        $("#cal_shw").show();
+                        $("#num_alt_curshw").hide();
+                        $("#popft").hide();
+                        $("#codft").show();
+
+
+                    }
+                });
+            });
+            $("#cno").click(function () {
+                   
+                    $("#prd_alert").hide();
+                $("#prd_shw").hide();
+                $("#cal_shw").hide();
+                $("#num_alt_curshw").hide();
+                $("#popft").hide();
+                $("#codft").hide();
+
+            });
+
+            $("#go_period").click(function () {
+                var URL = $('#loader4').data('request-ajax4');
+                var URLext = $('#id_nump').val();
+                URL = $.trim(URL);
+
+                URLext = $.trim(URLext);
+                URL = URL;
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    data: { num_prd: URLext },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = '';
+                        $.each(data, function (i, state) {
+                            items = state.Text;
+                        });
+
+
+                    }
+                });
+            });
+
+            $("#yes").click(function () {
+                $("#click").show();
+            });
+            $("#no").click(function () {
+                $("#click").hide();
+              });
+
+
+            var $rsdios = $('input[name="vwstring5"]').change(function () {
+                if (this.checked) {
+                    $checks.prop('checked', false)
+                }
+            })
+         });
+    </script>
+}

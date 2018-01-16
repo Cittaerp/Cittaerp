@@ -1,0 +1,68 @@
+﻿@model CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Maintenance_Activation";
+}
+
+
+
+<div class="form-group">
+    <label for="CompanyCode" class="col-sm-5 control-label">Fixed Asset ID</label>
+    <div class="col-sm-2">
+        @Html.DropDownListFor(m => m.vwstring0, ViewBag.fxd1 as SelectList, "SELECT", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @id = "Activation_id", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="CompanyCode" class="col-sm-5 control-label">Maintenance Type</label>
+    <div class="col-sm-2">
+        @Html.DropDownListFor(m => m.vwstring1, ViewBag.mnt1 as SelectList, "SELECT", new { @class = "form-control", placeholder = "", @maxlength = 10 })
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="CompanyCode" class="col-sm-5 control-label">Transaction Date</label>
+    <div class="col-sm-2">
+        @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control datet", placeholder = "Transaction date" })
+    </div>
+</div>
+
+<div class="form-group level">
+    <label for="CompanyCode" class="col-sm-5 control-label">Unit of Reading</label>
+    <div class="col-sm-2">
+        @Html.DropDownListFor(m => m.vwstring3, ViewBag.calf1 as SelectList, "SELECT", new { @class = "form-control", @id = "id_level" })
+    @*@Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control datet", @id = "id_level", @disabled = "disabled" })*@
+    </div>
+    @Html.HiddenFor(m =>m.vwstring3)
+</div>
+
+<div class="form-group figure">
+    <label for="CompanyCode" class="col-sm-5 control-label">Cumulative Meter Reading</label>
+    <div class="col-sm-2">
+        @Html.TextBoxFor(m => m.vwint0, new { @class = "form-control", placeholder = "figure", @id = "id_cumread"  })
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="CompanyName" class="col-sm-5 control-label">Note</label>
+    <div class="col-sm-6">
+        @Html.TextAreaFor(m => m.vwstring4, new { @class = "form-control", placeholder = "note", rows = "4" })
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-sm-5">Attach Document</label>
+    <div class="col-sm-7">
+        <input type="file" name="photofile1" multiple />
+    </div>
+</div>
+
+@*<div class="form-group">
+        <label class="control-label col-sm-5">Inactive Status</label>
+        <div class="col-sm-6 mycheckq">
+            @Html.CheckBoxFor(m => m.vwbool0, new { @id = "activate_yesno" })
+            <label for="activate_yesno">
+                @( Model.vwbool0 ? "On" : "Off")
+            </label>
+        </div>
+    </div>*@
+

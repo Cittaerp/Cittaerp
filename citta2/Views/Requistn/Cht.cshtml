@@ -1,0 +1,170 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.vw_genlay glayhead = (CittaErp.Models.vw_genlay)ViewBag.x2;
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    CittaErp.Models.queryhead qheader = (CittaErp.Models.queryhead)Session["qheader"];
+    string cr_flag = ViewBag.action_flag;
+    string show_manual = psess.temp1.ToString();
+    string loop = "";
+    int j = 0;
+
+}
+<div class="tabbable">
+
+    <div class=" form-group">
+        <div class="col-sm-3">
+            <label for="email" class="col-sm-5 control-label">Transaction Type</label>
+            <div class="col-sm-7">
+                @Html.DropDownListFor(m => m.vwstring0, ViewBag.salestt as SelectList, "", new { @class = "form-control", @required = "required", id = "id_transtype" })
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <label for="firstName" class="col-sm-6 control-label"> Transaction Date </label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control datet ", id = "id_transdate" })
+            </div>
+        </div>
+        <div class="col-sm-5" >
+            <label for="birthDate" class="col-sm-5 control-label">Item Warehouse</label>
+            <div class="col-sm-7">
+                @Html.DropDownListFor(m => m.vwstring1, ViewBag.itemw as SelectList, "", new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Requisition</a></li>
+        <li><a href="#tab2" data-toggle="tab">Dimension</a></li>
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+                            
+            <div class="row form-group">
+                <div class=" col-sm-3 col-sm-push-1  ">
+                    <label for="Description" class="header_title">Item ID</label>
+                </div>
+
+                <div class=" col-sm-2 col-sm-push-1">
+                    <label for="Description" class="header_title">Requisition qty</label>
+                </div>
+
+                <div class=" col-sm-1 col-sm-push-1">
+                    <label for="Description" class="header_title">UOM</label>
+                </div>
+
+                <div class=" col-sm-2 col-sm-push-2">
+                    <label for="Description" class="header_title">Current Balance</label>
+                </div>
+
+                <div class=" col-sm-2 col-sm-push-2">
+                    <label for="Description" class="header_title">Reorder Level</label>
+                </div>
+            </div>
+
+
+            @for (int i = 0; i < 10; i++)
+{
+    j = i + 1;
+    loop = ("pool" + i);
+    <div id="@loop" class="row form-group">
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="CompanyCode" class="col-sm-1 control-label">@(+j)</label>
+                <div class="col-sm-9" style="width:80%">
+                    @Html.DropDownListFor(m => m.vwstrarray0[i], new SelectList(ViewBag.item, "Value", "Text", Model.vwstrarray0[i]), "Select", new { @class = "form-control", @id = "reitem"+ i })
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwitarray0[i], new { @class = "form-control" })
+            </div>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstrarray1[i], new { @class = "form-control read_only", @readonly = "readonly" })
+            </div>
+            @Html.HiddenFor(m => m.vwstrarray1[i])
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwdclarray0[i], new { @class = "form-control read_only", @readonly = "readonly" })
+            </div>
+            @Html.HiddenFor(m => m.vwdclarray0[i])
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwdclarray1[i], new { @class = "form-control read_only", @readonly = "readonly" })
+            </div>
+            @Html.HiddenFor(m => m.vwdclarray1[i])
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <strong> <span class="col-sm-10 col-sm-push-2 span_colour">LP Vendor: @Model.vwstrarray2[i]</span></strong> 
+            </div>
+            @Html.HiddenFor(m => m.vwstrarray2[i])
+            <div class="form-group col-sm-3">
+                <strong> <span class="col-sm-10 col-sm-push-5 span_colour">LP Price: @Model.vwdclarray2[i]</span></strong>
+            </div>
+            @Html.HiddenFor(m => m.vwdclarray2[i])
+            <div class="form-group col-sm-3">
+                <strong><span class="col-sm-10 col-sm-push-4 span_colour">LP Date: @Model.vwstrarray3[i]</span></strong>
+            </div>
+            @Html.HiddenFor(m => m.vwstrarray3[i])
+            <div class="form-group col-sm-3">
+                <strong> <span class="col-sm-10 col-sm-push-5 span_colour">Lead Time(Days): @Model.vwitarray1[i]</span></strong>
+            </div>
+            @Html.HiddenFor(m => m.vwitarray1[i])
+        </div>
+    </div>
+                @Html.HiddenFor(m => m.vwint1, new { @id = "editcount" })
+}
+            <div class="row form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-default" id="add">Add new</button>
+            </div>
+                    @Html.Partial("_navbuttonsNext")
+
+                </div>
+
+
+                <div class="tab-pane" id="tab2">
+
+                    @for (int wctr = 0; wctr < 10; wctr++)
+            {
+                if (Model.vwlist0[wctr] != null)
+                {
+            <div class="form-group">
+                <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList(Model.vwlist0[wctr], "query0", "query1", Model.vwstrarray6[wctr]), "Select ", new { @class = "form-control" })
+                    @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                </div>
+            </div>
+                }
+                else
+                {
+            @Html.HiddenFor(m => m.vwstrarray6[wctr])
+                }
+            }
+
+
+                    <div class="form-group">
+                        <label for="Note" class="col-sm-5 control-label"> Note</label>
+                        <div class="col-sm-5">
+                            @Html.TextAreaFor(m => m.vwstring5, new { @class = "form-control", rows = "6" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Documents</label>
+                        <div class="col-sm-9">
+                            <input type="file" name="photofile" multiple />
+                        </div>
+                    </div>
+
+                    @Html.Partial("_attachDoc")
+
+                    @Html.Partial("_navbuttonsPrev")
+                </div>
+
+     
+            </div>
+
+        </div>
+
+

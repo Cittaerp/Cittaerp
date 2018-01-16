@@ -1,0 +1,46 @@
+﻿
+@model  CittaErp.Models.vw_genlay
+@{
+    SelectList[] head_det = (SelectList[])Session["head_det"];
+
+}
+<div class="tabbable">
+
+    <div class="row form-group">
+        <label for="asset-group" class="col-sm-2 control-label">Work Center ID</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 20 } : new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.vwstring0)
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="AssetDescription" class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", maxlength = 50 })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="Fixed Assests" class="col-sm-2 control-label">Location</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control", maxlength = 50 })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="Location" class="col-sm-2 control-label">Manager</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring3, ViewBag.employee as SelectList, "Select", new { @class = "form-control", id = "id_employee" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-sm-2 control-label">Inactive</label>
+        <div class="col-sm-6 mycheckq">
+            @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+            <label for="activate_yesno">
+                @( Model.vwbool0 ? "On" : "Off")
+            </label>
+        </div>
+    </div>

@@ -1,0 +1,206 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    SelectList[] head_det = (SelectList[])Session["head_det"];
+    string mandate_id = "";
+
+}
+
+ <div class="tabbable">
+     <div class="row form-group col-sm-5">
+         <label for="warehouse" class="col-sm-6 control-label">Sales Transaction Type Id</label>
+         <div class="col-sm-5">
+             @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled" })
+             @Html.ValidationMessageFor(m => m.vwstring0)
+         </div>
+     </div>
+     <div class="row form-group col-sm-7">
+         <label for="warehouse" class="col-sm-3 control-label">Description </label>
+         <div class="col-sm-9">
+             @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 50 })
+         </div>
+     </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Transaction Type Information</a></li>
+        <li><a href="#tab9" data-toggle="tab"> Document Management</a></li>
+        <li><a href="#tab2" data-toggle="tab">Dimension</a></li>
+    </ul>
+     <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+         
+            <div class="row form-group">
+                <label class="control-label col-sm-5">Tax charged on Total Invoice Amount?</label>
+                <div class="">
+                        <div class="col-sm-5 myradio">
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(m => m.vwstring5, "Y", new { @id = "yes4" }) Yes
+                            </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(m => m.vwstring5, "N", new { @id = "no4" }) No
+                            </label>
+                        </div>
+                    @Html.HiddenFor(m => m.vwstring5, new { @class = "tax" })
+                </div>
+            </div>
+            <div class="row form-group" style="display:none;" id="click4">
+                <div class="row form-group">
+                    <label for="Analysis" class="col-sm-5 control-label">1</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring3, new SelectList(ViewBag.tax, "Value", "Text", Model.vwstring3), "", new { @class = "form-control", @id="id_tax1" })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="Analysis" class="col-sm-5 control-label">2</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring4, new SelectList(ViewBag.tax, "Value", "Text", Model.vwstring4), "", new { @class = "form-control", @id = "id_tax2" })
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="row form-group mycheckq">
+                <label for="DateTo" class="col-sm-5 control-label mycheckq">Inactive</label>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(m => m.vwblarray0[4], new { @class = "form-control", style = "width : 15px", @id = "sal_yesno" })
+                </div>
+            </div>*@
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label> 
+                <div class="col-sm-6 mycheckq"> 
+                 @Html.CheckBoxFor(model => Model.vwblarray0[4], new { @id = "activate_yesno" })
+                <label for="activate_yesno">
+                    @( Model.vwblarray0[4] ? "On" : "Off")
+                </label>
+                </div>
+            </div>
+          <br />
+            <div class="col-sm-1"></div><div class ="col-sm-7">
+    <h4>Specify the applicable sales transaction documents below:</h4>
+</div>
+            
+                <div class="row">
+                    <label class="col-sm-5 control-label">Quote?</label>
+                    <div class="col-sm-6 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwblarray0[0], new { @id = "quote_yesno" })
+                        <label for="quote_yesno">
+                            @( Model.vwblarray0[0] ? "On" : "Off")
+                        </label>
+                    </div>
+                </div>
+            <div class="row form-group">
+                <div class="form-inline">
+                    <label class="col-sm-5 control-label">Order?</label>
+                    <div class="col-sm-1 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwblarray0[1], new { @id = "quot_yesno", @class="order_class" })
+                        <label for="quot_yesno">
+                            @( Model.vwblarray0[1] ? "On" : "Off")
+                        </label>
+                    </div>
+                </div>
+                <div class="form-inline" style="display:none;" id="order_confirm">
+                    <label class="control-label col-sm-3">Order Confirmation Required?</label>
+                    <div class="col-sm-1 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwblarray0[5], new { @id = "order_yesno" })
+                        <label for="order_yesno">
+                            @( Model.vwblarray0[5] ? "On" : "Off")
+                        </label>
+                    </div>
+                   </div>
+                <div class="form-inline" style="display:none;" id="restock">
+                    <label class="control-label col-sm-1">Reserve Stock?</label>
+                    <div class="col-sm-1 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwblarray0[6], new { @id = "restock_yesno" })
+                        <label for="restock_yesno">
+                            @( Model.vwblarray0[6] ? "On" : "Off")
+                        </label>
+                    </div>
+                </div>
+            </div>
+       <div class="row form-group">
+                <label class="col-sm-5 control-label">Waybill?</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[2], new { @id = "quotw_yesno" })
+                    <label for="quotw_yesno">
+                        @( Model.vwblarray0[2] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+
+       <div class="row form-group">
+                <label class="col-sm-5 control-label">Invoice?</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwblarray0[3], new { @id = "quoti_yesno" })
+                    <label for="quoti_yesno">
+                        @( Model.vwblarray0[3] ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+
+            @*<div class="row form-group">
+                <label for="AccountTypeSequence" class="col-sm-5 control-label">Additional Information</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstrarray0[1], new { @class = "form-control", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.vwstrarray0[3], new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>*@
+        
+          @Html.Partial("_navbuttonsNext")
+           
+        </div>
+
+        <div class="tab-pane" id="tab9">
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Documents</label>
+                <div class="col-sm-5">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+
+
+            @Html.Partial("_navbuttons")
+        </div>
+
+        
+        <div class="tab-pane" id="tab2">
+          
+            <div class="col-sm-5"></div>
+            <div class="col-sm-3 title_head"> Analysis Category </div>
+            <div class="col-sm-2 title_head"> Mandatory</div>
+
+            @for (int count1 = 0; count1 < 10; count1++)
+            {
+                mandate_id = "mandate" + @count1 + "_yesno";
+                <div class="row form-group">
+                    <label for="Description" class="col-sm-5 control-label">@(count1 + 1).</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstrarray0[count1], new SelectList(ViewBag.header1, "Value", "Text", Model.vwstrarray0[count1]), "", new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwblarray1[count1], new { @id = @mandate_id })
+                        <label for=@mandate_id>
+                            @( Model.vwblarray1[count1] ? "On" : "Off")
+                        </label>
+                    </div>
+                </div>
+            }
+
+            <div class="row form-group">
+                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring2, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+
+        </div>
+
+
+        </div>
+ 

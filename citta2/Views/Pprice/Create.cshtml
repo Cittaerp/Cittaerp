@@ -1,0 +1,51 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Price";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Property Price Matrix Maintainance</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Main")
+
+        <div class="form-group">
+
+
+        </div>
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck"})
+    </form>
+</div>
+
+<div id="loader1" data-request-ajax1="@Url.Action("pricehead_list")"></div>
+
+@section Scripts {
+    <script>
+        $(function () {
+
+            $("#priceitem").change(function () {
+                var $form = $(this).closest('form');
+                $("#id_subcheck").val("RR");
+                $form.trigger("submit");
+
+              });
+
+            $("#id_int").click(function () {
+                $("#shw_int").show();
+                $("#shw_mtg").hide();
+            });
+            $("#id_mtg").click(function () {
+                $("#shw_mtg").show();
+                $("#shw_int").hide();
+            });
+
+
+        });
+
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CittaErp.Models.vw_genlay >
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+<h2>@psess.temp1</h2>
+    @Html.ValidationSummary(true)
+    @Html.Partial("menu")
+
+<table class="myTable1 display" >
+<thead>
+    <tr>
+        <th>Action</th>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Details", "Edit", null, new { jy = item.vwstring0}, new { @class = "edit_logo lgtime" })
+        </td>
+         <td>
+           @Html.DisplayFor(modelItem => item.vwstring0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vwstring1)
+        </td>
+    </tr>
+    }
+
+</tbody>
+</table>
+
+
+@section Scripts {
+
+<script>
+
+
+</script>
+
+}

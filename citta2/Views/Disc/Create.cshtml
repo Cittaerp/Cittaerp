@@ -1,0 +1,61 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "discount";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Discount Maintainance</h3>
+
+        @Html.Partial("_listsubmit")
+
+
+
+
+        @Html.Partial("Dis")
+
+        @*<div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button type="submit" class="btn btn-success btn-default">Submit</button>
+                    <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+                </div>
+
+            </div>*@
+    </form>
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("range_assign")"></div>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            var promo_type = $("#promo_type").val();
+            if (promo_type == "Q") {
+                $("#shw_gift").hide();
+                $("#shw_qty").show();
+                $("#shw_flatgift").hide();
+            }
+            var clear = " "
+            $("#range").hide();
+
+            $("#yes").click(function () {
+                $("#range").show();
+            });
+
+            $("#no").click(function () {
+                $("#range").hide();
+                $(".dis_date").val(clear);
+            });
+
+            $("#click").show('slow');
+
+            
+        })
+
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/fixed.js")"></script>
+}

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<CittaErp.Models.vw_genlay>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "View_pick";
+    ViewBag.action_flag = "Create";
+}
+
+
+<div class="container">
+    <h2>Quick Pick</h2>
+    @Html.ValidationSummary(true)
+    <a type="button" class="btn btn-success btn-default" href="Create" >Continue to create</a>
+    @Html.Partial("quick_pick2")
+</div>
+
+<div id="loader1" data-request-ajax1="@Url.Action("item_details")"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function ($) {
+
+            
+
+            $('#myCarousel').carousel({
+               interval: 10000
+            });
+
+            //Handles the carousel thumbnails
+
+            $('[id^=carousel-selector-]').click(function () {
+                var id_selector = $(this).attr("id");
+                try {
+                    var id = /-(\d+)$/.exec(id_selector)[1];
+                    console.log(id_selector, id);
+
+                    jQuery('#myCarousel').carousel(parseInt(id));
+                } catch (e) {
+                    console.log('Regex failed!', e);
+                }
+            });
+
+            // When the carousel slides, auto update the text
+            $('#myCarousel').on('slid.bs.carousel', function (e) {
+                var id = $('.item.active').data('slide-number');        
+                $('#carousel-text').html($('#slide-content-' + id).html());
+
+                //alert(id);
+
+                var URcast = $('#'+id).data('request-ajax3');
+                var items = '';
+                var URL = $('#loader1').data('request-ajax1');
+                var URLext = URcast;
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    url: URL,
+                    type: 'Post',
+                    success: function (data) {
+                        $.each(data, function (i, state) {
+                           // alert(state.Text);
+                            if (state.Value == "1") {
+                                items = state.Text;
+                                $("#nam").html(items);
+                            }
+                            if (state.Value == "2") {
+                                items = state.Text;
+                                $("#ret").html(items);
+                            }
+                        });
+                    },
+
+                    error: (function (xhr, status) {
+                        alert(status);
+                    })
+                })
+            });
+
+            $('#pagination-demo').twbsPagination({
+                totalPages: 35,
+                visiblePages: 7,
+                onPageClick: function (event, page) {
+                    $('#page-content').text('Page ' + page);
+                }
+            });
+
+
+            // get the thumbnail id and the item picture details
+            $('[id^=carousel-selector-]').click(function () {
+                var id_selector = $(this).attr("id");
+                var id = /-(\d+)$/.exec(id_selector)[1];
+                var use = id_selector, id
+
+                    var UR = $('#'+use).data('request-ajax2');
+                    var items = '';
+                    var URL = $('#loader1').data('request-ajax1');
+                    var URLext = UR;
+                    URL = $.trim(URL);
+                    URLext = $.trim(URLext);
+                    URL = URL + "/" + URLext;
+                    $.ajax({
+                        url: URL,
+                        type: 'Post',
+                        success: function (data) {
+                            $.each(data, function (i, state) {
+                                //alert(state.Text);
+                                if (state.Value == "1") {
+                                    items = state.Text;
+                                    $("#nam").html(items);
+                                }
+                                if (state.Value == "2") {
+                                    items = state.Text;
+                                    $("#ret").html(items);
+                                }
+                            });
+                        },
+
+                        error: (function (xhr, status) {
+                            alert(status);
+                        })
+                    })
+              
+            });
+        
+        });
+    </script>
+
+
+}

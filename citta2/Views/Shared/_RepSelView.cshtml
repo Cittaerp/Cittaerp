@@ -1,0 +1,178 @@
+﻿@model CittaErp.Models.vw_collect 
+@{
+    if (psess.temp8 == null)
+    {
+        psess.temp8 = "Payment Run";
+    }
+    }
+
+    <div class="row" id="row_payrun">
+        <div class="col-sm-2 col-sm-text-right">@psess.temp8</div>
+        <div class="col-sm-6">
+            @Html.DropDownListFor(model => model.ws_string0, new SelectList(ViewBag.update, "Value", "Text", @Model.ws_string0), "", new { id = "select_period", @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_select1">
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string0[0], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[0]), "", new { id = "selectid1", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            <select  class = " form-control mypadding " id="select_from1" style="width:200px" name="ar_string1[0]" ><option></option></select>
+        </div>
+        <div class="col-sm-1 text-center" >To</div>
+        <div class="col-sm-2 ">
+            <select  class = " form-control mypadding " id="select_to1" style="width:200px" name="ar_string2[0]" ><option></option></select>
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[0], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[0]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_date1">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[0], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[0]), "", new { id = "selectid11", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string1[0], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-1 text-center" >To</div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string2[0], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[0], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[0]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_select2">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[1], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[1]), "", new { id = "selectid2", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            <select  class = " form-control mypadding " id="select_from2" style="width:200px" name="ar_string1[1]" ><option></option></select>
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 col-sm-text-right">
+            <select class = " form-control mypadding " id="select_to2" style="width:200px" name="ar_string2[1]" ><option></option></select>
+        </div>
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string3[1], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[1]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_date2">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[1], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[1]), "", new { id = "selectid21", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string1[1], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string2[1], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[1], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[1]),new { @class = " form-control mypadding " })
+        </div>
+
+    </div>
+
+    <div class="row" id="row_select3">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[2], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[2]), "", new { id = "selectid3", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="select_from3" style="width:200px" name="ar_string1[2]" ><option></option></select>
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="select_to3" style="width:200px" name="ar_string2[2]" ><option></option></select>
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[2], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[2]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_date3">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[2], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[2]), "", new { id = "selectid31", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string1[2], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string2[2], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[2], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[2]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_select4">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[3], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[3]), "", new { id = "selectid4", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="select_from4" style="width:200px" name="ar_string1[3]" ><option></option></select>
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="select_to4" style="width:200px" name="ar_string2[3]" ><option></option></select>
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[3], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[3]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_date4">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[3], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[3]), "", new { id = "selectid41", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string1[3], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-1 text-center">To</div>    
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string2[3], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[3], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[3]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_select5">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[4], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[4]), "", new { id = "selectid5", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="select_from5" style="width:200px" name="ar_string1[4]" ><option></option></select>
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="select_to5" style="width:200px" name="ar_string2[4]" ><option></option></select>
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[4], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[4]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row" id="row_date5">
+        <div class="col-sm-2 col-sm-text-right">
+            @Html.DropDownListFor(model => model.ar_string0[4], new SelectList(ViewBag.selpost, "Value", "Text", @Model.ar_string0[4]), "", new { id = "selectid51", @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string1[4], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-1 text-center">To</div>
+        <div class="col-sm-2 ">
+            @Html.TextBoxFor(model => Model.ar_string2[4], new { style = "width: 100px", @maxlength = "10", @class = " form-control mypadding dob" })
+        </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownListFor(model => model.ar_string3[4], new SelectList(ViewBag.oper1, "Value", "Text", @Model.ar_string3[4]),new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+<body>
+ 

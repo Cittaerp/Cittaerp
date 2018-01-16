@@ -1,0 +1,49 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Work Order";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Work Order</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Wrko")
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck" })
+        @Html.Hidden("tabcheck", 1, new { @id = "id_tabcheck" })
+
+
+    </form>
+</div>
+
+<div id="loader4" data-request-ajax4="@Url.Action("asset2")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("workk")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("asset")"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //var temp = $('#editcount').val();
+            //var temp1 = $('#editcount1').val();
+            //alert(temp);
+            //for (var m = temp; m < 10; m++)
+            //    $("#pool" + m).hide();
+            //for (var m = temp1; m < 10; m++)
+            //    $("#loop" + m).hide();
+            var retval = $('#id_retgroup1').val();
+            if (retval == "G") {
+
+                $('#id_asset').html("Asset Group");
+            }
+            });
+
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/fixed.js")"></script>
+}
+
+
+
+

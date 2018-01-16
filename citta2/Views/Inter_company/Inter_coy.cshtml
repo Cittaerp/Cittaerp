@@ -1,0 +1,178 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Inter-Company";
+    
+}
+    <div class="tabbable" style="margin-bottom: 18px;">
+        <div class="form-group col-sm-5">
+            <label for="CompanyCode" class="col-sm-4 control-label"> Company Id</label>
+            <div class="col-sm-5">
+                @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-sm-7">
+            <label for="CompanyCode" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.vwstrarray0[0], new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+
+            <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Inter Company Information</a></li>
+                <li><a href="#tab2" data-toggle="tab">Contact Information</a></li>
+                <li><a href="#tab3" data-toggle="tab">General Settings</a></li>
+                <li><a href="#tab4" data-toggle="tab">Other Information</a></li>
+            </ul>
+          <br />  
+        <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Address</label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwstrarray0[1], new { @class = "form-control"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label"></label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">City</label>
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(m => m.vwstrarray0[3], new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                      <label for="CompanyCode" class="col-sm-5 control-label">State/Province</label>
+                      <div class="col-sm-5">
+                          @Html.TextBoxFor(m => m.vwstrarray0[16], new { @class = "form-control" })
+                      </div>
+                  </div>
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Postal Code</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.vwstrarray0[4], new { @class = "form-control"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Country</label>
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(m => m.vwstrarray0[5], ViewBag.country as SelectList, "Select", new { @class = "form-control"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Email</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.vwstrarray0[6], new { @class = "form-control",  type = "email" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Company Website</label>
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(m => m.vwstrarray0[7], new { @class = "form-control", placeholder = "http://www.you.com", type = "url" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Phone</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.vwstrarray0[8], new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @Html.Partial("_navbuttonsNext")
+                </div>
+
+                <div class="tab-pane" id="tab2">
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Contact Name</label>
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(m => m.vwstrarray0[9], new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Job Title</label>
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(m => m.vwstrarray0[10], ViewBag.jobrole as SelectList, "Select", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Email</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.vwstrarray0[11], new { @class = "form-control", type = "email", style = "width : 300px" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Phone</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.vwstrarray0[12], new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @Html.Partial("_navbuttons")
+                </div>
+                
+            <div class="tab-pane" id="tab3">
+
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Currency Code for the Inter-Company</label>
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(m => m.vwstrarray0[13], ViewBag.currencycode as SelectList, "Select", new { @class = "form-control", required = "required" })  
+                        </div>
+                     </div>
+
+                    <div class="form-group">
+                        <label for="CompanyCode" class="col-sm-5 control-label">Specify GL Account Code</label>
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(m => m.vwstrarray0[14], ViewBag.chart as SelectList, "Select", new { @class = "form-control", required = "required"})
+                        </div>
+                    </div>
+                @Html.Partial("_navbuttons")
+                </div>
+            <div class="tab-pane" id="tab4">
+               
+                    <div class="form-group">
+                        <label for="CompanyName" class="col-sm-5 control-label">Note</label>
+                        <div class="col-sm-5">
+                            @Html.TextAreaFor(m => m.vwstrarray0[15], new { @class = "form-control", rows = "6" })
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Inactive </label>
+                    <div class="col-sm-1">
+                        <label class="radio-inline">
+                            @Html.CheckBoxFor(m => m.vwbool0, new { type = "checkbox" })
+                        </label>
+                    </div>
+                </div>   
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Attach Document</label>
+                    <div class="col-sm-5">
+                        <input type="file" name="photofile" multiple />
+                    </div>
+                </div>
+                @if (ViewBag.anapict != null)
+                {
+                    <div class="form-group">
+                        @foreach (var item in ViewBag.anapict)
+                        {
+                            <img src="data:image/png;base64, @Convert.ToBase64String(item.document_image, 0, item.document_image.Length)" width="100" height="100" />
+                        }
+
+                    </div>
+                }
+                @Html.Partial("_navbuttonsPrev")
+                
+            </div>
+            </div>
+        </div>
+
+    
+
+

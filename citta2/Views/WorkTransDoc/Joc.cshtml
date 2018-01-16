@@ -1,0 +1,614 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    int j = 0;
+    string lblno = "";
+    string loops = "";
+    string nlbl = "";
+    //Initialization of Viewdata to get description for sub - contract Description into a Text Area
+
+}
+
+<div class="tabbable">
+    <div class="row form-group">
+        <div class="row form-group col-sm-2">
+            <label for="asset-group" class="col-sm-3 control-label" style="width:60%">Docket ID</label>
+            <div class="col-sm-3" style="width:90%">
+                @Html.TextBoxFor(m => m.vwstring0, @Model.vwstring0 == "" ? (object)new { @class = "form-control", @maxlength = 20 } : new { @class = "form-control", @disabled = "disabled" })
+                @Html.ValidationMessageFor(m => m.vwstring0)
+            </div>
+            @Html.HiddenFor(m => m.vwstring9)
+        </div>
+
+        <div class="row form-group col-sm-3">
+            <label for="AssetDescription" class="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9" style="width:90%">
+                @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", maxlength = 50 })
+            </div>
+        </div>
+        <div class="row form-group col-sm-3">
+            <label for="AssetDescription" class="col-sm-3  text-left" style="width:90%">Last Meter Reading</label>
+            <div class="col-sm-9" style="width:50%">
+                @Html.TextBoxFor(m => m.vwint9, new { @class = "form-control", maxlength = 50, @disabled = "disabled" })
+            </div>
+            <span id="" style="color:red">@Model.vwstrarray2[10]</span>
+            @Html.HiddenFor(m => m.vwint9)
+        </div>
+        <div class="row form-group col-sm-3">
+            <label for="Location" class="col-sm-6 text-left" style="width:90%">Actual Total cost</label>
+            <div class="col-sm-6" style="width:90%">
+                @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control text-right numformat", @disabled = "disabled", @id = "id_cumamount" })
+            </div>
+            @Html.HiddenFor(m => m.vwdecimal0)
+        </div>
+    </div>
+    <ul class="nav nav-tabs" id="tabs">
+        @if (@Model.vwstrarray2[0].Contains("active"))
+        {
+            <li class="active"><a href="#tab1" data-toggle="tab">Work Order Information</a></li>
+        }
+        else
+        {
+            <li><a href="#tab1" data-toggle="tab">Work Order Information</a></li>
+        }
+        @if (@Model.vwstrarray2[1].Contains("active"))
+        {
+            <li class="active"><a href="#tab2" data-toggle="tab">Material Resources</a></li>
+        }
+        else
+        {
+            <li><a href="#tab2" data-toggle="tab">Material Resources</a></li>
+        }
+        @if (@Model.vwstrarray2[2].Contains("active"))
+        {
+            <li class="active"><a href="#tab3" data-toggle="tab">Human Resources</a></li>
+        }
+        else
+        {
+            <li><a href="#tab3" data-toggle="tab">Human Resources</a></li>
+        }
+
+        @if (@Model.vwstrarray2[4].Contains("active"))
+        {
+            <li class="active"><a href="#tab5" data-toggle="tab">Sub-Contracts</a></li>
+        }
+        else
+        {
+            <li><a href="#tab5" data-toggle="tab">Sub-Contracts</a></li>
+        }
+        @if (@Model.vwstrarray2[3].Contains("active"))
+        {
+            <li class="active"><a href="#tab4" data-toggle="tab">Task Activity Checklist</a></li>
+        }
+        else
+        {
+            <li><a href="#tab4" data-toggle="tab">Task Activity Checklist</a></li>
+        }
+        @if (@Model.vwstrarray2[5].Contains("active"))
+        {
+            <li class="active"><a href="#tab6" data-toggle="tab">Miscellaneous Expensis</a></li>
+        }
+        else
+        {
+            <li><a href="#tab6" data-toggle="tab">Miscellaneous Expensis</a></li>
+        }
+        <li><a href="#tab7" data-toggle="tab">Documents</a></li>
+
+    </ul>
+
+    <br />
+    <div class="tab-content">
+        <div class="@Model.vwstrarray2[0]" id="tab1">
+            <div class="row form-group">
+                <label for="asset-group" class="col-sm-3 control-label">Work Order Description</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control", @id = "id_workord", @disabled = "disabled" })
+                </div>
+                @Html.HiddenFor(m => m.vwstring2)
+            </div>
+
+            <div class="row form-group">
+                <label for="asset-group" class="col-sm-3 control-label">Transaction Date</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control datet", @id = "id_workord" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label" id="id_teamlabel">Team Lead</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control", @maxlength = 20, @disabled = "disabled", @id = "id_workgroup" })
+                </div>
+                @Html.HiddenFor(m => m.vwstring4)
+            </div>
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label" id="id_asset">Assets</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwstrarray2[8], new { @class = "form-control", @maxlength = 20, @disabled = "disabled", @id = "id_assetgroup" })
+                </div>
+                @Html.HiddenFor(m => m.vwstrarray2[7])
+            </div>
+            <div class="row form-group">
+                <label for="Location" class="col-sm-3 control-label">GL Account</label>
+                <div class="col-sm-5">
+                    @Html.DropDownListFor(m => m.vwstring5, new SelectList(ViewBag.chart1, "Value", "Text", Model.vwstring5), "Select", new { @class = "form-control", id = "id_glacc", @required = "required" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="asset-group" class="col-sm-3 control-label">Main Work Center</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstring6, new { @class = "form-control", @maxlength = 20, @disabled = "disabled", @id = "id_wrkcent" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="col-sm-3 control-label">Work Order Completed</label>
+                <div class="col-sm-5 myradio">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring7, "Y", new { id = "orderyes" }) Yes
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring7, "N", new { id = "orderno" }) No
+                    </label>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label" id="id_endd">Work Order Completion Date</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstring8, new { @class = "form-control datet", @id = "id_tend" })
+                </div>
+            </div>
+            @Html.Partial("_navbuttonsNext")
+
+        </div>
+        <div class="@Model.vwstrarray2[1]" id="tab2">
+            <div class=" row form-group text-left">
+                <label for="Description" class="control-label col-sm-2 text-left col-sm-offset-1">Total Materials Cost</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwdclarray3[0], new { @class = "form-control id_rundays numformat", @id = "id_totmatgrand", @disabled = "disabled" })
+                </div>
+                @Html.HiddenFor(m => m.vwdclarray3[0])
+            </div>
+            <div class=" row form-group">
+                <div class=" col-sm-2 text-left col-sm-offset-1">
+                    <label for="Description">Materials</label>
+                </div>
+                <div class=" col-sm-2 text-left">
+                    <label for="Description">UOM</label>
+                </div>
+                <div class=" col-sm-1 text-right col-xs-pull-1">
+                    <label for="Description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WOQty</label>
+                </div>
+                <div class=" col-sm-2 text-left">
+                    <label for="Description">Actual Qty</label>
+                </div>
+                <div class=" col-sm-1 text-left">
+                    <label for="Description">Unit Cost</label>
+                </div>
+                <div class=" col-sm-1 text-right">
+                    <label for="Description">Cost</label>
+                </div>
+            </div>
+
+            @for (int i = 0; i < 10; i++)
+            {
+                j = i + 1;
+                loops = ("pool" + i);
+                lblno = ("cmeasure" + i);
+                nlbl = ("woqty" + i);
+                <div id="@loops">
+
+                    <div class="form-group col-sm-3">
+                        <label for="CompanyCode" class="col-sm-1 control-label">@(+j)</label>
+
+                        <div class="col-sm-9" style="width:80%">
+                            @if (Model.vwblarray1[i] == true)
+                            {
+                                @Html.DropDownListFor(m => m.vwstrarray1[i], new SelectList(ViewBag.itemgroup, "Value", "Text", Model.vwstrarray1[i]), "Select", new { @class = "form-control class_price", @id = "id_item" + i })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => m.vwstrarray1[i], new SelectList(ViewBag.itemgroup, "Value", "Text", Model.vwstrarray1[i]), "Select", new { @class = "form-control class_price", @id = "id_item" + i, @disabled = "disabled" })
+                            }
+                        </div>
+                        @Html.HiddenFor(m => m.vwstrarray1[i])
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <div class="col-sm-9">
+                            @Html.TextBox("uom", TempData[@lblno], new { @class = "form-control id_rundays ", @id = "id_uom" + i, @disabled = "disabled" })
+                        </div>
+                        @Html.Hidden("uom", TempData[@lblno])
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <div class="col-sm-8">
+                            @Html.TextBox("woqty", TempData[@nlbl], new { @class = "form-control id_rundays ", @id = "id_qtyy1" + i, @disabled = "disabled" })
+                        </div>
+                        @Html.Hidden("woqty", TempData[@nlbl])
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(m => m.vwitarray2[i], new { @class = "form-control id_rundays ", @id = "id_qtyy" + i })
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(m => m.vwdclarray1[i], new { @class = "form-control id_rundays numformat", @id = "id_unitcost" + i, @disabled = "disabled" })
+                        </div>
+                        @Html.HiddenFor(m => m.vwdclarray1[i], new { @id = "id_unitcostt" + i })
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <div class="col-sm-9" style="width:100%">
+                            @Html.TextBox("extcostt", ViewData["extcostt" + i], new { @class = "form-control id_rundays numformat ", @disabled = "disabled", @id = "id_extcost" + i })
+                        </div>
+                        @Html.Hidden("extcostt", ViewData["extcostt" + i], new { @id = "id_extcostt" + i })
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.vwint1, new { @id = "editcount" })
+                @Html.HiddenFor(m => m.vwblarray1[i])
+            }
+            <div class="row form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-default" id="add">Add new</button>
+            </div>
+
+            @Html.Partial("_navbuttons")
+        </div>
+        <div class="@Model.vwstrarray2[2]" id="tab3">
+            <div class=" col-sm-12">
+                <div class=" row form-group text-left">
+                    <label for="Description" class="control-label col-sm-2 text-left col-sm-offset-1">Total HR Cost</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.vwdclarray3[1], new { @class = "form-control id_rundays numformat", @id = "id_tothrgrand", @disabled = "disabled" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwdclarray3[1])
+                </div>
+            </div>
+            <div class=" row form-group">
+                <div class=" col-sm-2 text-left col-sm-offset-1">
+                    <label for="Description">Job Title</label>
+                </div>
+                <div class=" col-sm-2 text-left">
+                    <label for="Description">Employee Name</label>
+                </div>
+                <div class=" col-sm-2 text-right col-xs-pull-1">
+                    <label for="Description">&nbsp;&nbsp;&nbsp;WrkEst Time</label>
+                </div>
+                <div class=" col-sm-2 text-center col-xs-pull-1">
+                    <label for="Description">Actual Est Time</label>
+                </div>
+                <div class=" col-sm-1 col-xs-pull-1 text-right">
+                    <label for="Description">&nbsp;&nbsp;&nbsp;Cost/Head</label>
+                </div>
+                <div class=" col-sm-2 col-xs-pull-1 text-center">
+                    <label for="Description">Total Cost</label>
+                </div>
+            </div>
+
+            @for (int i = 0; i < 10; i++)
+            {
+                j = i + 1;
+                loops = ("loop" + i);
+                lblno = ("esttime" + i);
+                nlbl = ("woest" + i);
+                <div id="@loops" class="row form-group">
+                    @if (Model.vwblarray2[i] == true)
+                    {
+                        <div class="row form-group col-sm-2" style="width:23%">
+                            <label class=" row form-group col-xs-1">@(+j)</label>
+
+                            <div class="col-sm-3" style="width:100%">
+                                @Html.DropDownListFor(m => m.vwstrarray5[i], new SelectList(ViewBag.job1, "Value", "Text", Model.vwstrarray5[i]), "Select", new { @class = "form-control class_price", @id = "id_job" + i })
+                            </div>
+                        </div>
+                        <div class="row form-group col-sm-2" style="width:23%">
+                            <div class="col-sm-3" style="width:100%">
+                                @Html.DropDownListFor(m => m.vwstrarray14[i], new SelectList(ViewBag.emp, "Value", "Text", Model.vwstrarray14[i]), "Select", new { @class = "form-control class_price", @id = "id_empname1" + i })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row form-group col-sm-2" style="width:23%">
+                            <label class=" row form-group col-xs-1">@(+j)</label>
+
+                            <div class="col-sm-3" style="width:100%">
+                                @Html.DropDownListFor(m => m.vwstrarray5[i], new SelectList(ViewBag.job1, "Value", "Text", Model.vwstrarray5[i]), "Select", new { @class = "form-control class_price", @id = "id_job" + i, @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="row form-group col-sm-2" style="width:23%">
+                            <div class="col-sm-3" style="width:100%">
+                                @Html.DropDownListFor(m => m.vwstrarray14[i], new SelectList(ViewBag.emp, "Value", "Text", Model.vwstrarray14[i]), "Select", new { @class = "form-control class_price", @id = "id_empname1" + i, @disabled = "disabled" })
+                            </div>
+                        </div>
+
+
+                    }
+                    @Html.HiddenFor(m => m.vwstrarray5[i])
+                    @Html.HiddenFor(m => m.vwstrarray14[i])
+                    @Html.HiddenFor(m => m.vwblarray2[i])
+
+                    <div class="form-group col-sm-2">
+                        <label for="CompanyCode" class=" control-label"></label>
+                        <div class="col-sm-6" style="width:50%">
+                            @Html.TextBox("woest", TempData[@nlbl], new { @class = "form-control id_rundays ", @disabled = "disabled" })
+                        </div>
+                        <span id="@lblno" style="color:red"></span>
+                        @Html.Hidden("woest", TempData[@nlbl])
+                    </div>
+
+                    <div class="form-group col-sm-3 col-xs-pull-1">
+                        <label for="CompanyCode" class="col-sm-2"></label>
+                        <div class="col-sm-3" style="width:20%">
+                            <span id="" style="color:red">@Model.vwstrarray4[i]</span>
+                            @* @Html.DropDownListFor(m => m.vwstrarray4[i], new SelectList(ViewBag.timing, "Value", "Text", Model.vwstrarray4[i]), new { @class = "form-control", @id = "id_timingemp" + i })*@
+                        </div>
+                        <div class="col-sm-6" style="width:40%">
+                            @Html.TextBoxFor(m => m.vwitarray0[i], new { @class = "form-control id_rundays ", @id = "id_esthour" + i })
+                        </div>
+
+                    </div>
+                    @Html.HiddenFor(m => m.vwstrarray4[i])
+                    <div class="form-group col-sm-1 col-xs-pull-1" style="width:14%">
+                        <div class="col-sm-3" style="width:90%">
+                            @Html.TextBox("costphead" + i, ViewData["costphead" + i], new { @class = "form-control id_rundays ", @disabled = "disabled", @id = "id_costphead" + i })
+                        </div>
+                        @Html.Hidden("costphead" + i, ViewData["costphead" + i], new { @id = "id_costpheadd" + i })
+                    </div>
+
+                    <div class="form-group col-sm-1  col-xs-pull-1" style="width:14%">
+                        <div class="col-sm-9" style="width:100%">
+                            @Html.TextBox("totalcostt" + i, ViewData["totalcostt" + i], new { @class = "form-control id_rundays numformat", @disabled = "disabled", @id = "id_totalcost" + i })
+                        </div>
+                        @Html.Hidden("totalcostt" + i, ViewData["totalcostt" + i], new { @id = "id_totalcostt" + i })
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.vwint5, new { @id = "editcount1" })
+            }
+            <div class="row form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-default" id="add2">Add new</button>
+            </div>
+            @Html.Partial("_navbuttons")
+        </div>
+        <div class="@Model.vwstrarray2[3]" id="tab4">
+            <div class=" col-sm-12">
+                <div class=" row form-group text-left">
+                    <label for="Description" class="control-label col-sm-2 text-left col-sm-offset-1">Total Duration</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.vwdclarray3[2], new { @class = "form-control id_rundays numformat", @id = "id_totgrand", @disabled = "disabled" })
+                    </div>
+                    <label for="Description" class="control-label col-sm-2 text-left col-sm-offset-1">Activity Start</label>
+                    <div class="col-sm-2">
+                       @Html.TextBoxFor(m => m.vwdate0, new { @class = "form-control id_rundays datet" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwdclarray3[2])
+                </div>
+            </div>
+            <div class=" row form-group">
+                <div class=" col-sm-2 text-center">
+                    <label for="Description">Activity</label>
+                </div>
+                <div class=" col-sm-2  text-right">
+                    <label for="Description">Preceeding Activity</label>
+                </div>
+                <div class=" col-sm-2  text-left">
+                    <label for="Description">WOEstd Time</label>
+                </div>
+                <div class=" col-sm-2  col-sm-pull-1 text-center">
+                    <label for="Description">Actual Time</label>
+                </div>
+                <div class=" col-sm-2  col-sm-pull-1 text-left">
+                    <label for="Description">Start Date</label>
+                </div>
+                <div class=" col-sm-1  col-sm-pull-1 text-center">
+                    <label for="Description">End Date</label>
+                </div>
+                <div class=" col-sm-1  text-right">
+                    <label for="Description">Completed</label>
+                </div>
+            </div>
+
+            @for (int i = 0; i < 10; i++)
+            {
+                j = i + 1;
+                lblno = "activate" + i + "_yesno";
+                loops = ("poolll" + i);
+                nlbl = ("wotest" + i);
+                <div id="@loops" class="row form-group">
+                    <div class=" form-group col-sm-2" style="width:23%">
+                        <label for="Description" class=" row form-group col-sm-1 control-label">@(+j)</label>
+                        <div class="col-sm-10" style="width:100%">
+                            @Html.TextBoxFor(m => m.vwstrarray9[i], new { @class = "form-control id_rundays ", @id = "id_taskid" + i })
+                        </div>
+                    </div>
+                    <div class=" row form-group col-sm-2">
+                        <label for="CompanyCode" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-6" style="width:60%">
+                            @Html.TextBoxFor(m => m.vwitarray1[i], new { @class = "form-control id_rundays " })
+                        </div>
+                        @Html.HiddenFor(m => m.vwitarray1[i])
+                    </div>
+                    <div class="row form-group col-sm-1" style="width:10%">
+                        <div class="col-sm-12" style="width:90%">
+                            @Html.TextBox("wotest", TempData[@nlbl], new { @class = "form-control id_rundays ",  @disabled = "disabled" })
+                        </div>
+                    </div>
+                    @*<div class="form-group col-sm-1">
+                        <div class="col-sm-5">
+                            <span id="" style="color:red">@Model.vwstrarray3[i]</span>
+                        </div>
+                        </div>*@
+                    @Html.HiddenFor(m => m.vwstrarray3[i])
+                    <div class="form-group col-sm-2">
+                        <label for="CompanyCode" class="col-sm-1 control-label"></label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(m => m.vwitarray3[i], new { @class = "form-control id_rundays ", @id = "id_esthour1" + i})
+                        </div>
+
+                        @Html.HiddenFor(m => m.vwitarray3[i], new { @id = "id_testtime1" + i })
+                    </div>
+
+
+                    @*<div class="row form-group col-sm-1 col-xs-pull-1" style="width:25%">
+                            <label for="CompanyCode" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(m => m.vwstrarray11[i], new SelectList(ViewBag.competency, "Value", "Text", Model.vwstrarray11[i]), "Select", new { @class = "form-control class_price", @id = "id_joblevel" + i })
+                            </div>
+                        </div>*@
+                    @Html.HiddenFor(m => m.vwstrarray11[i])
+
+
+                    <div class=" form-group  col-sm-2">
+                        <label for="CompanyCode" class="control-label"></label>
+                        <div class="col-sm-12">
+                            @Html.TextBoxFor(m => m.vwdtarray1[i], new { @class = "form-control datet", maxlength = 50, @disabled = "disabled" })
+                        </div>
+                        @Html.HiddenFor(m =>m.vwdtarray1[i])
+                    </div>
+                    <div class=" form-group col-sm-3">
+                        <label for="CompanyCode" class="col-sm-3  control-label"></label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.vwdtarray0[i], new { @class = "form-control datet", maxlength = 50, @disabled = "disabled" })
+                        </div>
+                        @Html.HiddenFor(m => m.vwdtarray0[i])
+                    </div>
+                    <div class="col-sm-1 form-group">
+                        <label for="CompanyCode" class=" control-label"></label>
+                        <div class="col-sm-12 mycheckq">
+                            @Html.CheckBoxFor(model => Model.vwblarray0[i], new { @id = @lblno })
+                            <label for="@lblno">
+                                @( Model.vwblarray0[i] ? "On" : "Off")
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                    @Html.HiddenFor(m => m.vwint3, new { @id = "taskcount" })
+            }
+            <div class="row form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-default" id="add3">Add new</button>
+            </div>
+            @Html.Partial("_navbuttons")
+        </div>
+        <div class="@Model.vwstrarray2[4]" id="tab5">
+            <div class=" col-sm-12">
+                <div class=" row form-group text-left">
+                    <label for="Description" class="control-label col-sm-2 text-left col-sm-offset-1">Total Contract Amount</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.vwdclarray3[3], new { @class = "form-control id_rundays numformat", @id = "id_totgrand", @disabled = "disabled" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwdclarray3[3])
+                </div>
+                <label for="Description" class="col-sm-2 text-right">Vendor</label>
+
+                <label for="Location" class="col-sm-5 text-right">&nbsp;&nbsp;&nbsp;&nbsp; Description</label>
+
+                <label for="Asset user" class="col-sm-4 text-center col-sm-offset-1">Contract Value</label>
+
+            </div>
+
+
+            @for (int i = 0; i < 4; i++)
+            {
+                j = i + 1;
+                loops = ("poot" + i);
+                <div id="@loops">
+                    <div class="col-sm-5">
+                        <label for="Description" class="col-sm-1 control-label">@(+j)</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(m => m.vwstrarray15[i], new SelectList(ViewBag.subb, "Value", "Text", Model.vwstrarray15[i]), "Select", new { @class = "form-control class_price", @id = "id_subid" + i })
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="Description" class="col-sm-1 control-label"></label>
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(m => m.vwstrarray6[i], new { @class = "form-control ", @id = "id_subdesc" + i, @disabled = "disabled", rows = "6", cols = "200" })
+                        </div>
+
+                        @Html.HiddenFor(m => m.vwstrarray6[i])
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="Description" class="col-sm-1 control-label"></label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(m => m.vwdclarray0[i], new { @class = "form-control numformat", @id = "id_subamt" + i, @disabled = "disabled" })
+                        </div>
+                        @Html.HiddenFor(m => m.vwdclarray0[i])
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.vwint4, new { @id = "subcount" })
+            }
+
+            <div class="row form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-default" id="add4">Add new</button>
+            </div>
+            @Html.Partial("_navbuttons")
+
+        </div>
+
+        <div id="tab6" class="@Model.vwstrarray2[5]">
+            <div class=" col-sm-12">
+                <div class=" row form-group text-left">
+                    <label for="Description" class="control-label col-sm-3 text-left col-sm-offset-1">Total Miscellaneous Cost</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.vwdclarray3[4], new { @class = "form-control id_rundays numformat", @id = "id_totgrand", @disabled = "disabled" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwdclarray3[4])
+                </div>
+                <label for="Description" class="col-sm-2 text-center">Description</label>
+
+                <label for="Location" class="col-sm-6 text-right">Amount</label>
+            </div>
+            @for (int i = 0; i < 5; i++)
+            {
+                j = i + 1;
+                nlbl = ("spool" + i);
+                <div id="@nlbl">
+                    <div class=" form-group col-sm-7">
+                        <div class="col-sm-12">
+                            <label class="control-label col-sm-1">@j</label>
+                            @Html.TextBoxFor(m => m.vwstrarray0[i], new { @class = "form-control", maxlength = 50, })
+                        </div>
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <div class="col-sm-12">
+                            @Html.TextBoxFor(m => m.vwdclarray2[i], new { @class = "form-control numformat", maxlength = 50, @id = "id_misamt" + i })
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.vwint2, new { @id = "miscount" })
+            }
+            <div class="row form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-default" id="add5">Add new</button>
+            </div>
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+        @Html.HiddenFor(m => m.vwint8)
+        <div id="tab7" class="tab-pane">
+            <div class="form-group">
+                <label class="control-label col-sm-5">Attach document</label>
+                <div class="col-sm-7">
+                    <input type="file" name="photofile1" multiple />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="CompanyName" class="col-sm-5 control-label">Comments</label>
+                <div class="col-sm-6">
+                    @Html.TextAreaFor(m => m.vwstrarray2[9], new { @class = "form-control", placeholder = "comments", rows = "3" })
+                </div>
+            </div>
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.vwstrarray2[0])
+    @Html.HiddenFor(m => m.vwstrarray2[1])
+    @Html.HiddenFor(m => m.vwstrarray2[2])
+    @Html.HiddenFor(m => m.vwstrarray2[3])
+    @Html.HiddenFor(m => m.vwstrarray2[4])
+    @Html.HiddenFor(m => m.vwstrarray2[5])
+    @Html.HiddenFor(m => m.vwstrarray2[6])
+    @Html.HiddenFor(m => m.vwstrarray2[7])
+    @Html.HiddenFor(m => m.vwstrarray2[8])
+    @Html.HiddenFor(m => m.vwstrarray2[10])
+    @Html.HiddenFor(m => m.vwstring10)
+    @Html.HiddenFor(m => m.vwstrarray2[11])
+
+</div>

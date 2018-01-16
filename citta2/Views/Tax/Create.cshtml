@@ -1,0 +1,59 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Tax";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@Html.Partial("menu")
+<div class="container-fluid">
+    <h3>Tax Maintenance</h3>
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.Partial("_listsubmit")
+
+        @Html.ValidationSummary(true)
+        @Html.Partial("Tax")
+    </form>
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("load_GL")"></div>
+@section Scripts {
+   <script>
+       var tax = $("#tax").val();
+       if (tax == "P")
+           $("#click").show();
+       else if (tax == "S")
+           $("#click1").show();
+       else {
+           $("#click").show();
+           $("#click1").show();
+       }
+
+       $("#agency").change(function () {
+           var items = '';
+           var URL = $('#loader1').data('request-ajax1');
+           var URLext = $("#agency").val();
+
+           URL = $.trim(URL);
+           URLext = $.trim(URLext);
+           URL = URL + "/" + URLext;
+           $.ajax({
+               url: URL,
+               type: 'Post',
+               success: function (data) {
+
+                   $.each(data, function (i, state) {
+                       var a = state.Text;
+                       items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                   });
+                   $("#glactv").html(items);
+               },
+
+               error: (function (xhr, status) {
+                   alert(status);
+               })
+           })
+
+       });
+
+</script>
+
+}

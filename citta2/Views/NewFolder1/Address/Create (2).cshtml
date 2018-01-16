@@ -1,0 +1,111 @@
+﻿@model CittaErp.Models.AR_001_DADRS
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Address";
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" action="">
+        <h3>Address Details</h3>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="PeriodNumber" class="col-sm-3 control-label">Code</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.customer_code, ViewBag.customer_code as SelectList, "Select", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="PeriodNumber" class="col-sm-3 control-label">Address code</label>
+                <div class="col-sm-4">
+
+                    @Html.TextBoxFor(m => m.address_code, new { @class = "form-control", maxlength = 20 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Address" class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.address1, new { @class = "form-control", maxlength = 100 })
+                    @Html.TextBoxFor(m => m.address2, new { @class = "form-control", maxlength = 100 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="City" class="col-sm-3 control-label">City</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.city, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postal_code" class="col-sm-3 control-label">Postal Code</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.postal_code, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Country" class="col-sm-3 control-label">Country</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.country, ViewBag.country as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="State" class="col-sm-3 control-label">State</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.state, ViewBag.state as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone number" class="col-sm-3 control-label">Phone Number</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                <div class="col-sm-7">
+                    @Html.TextAreaFor(m => m.note, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-6">
+                <h4>Contact Information</h4>
+                <div class="form-group">
+                    <label for="contact name" class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contact_name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact dept" class="col-sm-3 control-label">Department</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contact_dept, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contact_email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact phone" class="col-sm-3 control-label">Phone</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contact_phone, new { @class = "form-control" })
+                    </div>
+                </div>
+                </div>
+           
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                        <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+                    </div>
+
+                </div>
+            
+    </form>
+</div>

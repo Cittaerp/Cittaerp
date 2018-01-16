@@ -1,0 +1,24 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Period";
+    ViewBag.action_flag = "Create";
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Period Calender Setting</h3>
+
+        @Html.Partial("Period")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-success btn-default">Submit</button>
+                <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+            </div>
+
+        </div>
+    </form>
+</div>

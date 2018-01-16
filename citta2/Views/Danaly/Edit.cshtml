@@ -1,0 +1,47 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "analysis";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@Html.Partial("menu")
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Dimension Category Detail</h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Dan")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+
+            </div>
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.HiddenFor(m => m.vwstring1)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            hideall();
+            var limit = $("#limit").val();
+
+            if (limit == "Y") {
+                $("#click").show('slow');
+
+            }
+            function hideall() {
+                $("#click").hide('slow');
+
+            }
+        });
+    </script>
+}
+

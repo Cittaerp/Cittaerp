@@ -1,0 +1,68 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+        <div>
+    <div class="form-group">
+        <label for="TermCode" class="col-sm-5 control-label">Currency ID</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @maxlength = 10 })
+            @Html.ValidationMessageFor(m => m.vwstring0)
+        </div>
+    </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-5 control-label">Description</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstring6, new { @class = "form-control", @maxlength = 50 })
+                </div>
+            </div>
+
+    <div class="form-group">
+        <label for="Description" class="col-sm-5 control-label">Currency Symbol</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 10 })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label">Symbol Display</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring2, ViewBag.symbol_display as SelectList, "Select Symbol", new { @class = "form-control", @required="required"  })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label"> GL Realised Gain Account</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring3, ViewBag.realised as SelectList, "Select Realised Gain", new { @class = "form-control", @required="required" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label"> GL Unrealised Gain Account</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring4, ViewBag.unrealised as SelectList, "Select Unrealised Gain", new { @class = "form-control", @required="required" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Note" class="col-sm-5 control-label"> Note</label>
+        <div class="col-sm-5">
+            @Html.TextAreaFor(m => m.vwstring5, new { @class = "form-control", rows = "6" })
+        </div>
+    </div>
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">Documents</label>
+        <div class="col-sm-7">
+            <input type="file" name="photofile" multiple />
+        </div>
+    </div>
+
+            @Html.Partial("_attachDoc")
+
+</div>
+

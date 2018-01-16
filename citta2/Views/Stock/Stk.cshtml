@@ -1,0 +1,147 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    CittaErp.Models.vw_genlay glayhead=(CittaErp.Models.vw_genlay) ViewBag.x2;
+}
+
+<div class="container-fluid">
+        <a class="btn  btn-primary btn-default" href="index">Back To List</a>
+        <button type="submit" class="btn btn-default col-sm-offset-11" name="commandn" value="headedit" id="displayh">Edit </button>
+
+        <br />
+        <br />
+        <div class="well">
+            <form class="form-inline">
+                <div class="row row-height">
+                    <div class="col-sm-2">Stock Sheet Number </div>
+                    <div class="col-sm-3"> @Html.TextBoxFor(m => glayhead.vwstrarray1[0], new { @class = "" })</div>
+                    <div class="col-sm-2  text-right">Stock Court Date</div>
+                    <div class="col-sm-3"> @Html.TextBoxFor(m => glayhead.vwstrarray1[1], new { @class = "" })</div>
+                    <div class="col-sm-2"> Period</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[2], new { @class = "" })</div>
+                    
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"> Warehouse </div>
+                    <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[3], new { @class = "" })</div>
+                    <div class="col-sm-2 text-right "> Approval Level</div>
+                    <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[4], new { @class = "" })</div>
+                    <div class="col-sm-2  text-right"> Last Approval Name</div>
+                    <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[5], new { @class = "" })</div>
+
+                </div>
+
+               
+          </form>
+        </div>
+
+        <div class="container-fluid">
+            <form class="form-horizontal" role="form" method="post" id="head">
+              
+                <div class="form-group">
+                    <label for="code" class="col-sm-2 control-label">Stock Sheet Number </label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwint0, new { @class = "form-control", id = "id_cust" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Stock Count Date</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control datet" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Period</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label"> Warehouse</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring3, ViewBag.ware as SelectList, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label"> Approval Level </label>
+                    <div class="col-sm-3">
+                       @Html.TextBoxFor(m => m.vwint5, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label"> Last Approval Name </label>
+                    <div class="col-sm-4">
+                       @Html.TextBoxFor(m => m.vwstring5, new { @class = "form-control" })
+                    </div>
+                </div>
+                
+                <!-- /.form-group -->
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary" name="commandn" value="headsub" >Create Header</button>
+                    </div>
+                </div>
+
+            </form> <!-- /form -->
+
+            <button type="button" class="btn btn-warning col-sm-offset-11" id="hide_details">Hide Details</button>
+            <form class="form-horizontal" role="form" method="post" id="details">
+                
+                
+                <div class="form-group" id="id_price_group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Item  </label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(m => m.vwstring6, ViewBag.item as SelectList,"select" , new { @class = "form-control stock_count", id = "id_item" })
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        <div style="display:inline"> Unit of Measure : &nbsp;&nbsp; <span id="id_sku"></span></div>
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        <div style="display:inline"> Item Description : &nbsp;&nbsp; <span id="id_itm_des"></span></div>
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        <div style="display:inline"> Bin Location : &nbsp;&nbsp; <span id="id_bin"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label">  Quantity </label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwint2, new { @class = "form-control stock_count", maxlength = 10, id = "id_qty" })
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Physical Count  </label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwint3, new { @class = "form-control stock_count", id = "id_phy_count"})
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Difference </label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwint4, new { @class = "form-control ", style = "width : 170px", maxlength = 10, id = "id_dif", @readonly = "readonly" })
+                    </div>
+                </div>
+                            
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                    
+                        <button type="submit" class="btn btn-primary" name="commandn" value="detailsub">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- ./container -->
+
+
+        @Html.Partial("_list", (IEnumerable<CittaErp.Models.vw_genlay>)ViewBag.x1)
+        
+        @Html.HiddenFor(m => m.vwstring8, new { id = "id_stock_count"})
+
+    </div>
+
+
+

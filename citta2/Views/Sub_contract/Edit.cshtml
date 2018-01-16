@@ -1,0 +1,52 @@
+﻿
+@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Sub Contract";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Sub-Contract Maintenance </h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Scm")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+            </div>
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck" })
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            $("#id_vend").change(function () {
+                var $form = $(this).closest('form');
+                $("#id_subcheck").val("RR");
+                $form.trigger("submit");
+            });
+
+            $("#id_svo").change(function () {
+                var $form = $(this).closest('form');
+                $("#id_subcheck").val("RR");
+                $form.trigger("submit");
+            });
+
+        });
+    </script>
+}
+
+
+
+

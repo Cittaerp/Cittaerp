@@ -1,0 +1,164 @@
+[
+  {
+    "outputFileName": "DataTables/datatables.min.js",
+    "inputFiles": [
+      "DataTables/datatables.js"
+    ]
+  },
+  {
+    "outputFileName": "DataTables/datatables.min.css",
+    "inputFiles": [
+      "DataTables/datatables.css"
+    ]
+  },
+  {
+    "outputFileName": "DataTables/dataTables.bootstrap.min.min.css",
+    "inputFiles": [
+      "DataTables/dataTables.bootstrap.min.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bootstrap-session-timeout.min.js",
+    "inputFiles": [
+      "Scripts/bootstrap-session-timeout.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/budget.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/budget.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/cepscript.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/cepscript.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/cescript1.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/cescript1.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/cescript3.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/cescript3.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/cescript4.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/cescript4.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/ceuscript.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/ceuscript.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/commonf.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/commonf.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/fixed.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/fixed.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/get5.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/get5.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/hide.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/hide.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/invent.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/invent.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/invoice.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/invoice.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/journal.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/journal.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/menu.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/menu.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/order.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/order.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/parascript.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/parascript.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/pcoldisp.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/pcoldisp.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/porder.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/porder.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/transt.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/transt.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/transScript.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/transScript.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/stock.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/stock.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/spin.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/spin.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CittaScripts/quote.min.js",
+    "inputFiles": [
+      "Scripts/CittaScripts/quote.js"
+    ]
+  }
+]

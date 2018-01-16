@@ -1,0 +1,91 @@
+﻿
+@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Work_team";
+    ViewBag.action_flag = "Create";
+}
+@*Html.Partial("menu")*@
+<div class="container">
+    <form class="form-horizontal" role="form" method="post">
+        @Html.ValidationSummary(true)
+        <h3>Work_team Maintainance</h3>
+        @Html.Partial("_listsubmit")
+        @Html.Partial("Work_team")
+
+    </form>
+</div>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $("#look1").hide();
+            $("#look2").hide();
+            $("#look3").hide();
+            $("#look4").hide();
+            $("#look5").hide();
+            $("#look6").hide();
+            $("#look7").hide();
+            $("#look8").hide();
+            $("#look9").hide();
+
+            var counter = 0;
+            $("#add").click(function () {
+                counter = counter + 1;
+                var k = 1;
+                for (var i = 0; i < counter; i++) {
+                    $("#" + "look" + k).show();
+                    k = k + 1;
+                }
+                // alert(k);
+                if (k > 10) {
+
+                    alert("limit exceeded");
+                    return false;
+                }
+            });
+
+
+
+
+
+
+
+            //var myele = '';
+
+            //$("#right").click(function () {
+            //    $("#staff_id > option:Selected").each(function () {
+            //        myele = $(this).val();
+            //        alert(myele);
+
+            //        $(this).appendTo("#select_item");
+            //    })
+            //})
+
+            //$("#left").click(function () {
+            //    $("#select_item > option:Selected").each(function () {
+            //        var item = $(this).val();
+            //        var items = $(this).text();
+            //        alert(items);
+            //       // $("#staff_id").append(item);
+
+
+            //        $("#staff_id").append($('<option>', {
+            //            value: item,
+            //            text: items
+            //        }));
+            //        $(this).remove()
+
+            //    })
+               
+            //})
+
+
+
+
+
+
+
+        });
+    </script>
+}

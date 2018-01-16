@@ -1,0 +1,217 @@
+﻿@model  CittaErp.Models.AR_001_MTRIX
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Period Calender</h2>
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <h4>Details</h4>
+            <a class="btn btn-default" href="create">Add New</></a>
+            <div class="table-responsive">
+
+
+                <table id="mytable" class="table table-bordred table-striped">
+
+                    <thead>
+
+                    <th>Period Number</th>
+                    <th>Date From</th>
+                    <th>Date To</th>
+                    <th>Note</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#link"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="clearfix"></div>
+                <ul class="pagination pull-right">
+                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.item_code, new { @class = "form-control", maxlength = 10 })
+                </div>
+                <div class="form-group">
+
+                    @Html.DropDownListFor(m => m.header_sequence, ViewBag.header_sequence as SelectList, "Select Analysis Header", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                   @Html.DropDownListFor(m => m.analysis_code, ViewBag.analysis_code as SelectList, "Select Analysis Code", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.tax_inclusive, new SelectList(new List<Object>{new { value = "Y" , text = "Yes"  },
+                       new { value = "N" , text = "No" }}, "value", "text", "Y"), new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class1, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class2, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class3, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class4, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class5, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class6, new { @class = "form-control" })
+                </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(m => m.note, new { @class = "form-control" })
+                        <a class="btn btn-default" href="">Click to Attach Document</></a>
+                    </div>
+                </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal fade" id="link" tabindex="-1" role="dialog" aria-labelledby="link" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Delete Your Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <!-- <input class="form-control " type="text" placeholder="" readonly>-->
+                    @Html.TextBoxFor(m => m.item_code, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    <!-- <input class="form-control " type="text" placeholder="" readonly>-->
+                    @Html.DropDownListFor(m => m.header_sequence, ViewBag.header_sequence as SelectList, "Select Analysis Header", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    <!-- <input class="form-control " type="text" placeholder="" readonly>-->
+                    @Html.DropDownListFor(m => m.analysis_code, ViewBag.analysis_code as SelectList, "Select Analysis Code", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.tax_inclusive, new SelectList(new List<Object>{new { value = "Y" , text = "Yes"  },
+                       new { value = "N" , text = "No" }}, "value", "text", "Y"), new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class1, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class2, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class3, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class4, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class5, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(m => m.selling_price_class6, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    @Html.TextAreaFor(m => m.note, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-danger" style="width: 100%;" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+
+

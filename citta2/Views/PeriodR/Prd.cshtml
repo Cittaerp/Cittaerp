@@ -1,0 +1,106 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "PeriodList";
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    int num_prd = Convert.ToInt16(psess.temp1);
+    string frm_val = "";
+    string to_val = "";
+    string hid_frm = "";
+}
+
+@*Html.Partial("menu")*@
+<h2>Period Calender Definition</h2>
+
+<form class="form-horizontal" role="form" method="post">
+    @Html.ValidationSummary(true)
+    <button type="submit" class="btn btn-success"> Submit</button>
+    @*@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })*@
+
+
+    <table class="myTable1 display">
+
+
+        <thead>
+            <tr>
+                <th>Period Number</th>
+                <th>Description</th>
+                <th>Date From (dd/mm)</th>
+                <th>Date To(dd/mm)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (int ctr = 0; ctr < num_prd; ctr++)
+            {
+                frm_val = "frm_val" + @ctr;
+                to_val = "to_val" + @ctr;
+                hid_frm = "hid_frm" + @ctr;
+                <tr>
+                    <td><label for="Description" class="col-sm-5 control-label">@(ctr + 1)</label></td>
+                    <td>@Html.TextBoxFor(m => m.vwstrarray3[ctr], new { @class = "form-control", @required = "required"})</td>
+                    <td>@Html.TextBoxFor(m => m.vwstrarray1[ctr], new { @class = "form-control date", @required = "required", id = @frm_val })</td>
+                    <td>@Html.TextBoxFor(m => m.vwstrarray2[ctr], new { @class = "form-control date prd_cal", @required = "required", id = @to_val })</td>
+                    @Html.HiddenFor(m => m.vwstrarray1[ctr], new { @id = @hid_frm })
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+    @Html.Hidden("id_xhrt", "K")
+    </form>
+
+    <div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+<div id="loader1" data-request-ajax1="@Url.Action("prd_calculate")"></div>
+    @section Scripts {
+        <script>
+            $(function () {
+                $(".prd_cal").change(function () {
+                    var URL = $('#loader1').data('request-ajax1');
+                    var idstr = $(this).attr("id");
+                    var idvalue = $("#" + idstr).val();
+                    var idnxtstr = idstr.substring(6);
+                    var intsub = parseInt(idnxtstr) + 1;
+                    var f = "frm_val" + intsub;
+                    var g = "hid_frm" + intsub;
+                    URL = $.trim(URL);
+
+                    idvalue = $.trim(idvalue);
+                    URL = URL;
+                    $.ajax({
+                        type: "Post",
+                        url: URL,
+                        data: { mthend: idvalue },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                        },
+                        success: function (data) {
+                            var items = '';
+                            $.each(data, function (i, state) {
+                                items = state.Text;
+                                if (state.Value == "1") {
+                                    $("#"+ f).val(items);
+                                    $("#" + f).attr('disabled', 'disabled');
+                                    $("#" + g).val(items);
+                                    S("#last_val").val(items);
+                                }
+                                
+                            });
+
+
+                        }
+                    });
+                })
+
+            });
+            $('.date').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'dd/mm'
+            });
+
+            new Date(d.date.substring(6, 10),  d.date.substring(3, 5) - 1, d.date.substring(0, 2));
+        </script>
+    }

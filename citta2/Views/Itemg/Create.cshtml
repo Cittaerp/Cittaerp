@@ -1,0 +1,71 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "item group Maintenance";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Item Group Maintainance</h3>
+       @Html.Partial("_listsubmit")
+
+        @Html.Partial("Itmg")
+
+
+    </form>
+</div>
+@Html.HiddenFor(m => m.vwstrarray0[7], "")
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+        var itemtype = $("#itemtype").val();
+        if (itemtype == "I") {
+            $("#click6").show();
+            $("#click7").show();
+            $("#click8").show();
+            $(".fifo").show();
+        }
+
+        $(".now1").click(function () {
+            $(".fifo").hide();
+            $(".iss_hide").hide();
+        });
+        $(".now2").click(function () {
+            $(".fifo").hide();
+        });
+
+        $("#now").click(function () {
+            $(".fifo").show();
+        });
+
+        $("#rate").click(function () {
+            $(".fifo").show();
+        });
+
+        $("#taxy").click(function () {
+            $("#click2").show();
+        });
+
+        $("#id_ave").click(function () {
+            $("#id_avcost").show();
+            $("#id_stcost").hide();
+        });
+        $("#now6").click(function () {
+            $("#id_avcost").show();
+            $("#id_stcost").hide();
+        });
+        $("#taxn").click(function () {
+            $('#vwstrarray0_18_ option:eq(0)').attr('Selected', 'selected');
+            $('#vwstrarray0_19_ option:eq(0)').attr('selected', 'selected');
+            $('#vwstrarray0_20_ option:eq(0)').attr('selected', 'selected');
+            $('#vwstrarray0_21_ option:eq(0)').attr('selected', 'selected');
+            $('#vwstrarray0_22_ option:eq(0)').attr('selected', 'selected');
+
+            $("#click2").hide();
+        });
+
+        });
+    </script>
+}

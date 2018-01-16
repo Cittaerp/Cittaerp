@@ -1,0 +1,53 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    ViewBag.Title = "Paracode";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>@psess.temp1</h3>
+        
+
+        @Html.Partial("Parac")
+        <p></p>
+        <button type="submit" class="btn btn-success " name="headtype" value="send_app" ">Send For Approval</button>
+        
+        
+    </form>
+</div>
+<div id="loader1" data-request-ajax1="@Url.Action("loadcontract")"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            
+            $("#id_cust").change(function () {
+                var URL = $('#loader1').data('request-ajax1');
+                var URLext = $('#id_cust').val();
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    data: { id: URLext },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = "<option value=''></option>";
+                        $.each(data, function (i, state) {
+                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                        });
+                        $("#id_cont").html(items);
+                    }
+                });
+            });
+
+        });
+    </script>
+}

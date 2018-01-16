@@ -1,0 +1,129 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Asset Grouping";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Maintenance Asset Group</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Ast")
+
+
+    </form>
+</div>
+
+
+<div id="loader5" data-request-ajax5="@Url.Action("asset")"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $("#id_asset").change(function () {
+                var URL = $('#loader5').data('request-ajax5');
+                var URLext = $('#id_asset').val();
+                //alert(URLext);
+                //var set_price = "N"
+
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+
+                $.ajax({
+
+                    url: URL,
+                    type: 'Post',
+
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var assets = '';
+                        $.each(data, function (i, state) {
+                            assets = state.Text;
+                            if (state.Value == "location")
+                                $("#id_assetuser").html(assets);
+                            if (state.Value == "asset_user")
+                                $("#id_location").html(assets);
+                        });
+
+
+                    }
+                });
+
+            });
+
+            $("#select_item").change(function () {
+                var URL = $('#loader5').data('request-ajax5');
+                var URLext = $('#select_item').val();
+                //alert(URLext);
+                //var set_price = "N"
+
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+
+                $.ajax({
+
+                    url: URL,
+                    type: 'Post',
+
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var assets = '';
+                        $.each(data, function (i, state) {
+                            assets = state.Text;
+                            if (state.Value == "location")
+                                $("#id_assetuser").html(assets);
+                            if (state.Value == "asset_user")
+                                $("#id_location").html(assets);
+                        });
+
+
+                    }
+                });
+
+            });
+            var myele = '';
+
+            $("#right").click(function () {
+                $("#id_asset > option:Selected").each(function () {
+                    myele = $(this).val();
+                    //alert(myele);
+                    $(this).appendTo("#select_item");
+                })
+            })
+
+            $("#left").click(function () {
+                $("#select_item > option:Selected").each(function () {
+                    var item = $(this).val();
+                    var items = $(this).text();
+                    //alert(items);
+                    //$("#staff_id").append(item);
+                    
+                    $("#id_asset").append($('<option>', {
+                        value: item,
+                        text: items
+                    }));
+                    $(this).remove();
+                })
+            })
+
+            $("#sub").on("click", function () { selectbuttonall(); });
+            
+            function selectbuttonall() {
+                $("#select_item > option").prop("selected", true);
+            }
+
+        });
+    </script>
+}
+
+

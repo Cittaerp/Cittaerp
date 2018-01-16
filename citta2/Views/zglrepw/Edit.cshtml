@@ -1,0 +1,52 @@
+﻿@model CittaErp.Models.vw_genlay 
+
+@{
+}
+
+
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()    
+    @Html.ValidationSummary(true)
+
+        if (Model.datmode == "E") {
+           @Html.Partial("_listupdel")
+        } else {
+           @Html.Partial("_listsubmit") 
+        }
+
+   <fieldset>
+        <legend>tab_allow</legend>
+
+        @Html.Partial("_ZglwEdit", @Model)
+
+        @Html.HiddenFor(model => model.vwcode)
+
+        @Html.Hidden("xhrt", "S", new { id = "id_xhrt" })
+        
+   </fieldset>
+}
+
+<div id="loader1" data-request-daily="@Url.Action("DailyList")"></div>
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+
+        <script>
+//            dgnsd();
+            $(function () {
+
+                //var line1_chk = $("#multi_yesno:checked").val();
+                //$("#line1_off").hide();
+                //if (line1_chk)
+                //    $("#line1_off").show();
+
+
+            })
+
+    </script>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaErp/pscript1.min.js")"></script>
+}
+

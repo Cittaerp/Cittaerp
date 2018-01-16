@@ -1,0 +1,63 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "customer";   
+}
+@*Html.Partial("menu")*@
+<h3>Customer Listing</h3>
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+&nbsp;&nbsp;&nbsp;
+<a class="btn btnextra" href="@Url.Action("Index", "Addrs", new { atype = "CU" }, null)"> <span>Add Multiple Delivery Address</span></a>
+
+
+        <table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Business Name</th>
+            <th>Balance</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring1</td>
+                <td>0</td>
+                <td>@item.vwstring5</td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwstring0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+        @Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+@section Scripts {
+    <script>
+
+        //$("#id_delete").click(function () {
+        //    //var $form = $(this).closest('form');
+        //    bootbox.confirm("message", function (a) {
+        //        if (a) {
+        //            $("#id_xhrt").val("D");
+        //            $form.trigger("submit");
+        //        }
+        //        else {
+        //            $("#id_xhrt").val("X");
+        //        }
+        //    });
+        //});
+    </script>
+}

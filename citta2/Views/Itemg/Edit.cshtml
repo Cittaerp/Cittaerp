@@ -1,0 +1,143 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "item group Maintenance";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Item Group Maintainance</h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Itmg")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+            </div>
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+        @Html.HiddenFor(m => m.vwstrarray0[7], "")
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            hideall();
+            var itemtype = $("#itemtype").val();
+
+
+            if (itemtype=="I"){
+                $("#click6").show('slow');
+                $("#click7").show('slow');
+                $("#click8").show('slow');
+                $(".fifo").show();
+                $(".iss_hide").show();
+            }
+
+
+            var costmth = $("#costmth").val();
+
+            if (costmth=="C") {
+                $("#click11").show('slow');
+            }
+
+           
+            if (costmth == "S") {
+                $("#click9").show('slow');
+                $("#click10").show('slow');
+
+            }
+
+            var price = $("#price").val();
+
+            if (price == "Y") {
+                $("#click").show('slow');
+
+            }
+            var discount = $("#discount").val();
+
+            if (discount =="Y"){
+                $("#click1").show('slow');
+
+            }
+
+            $("#taxy").click(function () {
+                $("#click2").show();
+            });
+
+            $("#id_ave").click(function () {
+                $("#id_avcost").show();
+                $("#id_stcost").hide();
+            });
+            $("#now6").click(function () {
+                $("#id_avcost").show();
+                $("#id_stcost").hide();
+            });
+            $("#taxn").click(function () {
+                $('#vwstrarray0_18_ option:eq(0)').attr('Selected', 'selected');
+                $('#vwstrarray0_19_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_20_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_21_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_22_ option:eq(0)').attr('selected', 'selected');
+
+                $("#click2").hide();
+            });
+
+
+            var tax = $("#tax").val();
+
+            if (tax =="Y") {
+                $("#click2").show();
+
+            } else if (tax == "N") {
+                $('#vwstrarray0_18_ option:eq(0)').attr('Selected', 'selected');
+                $('#vwstrarray0_19_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_20_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_21_ option:eq(0)').attr('selected', 'selected');
+                $('#vwstrarray0_22_ option:eq(0)').attr('selected', 'selected');
+
+                $("#click2").hide();
+            }
+
+
+            function hideall()
+            {
+                $("#click").hide('slow');
+                $("#click1").hide('slow');
+                $("#click2").hide('slow');
+                $("#click8").hide('slow');
+                $("#click6").hide('slow');
+                $("#click7").hide('slow');
+                $("#click9").hide('slow');
+                $("#click10").hide('slow');
+                $("#click11").hide('slow');
+            }
+
+            $(".now1").click(function () {
+                $(".fifo").hide();
+                $(".iss_hide").hide();
+            });
+            $(".now2").click(function () {
+                $(".fifo").hide();
+            });
+
+            $("#now").click(function () {
+                $(".fifo").show();
+            });
+
+            $("#rate").click(function () {
+                $(".fifo").show();
+            });
+
+        });
+
+    </script>
+}

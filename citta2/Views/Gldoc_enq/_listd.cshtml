@@ -1,0 +1,55 @@
+﻿<table id="myTable1" class="table table-bordred table-striped">
+
+    <thead>
+        <tr>
+
+            <th>Posting Class </th>
+           @* <th></th>*@
+            <th>Name</th>
+            <th>Trans Desc</th>
+            <th>Curr Id </th>
+            <th>FX Rate </th>
+            <th>Curr Debit </th>
+            <th>Curr Credit</th>
+            <th>Base Debit</th>
+            <th>Base Credit </th>
+            @for (int wctr = 0; wctr < 3; wctr++)
+            {
+                if(Model.vwstrarray5 !=null){
+            <th>@Model.vwstrarray5[wctr]</th>}
+                else {
+                    <th> </th>}
+            }
+            @*<th>Edit</th>
+            <th>Delete</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.x2)
+        {
+            <tr>
+                <td>@item.col7</td>
+               @* <td>@item.col2</td>*@
+                <td>@item.col8</td>
+                <td>@item.col5</td>
+                <td>@item.col12</td>
+                <td>@item.col10</td>
+                <td>@item.col24</td>
+                <td>@item.col25</td>
+                <td>@item.col26</td>
+                <td>@item.col27</td>
+                <td>@item.col14</td>
+                <td>@item.col15</td>
+                <td>@item.col16</td>
+                @*<td>
+                    @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwstring0, key2 = @item.vwstring1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring1"> <i class="glyphicon glyphicon-trash "></i> </span></td>*@
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

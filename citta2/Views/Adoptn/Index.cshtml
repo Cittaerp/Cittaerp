@@ -1,0 +1,63 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "chart";   
+}
+@*Html.Partial("menu")*@
+
+<h3>Adoption Entry</h3>
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+        <table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Journal </th>
+            <th>Account </th>
+            <th>Reference Number </th>
+            <th>Amount</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwint0</td>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring1</td>
+                <td>@item.vwdecimal0.ToString("#,#00.00")</td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwint0, key2 = @item.vwint1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0&@item.vwint1"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+        @Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+@section Scripts {
+    <script>
+
+        //$(".id_delete2").click(function () {
+        //    alert("hi");
+        //    //var $form = $(this).closest('form');
+        //    bootbox.confirm("message", function (a) {
+        //        if (a) {
+        //            $("#id_xhrt").val("D");
+        //            $form.trigger("submit");
+        //        }
+        //        else {
+        //            $("#id_xhrt").val("X");
+        //        }
+        //    });
+        //});
+    </script>
+}

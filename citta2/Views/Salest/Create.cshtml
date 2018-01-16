@@ -1,0 +1,33 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Quote   </h3>
+
+        @Html.Partial("Sales")
+
+  
+    </form>
+    @Html.HiddenFor(m=>m.vwstring9)
+    @Html.HiddenFor(m=>m.vwdecimal4)
+    @Html.HiddenFor(m=>m.vwdecimal5)
+
+</div>
+
+<div id="loader4" data-request-ajax4="@Url.Action("assign")"></div>
+<div id="loader1" data-request-ajax1="@Url.Action("price_cal")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("dis_cal")"></div>
+<div id="loader3" data-request-ajax3="@Url.Action("dis_cal1")"></div>
+
+@section Scripts {
+    <script>
+
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/quote.js")"></script>
+}

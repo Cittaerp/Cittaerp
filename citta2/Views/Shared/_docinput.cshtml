@@ -1,0 +1,11 @@
+﻿@model CittaErp.Models.vw_genlay
+    
+@{
+        string keytext = string.IsNullOrWhiteSpace(@Model.imagedesc) ? "Document(s)" : @Model.imagedesc ;
+
+ }
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">@keytext</div>
+            <div class="col-sm-8"><input type="file" name="photofiles" value="" multiple="multiple" style="width :500px " , class="round-corners" /></div>
+            @Html.HiddenFor(m => Model.imagedesc)
+        </div>

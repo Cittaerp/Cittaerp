@@ -1,0 +1,73 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Price";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        @Html.ValidationSummary(true)
+
+        <h3>Property Contract  </h3>
+
+        @Html.Partial("Pcnt")
+
+
+    </form>
+    @Html.HiddenFor(m => m.vwstring9)
+    @Html.HiddenFor(m => m.vwdecimal4)
+    @Html.HiddenFor(m => m.vwdecimal5)
+
+</div>
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_detail")"></div>
+<div id="loader4" data-request-ajax4="@Url.Action("assign")"></div>
+<div id="loader1" data-request-ajax1="@Url.Action("price_cal")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("get_commision_value")"></div>
+<div id="loader3" data-request-ajax3="@Url.Action("dis_cal1")"></div>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            $("#changer").hide();
+            $("#id_base").hide();
+            $("#show_dis").hide();
+
+            $("#submit").hide();
+
+            $("#hide_details").click(function () {
+                $("#submit").show();
+                $("#hide_details").hide();
+            });
+
+            $("#submit").click(function () {
+                $("#details").show();
+                $("#submit").hide();
+                $("#hide_details").show();
+
+            });
+
+            var dis_rate = $("#fx_flag").val();
+            if (dis_rate == "Y") {
+                $("#changer").show();
+                $("#id_base").show();
+            }
+            else {
+                $("#changer").hide();
+                $("#id_base").hide();
+            }
+
+            var man_dis = $("#id_manual").val();
+            if (man_dis == "Y") {
+                $("#click4").show();
+            }
+            $("#id_tran").hide();
+        });
+    </script>
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/quote.js")"></script>
+}
+
+

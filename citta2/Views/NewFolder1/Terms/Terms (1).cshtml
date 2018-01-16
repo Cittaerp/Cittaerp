@@ -1,0 +1,43 @@
+﻿@model  CittaErp.Models.AP_001_PTERM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Terms";
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form">
+        <h3>Payment Terms</h3>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="TermCode" class="col-sm-3 control-label">Term Code</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.payment_term_code, new { @class = "form-control",  maxlength = 10})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Description" class="col-sm-3 control-label">Description</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.description, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="NumberDays" class="col-sm-3 control-label">Number of Days</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.num_of_days, new { @class = "form-control", style = "width : 60px", maxlength = 4 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                <div class="col-sm-7">
+                    @Html.TextAreaFor(m => m.note, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                    <a class="btn  btn-primary btn-default" href="termlist">Back To List</></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,183 @@
+﻿@model CittaErp.Models.vw_collect 
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    int ctr1=0;
+    string lblname="";
+}
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+                <p></p><p>
+            <button class="btn btn-info lgtime" type="submit" name="ws_string9" value="2 " id="command1">
+                <i class="glyphicon glyphicon-envelope"></i> Email @psess.temp1 </button>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <button class="btn lgtime" type="submit" name="ws_string9" value="3" id="command">
+                <i class="glyphicon glyphicon-print"></i> Process @psess.temp1 </button>
+        </p>
+
+    
+    <fieldset><legend></legend>
+    <div class="container-fluid table-edit">
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Document Template</div>
+        <div class="col-sm-3 ">
+            @Html.DropDownListFor(model => Model.ws_string2, @ViewBag.document as SelectList,new { @class = " form-control mypadding " ,id="id_doctemp"})
+        </div>    
+    </div>
+
+        <div id="typedisp">
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">Transaction Type</div>
+                <div class="col-sm-3 ">
+                    @Html.DropDownListFor(model => Model.ws_string3, @ViewBag.basket as SelectList, "", new { @class = " form-control mypadding ", id="seltype"})
+                </div>
+            </div>
+        </div>
+        <div id="hrdisp">
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">Transaction Date</div>
+                <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ar_string4[0], new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                <div class="col-sm-1 text-centre  col-sm-offset-1"> To </div>
+                <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ar_string4[1], new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+            </div>
+        </div>
+
+        <div class="row" id="paydisp">
+            <div class="col-sm-3 col-sm-text-right">Payroll Period</div>
+            <div class="col-sm-2 ">
+                @Html.DropDownList("ar_string4[2]", new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ar_string4[2]), new { id = "period_from_mm", @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+                @Html.DropDownList("ar_string4[3]", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ar_string4[3]), new { id = "period_from_yy", @class = " form-control mypadding " })
+            </div>
+            <div class="col-sm-1 text-centre">To</div>
+            <div class="col-sm-2 ">
+                @Html.DropDownList("ar_string4[4]", new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ar_string4[4]), new { id = "period_to_mm", @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+                @Html.DropDownList("ar_string4[5]", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ar_string4[5]), new { id = "period_to_yy", @class = " form-control mypadding " })
+
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Staff Selection</div>
+        <div class="col-sm-6 myradioq">
+            @Html.RadioButtonFor(model => model.ws_string4, "Y", new { id = "spay1" })
+            <label for="spay1">All</label>
+            &nbsp;&nbsp;
+            @Html.RadioButtonFor(model => model.ws_string4, "N", new { id = "spay2" })
+            <label for="spay2">Exclude Ex-Staff </label>
+            &nbsp;&nbsp;
+            @Html.RadioButtonFor(model => model.ws_string4, "Z", new { id = "spay3" })
+            <label for="spay3">Ex-Staff Only</label>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Subject</div>
+        <div class="col-sm-7 ">
+            @Html.TextBoxFor(model => model.ar_string4[6], new { @maxlength = "50", @class = " form-control mypadding " })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Message</div>
+        <div class="col-sm-7 ">
+            @Html.TextAreaFor(model => model.ar_string4[7], new {style="overflow:auto",cols=80,rows=3, @class = " form-control mypadding " })
+        </div>
+    </div>
+
+
+       @Html.Partial("_RepSelViewnp", @Model)
+
+        @Html.HiddenFor(model => Model.ws_string1)
+
+        </div>
+   </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+
+<div id="loader1" data-request-daily="@Url.Action("DailyList2")"></div>
+
+@section Scripts {
+
+
+<script>
+
+    $(function () {
+
+        hideall();
+        $('#id_doctemp').change(function () {
+            var URLext = $('#id_doctemp').val();
+            var URL = $('#loader1').data('request-daily');
+            var indflag = 0;
+            var items = "";
+            URL = $.trim(URL);
+            URLext = $.trim(URLext);
+            URL = URL + URLext;
+            $.ajax({
+                type: "Post",
+                async: false,
+                url: URL,
+                error: function (xhr, status, error) {
+                    alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                },
+                success: function (data) {
+                    $.each(data, function (i, state) {
+                        if (indflag == 0) {
+                            if (state.Value == "HR") {
+                                hideall();
+                                $("#typedisp").show();
+                                $('#hrdisp').show();
+                            }
+                            else if (state.Value == "PY") {
+                                hideall();
+                                $("#typedisp").show();
+                                $('#paydisp').show();
+                            }
+                            else if (state.Value == "GT") {
+                                hideall();
+                                $('#paydisp').show();
+                            }
+                            else {
+                                hideall();
+                            }
+                        }
+                        else
+                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+
+                        indflag = 1;
+                    });
+                    $('#seltype').html(items);
+                }
+            });
+
+            $("body").removeClass("waiting");
+        });
+
+
+        function hideall()
+        {
+            $("#hrdisp").hide();
+            $("#paydisp").hide();
+            $("#typedisp").hide();
+        }
+
+    })
+
+</script>
+}

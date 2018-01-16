@@ -1,0 +1,100 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    SelectList[] head_det = (SelectList[])Session["head_det"];
+    int j;
+}
+<div class="tabbable">
+    <div class="row form-group col-sm-5">
+        <label for="asset-group" class="col-sm-3 control-label">Task ID</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 20 } : new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.vwstring0)
+        </div>
+    </div>
+
+    <div class="row form-group col-sm-7">
+        <label for="AssetDescription" class="col-sm-3 control-label">Task Name</label>
+        <div class="col-sm-9">
+
+            @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", maxlength = 50 })
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Activity</a></li>
+        <li><a href="#tab2" data-toggle="tab">Other Information</a></li>
+
+    </ul>
+    <br />
+    <div class="tab-content">
+
+
+        <div class="tab-pane active" id="tab1">
+            <div class=" col-sm-12">
+                <label for="Description" class="col-sm-2 text-center">Activity Description</label>
+
+                <label for="Location" class="col-sm-4 col-sm-offset-1 text-right">Estd Time(mins)</label>
+
+                <label for="Location" class="col-sm-3  col-sm-offset-1 text-center">Job Level</label>
+
+            </div>
+            @for (int i = 0; i < 10; i++)
+            {
+                j = i + 1;
+                <div id="@("pool" + i)">
+                    <div class=" form-group col-sm-5">
+                        <label for="Description" class="col-sm-1 control-label">@(+j)</label>
+                        <div class="col-sm-11">
+                            @Html.TextBoxFor(m => m.vwstrarray0[i], new { @class = "form-control", maxlength = 50 })
+                        </div>
+                    </div>
+                    <div class=" form-group col-sm-3">
+                        <label for="Location" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.vwitarray0[i], new { @class = "form-control", maxlength = 50 })
+                        </div>
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <label for="Asset user" class="col-sm-1 control-label"></label>
+                        <div class="col-sm-11">
+                            @Html.DropDownListFor(m => m.vwstrarray2[i], new SelectList(ViewBag.task_description, "Value", "Text", Model.vwstrarray2[i]), "Select", new { @class = "form-control", id = "id_asset" })
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.vwint0, new { @id = "editcount" })
+            }
+            <div class="row col-sm-3">
+                <button type="button" class="btn btn-primary btn-default" id="add">Add New Activity</button>
+            </div>
+
+        </div>
+        <div class="tab-pane" id="tab2">
+            <div class="row form-group">
+                <label for="Note" class="col-sm-2 control-label"> Comments</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring2, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Documents</label>
+                <div class="col-sm-9">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+            <div class="row form-group">
+                <label class="col-sm-2 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

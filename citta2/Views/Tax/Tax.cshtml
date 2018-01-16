@@ -1,0 +1,181 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Tax";
+
+    //string keycode = psess.temp0.ToString();
+
+}
+
+<div class="tabbable" style="margin-bottom: 18px;">
+    <div class="row form-group col-sm-5">
+        <label for="CompanyCode" class="col-sm-4 control-label">Tax Id</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control" })
+        </div>
+    </div>
+    <div class="row form-group col-sm-7">
+        <label for="CompanyCode" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.vwstrarray0[0], new { @class = "form-control", @maxlength = "50", style = "width : 300px", @required ="required" })
+        </div>
+    </div>
+
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Tax information</a></li>
+        <li><a href="#tab2" data-toggle="tab">Tax Details </a></li>
+        <li><a href="#tab3" data-toggle="tab">Other information</a></li>
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="row form-group">
+                <label for="CompanyCod" class="col-sm-5 control-label">Tax Agency</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[1], ViewBag.vendor as SelectList, "", new { @class = "form-control", @maxlength = "50", @id = "agency", @required="required" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="CompanyCo" class="col-sm-5 control-label">Rate</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control", @maxlength = "20" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="CompanyC" class="col-sm-5 control-label">Registration Id</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control", @maxlength = "50" })
+                </div>
+            </div>
+
+            @*<div class="" id="code">
+                <div class="row form-group">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Gl Account Code</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstrarray0[6], new { @class = "form-control", id = "gl", @disabled = "disabled" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwstrarray0[6], new { @id = "gl2" })
+                </div>
+            </div>*@
+            @Html.HiddenFor(m => m.vwstrarray0[6], new { @id = "gl2" })
+
+
+            <div class="" >
+                <div class="row form-group">
+                    <label for="Company" class="col-sm-5 control-label">Gl Account Code</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstrarray0[8], ViewBag.cart as SelectList, "select", new { @class = "form-control", id = "glactv" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            @Html.Partial("_navbuttonsNext")
+        </div>
+
+        <div class="tab-pane" id="tab2">
+           
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Tax Transaction Type</label>
+                <div class="col-sm-7 myradio">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstrarray0[4], "P", new { id = "yess" }) purchase
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstrarray0[4], "S", new { id = "noo" }) sales
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstrarray0[4], "PS", new { id = "noy2" }) purchase and sales
+                    </label>
+                    @Html.HiddenFor(m => m.vwstrarray0[4], new { @id = "tax" })
+                </div>
+            </div>
+           
+             <div class="row form-group">
+                <label for="Compan" class="col-sm-5 control-label">Tax Impact on Transaction</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[3], ViewBag.tax as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="Compa" class="col-sm-5 control-label">Tax Application Basis</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[5], ViewBag.com as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group" style="display:none;" id="click">
+                <div class="row form-group">
+                    <label class="col-sm-5 control-label">Is Purchase Related Tax Reclaimable?</label>
+                    <div class="col-sm-7 myradio">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.vwstring1, "Y") Yes
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.vwstring1, "N") No
+                        </label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 control-label">When do you recognise the purchase tax as reclaimable?</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring2, ViewBag.pp as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group" style="display:none;" id="click1">
+                <div class="row form-group">
+                    <label class="col-sm-5 control-label">How frequent do you pay the sales tax? </label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring3, ViewBag.sp as SelectList, new { @class = "form-control", maxlength = "5" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 control-label">When do you recognise sales tax as chargable? </label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring4, ViewBag.ps as SelectList, new { @class = "form-control", maxlength = "5" })
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_navbuttons")
+
+        </div>
+
+        <div class="tab-pane" id="tab3">
+
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstrarray0[7], new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-5">Documents</label>
+                <div class="col-sm-5">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,29 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Int parameter";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        <h2>@Session["hname"]  </h2>
+        @Html.Partial("_listupdel")
+
+        @Html.ValidationSummary(true)
+        @Html.Partial("Int_parameter")
+       
+        <hr/>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.HiddenFor(m => m.vwint0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+
+       
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model CittaErp.Models.vw_collect 
+
+        <table class="round-corners">
+        <tr class="rowheader">
+            <td></td>
+            <td style="min-width:200px">Approvee</td>
+            <td style="min-width:200px">Alternate</td>
+            <td style="min-width:200px">Information</td>
+            <td style="min-width:200px">Minimun Amount</td>
+        </tr>
+        
+        @for (int ctr2 = 0; ctr2 < (@Model.ws_decimal7 - 1); ctr2++)
+        {
+            {
+                
+              <tr><td>@(ctr2 + 1).</td>
+              <td class="radiob"> @Html.RadioButtonFor(model => model.ws_string7, ctr2) &nbsp;&nbsp;&nbsp;
+                @Model.ar_string1[ctr2]</td>
+              <td>
+                @Model.ar_string3[ctr2]</td>
+              <td>
+                @Model.ar_string4[ctr2]</td>
+              <td>
+                    @Html.TextBoxFor(model => model.ar_decimal2[ctr2], new{ style="width:140px", @maxlength="15", @class = " form-control mypadding amtclass numform " })
+                    @Html.ValidationMessageFor(model => model.ar_decimal2[ctr2])
+              </td>
+              
+              </tr>
+            }
+        }
+        @if (@Model.ws_decimal7 < 10)
+        {
+            <tr><td> @(Convert.ToString(Model.ws_decimal7)).</td>
+              <td class="radiob"> @Html.RadioButtonFor(model => model.ws_string7, @Model.ws_decimal7)</td>
+            </tr>
+        }
+        
+        <tr class="row-center-110">
+        <td>
+        <input id = "ws_decimal7" type="text" value="@Html.AttributeEncode(Convert.ToString(@Model.ws_decimal7))" name="ws_decimal7" style = "display:none" />
+        </td>
+            </tr></table>

@@ -1,0 +1,51 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    string ptype = psess.temp0.ToString();
+}
+
+<table id="myTable1" class="table table-bordred table-striped">
+
+    <thead>
+        <tr>
+            <th>Id </th>
+            <th>Name</th>
+            <th>Payment To Date</th>
+            @if (ptype == "014")
+            {
+                <th>Net Contract Value </th>
+                <th>Outstanding Balance </th>
+            }
+            <th>Currency </th>
+            @*<th>Initiated By </th>
+            <th>Entry Date </th>
+            <th>Approved By </th>
+            <th>Post Date </th>*@
+            @*<th>Edit</th>
+              <th>Delete</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.x1)
+        {
+            <tr>
+                <td>@item.col1</td>
+                <td>@item.col2</td>
+                <td class="numformat">@item.col3</td>
+                @if (ptype == "014")
+                {
+                    <td class="numformat">@item.col5</td>
+                    <td class="numformat">@item.col6</td>
+                }
+                <td >@item.col4</td>
+               @* <td>
+        @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwstring0, key2 = @item.vwstring1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+    </td>
+    <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring1"> <i class="glyphicon glyphicon-trash "></i> </span></td>*@
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

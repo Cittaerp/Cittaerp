@@ -1,0 +1,73 @@
+﻿@model CittaErp.Models.vw_collect 
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_ReportBtn");
+
+    <fieldset>
+    <div class="container-fluid table-edit">
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Period Range</div>
+        <div class="col-sm-2 ">
+            @Html.DropDownList("ws_string2",new SelectList (@ViewBag.pmonth as SelectList,"Value","Text",@Model.ws_string2), new { @class = " form-control mypadding " })
+        </div><div class="col-sm-1">
+            @Html.DropDownList("ws_string3", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string3), new { @class = " form-control mypadding " })
+        </div>
+        <div class="col-sm-1 text-centre"> To </div>
+        <div class="col-sm-2 ">
+            @Html.DropDownList("ws_string4",new SelectList (@ViewBag.pmonth as SelectList,"Value","Text",@Model.ws_string4), new { @class = " form-control mypadding " }) 
+        </div><div class="col-sm-1">
+            @Html.DropDownList("ws_string5", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string5), new { @class = " form-control mypadding " })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Transaction Type</div>
+        <div class="col-sm-4 ">
+            @Html.DropDownList("ws_string6",new SelectList(@ViewBag.ttype as SelectList,"Value","Text",@Model.ws_string6), new { @class = " form-control mypadding " })
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Select Transaction</div>
+        <div class="col-sm-8 myradioq">
+                @Html.RadioButtonFor(model => model.ws_string7, "A", new { id = "pay1" }) 
+                    <label for="pay1">All Transactions </label>  &nbsp;&nbsp;
+                @Html.RadioButtonFor(model => model.ws_string7, "U", new { id = "pay2" })
+                    <label for="pay2"> Unapproved </label> &nbsp;&nbsp;
+                @Html.RadioButtonFor(model => model.ws_string7, "H", new { id = "pay3" }) 
+                    <label for="pay3">Approved </label>  
+        </div>       
+    </div>
+
+        @Html.Partial("_RepSelViewnp", @Model)
+
+        </div>
+
+    @Html.HiddenFor(model => model.ws_string1 )
+    @Html.Hidden("rtype2",Model.tx_string2[0])
+
+   </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+<div id="loader2" data-request-daily2="@Url.Action("Daily2List")"></div>
+<div id="loader3" data-request-updatev="@Url.Action("update_view")"></div>
+
+@section Scripts {
+
+
+<script>
+    rep_query($("#rtype1").val());
+
+</script>
+}

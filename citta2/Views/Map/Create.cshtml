@@ -1,0 +1,57 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Header";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Dimension Mapping</h3>
+   @Html.Partial("_listsubmit")
+
+        @Html.Partial("Head")
+
+        <div class="form-group">
+            
+
+        </div>
+    </form>
+</div>
+
+<div id="loader4" data-request-ajax4="@Url.Action("analy")"></div>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            $("#id_trans").change(function () {
+                var URL = $('#loader4').data('request-ajax4');
+                var URLext = $('#id_trans').val();
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    data: { header_code: URLext },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var items = "<option value=''></option>";
+                        $.each(data, function (i, state) {
+                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                        });
+                            $(".analy").html(items);
+                    }
+                });
+            });
+          
+        });
+    </script>
+
+}
+

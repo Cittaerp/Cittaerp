@@ -1,0 +1,167 @@
+﻿@model CittaErp.Models.vw_genlay
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Work_team";
+    ViewBag.action_flag = "Edit";
+}
+@*Html.Partial("menu")*@
+<div class="container">
+    <h2>Work team</h2>
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Work_team Maintainance</h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Work_team")
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.TextBox("name", @ViewData["store"], new { @class = "form-control", @id = "data" });
+        @Html.Hidden("id_xhrt", "K")
+
+    </form>
+</div>
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $("#data").hide();
+
+            $("#look1").hide();
+            $("#look2").hide();
+            $("#look3").hide();
+            $("#look4").hide();
+            $("#look5").hide();
+            $("#look6").hide();
+            $("#look7").hide();
+            $("#look8").hide();
+            $("#look9").hide();
+            
+            var num = $("#data").val();
+           
+
+            if (num == 2) {
+                $("#look1").show();
+            }
+            if (num == 3) {
+                $("#look1").show();
+                $("#look2").show();
+            }
+            if (num == 4) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+            }
+            if (num == 5) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+                $("#look4").show();
+            }
+            if (num == 6) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+                $("#look4").show();
+                $("#look5").show();
+            }
+
+            if (num == 7) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+                $("#look4").show();
+                $("#look5").show();
+                $("#look6").show();
+            }
+
+            if (num == 8) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+                $("#look4").show();
+                $("#look5").show();
+                $("#look6").show();
+                $("#look7").show();
+            }
+
+            if (num == 9) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+                $("#look4").show();
+                $("#look5").show();
+                $("#look6").show();
+                $("#look7").show();
+                $("#look8").show();
+            }
+
+            if (num == 10) {
+                $("#look1").show();
+                $("#look2").show();
+                $("#look3").show();
+                $("#look4").show();
+                $("#look5").show();
+                $("#look6").show();
+                $("#look7").show();
+                $("#look8").show();
+                $("#look9").show();
+            }
+
+
+            var counter = parseInt(num);
+            $("#add").click(function () {
+                counter = counter + 1;
+                var k = 0;
+                for (var i = 0; i < counter; i++) {
+                    $("#" + "look" + k).show();
+                    k = k + 1;
+                }
+                // alert(k);
+                if (k > 10) {
+
+                    alert("limit exceeded");
+                    return false;
+                }
+            });
+
+
+            //var myele = '';
+
+            //$("#right").click(function () {
+            //    $("#staff_id > option:Selected").each(function () {
+            //        myele = $(this).val();
+            //        alert(myele);
+
+            //        $(this).appendTo("#select_item");
+            //    })
+            //})
+
+            //$("#left").click(function () {
+            //    $("#select_item > option:Selected").each(function () {
+            //        var item = $(this).val();
+            //        var items = $(this).text();
+            //        alert(items);
+            //        // $("#staff_id").append(item);
+
+
+            //        $("#staff_id").append($('<option>', {
+            //            value: item,
+            //            text: items
+            //        }));
+            //        $(this).remove()
+
+            //    })
+
+            //})
+
+
+
+            //$("#update2").click(function () {
+            //    $('#select_item > option').prop("selected", true);
+            //    alert("k");
+            //});
+
+
+        });
+    </script>
+}

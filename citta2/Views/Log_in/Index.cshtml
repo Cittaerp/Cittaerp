@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+ @model anchor1.Models.vw_collect 
+
+@{
+    ViewBag.Title = "Index";
+    anchor1.Models.worksess psess = (anchor1.Models.worksess)Session["psess"];
+    //    int chk = Convert.ToInt16(Session["junk"]);
+    Layout = null;
+    string s1 = "0" + (DateTime.Now.Hour.ToString());
+    string s2 = "0" + (DateTime.Now.Minute.ToString());
+    string s3 = "0" + (DateTime.Now.Second.ToString());
+    string secs = s2.Substring(s2.Length-2, 2) + s3.Substring(s3.Length-2, 2) + s1.Substring(s1.Length-2, 2);
+    string err_msg = ViewBag.err_msg;
+    if (psess != null)
+    {
+        err_msg = psess.err_msg;
+    }
+
+}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Cittaerp</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        @Scripts.Render("~/bundles/jquerybundle")
+        @Styles.Render("~/dataTables/bundles/cssbundle")
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <span><img src="@(Url.Action ("showcoy","Basecall", new { idx="COMPANY" })) " class="complogo" alt="Company Logo" /></span>
+
+                <div id="footer">
+                    <img src="@(Url.Action ("showcoy","Basecall", new { idx="COMPANY1" })) " class="ourlogo" alt="Provider Logo" />
+                    <br /><span class="logoyear"> &copy; 2003-2016</span>
+                </div>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="col-sm-10">
+                    <span class="logoname"> <marquee behavior="alternate" class="marq1 "><img  src="~/images/citta.png" ></marquee> </span>
+                </div>
+                <br />
+
+                <div class="rowspacer row"></div>
+
+                <div class="row">
+                    <div class="col-sm-11 ">
+                        <span class="outerr"> @err_msg </span>
+                    </div>
+                </div>
+                <br />
+
+                <br />
+
+
+
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "egt1", onsubmit = "return log_password();" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-sm-10  ">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <strong class="compname">@Model.ws_string5 : @Model.ws_string6 </strong>
+                                    </div>
+                                    @if (Model.ws_int0 < 2)
+                                    {
+                                        <div class="panel-body login-text zero-pad">
+                                            @*<div class="row ">
+                                                <div class="col-sm-4  col-sm-text-right ">Database Code </div>
+                                                <div class="col-sm-5 ">@Html.DropDownList("ws_string1", ViewBag.ws_string1 as SelectList, new { @class = "form-control mypadding" }) </div>
+                                            </div>*@
+
+                                            <div class="row row-height"> <div>&nbsp;</div></div>
+                                            <div class="row ">
+                                                <div class="col-sm-4 col-sm-text-right "> Staff Number </div>
+                                                <div class="col-sm-4 ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"  style="background-color:#dff0d8" ><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                                                        @Html.TextBox("ws_code", "", new { @maxlength = "10", @class = "form-control mypadding color-black" })
+                                                    </div>
+                                                 </div>
+                                            </div>
+
+                                            <div class="row row-height"> <div>&nbsp;</div></div>
+                                            <div class="row ">
+                                                <div class="col-sm-4 col-sm-text-right">Password</div>
+                                                <div class="col-sm-4 ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"  style="background-color:#dff0d8" ><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                                                        @Html.Password("ws_string0", "", new { @class = "form-control mypadding " })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row"> <div>&nbsp;</div></div>
+
+                                            <div class="row zero-pad">
+                                                <input type="submit" value="Proceed" class="btn btn-success text-centre btn-block col-sm-12 col-xs-12 font-150 lgtime">
+                                            </div>
+
+
+                                            <div class="row zero-pad">
+                                                <span class="text-centre"><a href="~/" class="btn btn-danger col-sm-12 col-xs-12 font-150">Cancel</a></span>
+                                            </div>
+                                            <div class="row zero-pad">
+                                                <span class="text-centre"><a href="~/log_in/LostPassword" class="btn btn-info col-sm-12 col-xs-12">Forgot your Password </a></span>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @Html.Hidden("ws_string2", "")
+                    @Html.Hidden("ws_string3", @secs)
+                    @Html.Hidden("ws_string5")
+                    @Html.Hidden("ws_string6")
+                    @Html.Hidden("ws_int0")
+
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                Login Processing...
+            </p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.applicationBaseUrl = @Html.Raw(HttpUtility.JavaScriptStringEncode(
+                new Uri(
+                           new Uri(this.Context.Request.Url.GetLeftPart(UriPartial.Authority)),
+                           Url.Content("~/")
+                       ).ToString(), true))
+        $("#locat").val(window.applicationBaseUrl);
+
+    </script>
+
+
+    @Scripts.Render("~/bundles/Scripts/js2bundle")
+
+</body>
+</html>

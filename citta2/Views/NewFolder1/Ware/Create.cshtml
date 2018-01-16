@@ -1,0 +1,81 @@
+﻿@model  CittaErp.Models.IV_001_WAREH
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" action="C">
+        <h3>Ware House Settings</h3>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="itemcode" class="col-sm-5 control-label">Ware House Code</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.warehouse_code, new { @class = "form-control", maxlength = 10, @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="analysisheader" class="col-sm-5 control-label">Ware House Name</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.warehouse_name, new { @class = "form-control", maxlength = 10 })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="analysiscode" class="col-sm-5 control-label">Site Code</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.site_code, ViewBag.site_code as SelectList, "Select Site", new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tax" class="col-sm-5 control-label">Branch where Ware house is located</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.branch_address_code, ViewBag.branch_address_code as SelectList, "Select Branch ", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-7">
+                    @Html.TextAreaFor(m => m.note, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h4>Contact Information</h4>
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Name</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.contact_name, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Email</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.contact_email, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Phone</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.contact_phone, new { @class = "form-control", maxlength = 20 })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-5">
+                    <a class="btn btn-default" href="">Click to Attach Document</></a>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-5">
+                    <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                    <a class="btn  btn-primary btn-default" href="index">Back To List</></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

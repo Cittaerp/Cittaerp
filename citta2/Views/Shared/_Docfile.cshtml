@@ -1,0 +1,41 @@
+﻿
+    @{
+        int ctr = 0;
+        string imgtype = "";
+        string key1 = "";
+        string key11 = @Model.imagecat == "P" ? "PP:" : @Model.imagecat == "H" ? "PH:" : @Model.imagecat == "I" ? "IM:" : "VV:";
+
+        string keytext = string.IsNullOrWhiteSpace(@Model.imagedesc) ? "Document(s) Attached" : @Model.imagedesc;
+        keytext = "";
+        }
+            <tr>
+                <td> @keytext</td>
+            </tr>
+
+                @foreach (var item in ViewBag.atfile)
+                {
+                    if (item.report_name2 == null)
+                    {
+                        imgtype = "../../Images/document.gif";
+                    }
+                    else
+                    {
+                        imgtype = "../../Images/" + item.report_name2;
+                    }
+                    key1 = key11 + item.sequence_no + "::";
+                    key1 = "'" + key1 + "::'";
+                    <tr>
+                    <td>@(ctr+1).</td>
+                    <td colspan="8"> <input type="checkbox" name="ar_string0[@(ctr)]" value ="@item.sequence_no" />
+                                     <input type="hidden" name="ar_string0[@(ctr)]" value="" />
+                        Delete? &nbsp;&nbsp;
+                        <a href='javascript:;' onclick='showdocument(@key1)'>
+                        <img src=@imgtype   />
+
+                        <br />@item.document_name
+                        </a>
+                    </td>
+                </tr>
+                    ctr++;
+                } 
+

@@ -1,0 +1,61 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "sales";
+}
+@*Html.Partial("menu")*@
+<h3>Open LPO</h3>
+@*@Html.ActionLink("Add New", "CreateHeader", "", new { @class = "btn btn-primary", @style = "color:white" })*@
+
+
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Order reference</th>
+            <th>Customer</th>
+            <th>Currency code</th>
+            <th>Order amount</th>
+            <th>Order date</th>
+            <th>Order expiration date</th>
+            <th>Convert to Next Stage</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring1</td>
+                <td>@item.vwstring2</td>
+                <td class="numformat">@item.vwdecimal0</td>
+                <td>@item.vwstring3.Substring(6, 2)/@item.vwstring3.Substring(4, 2)/@item.vwstring3.Substring(0, 4)</td>
+                <td>@item.vwstring4.Substring(6, 2)/@item.vwstring4.Substring(4, 2)/@item.vwstring4.Substring(0, 4)</td>
+                @if (Convert.ToInt32(item.vwstring4) > Convert.ToInt32(item.vwdate2.ToString("yyyyMMdd")))
+                { 
+                <td>
+                    @Html.ActionLink("C", "QuoteConvert",null, new { key1 = @item.vwint0, key2 = @item.vwstring0, headtype = "without" }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                }
+                else
+                {
+                   <td><span  style="color:red"> Expired</span></td>
+                }
+                
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader21" data-request-ajax21="@Url.Action("void_list")"></div>
+
+@section Scripts {
+    <script>
+
+
+    </script>
+}

@@ -1,0 +1,32 @@
+﻿
+@model CittaErp.Models.vw_genlay
+@{
+}
+<div class="tabbable">
+    <div class="row form-group">
+        <label for="asset-group" class="col-sm-3 control-label">Reset ID</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring0, @Model.vwstring0 == "" ? (object)new { @class = "form-control", @maxlength = 20 } : new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.vwstring0)
+        </div>
+        @Html.HiddenFor(m => m.vwstring9)
+    </div>
+
+    <div class="row form-group">
+        <label for="asset-group" class="col-sm-3 control-label">Assets</label>
+        <div class="col-sm-5">
+            @Html.DropDownListFor(m => m.vwstring1, new SelectList(ViewBag.fxd, "Value", "Text"), "Select", new { @class = "form-control", id = "id_assetss", @required = "required" })
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="col-sm-3 control-label">Reset</label>
+        <div class="col-sm-5 myradio">
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.vwstring2, "Y", new { id = "orderyes" }) Yes
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.vwstring2, "N", new { id = "orderno" }) No
+            </label>
+        </div>
+    </div>
+</div>

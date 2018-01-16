@@ -1,0 +1,33 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.action_flag = "EditHeader";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Budget  Entries </h3>
+
+        @Html.Partial("Budg")
+
+
+    </form>
+    @Html.HiddenFor(m=>m.vwstring9)
+    @Html.HiddenFor(m=>m.vwdecimal4)
+    @Html.HiddenFor(m=>m.vwdecimal5)
+
+</div>
+
+<div id="loader4" data-request-ajax4="@Url.Action("ac_code")"></div>
+<div id="loader9" data-request-ajax9="@Url.Action("ac_curen")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("b_amt")"></div>
+
+@section Scripts {
+    <script>
+
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/budget.js")"></script>
+}

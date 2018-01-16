@@ -1,0 +1,145 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.pubsess pubsess = (CittaErp.Models.pubsess)Session["pubsess"];
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string multi_curenchk = pubsess.multi_currency;
+    string dis_id = psess.temp5.ToString();
+}
+ <div class="tabbable">
+     <div class="form-group col-sm-5">
+         <label for="warehouse" class="col-sm-4 control-label">Account ID</label>
+         <div class="col-sm-5">
+             @if (dis_id == "Y") { 
+             @Html.TextBoxFor(m => m.vwstring0, new { @disabled = "disabled", @maxlength = 10 })
+             }
+             else { 
+             @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @maxlength = 10 })
+             @Html.ValidationMessageFor(m => m.vwstring0)
+             }
+         </div>
+     </div>
+
+     <div class="form-group col-sm-7">
+         <label for="warehouse" class="col-sm-3 control-label">Account Name</label>
+         <div class="col-sm-9">
+             @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 50 })
+         </div>
+     </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Account</a></li>
+        <li><a href="#tab5" data-toggle="tab">Document Management</a></li>
+        <li><a href="#tab2" data-toggle="tab">Dimension</a></li>
+ </ul>
+     <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+                
+                
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Account Type </label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring6, ViewBag.account as SelectList, "Select Account Type", new { @class = "form-control", id = "acctype" , @required = "required"})
+                    </div>
+                </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Account Category </label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control", @maxlength = 20, id = "accat", @readonly = "readonly" })
+                </div>
+            </div>
+                
+            <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Archiving</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring3, ViewBag.archiving as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+            @if (multi_curenchk == "B") {
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Currency</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring4, ViewBag.currency as SelectList,"" , new { @class = "form-control" })
+                    </div>
+                </div>
+             }
+            else
+            {
+                @Html.HiddenFor(m=>m.vwstring4)
+            }
+            @*<div class="form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(m => m.vwbool0, new { @class = "form-control", style = "width : 15px" })
+                </div>
+            </div>*@
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+
+
+            @Html.Partial("_navbuttonsNext")
+            
+        </div>
+        
+        <div class="tab-pane" id="tab5">
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Documents</label>
+                <div class="col-sm-7">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+
+
+            @Html.Partial("_navbuttons")
+        </div>
+
+        <div class="tab-pane" id="tab2">
+
+            @for (int wctr = 0; wctr < 10; wctr++)
+            {
+                if (Model.vwlist0[wctr] != null)
+                {
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList(Model.vwlist0[wctr], "query0", "query1", Model.vwstrarray6[wctr]), "Select ", new { @class = "form-control" })
+                            @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.vwstrarray6[wctr])
+                }
+            }
+
+
+
+
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring5, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+
+    
+
+          
+            @Html.Partial("_navbuttonsPrev")
+        </div>
+
+        </div>
+
+  </div>
+     
+ 

@@ -1,0 +1,74 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    ViewBag.Title = "Paracode";
+    string ptype = psess.temp0.ToString();
+    ViewBag.action_flag = "Delete";
+    string plabel = ViewBag.plabel;
+    
+}
+
+@*Html.Partial("menu")*@
+
+
+<h3>@psess.temp3</h3>
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+
+        <table class="myTable1 display">
+
+    <thead>
+        <tr>
+            @*<th>Id</th>*@
+                <th>@psess.temp2</th>
+            <th>@psess.temp4</th>
+            @if (ptype == "03" || ptype == "13" || ptype == "14"|| ptype == "15" || ptype=="10")
+            {
+                <th> @psess.temp5</th>
+            }
+            @if (ptype == "16")
+            {
+               <th> Posting Code</th> 
+            }
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td>@item.vwstring0</td>
+                
+                <td>@item.vwstring1</td>
+                @if (ptype == "03" || ptype == "13" || ptype == "14")
+                {
+                    <td>@item.vwstring2</td>
+                }
+                @if (ptype == "15" || ptype == "10")
+                {
+                    <td>@item.vwstring4</td>
+                }
+                @if (ptype == "16")
+                {
+                    <td>@item.vwstring7</td>
+                }
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwstring0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+
+        @Html.Hidden("id_xhrt", "K")
+        
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>

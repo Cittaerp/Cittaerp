@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@*Html.Partial("menu")*@
+
+<h3>Posted Jornal Entries </h3>
+<table id="mytable" class="table table-bordred table-striped myTable1">
+
+    <thead>
+        <tr>
+            <th>line No </th>
+            <th>Reference Number</th>
+            <th>Description</th>
+            <th> Account </th>
+            <th>Base Amount </th>
+            <th>Currency </th>
+            <th>Cycle Interval </th>
+            <th>Period </th>
+            <th>Number Of Cycle </th>
+            @*<th>Edit</th>
+            <th>Delete</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwint1</td>
+                <td>@item.vwstring1</td>
+                <td>@item.vwstring2</td>
+                <td>@item.vwstring0 &nbsp; @item.vwstring7</td>
+                <td>@item.vwdecimal3.ToString("#,##0.00") &nbsp; @item.vwstring5</td>
+                <td>@item.vwstring10</td>
+                <td>@item.vwint3</td>
+                <td>@item.vwstring8<td>
+                <td>@item.vwint2</td>
+                @*<td>
+                    @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwint0, key2 = @item.vwint1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0&@item.vwint1"> <i class="glyphicon glyphicon-trash "></i> </span></td>*@
+            </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,28 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Price";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Price Matrix Maintainance</h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Main")
+
+        <div class="form-group">
+
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.HiddenFor(m => m.vwstring1)
+        @Html.HiddenFor(m => m.vwstring2)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+
+

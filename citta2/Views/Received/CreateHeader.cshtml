@@ -1,0 +1,35 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.action_flag = "CreateHeader";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>GRN Transaction  </h3>
+
+        @Html.Partial("Ivnt")
+
+
+    </form>
+    @Html.HiddenFor(m=>m.vwstring9)
+    @Html.HiddenFor(m=>m.vwdecimal4)
+    @Html.HiddenFor(m=>m.vwdecimal5)
+
+</div>
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_detail")"></div>
+<div id="loader4" data-request-ajax4="@Url.Action("assign")"></div>
+<div id="loader1" data-request-ajax1="@Url.Action("price_cal")"></div>
+<div id="loader5" data-request-ajax5="@Url.Action("get_currency")"></div>
+<div id="loader3" data-request-ajax3="@Url.Action("get_exchange")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("due_date")"></div>
+
+@section Scripts {
+    <script>
+
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/porder.js")"></script>
+}

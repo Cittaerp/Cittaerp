@@ -1,0 +1,128 @@
+﻿@model CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Maintenance_Activation";
+}
+
+<div class="tabable">
+    @*<ul class="nav nav-tabs" id="tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Information</a></li>
+            <li><a href="#tab2" data-toggle="tab">Note</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <br/>*@
+
+    @if (Session["action_flag"].ToString() == "Edit")
+    {
+        <div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Repair Notification ID</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwint0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", placeholder = "Activation id", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control" })
+            </div>
+        </div>
+    }
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Repair Notification Type</label>
+        <div class="col-sm-2">
+            @Html.DropDownListFor(m => m.vwstring1, ViewBag.atype1 as SelectList, "SELECT", new { @class = "form-control", placeholder = "Activation type" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Transaction Date</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring5, new { @class = "form-control datet" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Fixed Asset Id</label>
+        <div class="col-sm-2">
+            @Html.DropDownListFor(m => m.vwstring3, ViewBag.fxd as SelectList, "SELECT", new { @class = "form-control", placeholder = "", @id = "id_fixed" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="Location" class="col-sm-5 control-label">Location</label>
+        <div class="col-sm-2">
+            @Html.TextBox("curren_name", "", new { @class = "form-control ", @disabled = "disabled", @id = "id_location" })
+        </div>
+
+    </div>
+    <div class="row form-group">
+        <label for="Location" class="col-sm-5 control-label">Asset User</label>
+        <div class="col-sm-2">
+            @Html.TextBox("curren_name", "", new { @class = "form-control ", @disabled = "disabled", @id = "id_assetuser" })
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Reported By</label>
+        <div class="col-sm-5">
+            @Html.DropDownListFor(m => m.vwstring4, ViewBag.emp1 as SelectList, "SELECT", new { @class = "form-control", placeholder = "" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Main Work Center </label>
+            <div class="col-sm-5">
+                @Html.DropDownListFor(m => m.vwstring5, ViewBag.wkt1 as SelectList,  "SELECT", new { @class = "form-control", placeholder = "" })
+            </div>
+        </div>*@
+
+
+    @*@Html.Partial("_navbuttonsNext")
+        </div>*@
+
+    @*<div class="tab-pane" id="tab2">
+        <br/>*@
+    <div class="form-group">
+        <label for="CompanyName" class="col-sm-5 control-label">Explain Issue</label>
+        <div class="col-sm-6">
+            @Html.TextAreaFor(m => m.vwstring7, new { @class = "form-control", placeholder = "note", rows = "4" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-5">Attach Document</label>
+        <div class="col-sm-7">
+            <input type="file" name="photofile" multiple />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-5 control-label">Last Approval Level</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="col-sm-5 control-label">Convert To Work Order</label>
+        <div class="col-sm-5 myradio">
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.vwstring6, "Y", new { id = "orderyes" }) Yes
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(m => m.vwstring6, "N", new { id = "orderno" }) No
+            </label>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label class="control-label col-sm-5">Inactive Status</label>
+            <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(m => m.vwbool0, new { @id = "activate_yesno" })
+                <label for="activate_yesno">
+                    @( Model.vwbool0 ? "On" : "Off")
+                </label>
+            </div>
+        </div>*@
+
+    @*@Html.Partial("_navbuttonsPrev")
+                </div>
+
+            </div>
+        </div>*@
+

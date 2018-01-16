@@ -1,0 +1,151 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "item Maintenance";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Item Maintainance</h3>
+       @Html.Partial("_listsubmit")
+
+        @Html.Partial("Itm")
+
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck" })
+    </form>
+
+</div>
+@Html.HiddenFor(m => m.vwstrarray0[7], "")
+<div id="loader3" data-request-ajax3="@Url.Action("itempreload")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("get_currency")"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var itemtype = $("#itemtype").val();
+        if (itemtype == "I") {
+            $("#click6").show();
+            $("#click7").show();
+            $("#click8").show();
+            $(".fifo").show();
+        }
+        
+
+        $(".now1").click(function () {
+            $(".fifo").hide();
+            $(".iss_hide").hide();
+            $("#pty").hide();
+           });
+  
+        $("#now").click(function () {
+            $(".fifo").show();
+            $("#pty").hide();
+        });
+
+        $("#prop").click(function () {
+            $("#click6").hide();
+            $("#pty").show();
+        });
+
+        $("#id_int").click(function () {
+            $("#shw_int").show();
+            $("#shw_mtg").hide();
+        });
+        $("#id_mtg").click(function () {
+            $("#shw_mtg").show();
+            $("#shw_int").hide();
+        });
+
+        $("#ypoi").click(function () {
+            $("#shwpoi").show();
+        });
+
+        $("#npoi").click(function () {
+            $("#shwpoi").hide();
+        });
+        //$("#rate").click(function () {
+        //    $(".fifo").show();
+        //});
+
+        $("#taxy").click(function () {
+            $("#click2").show();
+        });
+
+        $("#id_ave").click(function () {
+            $("#id_avcost").show();
+            $("#id_stcost").hide();
+        });
+
+        $("#now6").click(function () {
+            $("#id_avcost").show();
+            $("#id_stcost").hide();
+        });
+
+        $("#taxn").click(function () {
+            $('#vwstrarray0_18_ option:eq(0)').attr('Selected', 'selected');
+            $('#vwstrarray0_19_ option:eq(0)').attr('selected', 'selected');
+            $('#vwstrarray0_20_ option:eq(0)').attr('selected', 'selected');
+            $('#vwstrarray0_21_ option:eq(0)').attr('selected', 'selected');
+            $('#vwstrarray0_22_ option:eq(0)').attr('selected', 'selected');
+
+            $("#click2").hide();
+        });
+
+
+        $("#id_itmgrp").change(function () {
+            var $form = $(this).closest('form');
+            $("#id_subcheck").val("RR");
+            $form.trigger("submit");
+
+        });
+        $("#id_comflat").change(function () {
+            var com = $("#id_comflat").val();
+            if (com > 0)
+                $("#id_comper").attr("disabled", "disabled");
+            else
+                $("#id_comper").removeAttr("disabled");
+        });
+
+        $("#id_comper").change(function () {
+            var com = $("#id_comper").val();
+            if (com > 0)
+                $("#id_comflat").attr("disabled", "disabled");
+            else
+                $("#id_comflat").removeAttr("disabled");
+        });
+
+        $("#id_depflat").change(function () {
+            var com = $("#id_depflat").val();
+            if (com > 0)
+                $("#id_depper").attr("disabled", "disabled");
+            else
+                $("#id_depper").removeAttr("disabled");
+        });
+
+        $("#id_depper").change(function () {
+            var com = $("#id_depper").val();
+            if (com > 0)
+                $("#id_depflat").attr("disabled", "disabled");
+            else
+                $("#id_depflat").removeAttr("disabled");
+        });
+
+        //$(".tabvalid").click(function () {
+        //    var result2 = $(".tabvalid").closest('form');
+        //    //var result = result2.valid();
+        //    //if(!result)
+        //    //    $('#tabs a[href="#'+jQuery(validator.])
+        //    jQuery(result2).validate({
+        //        ignore: ".ignore",
+        //        invalidHandler: function (e, validator) {
+        //            if (validator.errorList.length)
+        //                $('#tabs a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
+        //        }
+        //    })
+        //});
+
+        });
+    </script>
+}

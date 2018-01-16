@@ -1,0 +1,72 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Maintenance Activation";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <h3>Repair Maintenance Notification</h3>
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <button type="submit" class="btn btn-success btn-default" id="sub">Submit</button>
+        &nbsp;&nbsp;&nbsp;
+        <button type="reset" class="btn btnextra">Cancel</button>
+        <br />
+        <br />
+        @Html.Partial("Maintenance_Activation")
+        
+    </form>
+</div>
+<div id="loader5" data-request-ajax5="@Url.Action("asset")"></div>
+
+@section Scripts {
+    <script>
+
+        if ('@ViewBag.successMessage' != "") {
+            $('#divSuccessMessage').show();
+        }
+        else {
+            $('#divSuccessMessage').hide();
+        }
+        $(document).ready(function () {
+
+        $("#id_fixed").change(function () {
+            var URL = $('#loader5').data('request-ajax5');
+            var URLext = $('#id_fixed').val();
+            //alert(URLext);
+            //var set_price = "N"
+
+            URL = $.trim(URL);
+            URLext = $.trim(URLext);
+            URL = URL + "/" + URLext;
+
+            $.ajax({
+
+                url: URL,
+                type: 'Post',
+
+                error: function (xhr, status, error) {
+                    alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                },
+                success: function (data) {
+                    var empp = '';
+                    $.each(data, function (i, state) {
+                        empp = state.Text;
+                        if (state.Value == "fixed")
+                            $("#id_location").val(empp);
+                        if(state.Value == "assett")
+                            $("#id_assetuser").val(empp)
+
+                    });
+
+
+                }
+            });
+
+        });
+        });
+    </script>
+}
+
+

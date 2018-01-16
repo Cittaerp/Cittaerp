@@ -1,0 +1,56 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "sales";
+}
+@*Html.Partial("menu")*@
+<h3>Purchase Requisition</h3>
+@Html.ActionLink("Add New", "CreateHeader", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Requistion Reference</th>
+            <th>Transaction Type</th>
+            <th>Transaction Date</th>
+            <th>Item Warehouse</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring5</td>
+                <td>@item.vwstring2</td>
+                @if (item.vwstring3 != "") { 
+                <td>@item.vwstring3.Substring(6,2)/@item.vwstring3.Substring(4,2)/@item.vwstring3.Substring(0,4)</td>
+                }
+                else
+                {
+                    <td>01/01/0001</td>
+                }
+                <td>@item.vwstring4</td>
+                <td>
+                    @Html.ActionLink("E", "EditHeader", new { key1 = @item.vwint0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+
+
+    </script>
+}

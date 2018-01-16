@@ -1,0 +1,66 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+        <div>
+            @if (ViewBag.action_flag == "Edit")
+            {
+            <div class="form-group">
+                <label for="ApprovalDelegationID" class="col-sm-5 control-label">Approval Delegation ID</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwint0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @maxlength = 10 })
+                    @Html.ValidationMessageFor(m => m.vwint0)
+                </div>
+            </div>
+            }
+            <div class="form-group">
+                <label for="Delegator" class="col-sm-5 control-label">Delegator</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring2, ViewBag.delagator as SelectList, "Select Delegator", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control" } : new { @disabled = "disabled", @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Transaction" class="col-sm-5 control-label">Transaction</label>
+                <div class="col-sm-3">
+                   @Html.DropDownListFor(m => m.vwstring1 , ViewBag.delegation as SelectList, "Select Type", new { @class = "form-control" })
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <label for="Delegatee" class="col-sm-5 control-label">Delegatee</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring3, ViewBag.delegatee as SelectList, "Select Delegatee", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="StartDate" class="col-sm-5 control-label"> Start Date</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring5,  new { @class = "form-control datet", @required = "required"})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">End Date</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring6,  new { @class = "form-control datet", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring4, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(m => m.vwbool0, new { @class = "form-control", style = "width : 15px", @checked = "checked" })
+                </div>
+            </div>*@
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+        </div>

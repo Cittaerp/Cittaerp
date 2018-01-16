@@ -1,0 +1,40 @@
+﻿@model CittaErp.Models.vw_genlay
+
+    @{
+        int ctr = 0;
+        string key1 = "";
+        string imgtype = "";
+        string key11 = @Model.imagecat == "P" ? "PP:" : @Model.imagecat == "H" ? "PH:" : @Model.imagecat == "I" ? "IM:" : "VV:";
+        string keytext = string.IsNullOrWhiteSpace(@Model.imagedesc) ? "Document(s) Attached" : @Model.imagedesc;
+
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">@keytext</div>
+            </div>
+            
+            <div class="row">
+                @foreach (var item in ViewBag.atfile)
+                {
+                    if (item.report_name2 == null)
+                    {
+                        imgtype = "../../Images/document.gif";
+                    }
+                    else
+                    {
+                        imgtype = "../../Images/" + item.report_name2;
+                    }
+                    key1 = key11 + item.sequence_no + "::";
+                    key1 = "'" + key1 + "::'";
+                    <div class="col-sm-2 col-sm-offset-1">
+                        <div>@(ctr+1). &nbsp;&nbsp;
+                        <a href='javascript:;' onclick='showdocument(@key1)'>
+                        <img src=@imgtype   />
+                        <br />@item.document_name
+                        </a>
+                        </div>
+                    </div>
+                    ctr++;
+                } 
+            </div>
+            @Html.HiddenFor(m => Model.imagedesc)
+         }
+

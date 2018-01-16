@@ -1,0 +1,961 @@
+﻿
+body {
+    font-family: "Comic Sans MS", "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding : 20px ;
+    padding-left : 30px;
+    padding-top : 70px;
+    font-size : 13px;
+    font-weight : 500;
+}
+
+    .waiting * {
+    cursor : wait
+}
+
+#footer {
+    margin-top: 5pt;
+    color: #888;
+    position:fixed;
+    bottom:0;
+}
+
+@media (min-width: 980px) {
+    body {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+}
+
+.btncloser, .btn-closer {
+    padding : 3px 6px  !important;
+}
+
+.create_logo  {    
+    padding-left : 60px;
+    background: url("../../images/newdt1.png") no-repeat center center; 
+    display: inline-block;       
+    width: 35px;       
+    height: 35px;       
+    vertical-align : bottom;       
+    text-indent: -9999px;  /*hides the link text*/ 
+  } 
+
+.report_logo  {    
+    padding-left: 30px; 
+    background: url("../../images/reportdt1.png") no-repeat center right; 
+    display: inline-block ;       
+    width: 35px;       
+    height: 35px;       
+    vertical-align : bottom;       
+    text-indent: -9999px;  /*hides the link text*/ 
+  } 
+
+.edit_logo  {    
+    background: url("../../images/pen16.png") no-repeat center right; 
+    display: inline-block ;       
+    width: 16px;       
+    height: 16px;       
+    text-indent: 17px;  /*hides the link text*/
+  } 
+
+.display_logo  {    
+    background: url("../../images/index_view.png") no-repeat center right; 
+    display: inline-block ;       
+    width: 16px;       
+    height: 16px;
+    vertical-align : middle;       
+    text-indent: 17px;  /*hides the link text*/
+  } 
+
+.add_logo  {    
+    background: url("../../images/newdt1.png") no-repeat center right; 
+    display: inline-block ;       
+    width: 16px;       
+    height: 16px;       
+    vertical-align : middle;       
+    text-indent: 17px;  /*hides the link text*/
+  } 
+
+    .readonly-color
+    {
+        background-color: lightyellow !important;
+        color : black;
+    }
+
+    .horzmenu
+    {
+        font-size : 130%;
+    }
+
+/* adjust path for Bootstrap icons */
+/*[class^="icon-"], [class*=" icon-"] {
+    background-image: url("/Content/images/glyphicons-halflings.png");
+}*/
+
+/* for datatables */
+div.container {
+        width: 90%;
+    }
+
+div.centered {
+    float :left;
+        padding-left : 10%;
+        /*font-weight :700;*/
+
+}
+
+.dtwrapper {
+    padding-left : 10px;
+    padding-right : 10px;
+}
+.datadisplay tbody tr{
+    min-height : 25px;
+    padding : 0;
+}
+
+ tbody.scrollContent >tr
+            {
+                width:100%;
+                display:table;
+                } 
+
+
+.dataprint td,
+.dataprint th,
+.adTable td,
+.adTable th
+{
+    white-space :nowrap !important;
+}
+
+/* table edit & display & table edit(tabs)*/
+
+.table-edit, 
+.table-display, 
+.table-plain, 
+.table-radio, 
+.table-outer2
+{
+        background-color : #F0F8FF ;
+        font-size : 100% ;
+        border : 10px solid #f0f8ff;
+        font-family : inherit;
+}
+
+     .table-edit td,
+     .table-display td,
+     .table-login td
+     {         
+         padding : 2px;
+         padding-left : 1em;
+     }
+
+    .table-edit1 tbody td:nth-child(2)
+        {
+            text-align : left;
+            padding-right : 2em;
+        }
+
+    .table-edit1 tbody td:nth-child(1),
+    .table-display1 tbody td:nth-child(1){
+         text-align : right;
+     }
+
+    .table-display1 tbody td:nth-child(n+2)
+    {
+        text-align : left;
+        color : blue;
+        padding-right : 2em;
+    }
+
+     .table-edit1 td input[type=radio1] ,
+     .table-edit1 input[type=radio1] 
+
+    {
+        width :auto ;
+        background-color : inherit;
+        display : none ;
+        margin : 10px;        
+    }
+    
+    .table-edit1 td input[type=radio1] + label ,
+    .table-edit1 input[type=radio1] + label 
+    {
+        display:inline-block;
+        padding: 2px ;
+        background-color: inherit;
+        border-color: #ddd;     
+        margin-bottom : 2px;   
+    }
+  
+    .table-edit1 td input[type=radio1]:checked + label,
+    .table-edit1 input[type=radio1]:checked + label
+    { 
+        background-image: none;
+        background-color: #D8DFE5;
+            /*#d0d0d0;*/
+    }
+
+    .table-edit .row , .row
+    {
+        padding : 2px;
+    }   
+
+    .table-edit .row2x
+    {
+        padding : 5px;
+    }   
+
+    td.radiob input[type=radio1] ,
+    .table-edit1 .radiob input[type=radio1]
+    {
+        display : inline;
+        background-color : inherit ;
+        padding:0;
+        /*margin :0;*/
+    }
+    
+    td.radiob input[type=radio1] + label ,
+    .table-edit1 .radiob input[type=radio1] + label 
+    {
+        display:inline;
+    }
+    
+
+    .left-column1 td:nth-child(1)
+    {
+        text-align :left;
+    }
+
+    .black-column3 td:nth-child(3)
+    {
+        color : black !important;
+    }
+
+
+.table-plain td,
+.table-radio td,
+.table-outer2 td
+{
+    padding  : 5px 10px;
+}
+
+.table-radio 
+{
+    border : 1px solid green;
+}
+
+.table-outer2 tbody td:nth-child(1) 
+{
+    width : 25%;
+}
+
+.table-border table,
+.table-border tr,
+.table-border  td 
+{
+    /*border : 1px solid black;*/
+    border-collapse :collapse ;
+    border-bottom: 1px solid black;
+
+}
+
+th{
+    text-align : left;
+}
+
+#accordsize {
+    padding: 10px;
+    width: 350px;
+    height: 220px;
+  }
+
+   .accord
+    {
+        /*width : 800px;*/
+        width : 80%;
+    }
+
+    .menutable,
+    .accordop .ui-accordion-content,
+    .accordop1 .ui-accordion-content,
+    .accord .ui-accordion-content
+    {
+        font-size : 100% ;
+        font-family :'Comic Sans MS', cursive,'Courier New', Courier, 'Nimbus Mono L', monospace;
+        font-family : inherit !important;
+    }
+
+    .accordop .ui-accordion-header,
+    .accordop1 .ui-accordion-header,
+    .accord .ui-accordion-header
+    {
+        margin : 0px;
+        background : #C4F2C2;
+        font-family :'Comic Sans MS', cursive,'Courier New', Courier, 'Nimbus Mono L', monospace;
+        font-family : inherit !important;
+        font-size : 100% ;
+    }
+
+    .accordop .ui-accordion-header:nth-of-type(even),
+    .accordop1 .ui-accordion-header:nth-of-type(even),
+    .accord .ui-accordion-header:nth-of-type(even)
+    {
+        margin : 0px;
+        background : #C7E0F2;
+        font-family :'Comic Sans MS', cursive,'Courier New', Courier, 'Nimbus Mono L', monospace;
+        font-family : inherit !important;
+        font-size : 100% ;
+    }
+    
+    .accordop11  .ui-accordion .ui-accordion-content, 
+    .accordop11 .ui-accordion-content
+    {
+        padding: 5px !important;
+
+    }   
+    .accord a 
+    {
+        text-decoration : none;
+    }
+    .menutable td
+    {
+        padding : 10px;
+    }
+
+.zero-pad{
+    margin :0px;
+    padding-left :0px;
+    padding-right : 0px;
+}
+
+.row-head td {
+        font-size : 100%;
+        color : black !important;
+        text-align : left !important;
+    }
+
+.row-center-110 td ,
+.row-center-110
+{
+        font-size : 110%;
+        color : black !important;
+        text-align : center !important;
+    }
+
+.row-blue td ,
+.row-blue
+    {
+        font-size : 100%;
+        color : blue !important;
+        text-align : left !important;
+    }
+
+.link-bold {
+    padding-top : 10px;
+    font-size : 120%;
+    font-weight :700 ;
+}
+
+    fieldset legend {
+        display: none;
+    }
+
+    fieldset { 
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding : 0.35em, 0.75em,0.625em,0.75em;
+        border: none 
+    }
+
+.hr-line 
+{
+    margin : 0;
+    border : 1px solid;
+}
+
+.hr-line-m 
+{
+    border : 1px solid;
+}
+
+.nomargin
+{
+    margin:0;
+}
+
+
+.budderall
+{
+    border :1px solid blue;
+}
+.buddertop
+{
+    border-top : 1px solid black;
+    border-left: 1px solid black;
+    border-right:1px solid black;
+}
+.budderdown
+{
+    border-bottom : 1px solid black;
+    border-left: 1px solid black;
+    border-right:1px solid black;
+}
+.budderside
+{
+    border-left: 1px solid black;
+    border-right:1px solid black;
+}
+
+.text-nowrap
+{
+    white-space :nowrap  !important;
+}
+
+.text-left
+{
+    text-align : left !important;
+}
+
+.text-right
+{
+    text-align : right !important;
+}
+
+.text-centre, .text-center
+{
+    text-align : center !important;
+}
+
+.text-bold
+{
+    font-weight :bold;
+}
+
+
+.color-red
+{
+    color : red !important;
+}
+
+.color-blue
+{
+    color :blue !important;
+}
+.color-green
+{
+    color : green !important;
+}
+
+.color-hexfem
+{
+    color : green !important;
+}
+
+.color-black
+{
+    color : black !important;
+}
+
+.color-white
+{
+    color : whitesmoke !important;
+}
+
+.color-purple
+{
+    color : purple !important;
+}
+
+.text-font{
+    font-family :'Monotype Corsiva' !important;
+    font-size : 130%;
+}
+
+.font-80
+{
+    font-size : 80%;
+}
+
+.font-90
+{
+    font-size : 90%;
+}
+
+.font-110
+{
+    font-size : 110%;
+}
+
+.font-120
+{
+    font-size : 120%;
+}
+
+.font-150
+{
+    font-size : 150%;
+}
+
+.font-italics
+{
+    font-style :italic;
+}
+
+.btn-double
+{
+    line-height : 3;
+}
+
+.basket_delete
+{
+    width : 200px;
+}
+
+.fixedcol
+{
+    width :inherit !important;
+
+}
+.opt-title2
+{
+    margin-top  : 20px;
+    font-size : 120%;
+    color : orange;
+}
+
+.rowheader
+{
+    font-size : 120%;
+    color : blue;
+}
+
+.nodisplay{
+    display :none;
+}
+
+.mypadding{
+    padding: 2px !important;
+    font-size : 100% !important;
+    height : 26px;  
+}
+
+/*. {
+    padding-top : 5px;
+    font-weight : 500;
+}*/
+
+.myaddon-color {
+    background-color : lightyellow;
+    color : green;
+}
+.r {
+    padding-top : 9px;
+    font-weight : 500;
+}
+
+.myradioq label,
+.mycheckq label{
+    padding : 4px 20px  !important;
+    margin : 5px !important;
+}
+
+.round-corners
+{
+      border-radius: 4px;
+}
+
+.nav-tabs {
+    font-family : inherit;
+    font-size : 100%;
+}
+.vert-align {
+    margin-bottom : 0;
+    vertical-align : middle;
+}
+
+td.details-control {
+    background: url('../../Images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.details td.details-control {
+    background: url('../../Images/details_close.png') no-repeat center center;
+}
+.newspaper
+{
+    column-count : 4;
+    column-gap : 30px;
+}
+
+.carousel-size
+{
+    margin : 20px;
+
+}
+  .carousel-inner1 > .item > img,
+  .carousel-inner1 > .item > a > img {
+      width: 100%;
+      margin: auto;
+  }
+
+  .carousel-control
+  {
+      width : 0px;
+  }
+
+
+
+/* info and errors */
+.message-info {
+    border: 1px solid;
+    clear: both;
+    padding: 10px 20px;
+}
+
+.message-error {
+    clear: both;
+    color: #e80c4d;
+    font-size: 120%;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.message-success {
+    color: #7ac0da;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.error {
+    color: #e80c4d;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*spin css*/
+
+    #loading
+    {
+        display:none;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background:rgba(255,255,255,0.8);
+        z-index:1000;
+    }
+  
+    #loadingcontent
+    {
+        display:table;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+    }
+  
+    #loadingspinner
+    {
+        display: table-cell;
+        vertical-align:middle;
+        width: 100%;
+        text-align: center;
+        font-size:larger;
+        padding-top:80px;
+    }
+
+    .navbar-default {
+    background-color: #ceeb7b;
+    border-color: #c3e75e;
+    }
+
+/* */
+ .ourlogo {
+     width:100%;
+ }
+
+ .logoyear
+ {
+    font-size : 90%;
+    color : fuchsia;
+    text-align : right;
+ }
+
+ .logoname  {    
+    font-size : 50px;
+    font-family : inherit;
+    line-height :100px;
+    height : 100px;
+  }
+
+.marq1
+{
+    /*background-color :#dff0d8;*/
+    width : 100%;
+    text-align : center;
+    top : 0;
+}
+
+.lost-password{
+    font-size: 100% ;
+    font-family: inherit;
+    text-align : center;        
+    color: lightcoral !important;
+}
+
+.table-login{
+        font-family : inherit;
+        font-size: 100%;
+        width: 50%;
+        margin : 0 auto;
+}
+.compname {
+        font-size :200%;
+        text-align : center;
+}
+.outerr {
+    font-family : inherit;
+    font-size : x-large;
+    text-align : center;
+    color : red;
+}
+.complogo {
+    padding : 0;
+    width : 100%;
+}
+.portal-name {
+    font-size :140% ;
+    color : blue;
+}
+.portal-mess {
+    font-family : inherit;
+    font-size : 200%;
+    color : red;
+}
+.sidename {
+    font-size : 130% ;
+    color : black;
+}
+.byemess{
+    font-size : 300%;
+    color : black;
+}
+.opt-title,
+.opt-title1
+{
+    font-size : 150%;
+    color : green;
+    line-height : 2;
+}
+.login-text{
+    font-size : 15px;
+}
+
+.relogin-text{
+    font-size : 150%;
+}
+
+.row-height {
+    height : 8px;
+}
+
+.topview {
+    background-color : beige;
+    font-style :italic;
+    color : black;
+}
+
+table.dataprintv thead th:first-child  {
+    background : none;   
+}
+
+input[type="text"] ,
+input[type="password"] ,
+textarea
+{
+  border: solid 1px #dcdcdc;
+  -moz-transition : box-shadow 0.3s, border 0.3s;
+  -webkit-transition : box-shadow 0.3s, border 0.3s;
+  transition : box-shadow 0.3s, border 0.3s;
+}
+input[type="text"]:focus,
+input[type="text"].focus, 
+input[type="password"]:focus,
+input[type="password"].focus,
+textarea:focus,
+textarea.focus
+{
+  border: solid 1px #707070;
+  -moz-box-shadow : 0 0 5px 1px #969696;
+  -webkit-box-shadow : 0 0 5px 1px #969696;
+  box-shadow : 0 0 5px 1px #969696;  
+}
+
+#viewerContainer {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray;
+}
+
+.submit-progress-bg {
+    background-color: lightgray;
+    opacity: .5;
+  }
+
+.ScrolledTable {
+    overflow : auto;
+    clear : both;
+        
+}
+
+/*form modal header color*/
+
+.modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-warning {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f0ad4e;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-info {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #428bca;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+@media (min-width: 768px)
+{
+    .col-sm-text-right
+    {
+        text-align: right !important;
+    }
+}
+
+.vlinet 
+{
+  position: relative;
+  top: 50%;
+  -webkit-transform: perspective(1px) translateY(-50%);
+  -ms-transform: perspective(1px) translateY(-50%);
+  transform: perspective(1px) translateY(-50%);
+}
+
+ .rowspacer {
+     padding-top: 100px;
+     padding-bottom: 40px
+ }
+
+ /* menu css*/
+.sidebar {
+    vertical-align: top;
+    height: 100%;
+    width: 0;
+    position: fixed;
+  z-index: 10000;
+    top: 0px;
+    left: 0;
+    transition: 0.5s;
+    padding-top: 0px;
+    display: none;
+     /*overflow-y: auto;*/
+}
+
+.book a {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    margin-right: -50%;
+     z-index: 10000;
+    transform: translate(-50%, -50%);
+}
+
+/* others*/
+.btnextra{
+    color: #ffffff;
+    background-color:#3c4b68;
+}
+
+
+h3{
+    padding-top:0;
+    margin-top:0;
+}

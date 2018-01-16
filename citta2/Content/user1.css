@@ -1,0 +1,108 @@
+﻿
+body {
+    font-family: "Comic Sans MS", "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-size : 13px;
+}
+
+.login-text{
+    font-size : 15px;
+}
+
+
+    .horzmenu
+    {
+        font-size : 130%;
+    }
+
+    .menutable,
+    .accordop .ui-accordion-content,
+    .accordop1 .ui-accordion-content,
+    .accord .ui-accordion-content
+    {
+        font-size : 100% ;
+        font-family :'Comic Sans MS', cursive,'Courier New', Courier, 'Nimbus Mono L', monospace;
+        font-family : inherit !important;
+    }
+
+    .accordop .ui-accordion-header,
+    .accordop1 .ui-accordion-header,
+    .accord .ui-accordion-header
+    {
+        margin : 0px;
+        background : #C4F2C2;
+        font-family :'Comic Sans MS', cursive,'Courier New', Courier, 'Nimbus Mono L', monospace;
+        font-family : inherit !important;
+        font-size : 100% ;
+    }
+
+    .accordop .ui-accordion-header:nth-of-type(even),
+    .accordop1 .ui-accordion-header:nth-of-type(even),
+    .accord .ui-accordion-header:nth-of-type(even)
+    {
+        margin : 0px;
+        background : #C7E0F2;
+        font-family :'Comic Sans MS', cursive,'Courier New', Courier, 'Nimbus Mono L', monospace;
+        font-family : inherit !important;
+        font-size : 100% ;
+    }
+    
+.text-font{
+    font-family :'Monotype Corsiva' !important;
+    font-size : 130%;
+}
+
+/* */
+
+.marq1
+{
+    /*background-color :#dff0d8;*/
+    width : 100%;
+    text-align : center;
+    
+}
+
+.lost-password{
+    font-size: 100% ;
+    font-family: inherit;
+    text-align : center;        
+    color: lightcoral !important;
+}
+
+.compname {
+        font-size :200%;
+        text-align : center;
+}
+.complogo {
+    padding : 0;
+    width : 100%;
+}
+.byemess{
+    font-size : 300%;
+    color : black;
+}
+
+.photologo{
+    font-size:100%;
+
+}
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+  }
+  .custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+  }
+  .custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+  }
+
+  .well {
+      margin-bottom: 5px;
+      margin-top:5px;
+  }

@@ -1,0 +1,123 @@
+﻿
+
+@model  CittaErp.Models.vw_genlay
+@{
+    SelectList[] head_det = (SelectList[])Session["head_det"];
+
+}
+<div class="tabbable">
+    <div class="row form-group col-sm-3">
+        <label for="asset-group" class="col-sm-7 control-label">Contract ID</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 20 } : new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.vwstring0)
+        </div>
+    </div>
+
+    <div class="row form-group col-sm-9">
+        <label for="AssetDescription" class="col-sm-2 control-label">Vendor</label>
+        <div class="col-sm-10">
+            @Html.DropDownListFor(m => m.vwstring2, ViewBag.vendor as SelectList, "Select", new { @class = "form-control", id = "id_vend" })
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Contract Information</a></li>
+        <li><a href="#tab2" data-toggle="tab">Documents</a></li>
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+
+            <div class="row form-group">
+                <label for="Note" class="col-sm-3 control-label">Contract Description</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring1, new { @class = "form-control", rows = "8" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label">Contract Date</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstring7, new { @class = "form-control datet", maxlength = 50 })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label">Service Order</label>
+
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring3, ViewBag.serviceorder as SelectList, "Select", new { @class = "form-control", id = "id_svo" })
+                </div>
+            </div>
+            @if (Model.vwstring8 == null | Model.vwstring8 == "")
+            { <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label">Contract Reference No</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstring8, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+
+            }
+            else
+            {
+                <div class="row form-group">
+                    <label for="Asset user" class="col-sm-3 control-label">Order No</label>
+
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring8, new { @class = "form-control", maxlength = 50, @disabled = "disabled" })
+                    </div>
+                    @Html.HiddenFor(m => m.vwstring8)
+                </div>
+            }
+
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label">Contract Value</label>
+                @if (Model.vwstring4 == "" | Model.vwstring4 == null)
+                {
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control", maxlength = 50 })
+                    </div>
+                }
+                else
+                {
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control", maxlength = 50, @disabled = "disabled" })
+                    </div>
+                            @Html.HiddenFor(m => m.vwstring4)
+                }
+            </div>
+            <div class="row form-group">
+                <label for="Asset user" class="col-sm-3 control-label">Contract Duration(days)</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstring5, new { @class = "form-control", maxlength = 50 })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab2">
+            <div class="row form-group">
+                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring6, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Documents</label>
+                <div class="col-sm-9">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+        </div>
+    </div>
+</div>

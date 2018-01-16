@@ -1,0 +1,37 @@
+﻿@model anchor1.Models.vw_collect 
+@{
+    ViewBag.Title = "";
+}
+
+
+@using (Html.BeginForm("Sap02", "PTransfer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_ProcessBtn")
+
+    <fieldset>
+        <legend>tab_allow</legend>
+        
+    <div class="container-fluid table-edit">
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">File Name</div>
+            <div class="col-sm-8"> 
+                <input type="file" id="tfile" name="tfile" style="width : 500px" class="round-corners" />
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-sm-3 col-sm-text-right">Overwrite Records?</div>
+            <div class="col-sm-2  mycheckq">
+                @Html.CheckBoxFor(model => Model.ws_bool0, new { @id = "close_yesno" })
+                <label for="close_yesno">
+                    @(Model.ws_bool0 ? "On" : "Off")
+                </label>
+            </div>
+        </div>
+
+    </div>
+                
+   </fieldset>
+}

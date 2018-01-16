@@ -1,0 +1,84 @@
+﻿@model CittaErp.Models.vw_collect 
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string rtype = psess.sarrayt0[3].ToString();
+    
+}
+
+@Html.Partial("menu")
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_ReportBtn");
+
+    <fieldset><legend></legend>
+    <div class="container-fluid table-edit">
+
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+            <div class="col-sm-3 ">
+                @Html.DropDownListFor(model => Model.ws_string8, @ViewBag.customer as SelectList, "[--ALL--]", new { @class = " form-control mypadding " })
+            </div>
+            <div class="col-sm-1 text-center">To</div>
+            <div class="col-sm-3 ">
+                @Html.DropDownListFor(model => Model.ws_string9, @ViewBag.customer as SelectList, "[--ALL--]", new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Transaction Date</div>
+            <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string6, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+            <div class="col-sm-1 text-centre  col-sm-offset-1"> To </div>
+            <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string7, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Period</div>
+            <div class="col-sm-2 ">
+                @Html.DropDownListFor(model => Model.ws_string2, new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string2), new { @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+                @Html.DropDownListFor(model => Model.ws_string3, new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string3), new { @class = " form-control mypadding " })
+            </div>
+            <div class="col-sm-1 text-center">To</div>
+            <div class="col-sm-2 ">
+                @Html.DropDownListFor(model => Model.ws_string4, new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string4), new { @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+                @Html.DropDownListFor(model => Model.ws_string5, new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string5), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+
+       @Html.Partial("_RepSelViewnp", @Model)
+
+
+
+        </div>
+
+    @Html.HiddenFor(model => model.ws_string1)
+    @Html.Hidden("rtype2",Model.tx_string2[0])
+
+   </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+
+
+<script>
+
+    //default_payment();
+    rep_query($("#rtype1").val());
+
+</script>
+}

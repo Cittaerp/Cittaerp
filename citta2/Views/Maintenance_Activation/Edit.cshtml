@@ -1,0 +1,82 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Repairs Notification Maintenance";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Repairs Notification Maintenance</h3>
+        <button type="submit" class="btn btn-success btn-default" id="sub">Update</button>
+        &nbsp;&nbsp;&nbsp;
+        <span class="btn  btn-danger btn-default" id="id_delete">Delete Record</span>
+        <br />
+        <hr />
+
+
+        @Html.Partial("Maintenance_Activation")
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+            </div>
+
+        </div>
+        @Html.HiddenFor(m => m.vwint0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+<div id="loader5" data-request-ajax5="@Url.Action("asset")"></div>
+
+@section Scripts {
+    <script>
+
+
+        $(document).ready(function () {
+
+        $("#id_fixed").change(function () {
+            var URL = $('#loader5').data('request-ajax5');
+            var URLext = $('#id_fixed').val();
+            //alert(URLext);
+            //var set_price = "N"
+
+            URL = $.trim(URL);
+            URLext = $.trim(URLext);
+            URL = URL + "/" + URLext;
+
+            $.ajax({
+
+                url: URL,
+                type: 'Post',
+
+                error: function (xhr, status, error) {
+                    alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                },
+                success: function (data) {
+                    var empp = '';
+                    $.each(data, function (i, state) {
+                        empp = state.Text;
+                        if (state.Value == "fixed")
+                            $("#id_location").val(empp);
+                        if(state.Value == "assett")
+                            $("#id_assetuser").val(empp)
+
+                    });
+
+
+                }
+            });
+
+        });
+        });
+    </script>
+}
+
+
+
+
+
+
+

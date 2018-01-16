@@ -1,0 +1,18 @@
+﻿@using anchor1.Helpers        
+@{ 
+    anchor1.Models.worksess worksess = (anchor1.Models.worksess)Session["worksess"];
+
+}
+<p></p><p>
+
+            <button type="submit" class="btn btn-success valshow " name="command2" id="addxht"  onclick="lgshow1()" >
+                <i class="glyphicon glyphicon-save"></i> Save @worksess.ptitle
+                </button>
+            <span class="link-bold">|  @Html.EncodedActionLink("Back to List", "Index", null, new { pc = "" }) | </span>
+
+    
+            <button type="button" class="btn btn-danger valshow" name="command2" id="id_delete"  onclick="lgshow1()" >
+                <i class="glyphicon glyphicon-trash"></i> Delete @worksess.ptitle
+                </button>
+        </p>
+

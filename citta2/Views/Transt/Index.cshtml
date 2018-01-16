@@ -1,0 +1,61 @@
+﻿@using anchor1.Helpers
+@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    ViewBag.Title = "sales";
+}
+
+@Html.Partial("_CreateHeaderOnly")
+@*<h3>@psess.temp3 </h3>
+@Html.EncodedActionLink("Add New", "CreateHeader", null,new { pc = 1 }, new { @class = "btn btn-primary", @style = "color:white" })
+<span>@Html.EncodedActionLink(" ", "Create", null, new { xy = 1 }, new { @class = "create_logo lgtime ", title = "New Record" }) </span>*@
+<p />
+
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th> Jrn Nbr</th>
+            <th>Ref Nbr</th>
+            <th>Batch Desc</th>
+            <th>Post Period</th>
+            <th>Balanced</th>
+            <th>Initiator</th>
+            @*<th>@psess.temp2 </th>
+            <th>Status </th>*@
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwint0</td>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring2</td>
+                <td>@item.vwstring4</td>
+                <td>@item.vwstring3</td>
+                <td>@item.vwstring5</td>
+                <td>
+                    @Html.EncodedActionLink("E", "Edit",null, new { key1 = @item.vwint0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+
+
+    </script>
+}

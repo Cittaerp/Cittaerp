@@ -1,0 +1,81 @@
+﻿@model CittaErp.Models.vw_collect 
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_ReportBtn");
+
+    <fieldset>
+    <div class="container-fluid table-edit">
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Report Name</div>
+        <div class="col-sm-4 ">
+            @Html.DropDownList("ws_string1",@ViewBag.report as SelectList )
+        </div>
+    </div>
+    <div class="row" id="row_payrun">
+        <div class="col-sm-3 col-sm-text-right">Payment Run</div>
+        <div class="col-sm-3">
+            <select class = " form-control mypadding " id="select_period" name="ws_string0"><option></option></select>
+@*            @Html.DropDownListFor(model => model.ws_string0, new SelectList(ViewBag.update, "Value", "Text", @Model.ws_string0), "", new { id = "select_period" })*@
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Payroll Period</div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="period_from_mm" name="ws_string2"><option></option></select>
+@*            @Html.DropDownList("ws_string2",new SelectList (@ViewBag.pmonth as SelectList,"Value","Text",@Model.ws_string2), new { id = "period_from_mm" })*@
+            </div><div class="col-sm-1">
+            @Html.DropDownList("ws_string3", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string3), new { id = "period_from_yy",  @class = " form-control mypadding " })
+        </div>    
+        <div class="col-sm-1 text-centre">To</div>
+        <div class="col-sm-2 ">
+            <select class = " form-control mypadding " id="period_to_mm" name="ws_string4"><option></option></select>
+@*            @Html.DropDownList("ws_string4",new SelectList (@ViewBag.pmonth as SelectList,"Value","Text",@Model.ws_string4), new { id = "period_to_mm" })*@
+        </div><div class="col-sm-1">
+            @Html.DropDownList("ws_string5", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string5), new { id = "period_to_yy", @class = " form-control mypadding " })
+        </div>    
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right ">Summary ?</div>
+        <div class="col-sm-8 mycheckq">
+            @Html.CheckBoxFor(model => Model.ws_bool0,new{@id="close_yesno"})
+                <label for="close_yesno">
+                    @( Model.ws_bool0 ?"On":"Off")
+                </label>  
+        </div>
+    </div> 
+
+        @Html.Partial("_RepSelViewnp", @Model)
+
+
+        </div>
+
+     @Html.Hidden("rtype2",Model.tx_string2[0])
+
+  </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+
+
+<script>
+    default_payment();
+    rep_query($("#rtype1").val());
+
+</script>
+}

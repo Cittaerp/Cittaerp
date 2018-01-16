@@ -1,0 +1,73 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "sales";
+}
+@*Html.Partial("menu")*@
+<h3>Purchase Ordering Listing</h3>
+<div align="left" class="col-sm-4">
+    @Html.ActionLink("Add New", "CreateHeader", "", new { @class = "btn btn-primary", @style = "color:white" })
+</div>
+@*<div align="center" class="col-sm-4">
+    @Html.ActionLink("Convert Quote to Order", "QuoteIndex", "", new { @class = "btn btn-success", style = "width : 160px; display : inline; color:white" })
+  </div>*@
+
+
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Order reference</th>
+            <th>Customer</th>
+            <th>Currency code</th>
+            <th>Order amount</th>
+            <th>Order date</th>
+            <th>Order expiration date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Void</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring1</td>
+                <td>@item.vwstring2</td>
+                <td class="numformat">@item.vwdecimal0</td>
+                @if (item.vwstring3 != "") { 
+                <td>@item.vwstring3.Substring(6,2)/@item.vwstring3.Substring(4,2)/@item.vwstring3.Substring(0,4)</td>
+                }
+                else
+                {
+                    <td>01/01/0001</td>
+                }
+                @if (item.vwstring4 != "") {
+               <td>@item.vwstring4.Substring(6, 2)/@item.vwstring4.Substring(4, 2)/@item.vwstring4.Substring(0, 4)</td>
+                }
+                else
+                {
+                    <td>01/01/0001</td>
+                }
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwint0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+                <td><span class="btn btn-outline btn-xs voiditem" data-keyg="@item.vwint0" style="color:red"> <i class="glyphicon "></i>Void </span></td>  
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+
+<div id="loader21" data-request-ajax21="@Url.Action("void_list")"></div>
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+
+
+    </script>
+}

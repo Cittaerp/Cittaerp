@@ -1,0 +1,565 @@
+﻿
+@model CittaErp.Models.vw_collect
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string rtype = psess.sarrayt0[3].ToString();
+    int ctr1 = 0;
+    string lblname = "";
+    string surep = "";
+    if (psess.sarrayt0[2] != null)
+    {
+        surep = psess.sarrayt0[2].ToString();
+    }
+
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_ReportBtn");
+
+    <fieldset>
+        <legend></legend>
+        <div class="container-fluid table-edit">
+
+            @if (rtype == "NOTRANS" || rtype == "TRANEXP" || rtype == "TRANSBASE" || rtype == "CRMBASE")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Transaction Type</div>
+                    <div class="col-sm-4 ">@Html.DropDownListFor(model => Model.ws_string10, @ViewBag.type as SelectList, "", new { @class = " form-control mypadding " })</div>
+                </div>
+            }
+
+            @if (rtype == "MANAGE" || rtype == "SKILL" || rtype == "SEPA" || rtype == "HMOENROLL" || rtype == "HMOEXIT" || rtype == "NOTRANS"
+                     || rtype == "HRSTAFF" || rtype == "JOINER" || rtype == "VACF" || rtype == "BDATE" || rtype == "ANNV" || rtype == "CHTR" || rtype == "HREXPBAL"
+                     || rtype == "FLTRANS" || rtype == "EXPTRANS" || (rtype == "TURNOVER" && psess.sarrayt0[0].ToString() == "N")
+                     || rtype == "AUDIT" || rtype == "HREXDOCP" || rtype == "FLMAN")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string2, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre  col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string3, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                </div>
+            }
+
+            @if (rtype == "STAFF")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Date as at</div>
+                    <div class="col-sm-2">@Html.TextBoxFor(model => Model.ws_string2, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                </div>
+            }
+
+            @if (rtype == "JOINER")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Selection</div>
+                    <div class="col-sm-8 ">
+                        @Html.CheckBoxFor(model => Model.ar_bool0[0])  Joiners &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                        @Html.CheckBoxFor(model => Model.ar_bool0[1])  Leavers
+                    </div>
+                </div>
+            }
+
+
+            @if (rtype == "CONFM" || rtype == "DUES" || (rtype == "TURNOVER" && psess.sarrayt0[0].ToString() == "Y"))
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-2 ">
+                        @Html.DropDownListFor(model => Model.ws_string2, new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string2), new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1">
+                        @Html.DropDownListFor(model => Model.ws_string3, new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string3), new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "AWARD")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-2 ">
+                        @Html.DropDownListFor(model => Model.ws_string2, new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string2), new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1">
+                        @Html.DropDownListFor(model => Model.ws_string3, new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string3), new { @class = " form-control mypadding " })
+                    </div>
+                    <div class="col-sm-1 text-center">To</div>
+                    <div class="col-sm-2 ">
+                        @Html.DropDownListFor(model => Model.ws_string4, new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string4), new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1">
+                        @Html.DropDownListFor(model => Model.ws_string5, new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string5), new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "R04")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Selection Basket</div>
+                    <div class="col-sm-4 ">
+                        @Html.DropDownListFor(model => Model.ws_string2, new SelectList(@ViewBag.basket as SelectList, "Value", "Text", @Model.ws_string2), "", new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "DUES" || rtype == "MEMB")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Clubs/Associations</div>
+                    <div class="col-sm-3 ">
+                        @Html.DropDownListFor(model => Model.ws_string8, @ViewBag.hos as SelectList, "[--ALL--]", new { @class = " form-control mypadding " })
+                    </div>
+                    <div class="col-sm-1 text-center">To</div>
+                    <div class="col-sm-3 ">
+                        @Html.DropDownListFor(model => Model.ws_string9, @ViewBag.hos as SelectList, "[--ALL--]", new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "ACRUA" || rtype == "BALAN" || rtype == "VACBAL" || rtype == "MEDBAL" || rtype == "TRNTBAL" || rtype == "VACP" || rtype == "MEDIP")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-2 ">
+                        @Html.DropDownListFor(model => Model.ws_string2, new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string2), new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+
+            @if (rtype == "EVENT")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Activities Due for the Next </div>
+                    <div class="col-sm-1 ">
+                        @Html.TextBoxFor(model => Model.ws_decimal0, new { @maxlength = 3, @class = " form-control mypadding " })
+                        </div><div class="col-sm-1">
+                        Days
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "MEDBILL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Statement by</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string6, "S", new { id = "hos1", @checked = "checked" })
+                        <label for="hos1">Staff</label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "H", new { id = "hos2" })
+                        <label for="hos2"> Hospital </label>    &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "B", new { id = "hos3" })
+                        <label for="hos3"> Summary by Hospital</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Medical Year</div>
+                    <div class="col-sm-1 ">@Html.DropDownListFor(model => Model.ws_string2, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-2"> To </div>
+                    <div class="col-sm-1 ">@Html.DropDownListFor(model => Model.ws_string3, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Medical Date</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string4, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string5, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Hospital</div>
+                    <div class="col-sm-3 ">
+                        @Html.DropDownListFor(model => Model.ws_string8, @ViewBag.hos as SelectList, "", new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1"> To </div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => Model.ws_string9, @ViewBag.hos as SelectList, "", new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "VACTAKEN")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right"> Vacations Types</div>
+                    <div class="col-sm-8">
+                        @foreach (var vac2 in ViewBag.VacType)
+                        {
+                            <input type="checkbox" name="bool1" value="true" /><input name="bool1" type="hidden" value="false" />
+                            @vac2.c2
+                            @:&nbsp;&nbsp;&nbsp;&nbsp;
+                }
+
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "VACBAL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right"> Vacations Types</div>
+                    <div class="col-sm-8">
+
+                        @foreach (var item in ViewBag.VacType)
+                        {
+                            lblname = "typay" + ctr1;
+                            <input id="@lblname" name="ws_string5" type="radio" value="@item.c1" />
+                            <label for="@lblname">@item.c2 </label>  @:&nbsp;&nbsp;
+
+                            ctr1++;
+                        }
+
+
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "TRANSBASE" || rtype == "TRANEXP" || rtype == "HREXPN" || rtype == "CRMBASE")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string2, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string3, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Date Approved</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string4, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string5, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                </div>
+
+            }
+
+            @if (rtype == "TRNTAKEN")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-1 ">@Html.DropDownListFor(model => Model.ws_string2, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-2"> To </div>
+                    <div class="col-sm-1 ">@Html.DropDownListFor(model => Model.ws_string3, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Start Date</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string4, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string5, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Training</div>
+                    <div class="col-sm-3 ">
+                        @Html.DropDownListFor(model => Model.ws_string8, @ViewBag.trnt_type as SelectList, "", new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1 text-centre"> To </div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => Model.ws_string9, @ViewBag.trnt_type as SelectList, "", new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "TRNOT" || rtype == "TRQD")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-3 ">@Html.DropDownListFor(model => Model.ws_string2, @ViewBag.trnt_type as SelectList, new { @class = " form-control mypadding " })</div>
+                </div>
+            }
+
+            @if (rtype == "VACTAKEN")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-1 ">@Html.DropDownListFor(model => Model.ws_string2, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-2"> To </div>
+                    <div class="col-sm-1 ">@Html.DropDownListFor(model => Model.ws_string3, @ViewBag.pyear as SelectList, new { @class = " form-control mypadding " })</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Start Date</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string4, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string5, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                </div>
+
+            }
+
+
+            @if (rtype == "HRCREATE" || rtype == "HRDETAIL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Report Name</div>
+                    <div class="col-sm-4 ">@Html.DropDownListFor(model => Model.ws_string5, @ViewBag.report as SelectList, new { @class = " form-control mypadding " })</div>
+                </div>
+            }
+
+
+            @if (rtype == "HRTRANS" || rtype == "HRDETAIL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Staff Name</div>
+                    <div class="col-sm-4 ">
+                        <select  class = " form-control mypadding " id="staff1" name="ws_string8"> <option value=""></option> </select>
+                    </div><div class="col-sm-1 text-centre"> To </div>
+                    <div class="col-sm-4">
+                        <select  class = " form-control mypadding " id="staff2" name="ws_string9"> <option value=""></option> </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">@psess.temp4</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string2, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                    <div class="col-sm-1 text-centre col-sm-offset-1"> To </div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string3, new { @maxlength = 10, @class = "form-control mypadding dob" })</div>
+                </div>
+
+            }
+
+            @if (rtype == "HRCREATE")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Period / Date (If required)</div>
+                    <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string4, new { @maxlength = 10, @class = " form-control mypadding " })</div>
+                </div>
+
+            }
+
+
+            @if (rtype == "HREXPN")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Transaction Type</div>
+                    <div class="col-sm-3 ">
+                        @Html.DropDownListFor(model => Model.ws_string8, @ViewBag.type as SelectList, "", new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1 text-centre"> To </div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => Model.ws_string9, @ViewBag.type as SelectList, "", new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+
+            @if (rtype == "TRANSBASE" || rtype == "TRANEXP" || rtype == "HREXPN" || rtype == "CRMBASE")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Approved by</div>
+                    <div class="col-sm-3 ">
+                        <select  class = " form-control mypadding " name="ar_string5[0]" id="staff1"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Transaction Selection</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string6, "U", new { id = "tspay1" })
+                        <label for="tspay1">UnApproved</label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "A", new { id = "tspay2" })
+                        <label for="tspay2">Approved</label>    &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "B", new { id = "tspay3", @checked = "checked" })
+                        <label for="tspay3">All Transactions</label>   &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "R", new { id = "tspay4" })
+                        <label for="tspay4">Rejected Transactions</label>
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "BALAN" || rtype == "VACBAL" || rtype == "MEDBAL" || rtype == "TRNTBAL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Report Type</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string6, "B", new { id = "rpay1", @checked = "checked" })
+                        <label for="rpay1">Balance </label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "X", new { id = "rpay2" })
+                        <label for="rpay2"> Excess</label>
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "HREXPBAL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Report Type</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string6, "B", new { id = "rpay1", @checked = "checked" })
+                        <label for="rpay1">Balance </label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "X", new { id = "rpay2" })
+                        <label for="rpay2"> Excess</label>   &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "T", new { id = "rpay3" })
+                        <label for="rpay3"> Outstanding</label>
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "HREXDOCP")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Document Type</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string6, "P", new { id = "r1pay1", @checked = "checked" })
+                        <label for="r1pay1">No Posting </label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "X", new { id = "r1pay2" })
+                        <label for="r1pay2"> Not Fully Posted</label>   &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "A", new { id = "r1pay3" })
+                        <label for="r1pay3"> Fully Posted</label>   &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "L", new { id = "r1pay4" })
+                        <label for="r1pay4"> Listing</label>
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "AUDIT")
+            {
+                if (Model.ws_int1 == 1)
+                {
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-text-right">@psess.sarrayt0[3]</div>
+                        <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string4, new { @maxlength = 10, @class = " form-control mypadding " })</div>
+                        <div class="col-sm-1 text-centre"> To </div>
+                        <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.ws_string5, new { @maxlength = 10, @class = " form-control mypadding " })</div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Transaction Type</div>
+                    <div class="col-sm-3 ">
+                        @Html.DropDownListFor(model => Model.ws_string8, @ViewBag.type as SelectList, "", new { @class = " form-control mypadding " })
+                    </div><div class="col-sm-1 text-centre"> To </div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => Model.ws_string9, @ViewBag.type as SelectList, "", new { @class = " form-control mypadding " })
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "MDEP")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Staff Name</div>
+                    <div class="col-sm-4 ">
+                        <select  class = " form-control mypadding " id="staff1" name="ws_string8"> <option value=""></option> </select>
+                    </div><div class="col-sm-1 text-centre "> To </div>
+                    <div class="col-sm-4">
+                        <select  class = " form-control mypadding " id="staff2" name="ws_string9"> <option value=""></option> </select>
+                    </div>
+                </div>
+            }
+
+
+            @if (surep == "1")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Direct Lower Report 1</div>
+                    <div class="col-sm-1 ">@Html.CheckBoxFor(model => Model.ar_bool1[0])  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right ">Direct Lower Report 2</div>
+                    <div class="col-sm-1 ">@Html.CheckBoxFor(model => Model.ar_bool1[1])  </div>
+                </div>
+            }
+
+            @if (rtype == "VACTAKEN" || rtype == "VACBAL" || rtype == "MEDBAL" || rtype == "MEDBILL" || rtype == "TRANSBASE" || rtype == "HRSTAFF" || rtype == "BALAN" || rtype == "TRANEXP"
+            || rtype == "HRTRANS" || rtype == "HRMANPL" || rtype == "HRDETAIL" || rtype == "TRNTBAL" || rtype == "TRNTAKEN" || rtype == "STAFF" || rtype == "CHTR"
+             || rtype == "EXPTRANS" || rtype == "HREXPBAL")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Staff Selection</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string7, "Y", new { id = "spay1" })
+                        <label for="spay1">All</label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string7, "N", new { id = "spay2" })
+                        <label for="spay2"> Exclude Ex-Staff </label>    &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string7, "Z", new { id = "spay3" })
+                        <label for="spay3"> Ex-Staff Only</label>
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "FLTRANS" || rtype == "FLMAST")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Fleet Selection</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string7, "Y", new { id = "spay1" })
+                        <label for="spay1">All</label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string7, "N", new { id = "spay2" })
+                        <label for="spay2"> Exclude Closed </label>    &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string7, "Z", new { id = "spay3" })
+                        <label for="spay3"> Closed Only</label>
+                    </div>
+                </div>
+            }
+
+            @if (rtype == "GRAT")
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right"> @(Model.ws_string8 == "G" ? "Payment Period" : "Provision Period")</div>
+                    <div class="col-sm-2 ">
+                        @Html.DropDownList("ws_string2", new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string2), new { @class = " form-control mypadding " })
+                </div><div class="col-sm-1">
+                    @Html.DropDownList("ws_string3", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string3), new { @class = " form-control mypadding " })
+                </div>
+                @if (Model.ws_string8 == "G")
+                {
+                    <div class="col-sm-1 text-centre">To</div>
+                    <div class="col-sm-2 ">
+                        @Html.DropDownList("ws_string4", new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.ws_string4), new { @class = " form-control mypadding " })
+                </div><div class="col-sm-1">
+                    @Html.DropDownList("ws_string5", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.ws_string5), new { @class = " form-control mypadding " })
+                </div>
+                }
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">Transaction Selection</div>
+                <div class="col-sm-8 myradioq">
+                    @Html.RadioButtonFor(model => model.ws_string7, "A", new { id = "spay1" })
+                    <label for="spay1">All Transactions</label>  &nbsp;&nbsp;
+                    @Html.RadioButtonFor(model => model.ws_string7, "P", new { id = "spay2" })
+                    <label for="spay2"> Paid Transactions </label>    &nbsp;&nbsp;
+                    @Html.RadioButtonFor(model => model.ws_string7, "N", new { id = "spay3" })
+                    <label for="spay3"> Not Paid Transactions</label>
+                </div>
+            </div>
+            }
+
+            @if (rtype == "FLMAN" || rtype == "HRSTAFF" || rtype == "GRAT" )
+            {
+                <div class="row">
+                    <div class="col-sm-3 col-sm-text-right">Report Format</div>
+                    <div class="col-sm-8 myradioq">
+                        @Html.RadioButtonFor(model => model.ws_string6, "D", new { id = "pay1" })
+                        <label for="pay1">Details </label>  &nbsp;&nbsp;
+                        @Html.RadioButtonFor(model => model.ws_string6, "S", new { id = "pay2" })
+                        <label for="pay2"> Summary</label>
+                    </div>
+                </div>
+            }
+
+
+            @Html.Partial("_RepSelViewnp", @Model)
+
+        </div>
+
+        @Html.HiddenFor(model => model.ws_string1)
+        @Html.Hidden("rtype1", rtype)
+        @Html.Hidden("rtype2", Model.tx_string2[0])
+
+    </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+
+<div id="loader1" data-request-daily="@Url.Action("DailyList")"></div>
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb", "scriptcall")"></div>
+
+@section Scripts {
+    <script>
+
+        rep_query($("#rtype1").val());
+
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/CittaErp/pscript5.min.js")"></script>
+}

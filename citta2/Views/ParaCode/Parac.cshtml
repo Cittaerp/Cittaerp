@@ -1,0 +1,138 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string ptype =  psess.temp0.ToString();
+    string plabel = ViewBag.plabel;
+}
+        <div>
+
+    <div class="form-group">
+        <label for="PeriodNumber" class="col-sm-5 control-label">@psess.temp2</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10, @required = "required" } : new { @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.vwstring0)
+        </div>
+    </div>
+      
+    <div class="form-group">
+        <label for="DateFrom" class="col-sm-5 control-label">@psess.temp4</label>
+        <div class="col-sm-5">
+            @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 50 })
+        </div>
+    </div>
+            @if (ptype == "01")
+            {
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label"> @psess.temp5</label>
+                    <div class="col-sm-6 mycheckq">
+                        @Html.CheckBoxFor(model => Model.vwbool1, new { @id = "activat_yesno" })
+                        <label for="activat_yesno">
+                            @( Model.vwbool0 ? "On" : "Off")
+                        </label>
+                    </div>
+                </div>
+            }
+    @if (ptype == "03")
+    {
+        <div class="form-group">
+            <label for="DateTo" class="col-sm-5 control-label"> @psess.temp5</label>
+            <div class="col-sm-3">
+                @Html.DropDownListFor(m => m.vwstring2, ViewBag.glaccount as SelectList, "Select GL Account", new { @class = "form-control" })
+            </div>
+        </div>
+    }
+            @if (ptype == "13")
+            {
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label"> @psess.temp5</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring2, ViewBag.currency as SelectList, "Select Currency", new { @class = "form-control" })
+                    </div>
+                </div>
+            }
+            @if (ptype == "14")
+            {
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">@psess.temp5</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring2, ViewBag.country as SelectList, "Select Country", new { @class = "form-control" })
+                    </div>
+                </div>
+            }
+            @if (ptype == "16")
+            {
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">@psess.temp5</label>
+                    <div class="col-sm-2">
+                        @Html.DropDownListFor(m => m.vwstring2, ViewBag.d_c as SelectList, "Select", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Posting Code</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring4, ViewBag.screen as SelectList, "Select", new { @class = "form-control" })
+                    </div>
+                </div>
+            }
+            @*@if (ptype == "17")
+            {
+                 <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">@psess.temp2</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring0, ViewBag.cid as SelectList, "Select", new { @class = "form-control" })
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Leads Name</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring5, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Or Existing Customer</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstring1, ViewBag.cust as SelectList, "Select", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">@psess.temp5</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Email</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control", type="email" })
+                     </div>
+                </div>
+            }*@
+   
+    <div class="form-group">
+        <label for="Note" class="col-sm-5 control-label"> Note</label>
+        <div class="col-sm-5">
+            @Html.TextAreaFor(m => m.vwstring3, new { @class = "form-control", rows = "6" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">Documents</label>
+        <div class="col-sm-5">
+            <input type="file" name="photofile" multiple />
+          
+        </div>
+    </div>
+
+            @Html.Partial("_attachDoc")
+
+
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+</div>
+

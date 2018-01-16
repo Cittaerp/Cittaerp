@@ -1,0 +1,69 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"]; 
+    ViewBag.Title = "address";
+}
+@{
+    string lbl1 = psess.temp1;
+    //string add = "Delivery";
+    //string bran = "Branch";
+} 
+
+@*Html.Partial("menu")*@
+<h3>@psess.temp3</h3>
+@*@if (lbl1 == "Customer")
+{
+    <h3>@lbl1 @add Address Listing</h3>
+
+}
+else
+{
+    <h3>@lbl1 @bran Address Listing</h3>
+}*@
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+
+
+        <table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>@lbl1</th>
+            <th>Address ID</th>
+            <th>Location Alias </th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring3</td>
+                <td>@item.vwint1</td>
+                <td>@item.vwstring2</td>
+                <td>@item.vwstring4</td>
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwstring0, key2 = @item.vwint1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwint1"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+        @Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+
+    </script>
+}

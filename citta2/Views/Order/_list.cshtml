@@ -1,0 +1,91 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    //string shwdis = Session["shwdis"].ToString();
+    string itemname = ""; string subdescrip = "";
+}
+<table id="mytable" class="table table-bordred table-striped myTable1">
+
+    <thead>
+        <tr>
+            <th>line </th>
+            <th>Sub </th>
+            <th>Item </th>
+            <th>UOM</th>
+            <th>Unit Price</th>
+            <th>Quantity </th>
+            <th>Extended Price </th>
+            <th>Discount </th>
+            <th>Tax  </th>
+            <th>Order  </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            itemname = item.vwstring0 + "---" + item.vwstring2; 
+            if (item.vwstring4 == "G")
+            {
+                itemname = "Total";
+            }
+            if (item.vwint2 == 1)
+            {
+                subdescrip = "Manual";
+            }
+            else if (item.vwint2 == 2)
+            {
+                subdescrip = "Flat";
+            }
+            else if (item.vwint2 == 3)
+            {
+                subdescrip = "Promotion";
+            }
+            else if (item.vwint2 == 4)
+            {
+                subdescrip = "Stepped";
+            }
+            else if (item.vwint2 == 5)
+            {
+                subdescrip = "Special Discount";
+            }
+            else if (item.vwint2 == 6)
+            {
+                subdescrip = "Tax";
+            }
+            else
+            {
+                subdescrip = "";
+            }
+              
+            <tr>
+                <td>@item.vwint1</td>
+                <td>@subdescrip</td>
+                <td>@itemname</td>
+                <td>@item.vwstring3</td>
+                <td class="numformat">@item.vwdecimal0</td>
+                <td class="numformat">@item.vwdecimal1</td>
+                <td class="numformat">@item.vwdecimal2</td>
+                <td class="numformat">@item.vwdecimal4</td>
+                <td class="numformat">@item.vwdecimal3</td>
+                <td class="numformat">@item.vwdecimal5</td>
+                @if (item.vwstring4 != "N")
+                {
+                    <td><span style="color:red"> System</span></td>
+                    <td></td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwint0, key2 = @item.vwint1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                    </td>
+                
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0&@item.vwint1"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+                }
+                    </tr>
+        }
+
+    </tbody>
+
+</table>

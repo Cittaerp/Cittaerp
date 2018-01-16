@@ -1,0 +1,44 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    string mandate_id = "";
+}
+        <div>
+            <div class="form-group">
+                <label for="MainHeader" class="col-sm-5 control-label">Property</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring0, ViewBag.parameter as SelectList, "Select Type", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @required = "required" } : new { @disabled = "disabled" })
+                    @Html.ValidationMessageFor(m => m.vwstring0)
+                </div>
+            </div>
+            <br />
+           
+            @for (int count1 = 0; count1 < 10; count1++)
+            {
+                if (!(string.IsNullOrWhiteSpace(Model.vwstrarray0[count1])))
+                {
+                    mandate_id = "mandate" + @count1.ToString();
+                    <div class="form-group">
+                    <label for="Description" class="col-sm-5 control-label">@Model.vwstrarray0[count1]</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwdclarray0[count1], new { @class = "form-control numformat", @maxlength = 20 })
+                    </div>
+                        <div class="col-sm-2 mycheckq">
+                            @Html.CheckBoxFor(model => Model.vwblarray0[count1], new { @id = @mandate_id })
+                            <label for=@mandate_id>
+                                @( Model.vwblarray0[count1] ? "On" : "Off")
+                            </label>
+                        </div>
+                       </div>
+                 @Html.HiddenFor(m => m.vwstrarray0[count1])
+                
+            }
+            }
+
+
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring1, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        </div>

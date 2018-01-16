@@ -1,0 +1,29 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+        <div>
+            <div class="form-group">
+                <label for="PeriodNumber" class="col-sm-5 control-label">Period Number</label>
+                <div class="col-sm-1">
+                    @Html.TextBoxFor(m => m.vwint0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 2 } : new { @disabled = "disabled", style = "width : 50px" })
+                    @Html.ValidationMessageFor(m => m.vwint0)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateFrom" class="col-sm-5 control-label">Date From</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control datet", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Date To</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwstring3,new { @class = "form-control datet", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring1, new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+        </div>

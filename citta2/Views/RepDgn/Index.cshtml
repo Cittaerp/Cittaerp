@@ -1,0 +1,62 @@
+﻿@using anchor1.Helpers
+@model IEnumerable<anchor1.Models.vw_collect >
+
+@{
+    ViewBag.Title = "";
+}
+
+    @Html.ValidationSummary(true)
+    @Html.Partial("_IndexReport")
+
+<table class="display datadisplay">
+<thead>
+    <tr>
+        <th>Action</th>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>Menu Page</th>
+    </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.EncodedActionLink("Details", "Edit", null, new { jy = item.ws_string0}, new { @class = "edit_logo lgtime" })
+        </td>
+         <td>
+           @Html.DisplayFor(modelItem => item.ws_string0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ws_string1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ws_string2)
+        </td>
+    </tr>
+    }
+
+</tbody>
+</table>
+
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...Loading...
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+
+<script>
+
+
+</script>
+
+}

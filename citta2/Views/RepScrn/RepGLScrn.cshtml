@@ -1,0 +1,232 @@
+﻿@model CittaErp.Models.vw_genlay
+@{
+    int ctr1=0;
+    string chked="";
+    int payctr = 1;
+    string selfrom = "";
+    string selto = "";
+    string selid = "";
+}
+<div class="container-fluid " >
+
+  <div id="htabs1">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#Selscreen">Report Screen</a></li>
+        <li><a data-toggle="tab" href="#OptionR">Account Selection</a></li>
+        <li><a data-toggle="tab" href="#DataR">Transaction Selection</a></li>
+    </ul>
+
+<div class="tab-content">
+    <div id="Selscreen" class="tab-pane fade in active">
+        <br />
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Accounting Period</div>
+            <div class="col-sm-2 ">
+                @Html.DropDownList("vwstring2", new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.vwstring2), new { id = "period_from_mm", @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+                @Html.DropDownList("vwstring3", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.vwstring3), new { id = "period_from_yy", @class = " form-control mypadding " })
+            </div>
+            <div class="col-sm-1 text-centre">To</div>
+            <div class="col-sm-2 ">
+                @Html.DropDownList("vwstring4", new SelectList(@ViewBag.pmonth as SelectList, "Value", "Text", @Model.vwstring4), new { id = "period_to_mm", @class = " form-control mypadding " })
+            </div><div class="col-sm-1">
+                @Html.DropDownList("vwstring5", new SelectList(@ViewBag.pyear as SelectList, "Value", "Text", @Model.vwstring5), new { id = "period_to_yy", @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Date Range</div>
+            <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.vwstring6, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+            <div class="col-sm-1 text-centre  col-sm-offset-1"> To </div>
+            <div class="col-sm-2 ">@Html.TextBoxFor(model => Model.vwstring7, new { @maxlength = 10, @class = " form-control mypadding dob" })</div>
+        </div>
+
+
+    </div>
+    <div id="OptionR" class="tab-pane fade ">
+    <br />
+
+        <div class="row" id="row_select1">
+            <div class="col-sm-3 ">
+                @*<select  class = " form-control mypadding " id = "selectid1" name="vwstrarray0[0]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray0[0], new SelectList(ViewBag.selposta, "Value", "Text", @Model.vwstrarray0[0]), "", new { id = "selectid1" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from1" name="vwstrarray1[0]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_to1" name="vwstrarray2[0]"><option></option></select>
+            </div>
+            <div class="col-sm-1 ">
+                @Html.DropDownListFor(model => model.vwstrarray3[0], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray3[0]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select2">
+            <div class="col-sm-3 ">
+                @*<select class = " form-control mypadding " id = "selectid2" name="vwstrarray0[1]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray0[1], new SelectList(ViewBag.selposta, "Value", "Text", @Model.vwstrarray0[1]), "", new { id = "selectid2" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from2" name="vwstrarray1[1]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3">
+                <select class=" form-control mypadding " id="select_to2" name="vwstrarray2[1]"><option></option></select>
+            </div>
+            <div class="col-sm-1">
+                @Html.DropDownListFor(model => model.vwstrarray3[1], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray3[1]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select3">
+            <div class="col-sm-3 ">
+                @*<select  class = " form-control mypadding " id = "selectid3" name="vwstrarray0[2]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray0[2], new SelectList(ViewBag.selposta, "Value", "Text", @Model.vwstrarray0[2]), "", new { id = "selectid3" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from3" name="vwstrarray1[2]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To</div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_to3" name="vwstrarray2[2]"><option></option></select>
+            </div>
+            <div class="col-sm-1">
+                @Html.DropDownListFor(model => model.vwstrarray3[2], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray3[2]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select4">
+            <div class="col-sm-3 ">
+                @*<select class = " form-control mypadding " id = "selectid4" name="vwstrarray0[3]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray0[3], new SelectList(ViewBag.selposta, "Value", "Text", @Model.vwstrarray0[3]), "", new { id = "selectid4" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from4" name="vwstrarray1[3]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3">
+                <select class=" form-control mypadding " id="select_to4" name="vwstrarray2[3]"><option></option></select>
+            </div>
+            <div class="col-sm-1">
+                @Html.DropDownListFor(model => model.vwstrarray3[3], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray3[3]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select5">
+            <div class="col-sm-3 ">
+                @*<select  class = " form-control mypadding " id = "selectid5" name="vwstrarray0[4]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray0[4], new SelectList(ViewBag.selposta, "Value", "Text", @Model.vwstrarray0[4]), "", new { id = "selectid5" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from5" name="vwstrarray1[4]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3">
+                <select class=" form-control mypadding " id="select_to5" name="vwstrarray2[4]"><option></option></select>
+                @*            @Html.DropDownListFor(model => model.vwstrarray3[4], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray3[4]))*@
+            </div>
+            <div class="col-sm-1">
+                @Html.HiddenFor(m => m.vwstrarray3[4], "")
+            </div>
+
+</div>
+
+  </div>
+
+    <div id="DataR" class="tab-pane fade ">
+    	
+        <div class="row" id="row_select6">
+            <div class="col-sm-3 ">
+                @*<select  class = " form-control mypadding " id = "selectid1" name="vwstrarray0[0]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray4[0], new SelectList(ViewBag.selpostl, "Value", "Text", @Model.vwstrarray4[0]), "", new { id = "selectid1" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from6" name="vwstrarray5[0]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_to6" name="vwstrarray6[0]"><option></option></select>
+            </div>
+            <div class="col-sm-1 ">
+                @Html.DropDownListFor(model => model.vwstrarray7[0], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray7[0]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select7">
+            <div class="col-sm-3 ">
+                @*<select class = " form-control mypadding " id = "selectid2" name="vwstrarray4[1]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray4[1], new SelectList(ViewBag.selpostl, "Value", "Text", @Model.vwstrarray4[1]), "", new { id = "selectid2" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from7" name="vwstrarray5[1]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3">
+                <select class=" form-control mypadding " id="select_to7" name="vwstrarray6[1]"><option></option></select>
+            </div>
+            <div class="col-sm-1">
+                @Html.DropDownListFor(model => model.vwstrarray7[1], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray7[1]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select8">
+            <div class="col-sm-3 ">
+                @*<select  class = " form-control mypadding " id = "selectid3" name="vwstrarray4[2]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray4[2], new SelectList(ViewBag.selpostl, "Value", "Text", @Model.vwstrarray4[2]), "", new { id = "selectid3" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from8" name="vwstrarray5[2]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To</div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_to8" name="vwstrarray6[2]"><option></option></select>
+            </div>
+            <div class="col-sm-1">
+                @Html.DropDownListFor(model => model.vwstrarray7[2], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray7[2]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select9">
+            <div class="col-sm-3 ">
+                @*<select class = " form-control mypadding " id = "selectid4" name="vwstrarray4[3]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray4[3], new SelectList(ViewBag.selpostl, "Value", "Text", @Model.vwstrarray4[3]), "", new { id = "selectid4" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from9" name="vwstrarray5[3]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3">
+                <select class=" form-control mypadding " id="select_to9" name="vwstrarray6[3]"><option></option></select>
+            </div>
+            <div class="col-sm-1">
+                @Html.DropDownListFor(model => model.vwstrarray7[3], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray7[3]), new { @class = " form-control mypadding " })
+            </div>
+        </div>
+
+        <div class="row" id="row_select10">
+            <div class="col-sm-3 ">
+                @*<select  class = " form-control mypadding " id = "selectid5" name="vwstrarray4[4]"> <option value=""></option> </select>*@
+                @Html.DropDownListFor(model => model.vwstrarray4[4], new SelectList(ViewBag.selpostl, "Value", "Text", @Model.vwstrarray4[4]), "", new { id = "selectid5" })
+            </div>
+            <div class="col-sm-3 ">
+                <select class=" form-control mypadding " id="select_from10" name="vwstrarray5[4]"><option></option></select>
+            </div>
+            <div class="col-sm-1 text-centre">To </div>
+            <div class="col-sm-3">
+                <select class=" form-control mypadding " id="select_to10" name="vwstrarray6[4]"><option></option></select>
+                @*            @Html.DropDownListFor(model => model.vwstrarray7[4], new SelectList(ViewBag.oper1, "Value", "Text", @Model.vwstrarray7[4]))*@
+            </div>
+            <div class="col-sm-1">
+                @Html.HiddenFor(m => m.vwstrarray7[4], "")
+            </div>
+        </div>
+
+        
+    </div>
+
+</div>
+      </div>
+  </div>
+

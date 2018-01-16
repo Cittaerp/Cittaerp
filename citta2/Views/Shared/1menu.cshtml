@@ -1,0 +1,1606 @@
+﻿@{
+    //string multi_curenchk = Session["multi_curenchk"].ToString();
+    string multi_curenchk = "B";
+
+}
+<div class="book">
+    <a id="menu-toggle" href="#" class="btn btn-default btn-lg toggle"><i class="glyphicon glyphicon-bookmark"></i></a>
+</div>
+
+
+
+<nav class="navbar navbar-default sidebar" id="sidebar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Customers Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Sales Quotation ", "Index", "Quote", null, new { target = "_self" })</li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales Ordering<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Create New Sales Order", "Index", "Order", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Convert Quote to Order", "QuoteIndex", "Order", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Confirm Order", "ConfirmOrder", "Order", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Expired Quote Reactivation", "Expired", "Order", null, new { target = "_self" })</li>
+                                    </ul>
+                                </li>
+                                @*<li>@Html.ActionLink("Sales Ordering", "Index", "Order", null, new { target = "_self" })</li>*@
+                                <li>@Html.ActionLink("Sales Invoicing", "Index", "Invoice", null, new { target = "_self" })</li>
+                                <li><a href="#">Waybill/Packing Slip</a></li>
+                                <li><a href="#">Sales Returns</a></li>
+                                <li>@Html.ActionLink("General Customer Transaction", "Index", "Transt", new { ptype1 = "001" }, new { target = "_self" })</li>
+                               @* <li>@Html.ActionLink("Property Contract", "Index", "Pcontract", null, new { target = "_self" })</li>*@
+
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("GL Transaction Enquiry", "Create", "Gltran_enq", new { ptype1 = "001" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Customer Enquiry", "Custenq", "Gltran_enq", new { ptype1 = "001" }, new { target = "_self" })</li>
+                                        @*  <li>@Html.ActionLink("General Customer Transaction Enquiry", "Create", "Fpay_enq", null, new { target = "_self" })</li>*@
+                                      
+                               
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Customer Report Writer", "Index", "RepDgn", new { pc = "20" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Customer Statement Definition", "Index", "Adlay", new { pc = "L20" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Customers", "TransPRep", "RepScrn", new { pc = "cus001", pcode="20" }, new { target = "_self" })</li>
+                                <li><a href="#">Sales Representative</a></li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Sales Analysis by Customers</a></li>
+                                        <li><a href="#">Sales Profitability by Customers</a></li>
+                                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                                        <li><a href="#">Sales Oder Listing </a></li>
+                                        <li><a href="#">Customers Item History</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Credit Customers Balance </a></li>
+                                        <li><a href="#">Credit Days by Customers </a></li>
+                                        <li><a href="#">Overdue Debts</a></li>
+                                        <li><a href="#">Analysis of Credit Waivers</a></li>
+                                        <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                                        <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                                        <li><a href="#">Analysis of Credit Holds </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                                        <li><a href="#">Sales by Analysis Codes</a></li>
+                                        <li><a href="#">Price by Analysis Codes</a></li>
+                                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                                        <li><a href="#">Credit Notes by Customers</a></li>
+                                        <li><a href="#">Debit Notes by Customers</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                           </li>    
+                              
+                        <li class="divider"></li>
+                          <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Settings<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Customer", "Index", "Cust", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Sales Sequencing", "Index", "PurOrder", new { ptype1 = "SLSEQ" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Price Matrix", "Index", "Price", null, new { target = "_self" })</li>
+
+                                <li>@Html.ActionLink("Delivery Adresss Maintenance", "Index", "Addrs", new { atype = "CU" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Sales Transaction Types", "Index", "Sales", null, new { target = "_self" })</li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales Promotions<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Discount Definition Maintenance", "Index", "Disc", null, new { target = "_self" })</li>
+                                        <li><a href="#">Rebates & Commissions </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+              
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Vendors Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Purchase Requisition</a></li>
+                                <li><a href="#">Request for Quote</a></li>
+                                <li><a href="#">Quotations Review</a></li>
+                                <li>@Html.ActionLink("Purchase Ordering", "Index", "POrder", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Open LPO", "QuoteIndex", "Received", null, new { target = "_self" })</li>
+                                <li><a href="#">Quarantine Receipts</a></li>
+                                <li><a href="#">Inspection Certificates</a></li>
+                                <li>@Html.ActionLink("Goods Receipts", "Index", "Received", null, new { target = "_self" })</li>
+                                <li><a href="#">Purchase Invoicing</a></li>
+                                <li><a href="#">Purchase Returns</a></li>
+                                <li>@Html.ActionLink("General Vendor Transaction", "Index", "Transt", new { ptype1 = "002" }, new { target = "_self" })</li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("General Vendor Transaction Enquiry", "Create", "Gltran_enq", new { ptype1 = "002" }, new { target = "_self" })</li>
+                                <li><a href="#">Customers</a></li>
+                                <li><a href="#">Sales Representative</a></li>
+
+
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vendors<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Vendor Report Writer", "Index", "RepDgn", new { pc = "14" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Vendor Statement Definition", "Index", "Adlay", new { pc = "L14" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Vendor Listing", "TransPRep", "RepScrn", new { pc = "ven001", pcode = "14" }, new { target = "_self" })</li>
+                                        <li><a href="#">Vendors Balance Analysis</a></li>
+                                        <li><a href="#">Vendors  Categories Listing</a></li>
+                                        <li><a href="#">Vendors by Relationship Manager</a></li>
+                                        <li><a href="#">Vendors Statement of Accounts-Open Documents Only</a></li>
+                                        <li><a href="#">Vendors Statement of Accounts-All Documents </a></li>
+                                        <li><a href="#">Vendors Transaction Listings</a></li>
+                                        <li><a href="#">Aging Analysis of Account Payables</a></li>
+                                    </ul>
+                                </li>
+                                @*<li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchase<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Purchase Analysis by Items by Vendors</a></li>
+                                        <li><a href="#">Purchase  Analysis by Items by Relationship Managers</a></li>
+                                        <li><a href="#">Quotes Analysis  by Vendors</a></li>
+                                        <li><a href="#">Purchase Orders Analysis by Items by Vendors</a></li>
+                                        <li><a href="#">Vendors Item History</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payments<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Payments Analysis by Vendors</a></li>
+                                        <li><a href="#">Unmatched Payments by Vendors</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Liability Management<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Due Bills Analysis</a></li>
+                                        <li><a href="#">Credit Granted by Vendors</a></li>
+                                        <li><a href="#">Credit Days by Vendors</a></li>
+                                        <li><a href="#">Overdue Accounts Payables</a></li>
+                                        <li><a href="#">Vendor Credit Amount Limits & Terms Listings</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis Codes<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Vendors Analysis Code Listing</a></li>
+                                        <li><a href="#">Purchase by Analysis Codes</a> </li>
+
+                                        <li>
+                                            <a href="#">
+                                                Purchase Cost by Item by Analysis Codes
+                                            </a>
+                                        </li>
+                                        <li><a href="#">Vendors Transactions by Analysis Codes</a> </li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">MC Vendors Statement of Accounts(Open Documents)</a></li>
+                                        <li><a href="#">MC Vendors Statement of Accounts(All Documents)</a></li>
+                                        <li><a href="#">MC Vendors Balance Analysis</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Sent Emails Analysed by Vendors</a></li>
+                                        <li><a href="#">Credit Notes by Vendors</a></li>
+                                        <li><a href="#">Debit Notes by Vendors</a></li>
+                                        <li><a href="#">Expenses by Vendors- Summary</a></li>
+                                        <li><a href="#">Expenses by Vendors-Details</a></li>
+                                    </ul>
+                                </li>*@
+
+
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Vendor", "Index", "Vend", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink(" Vendor Branch Adresss Maintenance", "Index", "Addrs", new { atype = "VR" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Purchase Transaction Type Maintenance", "Index", "Purchases", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Purchase Sequencing", "Index", "PurOrder", new { ptype1 = "PURSEQ" }, new { target = "_self" })</li>
+                                @*<li>@Html.ActionLink("Payment Terms", "Index", "Terms", null, new { target = "_self" })</li>*@
+                            </ul>
+                        </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Inventory Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Inventory Transaction", "Index", "Inven", null, new { target = "_self" })</li>
+                                <li><a href="#">Physical Inventory Counts</a></li>
+                                <li><a href="#">Inter-warehouse Transactions</a></li>
+                             </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Sales Representative</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sales Analysis by Customers</a></li>
+                        <li><a href="#">Sales Profitability by Customers</a></li>
+                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                        <li><a href="#">Sales Oder Listing </a></li>
+                        <li><a href="#">Customers Item History</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Credit Customers Balance </a></li>
+                        <li><a href="#">Credit Days by Customers </a></li>
+                        <li><a href="#">Overdue Debts</a></li>
+                        <li><a href="#">Analysis of Credit Waivers</a></li>
+                        <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                        <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                        <li><a href="#">Analysis of Credit Holds </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                        <li><a href="#">Sales by Analysis Codes</a></li>
+                        <li><a href="#">Price by Analysis Codes</a></li>
+                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                        <li><a href="#">Credit Notes by Customers</a></li>
+                        <li><a href="#">Debit Notes by Customers</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Inventory Ledger</a></li>
+                                <li><a href="#"> Item Order History</a></li>
+                                <li><a href="#">Item Sales Analysis -Summary</a></li>
+                                <li><a href="#">Item Sales Analysis -Detailed</a></li>
+                                <li><a href="#">Item Consumption Analysis by Warehouse</a></li>
+                                <li><a href="#">Item Consumption by Reason Codes</a></li>
+                                <li><a href="#">Item Receipt Analysis</a></li>
+                                <li><a href="#">Item Sales Profitability</a></li>
+                                <li><a href="#"> Inventory Valuation</a></li>
+                                <li><a href="#"> Inventory Counts Sheets</a></li>
+                                <li><a href="#">Inventory Counts Reconciliation</a></li>
+                                <li><a href="#">Inter-Warehouse Transaction Analysis</a></li>
+                                <li><a href="#"> Warehouse Listing by Site</a></li>
+                                <li><a href="#">Bin Location Listing by Warehouse</a></li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis codes<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Item Analysis Codes Listing</a></li>
+                                        <li><a href="#"> Items by Analysis Codes</a></li>
+                                        <li><a href="#">Item Consumptions by Analysis Codes</a></li>
+                                        <li><a href="#">Item Receipts by analysis Codes</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Items", "Index", "Item", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Item Group", "Index", "Itemg", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Item Use", "Index", "Itmuse", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Unit of Measure", "Index", "ParaCode", new { ptype1 = "10" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Site", "Index", "ParaCode", new { ptype1 = "01" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Bin Location", "Index", "ParaCode", new { ptype1 = "02" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Reason Code", "Index", "ParaCode", new { ptype1 = "03" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Warehouse", "Index", "WareH", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Dimension Mapping", "Index", "Map", new { pc = "013" }, new { target = "_self" })</li>
+                            </ul>
+                        </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Real Estate Property</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Subscribers Form", "Index", "Pcont", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Property Contract First Payment ", "Index", "Ppayment", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("General Contract Transaction", "Index", "Transt", new { ptype1 = "014" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Transfer Screen", "Create", "Term_trans", new { ptype1 = "02" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Termination Screen", "Create", "Term_trans", new { ptype1 = "01" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Property Ownership Transfer ", "Index", "T_owner", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Completed Contract Enquiry", "Custenq", "Completed", new { ptype1 = "014" }, new { target = "_self" })</li>
+
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li>@Html.ActionLink("GL Transaction Enquiry", "Create", "Gltran_enq", new { ptype1 = "014" }, new { target = "_self" })</li>
+                        <li>@Html.ActionLink("Contract Enquiry", "Custenq", "Gltran_enq", new { ptype1 = "014" }, new { target = "_self" })</li>
+                        
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                      
+                    </ul>
+                </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Settings<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Property Price Matrix", "Index", "Pprice", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Property General Setting ", "Edit", "Pset", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Fee Definition ", "Index", "PHead", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Payment Option Definition ", "Index", "ParaCode", new { ptype1 = "17" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Purpose Definition ", "Index", "ParaCode", new { ptype1 = "18" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Admin Charge Definition ", "Index", "ParaCode", new { ptype1 = "19" }, new { target = "_self" })</li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </li>
+        
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Landed Cost Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop"><b>Transaction</b><span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Import Landed Cost</a></li>
+                                <li><a href="#">Import Consignment Tracking</a></li>
+                                <li>@Html.ActionLink("Consignment Transaction", "Index", "Transt", new { ptype1 = "012" }, new { target = "_self" })</li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Consignment Transaction Enquiry", "Create", "Gltran_enq", new { ptype1 = "012" }, new { target = "_self" })</li>
+                 
+            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop"><b>Reporting</b><span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Landed Cost Analysis by Purchase Order</a></li>
+                                <li><a href="#">Landed Cost Analysis by Item Received</a></li>
+                                <li><a href="#">Landed Cost Analysis by Purchase Order</a></li>
+                                <li><a href="#">Landed Cost Analysis by Item Received</a></li>
+                                <li><a href="#">Landed Cost Analysis by Vendor</a></li>
+                                <li><a href="#"> Landed Cost Analysis by Import Consignment</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                            <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                @*<li><a href="#">Import Consignment Creation</a></li>*@
+                                <li>@Html.ActionLink("Import Consignment", "Index", "Consignment", null, new { target = "_self" })</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Fixed Assets Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                          <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("General Fixed Assets Transactions", "Index", "Journal", null, new { target = "_self" })</li>
+                                        <li><a href="#">Fixed Assets Transfer</a></li>
+                                        <li><a href="#">Depreciation Runs</a></li>
+                                        <li><a href="#">Fixed Assets Physical Count</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                                    @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Sales Representative</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sales Analysis by Customers</a></li>
+                        <li><a href="#">Sales Profitability by Customers</a></li>
+                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                        <li><a href="#">Sales Oder Listing </a></li>
+                        <li><a href="#">Customers Item History</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Credit Customers Balance </a></li>
+                        <li><a href="#">Credit Days by Customers </a></li>
+                        <li><a href="#">Overdue Debts</a></li>
+                        <li><a href="#">Analysis of Credit Waivers</a></li>
+                        <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                        <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                        <li><a href="#">Analysis of Credit Holds </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                        <li><a href="#">Sales by Analysis Codes</a></li>
+                        <li><a href="#">Price by Analysis Codes</a></li>
+                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                        <li><a href="#">Credit Notes by Customers</a></li>
+                        <li><a href="#">Debit Notes by Customers</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#"> Fixed Assets Statement of Accounts</a></li>
+                                        <li><a href="#"> Fixed Assets Schedule by Class</a></li>
+                                        <li><a href="#">Fixed Assets Statement of Accounts</a></li>
+                                        <li><a href="#"> Fixed Assets Schedule by Class</a></li>
+                                        <li><a href="#">Detailed Fixed Assets Register</a></li>
+                                        <li><a href="#">Fixed Assets Analysis by Categories</a></li>
+                                        <li><a href="#">Fixed Assets Componentisation Analysis</a></li>
+                                        <li><a href="#">Depreciation Analysis</a></li>
+                                        <li><a href="#">Fixed Assets Physical Count Reconciliation</a></li>
+                                        <li><a href="#">Fixed Assets Physical Count Sheet</a></li>
+                                        <li><a href="#">Fixed Assets Disposal Analysis</a></li>
+                                        <li><a href="#"> Fixed Assets Insurance Report</a></li>
+                                        <li><a href="#">Fixed Assets Acquisition Report</a></li>
+                                        <li><a href="#">Fixed Assets Due for Replacement</a></li>
+                                        <li>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis codes<span class="caret"></span><span></span></a>
+                                            <ul class="dropdown-menu a" role="menu">
+                                                <li><a href="#"> Fixed Asset Analysis Codes Listing</a></li>
+                                                <li><a href="#">Fixed Asset  by Analysis Codes</a></li>
+                                                <li><a href="#">  Fixed Asset Expenses by Analysis Codes</a></li>
+                                                <li><a href="#">Fixed Asset Income by Analysis Codes</a></li>
+                                                <li><a href="#">Fixed Asset Register by Analysis Codes</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Fixed Asset", "Index", "Fixed", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Asset Insurance Policy", "Index", "Insure", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Asset Location", "Index", "ParaCode", new { ptype1 = "11" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Fixed Assets Class", "Index", "ParaCode", new { ptype1 = "15" }, new { target = "_self" })</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+               
+                 <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop"><b>Maintanance</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transaction<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Due Maintenance", "Index", "Due_maintenance", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Repairs Maintenance Notification", "Create", "Maintenance_Activation", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Work Order", "Index", "WorkOrder", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Work Transaction Docket", "Index", "WorkTransDoc", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Asset Meter Reading", "Index", "Asset_Activity_Monitor", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Meter Reset", "Create", "ResetActivity", null, new { target = "_self" })</li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                                    @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Sales Representative</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sales Analysis by Customers</a></li>
+                        <li><a href="#">Sales Profitability by Customers</a></li>
+                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                        <li><a href="#">Sales Oder Listing </a></li>
+                        <li><a href="#">Customers Item History</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Credit Customers Balance </a></li>
+                        <li><a href="#">Credit Days by Customers </a></li>
+                        <li><a href="#">Overdue Debts</a></li>
+                        <li><a href="#">Analysis of Credit Waivers</a></li>
+                        <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                        <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                        <li><a href="#">Analysis of Credit Holds </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                        <li><a href="#">Sales by Analysis Codes</a></li>
+                        <li><a href="#">Price by Analysis Codes</a></li>
+                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                        <li><a href="#">Credit Notes by Customers</a></li>
+                        <li><a href="#">Debit Notes by Customers</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+                                </li>
+                                <li class="divider"></li>
+
+                                <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Standard Reports</a></li>
+                                        <li><a href="#">User Defined report</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                 <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Maintenance Asset Group", "Index", "AssetGrouping", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Asset Maintenance Type", "Index", "Asset_maintenance_group_type", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Sub Contract", "Index", "Sub_contract", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Work Center", "Index", "Work_center", new { atype = "CY" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Work Team", "Index", "Work_team", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Technical Competency Level", "Index", "Technical_com", null, new { target = "_self" })</li>
+                                    </ul>
+                                </li>
+                               </ul>
+                        </li>
+                    
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>General Ledger Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Journal Transactions", "Index", "Journal", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Budget Transactions Entry", "Index", "Budget", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("GL Transaction Entry", "Index", "Transt", new { ptype1 = "003" }, new { target = "_self" })</li>
+                                <li><a href="#"> GL Allocation Grouping Runs</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("GL Transaction Batch Enquiry", "Create", "Gltran_enq", new { ptype1 = "003" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("GL Transaction Enquiry", "Custenq", "Gltran_enq", new { ptype1 = "003" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Ledger Enquiry", "ledgenq", "Gltran_enq", null, new { target = "_self" })</li>
+                            @*    <li>@Html.ActionLink("GL Journal Enquiry", "Create", "Gldoc_enq", null, new { target = "_self" })</li>*@
+                      
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Account Category", "Index", "Parameter", new { ptype1 = "ACR", ptitle1 = "Account Category" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Account Type", "Index", "Parameter", new { ptype1 = "ATR", ptitle1 = "Account Type" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Charts of Account", "Index", "Parameter", new { ptype1 = "CA", ptitle1 = "Charts of Account" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("GL Transaction Listing", "Index", "Transaction", new { ptype1 = "GLT" }, new { target = "_self" })</li>
+                                <li><a href="#">Statement of GL Accounts</a></li>
+                                <li><a href="#">GL Trial Balance -Summary by Account Types</a></li>
+                                <li><a href="#">GL Trial Balance -Summary by Accounts</a></li>
+                                <li>@Html.ActionLink("GL Trial Balance - Detailed", "Tran", "Transaction", new { ptype1 = "GLTB" }, new { target = "_self" })</li>
+                                <li><a href="#">GL Analysis Report-Summary</a></li>
+                                <li><a href="#">GL Analysis Report- Detailed</a></li>
+                                <li><a href="#">Budget  listing</a></li>
+                                <li><a href="#">Budget vs Actual Analysis - Summary</a></li>
+                                <li><a href="#">GL Budget vs Actual Analysis Report-summary</a></li>
+                                <li><a href="#">GL Allocation Group Analysis</a></li>
+                                <li><a href="#"> Multi Currency - GL Statement of Accounts</a></li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis codes<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">GL Analysis Codes Listing</a></li>
+                                        <li><a href="#">GL Transactions  by Analysis Codes</a></li>
+                                        <li><a href="#"> GL Expenses by Analysis Codes</a></li>
+                                        <li><a href="#"> GL Income by Analysis Codes</a></li>
+                                        <li><a href="#"> GL Net Income by Analysis Codes</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Chart of Account", "Index", "Chart", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Account Type", "Index", "Account_type", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Account Categories", "Index", "Mcategory", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("GL Default Selection Controls", "Index", "Glsdefault", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Transaction Type Definition", "Index", "Paracode", new { ptype1 = "16" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Journal Type Definition", "Index", "Jont", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Dimension Mapping", "Index", "Map", new { pc = "010" }, new { target = "_self" })</li>
+                                <li><a href="#">GL Allocation Grouping</a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Treasury Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Bank Transaction", "Index", "Transt", new { ptype1 = "004" }, new { target = "_self" })</li>
+                                @*<li>@Html.ActionLink("Bank Property Transaction", "Index", "PTranst", new { ptype1 = "004" }, new { target = "_self" })</li>*@
+                                @*<li><a href="#">Receipts Management</a></li>*@
+                                <li><a href="#"> Banking Transactions Upload</a></li>
+                                <li><a href="#">Bank/Credit Card Reconciliation</a></li>
+                                @*<li><a href="#"> Investments Management</a></li>
+                                <li><a href="#">Borrowings Management</a></li>
+                                <li><a href="#"> Forecasting Management</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                       <ul class="dropdown-menu a" role="menu">
+                           <li>@Html.ActionLink("GL Transaction Enquiry", "Create", "Gltran_enq", new { ptype1 = "004" }, new { target = "_self" })</li>
+                           <li>@Html.ActionLink("Bank Enquiry", "Custenq", "Gltran_enq", new { ptype1 = "004" }, new { target = "_self" })</li>
+                                @*<li>@Html.ActionLink("Bank Transaction Enquiry", "Create", "Gltran_enq", new { ptype1 = "004" }, new { target = "_self" })</li>*@
+ <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Sales Representative</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sales Analysis by Customers</a></li>
+                        <li><a href="#">Sales Profitability by Customers</a></li>
+                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                        <li><a href="#">Sales Oder Listing </a></li>
+                        <li><a href="#">Customers Item History</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Credit Customers Balance </a></li>
+                        <li><a href="#">Credit Days by Customers </a></li>
+                        <li><a href="#">Overdue Debts</a></li>
+                        <li><a href="#">Analysis of Credit Waivers</a></li>
+                        <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                        <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                        <li><a href="#">Analysis of Credit Holds </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                        <li><a href="#">Sales by Analysis Codes</a></li>
+                        <li><a href="#">Price by Analysis Codes</a></li>
+                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                        <li><a href="#">Credit Notes by Customers</a></li>
+                        <li><a href="#">Debit Notes by Customers</a></li>
+                    </ul>
+                </li>
+            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Banks & Credit Cards<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Bank Report Writer", "Index", "RepDgn", new { pc = "15" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Bank Statement Definition", "Index", "Adlay", new { pc = "L15" }, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Bank Listing", "TransPRep", "RepScrn", new { pc = "ban001", pcode = "15" }, new { target = "_self" })</li>
+                                        @*<li><a href="#"> Receipts Analysis</a></li>
+                                        <li><a href="#">Payments Analysis</a></li>*@
+                                        <li><a href="#">Bank/Credit Card  Reconciliation Analysis</a></li>
+                                    </ul>
+                                </li>
+                                @*<li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cash Flows<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Cash Flow Forecast</a></li>
+                                        <li><a href="#">Cash Flow History</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Investments<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Investment Listings</a></li>
+                                        <li><a href="#">Investment Analysis by Maturities</a></li>
+                                        <li><a href="#"> Matured Investments</a></li>
+                                        <li><a href="#">Analysis of Investment Returns</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Borrowings<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#">Borrowings Listings</a></li>
+                                        <li><a href="#">Borrowings Analysis by Maturities</a></li>
+                                        <li><a href="#">Due Borrowings</a></li>
+                                        <li><a href="#">Analysis of Borrowing Expenses</a></li>
+                                    </ul>
+                                </li>*@
+
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Bank & Credit Cards", "Index", "Bank", null, new { target = "_self" })</li>
+                                @*<li><a href="#">Borrowings Definition</a></li>
+                                <li><a href="#">Forecasting  Definition</a></li>
+                                <li><a href="#">Investment Definition</a></li>*@
+                            </ul>
+                        </li>
+                       </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Intercompany Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">General Intercompany Transactions Entry</a></li>
+                                <li><a href="#">Intercompany Transactions Adoption Entry</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Sales Representative</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sales Analysis by Customers</a></li>
+                        <li><a href="#">Sales Profitability by Customers</a></li>
+                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                        <li><a href="#">Sales Oder Listing </a></li>
+                        <li><a href="#">Customers Item History</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Credit Customers Balance </a></li>
+                        <li><a href="#">Credit Days by Customers </a></li>
+                        <li><a href="#">Overdue Debts</a></li>
+                        <li><a href="#">Analysis of Credit Waivers</a></li>
+                        <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                        <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                        <li><a href="#">Analysis of Credit Holds </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                        <li><a href="#">Sales by Analysis Codes</a></li>
+                        <li><a href="#">Price by Analysis Codes</a></li>
+                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                        <li><a href="#">Credit Notes by Customers</a></li>
+                        <li><a href="#">Debit Notes by Customers</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Statement of Intercompany Accounts</a></li>
+                                <li><a href="#">Intercompany Transaction Analysis</a></li>
+                                <li><a href="#">Intercompany Reconciliation Analysis</a></li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis codes<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li><a href="#"> Intercompany Analysis Codes Listing</a></li>
+                                        <li><a href="#">Intercompany Transactions  by Analysis Codes</a></li>
+                                        <li><a href="#">Intercompany Expenses by Analysis Codes</a></li>
+                                        <li><a href="#">Intercompany Income by Analysis Codes</a></li>
+                                        <li><a href="#"></a>Intercompany Net Income by Analysis Codes</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("InterCompany", "Index", "Inter_company", null, new { target = "_self" })</li>
+                            </ul>
+                        </li>
+                      </ul>
+                </li>
+                @if (multi_curenchk == "B") {
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Multi-Currency Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Exchange Rates", "Index", "Exchange_rate", null, new { target = "_self" })</li>
+                    </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Currency", "Index", "Curren", null, new { target = "_self" })</li>
+                            </ul>
+                        </li>
+                       </ul>
+                </li>
+                }
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Financial Reporting Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li>@Html.ActionLink("Trial Balance", "TrialPRep", "RepScrn", null, new { target = "_self" })</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Account Listing", "ActlRep", "RepScrn", new { pc = "AL01" }, new { target = "_self" })</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Journal Listing", "JnrlRep", "RepScrn", new { pc = "JNL01" }, new { target = "_self" })</li>
+                       <li class="divider"></li>
+                        <li>@Html.ActionLink("Account Statement Definition", "Index", "Adlay", new { pc = "AL" }, new { target = "_self" })</li>
+                         <li class="divider"></li>
+                        <li>@Html.ActionLink("Journal Statement Definition", "Index", "Adlay", new { pc = "JL" }, new { target = "_self" })</li>
+@*<li class="divider"></li>
+     <li><a href="#">Income Statement - Detail</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Comprehensive Income Statement</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Statement of Financial Position (Balance Sheet) - Summary</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Statement of Financial Position (Balance Sheet) - Detailed</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Statement of Changes in Equity</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Statement of Cashflows-Summary</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Statement of Cashflows-Detailed</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Statement of Cashflows-Detailed</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Income Analysis - Summary</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Income Analysis -Detailed</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Expenses Analysis - Summary</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Expenses Analysis -Detailed</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Cost of Sales Analysis-Summary</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Cost of Sales Analysis-Detailed</a></li>
+     <li class="divider"></li>
+     <li><a href="#">Budget Control Reports</a></li>
+    <li class="dropdown-submenu">
+         <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="">Analysis Codes<span class="caret"></span></a>
+         <ul class="dropdown-menu a" role="menu">
+             <li><a href="#">Analysis Codes Listing</a></li>
+             <li><a href="#">Incomes  by Analysis Codes</a></li>
+             <li><a href="#">Other Incomes by Analysis Codes</a></li>
+             <li><a href="#">Operating Expenses by Analysis Codes</a></li>
+             <li><a href="#">Cost of sales by Analysis Codes</a></li>
+             <li><a href="#">Net Income by Analysis Codes</a></li>
+         </ul>
+     </li>*@
+                    </ul>
+                </li>
+
+              
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Company Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Company<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Change Company Settings", "Edit", "Coy", null, new { target = "_self" })</li>
+                                        @*<li><a href="#"> Add New Company</a></li>*@
+                                        <li><a href="#"> Open and Manage Other Company</a></li>
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink("Organisation Units", "Index", "OrganUnits", new { pc = "01" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Alternate Approval Grouping", "Index", "OrganUnits", new { pc = "02" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Team Grouping", "Index", "OrganUnits", new { pc = "03" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Period Calender", "periodmenu", "PeriodR", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Period Waiver Selection", "Edit", "Prd_sel", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Country", "Index", "ParaCode", new { ptype1 = "13" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("State", "Index", "ParaCode", new { ptype1 = "14" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Tax", "Index", "Tax", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Employee", "Index", "Employee", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Job Role", "Index", "ParaCode", new { ptype1 = "04" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Job Role 2", "Index", "JobRole", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Department", "Index", "ParaCode", new { ptype1 = "05" }, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Terms", "Index", "Cterms", null, new { target = "_self" })</li>
+                         @*<li>@Html.ActionLink("Purchase Sequencing", "Index", "PurOrder", new { ptype1 = "PURSEQ" }, new { target = "_blank" })</li>
+                                <li>@Html.ActionLink("Sales Sequencing", "Index", "PurOrder", new { ptype1 = "SLSEQ" }, new { target = "_blank" })</li>
+                                <li><a href="#"> Document Numbering</a></li>*@
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dimension code Maintenance<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("Dimension Category Definition", "Index", "Analysis_code_header", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Dimension Category Detail", "Index", "Danaly", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Transaction Dimension Definition", "Index", "Header", null, new { target = "_self" })</li>
+                                    </ul>
+                                   </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Administration Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Sales Representative</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sales Analysis by Customers</a></li>
+                        <li><a href="#">Sales Profitability by Customers</a></li>
+                        <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                        <li><a href="#">Discount & Promotion Types Listing </a></li>
+                        <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                        <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                        <li><a href="#">Sales Oder Listing </a></li>
+                        <li><a href="#">Customers Item History</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Receipts Analysis by Customer</a></li>
+                        <li><a href="#">Unmatched Receipts by Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Credit Customers Balance </a></li>
+                        <li><a href="#">Credit Days by Customers </a></li>
+                       <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                        <li><a href="#">Analysis of Credit Holds </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Customers Analysis Code Listing</a></li>
+                        <li><a href="#">Sales by Analysis Codes</a></li>
+                        <li><a href="#">Price by Analysis Codes</a></li>
+                        <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                        <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                        <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                        <li><a href="#">MC Customers Balance Analysis </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                        <li><a href="#">Credit Notes by Customers</a></li>
+                        <li><a href="#">Debit Notes by Customers</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">User Listing</a></li>
+                                <li><a href="#">Access Rights Listing</a></li>
+                                <li><a href="#"> Audit Trail</a></li>
+                                <li><a href="#">Workflows Listing</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflows Management<span class="caret"></span><span></span></a>
+                                    <ul class="dropdown-menu a" role="menu">
+                                        <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_self" })</li>
+                                        <li>@Html.ActionLink("Workflow Approval Routes Definition", "Index", "TransApprov", new { pc = "PY" }, new { target = "_self" })</li>
+                                        <li><a href="#">Workflows Delegation</a></li>
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink("Users Management", "Index", "Userp", new { pc = "PY" }, new { target = "_self" })</li>
+                                <li><a href="#">Access Rights Control</a></li>
+                                <li><a href="#">Change Passwords</a></li>
+                                <li><a href="#"> My Profile</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                       </ul>
+                </li>
+                @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Project Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflows Management<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_self" })</li>
+                                <li><a href="#">Workflow Approval Routes Definition</a></li>
+                                <li><a href="#">Workflows Delegation</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Users Management</a></li>
+                        <li><a href="#">Access Rights Control</a></li>
+                        <li><a href="#">Change Passwords</a></li>
+                        <li><a href="#"> My Profile</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Customers</a></li>
+                                <li><a href="#">Sales Representative</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Sales Analysis by Customers</a></li>
+                                <li><a href="#">Sales Profitability by Customers</a></li>
+                                <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                                <li><a href="#">Discount & Promotion Types Listing </a></li>
+                                <li><a href="#">Sales Discount & Promotion Analysis</a></li>
+                                <li><a href="#">Outstanding Sales Orders by Customers</a></li>
+                                <li><a href="#">Sales Oder Listing </a></li>
+                                <li><a href="#">Customers Item History</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Receipts Analysis by Customer</a></li>
+                                <li><a href="#">Unmatched Receipts by Customers</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Credit Customers Balance </a></li>
+                                <li><a href="#">Credit Days by Customers </a></li>
+                                <li><a href="#">Overdue Debts</a></li>
+                                <li><a href="#">Analysis of Credit Waivers</a></li>
+                                <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                                <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                                <li><a href="#">Analysis of Credit Holds </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Customers Analysis Code Listing</a></li>
+                                <li><a href="#">Sales by Analysis Codes</a></li>
+                                <li><a href="#">Price by Analysis Codes</a></li>
+                                <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                                <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                                <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                                <li><a href="#">MC Customers Balance Analysis </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                                <li><a href="#">Credit Notes by Customers</a></li>
+                                <li><a href="#">Debit Notes by Customers</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">User Listing</a></li>
+                        <li><a href="#">Access Rights Listing</a></li>
+                        <li><a href="#"> Audit Trail</a></li>
+                        <li><a href="#">Workflows Listing</a></li>
+                    </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflows Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_self" })</li>
+                        <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_self" })</li>
+                        <li><a href="#">Workflow Approval Routes Definition</a></li>
+                        <li><a href="#">Workflows Delegation</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Users Management</a></li>
+                <li><a href="#">Access Rights Control</a></li>
+                <li><a href="#">Change Passwords</a></li>
+                <li><a href="#"> My Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+                        </li>
+                     </ul>
+                </li>*@
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Production Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflows Management<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_self" })</li>
+                                <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_self" })</li>
+                                <li><a href="#">Workflow Approval Routes Definition</a></li>
+                                <li><a href="#">Workflows Delegation</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Users Management</a></li>
+                        <li><a href="#">Access Rights Control</a></li>
+                        <li><a href="#">Change Passwords</a></li>
+                        <li><a href="#"> My Profile</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>*@
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">Enquiry<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Customers</a></li>
+                                <li><a href="#">Sales Representative</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Sales Analysis by Customers</a></li>
+                                <li><a href="#">Sales Profitability by Customers</a></li>
+                                <li><a href="#">Sales Analysis by Sales Representatives</a></li>
+                                <li><a href="#">Discount & Promotion Types Listing </a></li>
+                               
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collections<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Receipts Analysis by Customer</a></li>
+                                <li><a href="#">Unmatched Receipts by Customers</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit Management<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Credit Customers Balance </a></li>
+                                <li><a href="#">Credit Days by Customers </a></li>
+                                <li><a href="#">Overdue Debts</a></li>
+                                <li><a href="#">Analysis of Credit Waivers</a></li>
+                                <li><a href="#">Customer Credit Amount Limits & Terms Listings</a></li>
+                                <li><a href="#">Customer Credit Utilisation Analysis </a></li>
+                                <li><a href="#">Analysis of Credit Holds </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis code<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Customers Analysis Code Listing</a></li>
+                                <li><a href="#">Sales by Analysis Codes</a></li>
+                                <li><a href="#">Price by Analysis Codes</a></li>
+                                <li><a href="#">Sales Profitability by Analysis Codes</a></li>
+                                <li><a href="#">Customer Transactions by Analysis Codes</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Multi-Currency<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">MC Customers Statement of Accounts(Open Documents</a></li>
+                                <li><a href="#">MC Customers Statement of Accounts(All Documents</a></li>
+                                <li><a href="#">MC Customers Balance Analysis </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others<span class="caret"></span><span></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">Sent Emails Analysed by Customers</a></li>
+                                <li><a href="#">Credit Notes by Customers</a></li>
+                                <li><a href="#">Debit Notes by Customers</a></li>
+                            </ul>
+                        </li>
+                    </ul>*@
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                        <li><a href="#">User Listing</a></li>
+                        <li><a href="#">Access Rights Listing</a></li>
+                        <li><a href="#"> Audit Trail</a></li>
+                        <li><a href="#">Workflows Listing</a></li>
+                    </ul>*@
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflows Management<span class="caret"></span><span></span></a>
+                    <ul class="dropdown-menu a" role="menu">
+                        <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_self" })</li>
+                        <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_self" })</li>
+                        <li><a href="#">Workflow Approval Routes Definition</a></li>
+                        <li><a href="#">Workflows Delegation</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Users Management</a></li>
+                <li><a href="#">Access Rights Control</a></li>
+                <li><a href="#">Change Passwords</a></li>
+                <li><a href="#"> My Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>*@
+                        </li>
+                        </ul>
+                </li>
+
+                @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Retail Management Center</b><span class="caret"></span><span style="font-size:12px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Transaction<span class="caret"></span></a>
+                            <ul class="dropdown-menu a" role="menu">
+                                <li>@Html.ActionLink("Quick Pick", "View_pick", "Quick_pick", null, new { target = "_self" })</li>
+                                <li><a href="#">Access Rights Listing</a></li>
+                                <li><a href="#"> Audit Trail</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Reporting<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+                                <li><a href="#">User Listing</a></li>
+                                <li><a href="#">Access Rights Listing</a></li>
+                                <li><a href="#"> Audit Trail</a></li>
+                                <li><a href="#">Workflows Listing</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" id="drop">Settings<span class="caret"></span></a>
+                            @*<ul class="dropdown-menu a" role="menu">
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflows Management<span class="caret"></span><span></span></a>
+                <ul class="dropdown-menu a" role="menu">
+                    <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_self" })</li>
+                    <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_self" })</li>
+                    @*<li><a href="#">Workflow Approval Routes Definition</a></li>*@
+                            @*<li><a href="#">Workflows Delegation</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Users Management</a></li>
+                <li><a href="#">Access Rights Control</a></li>
+                <li><a href="#">Change Passwords</a></li>
+                <li><a href="#"> My Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+                        </li>
+                      </ul>
+                </li>*@
+
+             </ul>
+        </div>
+    </div>
+</nav>
+

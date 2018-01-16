@@ -1,0 +1,30 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "period";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Period Calender Maintainance</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Perd")
+
+        <div class="form-group">
+           
+
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+    $("#")
+
+    });
+
+</script>

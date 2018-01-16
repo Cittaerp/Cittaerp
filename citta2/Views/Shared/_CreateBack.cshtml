@@ -1,0 +1,13 @@
+﻿@using anchor1.Helpers
+@{ 
+    anchor1.Models.worksess worksess = (anchor1.Models.worksess)Session["worksess"];
+
+}
+        <p></p><p>
+
+            <button type="submit" class="btn btn-success valshow" id="addxht" name="addxht" onclick="lgshow1()">
+                <i class="glyphicon glyphicon-file"></i> Create @worksess.ptitle
+                </button>
+
+            <span class="link-bold">  |  @Html.EncodedActionLink("Back to List", "Index", null, new { pc = "" })</span>
+        </p>

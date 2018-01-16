@@ -1,0 +1,21 @@
+﻿    @model CittaErp.Models.vw_genlay
+@{
+
+}
+<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Analysis" class="col-sm-5 control-label">Report Type</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring0, ViewBag.type as SelectList, "Select", new { @class = "form-control", @id = "idreportty" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PeriodNumber" class="col-sm-5 control-label">Report</label>
+            <div class="col-sm-4">
+                <select class=" form-control mypadding transID " name="trans" size="10" multiple="multiple" style="min-width : 200px" , id="list1"></select>
+            @*@Html.DropDownListFor(m => m.vwstring0, ViewBag.type as SelectList, "Select", new { @class = "form-control", @id = "idreport" })*@
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-default">Submit</button>
+</form>

@@ -1,0 +1,218 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.pubsess pubsess = (CittaErp.Models.pubsess)Session["pubsess"];
+    string multi_curenchk = pubsess.multi_currency;
+    
+
+}
+
+ <div class="tabbable">
+     <div class="form-group col-sm-5">
+         <label for="warehouse" class="col-sm-4 control-label">Bank Id</label>
+         <div class="col-sm-5">
+             @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", @maxlength = 10 } : new { @disabled = "disabled", @maxlength = 10 })
+             @Html.ValidationMessageFor(m => m.vwstring0)
+         </div>
+     </div>
+     <div class="form-group col-sm-7">
+         <label for="warehouse" class="col-sm-3 control-label">Bank Name</label>
+         <div class="col-sm-9">
+             @Html.TextBoxFor(m => m.vwstrarray0[0], new { @class = "form-control", @maxlength = 50, @required = "required" })
+         </div>
+     </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Bank Information</a></li>
+        <li><a href="#tab2" data-toggle="tab">Address</a></li>
+        <li><a href="#tab3" data-toggle="tab">Contact Information</a></li>
+        <li><a href="#tab5" data-toggle="tab">Document Management</a></li>
+        <li><a href="#tab4" data-toggle="tab">Dimension</a></li>
+    </ul>
+     <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="form-group">
+                <label for="warehouse" class="col-sm-5 control-label">Branch Name</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstrarray0[1], new { @class = "form-control", @maxlength = 50, @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="warehouse" class="col-sm-5 control-label">Account Number</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.vwstrarray0[10], new { @class = "form-control", @maxlength = 50, @required = "required" })
+                </div>
+            </div>
+            
+           
+            <div class="form-group">
+                <label for="warehouse" class="col-sm-5 control-label">Default Payment Option</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[11], ViewBag.option as SelectList, "", new { @class = "form-control" })
+                </div>
+            </div>
+            @if (multi_curenchk == "B") {
+            <div class="form-group">
+                <label for="currency" class="col-sm-5 control-label">Currency Id</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[16], ViewBag.currency as SelectList, "Select", new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            }
+            else
+            {
+                @Html.HiddenFor(m => m.vwstrarray0[16])
+            }
+            <div class="form-group">
+                <label for="currency" class="col-sm-5 control-label">GL Account</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[17], ViewBag.ledger as SelectList, "Select", new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(m => m.vwbool0, new { @class = "form-control", style = "width : 15px" })
+                </div>
+            </div>*@
+            <div class="row form-group">
+                <label class="col-sm-5 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>
+            @Html.Partial("_navbuttonsNext")
+           
+        </div>
+
+        <div class="tab-pane" id="tab5">
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Documents</label>
+                <div class="col-sm-7">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+
+
+            @Html.Partial("_navbuttons")
+        </div>
+
+            <div class="tab-pane" id="tab2">
+                <div class="form-group">
+                    <label for="warehouse" class="col-sm-5 control-label">Bank Address</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control", style = "width : 500px", @maxlength = 250 })
+                        @Html.TextBoxFor(m => m.vwstrarray0[3], new { @class = "form-control", style = "width : 500px", @maxlength = 250 })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="warehouse" class="col-sm-5 control-label">City</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.vwstrarray0[4], new { @class = "form-control", @maxlength = 50 })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="warehouse" class="col-sm-5 control-label">Postal Code</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.vwstrarray0[5], new { @class = "form-control", @maxlength = 50 })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="DateTo" class="col-sm-5 control-label">Country</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstrarray0[6], ViewBag.country as SelectList, "Select Country", new { @class = "form-control", id = "tab2cty" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="State" class="col-sm-5 control-label">State</label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstrarray0[19], ViewBag.state as SelectList, "Select", new { @class = "form-control",id="tab2state" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="warehouse" class="col-sm-5 control-label">Email</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.vwstrarray0[7], new { @class = "form-control", @maxlength = 50, type = "email" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="warehouse" class="col-sm-5 control-label">Website</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.vwstrarray0[8], new { @class = "form-control", @maxlength = 50, placeholder = "http://www.you.com", type = "url" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="warehouse" class="col-sm-5 control-label">Phone Number</label>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(m => m.vwstrarray0[9], new { @class = "form-control", @maxlength = 20 })
+                    </div>
+                </div>   
+                @Html.Partial("_navbuttons")
+            </div>
+        <div class="tab-pane" id="tab3">
+            <div class="form-group">
+                <label for="contact name" class="col-sm-5 control-label">Name</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwstrarray0[12], new { @class = "form-control", @required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="job title" class="col-sm-5 control-label">Job Title</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray0[13],ViewBag.job as SelectList, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contact email" class="col-sm-5 control-label">Email</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwstrarray0[14], new { @class = "form-control", type = "email"})
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contact phone" class="col-sm-5 control-label">Phone</label>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(m => m.vwstrarray0[15], new { @class = "form-control", @maxlength = 20 })
+                </div>
+            </div> 
+            @Html.Partial("_navbuttons")
+        </div>
+        
+        <div class="tab-pane" id="tab4">
+
+            @for (int wctr = 0; wctr < 10; wctr++)
+            {
+                if (Model.vwlist0[wctr] != null)
+                { 
+                <div class="form-group">
+                    <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList( Model.vwlist0[wctr],"query0","query1",Model.vwstrarray6[wctr]) , "Select ", new { @class = "form-control" })
+                        @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                    </div>
+                </div>
+            }
+             else
+                {
+                   @Html.HiddenFor(m => m.vwstrarray6[wctr])  
+                }
+            }
+
+
+            <div class="form-group">
+                <label for="Note" class="col-sm-5 control-label"> Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstrarray0[18], new { @class = "form-control", rows = "6" })
+                </div>
+            </div>
+          
+           
+            @Html.Partial("_navbuttonsPrev")
+            </div>
+   </div>
+ </div>
+ 

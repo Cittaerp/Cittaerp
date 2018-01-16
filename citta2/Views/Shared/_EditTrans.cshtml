@@ -1,0 +1,12 @@
+﻿@using anchor1.Helpers
+
+<div class="col-sm-2 col-sm-offset-3">
+    <button type="submit" class="btn btn-success" name="commandn" value="detailsub" style="width:150px">Update Entry</button>
+</div>
+<div class="col-sm-2 ">
+    @Html.EncodedActionLink("Cancel", "CreateDetails", null, new { headtype="1" }, new { @class = "btn btnextra", @style = " width : 150px; " })
+</div>
+<div class="col-sm-2 ">
+    <span class="btn btn-danger" id="id_delete" style="width:150px">Delete Record</span>
+</div>
+

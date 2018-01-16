@@ -1,0 +1,163 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Task Activity";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Task Activity Checklist</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Tcl")
+
+
+    </form>
+</div>
+
+<div id="loader5" data-request-ajax5="@Url.Action("assign")"></div>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            var temp = $('#editcount').val();
+            for (var m = temp; m < 10; m++)
+                $("#pool" + m).hide();
+
+
+            var counting = 0;
+
+            $("#add").click(function () {
+                counting = counting + 1;
+                alert(counting);
+                var j = 1;
+                for (var i = 0; i < counting; i++) {
+                    $("#" + "pool" + j).show();
+                    j = j + 1;
+                }
+                // alert(j);
+                if (j > 10) {
+                    alert("limit exceeded");
+                    return false;
+                }
+            });
+
+
+
+            $("#id_tskdesc").change(function () {
+                var URL = $('#loader5').data('request-ajax5');
+                var URLext = $('#id_tskdesc').val();
+                alert(URLext);
+
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    url: URL,
+                    type: 'Post',
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var tasks = '';
+                        $.each(data, function (i, state) {
+                            alert("hi");
+                            tasks = state.Text;
+                            if (state.Value == "comm") {
+                                alert(tasks);
+                                $("#id_comm").val(tasks);
+                            }
+                            else if (state.Value == "id_itemdesc") {
+                                $("id_itemcost").val(tasks)
+                            }
+                            else if (state.Value == "actstat") {
+                                if (tasks == 'Y')
+                                    document.getElementById("#activate1_yesno").checked = true;
+                                else
+                                    document.getElementById("#activate1_yesno").checked = false;
+                            }
+                        });
+
+
+                    }
+                });
+
+            });
+            $("#id_tskdesc").change(function () {
+                var URL = $('#loader5').data('request-ajax5');
+                var URLext = $('#id_tskdesc').val();
+                alert(URLext);
+
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    url: URL,
+                    type: 'Post',
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var tasks = '';
+                        $.each(data, function (i, state) {
+                            alert("hi");
+                            tasks = state.Text;
+                            if (state.Value == "comm") {
+                                alert(tasks);
+                                $("#id_comm").val(tasks);
+                            }
+                            else if (state.Value == "id_itemdesc") {
+                                $("id_itemcost").val(tasks)
+                            }
+                            else if (state.Value == "actstat") {
+                                if (tasks == 'Y')
+                                    document.getElementById("#activate1_yesno").checked = true;
+                                else
+                                    document.getElementById("#activate1_yesno").checked = false;
+                            }
+                        });
+
+
+                    }
+                });
+
+            });
+
+            $("#id_itemdesc1").change(function () {
+                var URL = $('#loader6').data('request-ajax6');
+                var URLext = $('#id_itemdesc1').val();
+                alert(URLext);
+
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+                $.ajax({
+                    url: URL,
+                    type: 'Post',
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var tasks = '';
+                        $.each(data, function (i, state) {
+                            tasks = state.Text;
+                            alert(tasks);
+                            if (state.Value == "itemcostt") {
+                                alert(tasks);
+                                alert("hey");
+                                $("#id_unitcost1").val(tasks);
+                            }
+                        });
+                    }
+                });
+            });
+
+
+        });
+    </script>
+}
+
+

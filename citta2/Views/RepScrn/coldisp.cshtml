@@ -1,0 +1,31 @@
+﻿@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    ViewBag.Title = "View Report";
+}
+@Html.Partial("menu")
+<span class="opt-title1">View Report - @psess.temp1</span>
+<div id="report1"></div>
+
+<div id="loader1" data-request-daily="@Url.Action("DailyList1")"></div>
+
+@Html.Hidden("webcallp",psess.sarrayt0[9])
+@Html.Hidden("viewflag", psess.sarrayt0[4])
+@Html.Hidden("ptitle",psess.temp1)
+
+@section Scripts {
+
+<script>
+    $.fn.dataTable.Buttons.swfPath = '../../Content/swf/flashExport.swf'
+
+
+
+</script>
+
+   <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/pcoldisp.js")"></script>
+
+    }
+
+
+
+    
+ 

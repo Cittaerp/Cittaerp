@@ -1,0 +1,60 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "sales";
+}
+@*Html.Partial("menu")*@
+<h3>Property Contract </h3>
+@Html.ActionLink("Add New", "CreateDetails", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Property Id</th>
+            <th>Contract Id</th>
+             <th>Customer</th>
+            <th>Contract Type</th>
+            <th>Deposit/Amount Paid</th>
+            <th>Transaction Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring6</td>
+                <td>@item.vwstring4</td>
+                <td>@item.vwstring1</td>
+                <td class="numformat">@item.vwdecimal0</td>
+                @if (item.vwstring2 != "") { 
+                <td>@item.vwstring2.Substring(6,2)/@item.vwstring2.Substring(4,2)/@item.vwstring2.Substring(0,4)</td>
+                }
+                else
+                {
+                    <td>01/01/0001</td>
+                }
+                <td>
+                    @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwstring0, key2 = @item.vwstring6 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring6"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+
+
+    </script>
+}

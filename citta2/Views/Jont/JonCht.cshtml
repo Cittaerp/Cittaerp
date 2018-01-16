@@ -1,0 +1,115 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string[] aheader7 = psess.sarrayt0;
+    string mandate_id = "";
+    string mandate1_id = "";
+    string mandate2_id = "";
+
+}
+
+ <div class="tabbable">
+     <div class="form-group">
+         <label for="DateTo" class="col-sm-3 control-label">Journal Id </label>
+         <div class="col-sm-3">
+             @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control", @maxlength = 20 })
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="DateTo" class="col-sm-3 control-label">Name </label>
+         <div class="col-sm-3">
+             @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", @maxlength = 20 })
+         </div>
+     </div>
+
+     <div class="row form-group">
+         <label class="control-label col-sm-3">Journal Type </label>
+         <div class="col-sm-9 myradio">
+             <label class="radio-inline">
+                 @Html.RadioButtonFor(m => m.vwstring2, "SJ", new { @id = "sj" }) Standard Journal
+             </label>
+             
+             <label class="radio-inline">
+                 @Html.RadioButtonFor(m => m.vwstring2, "RJ", new { @id = "rj" }) Recuring Journal
+             </label>
+             <label class="radio-inline">
+                 @Html.RadioButtonFor(m => m.vwstring2, "AJ", new { @id = "aj" }) Auto Reversing Journal
+             </label>
+             <label class="radio-inline">
+                 @Html.RadioButtonFor(m => m.vwstring2, "FJ", new { @id = "fj" }) Fixed Asset Journal
+             </label>
+         </div>
+         @Html.HiddenFor(m => m.vwstring2, new { id = "jtype" })
+     </div>
+
+
+        <div id="tab4">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3 title_head">  Available Dimension </div>
+            <div class="col-sm-2 title_head"> Mandatory</div>
+            <div class="col-sm-2 title_head"> Visible</div>
+            <div class="col-sm-10 title_head"></div>
+
+            @for (int wctr = 1; wctr < 10; wctr++)
+            {
+                mandate_id = "mandate" + wctr.ToString() + "_yesno";
+                mandate1_id = "mandate1" + wctr.ToString() + "_yesno";
+                mandate2_id = "mandate2" + wctr.ToString() + "_yesno";
+                if (Model.vwlist0[wctr] != null)
+                {
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"> @Model.vwstrarray5[wctr] </label>
+                        <div class="col-sm-2 mycheckq">
+                            @Html.CheckBoxFor(model => Model.vwblarray0[wctr], new { @id = @mandate_id, @disabled = "disabled" })
+                            <label for=@mandate_id>
+                                @( Model.vwblarray0[wctr] ? "On" : "Off")
+                            </label>
+                        </div>
+                        @if (aheader7[wctr] == "Y")
+                        {
+                        @Html.HiddenFor(m => m.vwblarray1[wctr])
+                        <div class="col-sm-2 mycheckq">
+                            @Html.CheckBoxFor(model => Model.vwblarray1[wctr], new { @id = @mandate1_id, @disabled = "disabled" })
+                            <label for=@mandate1_id>
+                                @( Model.vwblarray1[wctr] ? "On" : "Off")
+                            </label>
+                        </div>
+                             @Html.HiddenFor(m => m.vwblarray2[wctr])
+                            <div class="col-sm-2 mycheckq">
+                                @Html.CheckBoxFor(model => Model.vwblarray2[wctr], new { @id = @mandate2_id, @disabled = "disabled" })
+                                <label for=@mandate2_id>
+                                    @( Model.vwblarray2[wctr] ? "On" : "Off")
+                                </label>
+                            </div>
+                        }
+                        else
+                        {
+                        <div class="col-sm-2 mycheckq">
+                            @Html.CheckBoxFor(model => Model.vwblarray1[wctr], new { @id = @mandate1_id })
+                            <label for=@mandate1_id>
+                                @( Model.vwblarray1[wctr] ? "On" : "Off")
+                            </label>
+                        </div>
+                             <div class="col-sm-2 mycheckq">
+                                @Html.CheckBoxFor(model => Model.vwblarray2[wctr], new { @id = @mandate2_id })
+                                <label for=@mandate2_id>
+                                    @( Model.vwblarray2[wctr] ? "On" : "Off")
+                                </label>
+                            </div>
+                        }
+                      @Html.HiddenFor(m=>m.vwstrarray5[wctr])
+                    </div>
+                }
+
+            }
+
+@Html.HiddenFor(m=>m.vwstrarray5[0])
+
+@Html.HiddenFor(m => m.vwblarray1[0])
+@Html.HiddenFor(m => m.vwblarray2[0])
+
+
+           
+   </div>
+ </div>
+ 

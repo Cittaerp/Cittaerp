@@ -1,0 +1,24 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    ViewBag.Title = "Int parameter";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        <h2>@Session["hname"] </h2>
+       @Html.Partial("_listsubmit")
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @*<h3>@plabel Setting</h3>*@
+
+        @Html.Partial("Int_parameter")
+
+        @Html.HiddenFor(m => m.vwstring0)
+    </form>
+</div>
+

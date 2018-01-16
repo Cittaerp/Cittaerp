@@ -1,0 +1,303 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.vw_genlay glayhead = (CittaErp.Models.vw_genlay)ViewBag.x2;
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    CittaErp.Models.queryhead qheader = (CittaErp.Models.queryhead)Session["qheader"];
+    string cr_flag = ViewBag.action_flag;
+    string show_manual = psess.temp1.ToString();
+   
+}
+
+
+<div class="container-fluid">
+    <div>
+        <div align="left" class="col-sm-4">
+            <a class="btn  btn-primary btn-default" style="width : 160px; display : inline-block" href="index">Back To List</a>
+        </div>
+        <div align="center" class="col-sm-4">
+            <button type="submit" class="btn btn-success " style="width : 160px; display : inline" name="headtype" value="send_app">Send For Approval</button>
+        </div>
+        @if (Model.vwbool1)
+        {
+            <div align="right" class="col-sm-4">
+                @Html.ActionLink("Edit Batch Information", "EditHeader", "", new { @class = "btn btn-warning", @style = "color:white; width : 160px; display : inline-block" })
+            </div>
+        }
+    </div>
+    <br />
+    <br />
+    <div class="well">
+        <form class="form-inline">
+            <div class="row row-height">
+                <div class="col-sm-2 text-right "> Transaction Type </div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[0], new { @class = "" })</div>
+                <div class="col-sm-2  text-right"> Transaction Date  </div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[1], new { @class = "" })</div>
+                
+            </div>
+        
+        </form>
+    </div>
+
+    <div class="container-fluid">
+        @if (cr_flag.IndexOf("Header") > 0)
+        {
+            <div id="head">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Batch Information</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Notes</a></li>
+                    </ul>
+                    <br />
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Purchase Transaction Type</label>
+                                <div class="col-sm-4">
+                                    @Html.DropDownListFor(m => m.vwstrarray0[0], ViewBag.salestt as SelectList, "", new { @class = "form-control", @required = "required", id = "id_transtype" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label"> Transaction Date </label>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(m => m.vwstrarray0[1], new { @class = "form-control datet ", id = "id_transdate" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label"> Requisition Date </label>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control datet" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- /.form-group -->
+                        <div class="tab-pane" id="tab2">
+                            <div class="form-group">
+                                <label for="Note" class="col-sm-3 control-label"> Note</label>
+                                <div class="col-sm-9">
+                                    @Html.TextAreaFor(m => m.vwstrarray0[3], new { @class = "form-control", rows = "6", cols = "200" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Documents</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="photofile" multiple />
+                                </div>
+                            </div>
+
+                            @Html.Partial("_attachDoc")
+
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                @if (ViewBag.action_flag == "CreateHeader")
+                {
+                    <div class="col-sm-9 col-sm-offset-1">
+                        <button type="submit" class="btn btn-success " name="commandn" value="headsub">Create New Batch</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="reset" class="btn btnextra">Cancel</button>
+                    </div>
+                }
+                @if (ViewBag.action_flag == "EditHeader")
+                {
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-success" name="commandn" value="headsub">Update</button>
+                    </div>
+                }
+
+            </div> <!-- /form -->
+        }
+        else
+        {
+            <div class="">
+                <button type="button" class="btn btn-primary col-sm-offset-11" id="hide_details">Hide Entry Screen</button>
+                <br />
+                <button type="button" class="btn btn-primary col-sm-offset-11" id="submit">Show Entry Screen</button>
+                <div class="tabbable" id="details">
+
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#detail1" data-toggle="tab">Account</a></li>
+                        <li><a href="#detail2" data-toggle="tab">Note</a></li>
+                    </ul>
+                    <br />
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="detail1">
+                            <div class="col-sm-7">
+
+                                <div class="row form-group" id="id_price_group">
+                                    <label for="birthDate" class="col-sm-4 control-label">Item Warehouse</label>
+                                    <div class="col-sm-6">
+                                        @Html.DropDownListFor(m => m.vwstring1, ViewBag.itemw as SelectList, "", new { @class = "form-control", id = "" })
+                                    </div>
+                                </div>
+                                @if (qheader.query0 == "01" || qheader.query0 == "02")
+                            {
+                                    <div class="row form-group" id="id_price_group">
+                                        <label for="birthDate" class="col-sm-4 control-label">Item Id</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownListFor(m => m.vwstring0, ViewBag.item as SelectList, "Select", new { @class = "form-control ", id = "id_itemi" })
+                                        </div>
+                                    </div>
+                                
+                            }
+                            else
+                            {
+                                    <div class="row form-group" id="id_price_group">
+                                        <label for="birthDate" class="col-sm-4 control-label">Fixed Asset Id</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownListFor(m => m.vwstring2, ViewBag.fix as SelectList, "Select", new { @class = "form-control ", id = "id_fixed" })
+                                        </div>
+                                    </div>
+                            }
+
+                                <div class=" row form-group" id="id_price_group">
+                                    <label for="birthDate" class="col-sm-4 control-label"> Requisition Quantity  </label>
+                                    <div class="col-sm-4">
+                                        @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat", maxlength = 10, id = "", @required = "required" })
+                                    </div>
+                                </div>
+                                @*<div class="row form-group">
+                                    <label for="password" class="col-sm-4 control-label"> Additional Description </label>
+                                    <div class="col-sm-6">
+                                        @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control " })
+                                    </div>
+                                </div>*@
+                                <div class="row form-group">
+                                    <label for="password" class="col-sm-4 control-label"> Requisition Date </label>
+                                    <div class="col-sm-6">
+                                        @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control datet", id = "req_date" })
+                                    </div>
+                                </div>
+</div>
+                            <div class="col-sm-5">
+
+
+                                @if (qheader.query0 == "01")
+                                {
+                                    <div class="row form-group">
+                                        <label class="col-sm-6 control-label ">Unit of Measure:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_sku">@psess.temp2</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-sm-6 control-label ">Current Balance:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_curbal">@psess.temp3</span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <label class="col-sm-6 control-label ">Reorder Level:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_reolev">@psess.temp4</span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <label class="col-sm-6 control-label ">Leed Time:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_ltime">@psess.temp8</span>
+                                        </div>
+                                    </div>
+                               
+                                    <div class="row form-group ">
+                                        <label class="col-sm-6 control-label ">Last Purchase Price:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_lpprice">@psess.temp5</span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <label class="col-sm-6 control-label ">Last Purchase Date:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_lpdate">@psess.temp6</span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <label class="col-sm-6 control-label ">Last Purchase Vendor:</label>
+                                        <div class="col-sm-5">
+                                            <span id="id_lpvend">@psess.temp7</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                         </div>
+  <!-- ./container -->
+
+                                <div class="tab-pane" id="detail2">
+                                    <div class="form-group">
+                                        <label for="Note" class="col-sm-3 control-label"> Note</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextAreaFor(m => m.vwstring3, new { @class = "form-control", rows = "6", cols = "200" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Documents</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="photofile" multiple />
+                                        </div>
+                                    </div>
+
+                                    @Html.Partial("_attachDoc")
+
+
+
+                                    @*@for (int wctr = 0; wctr < 10; wctr++)
+                {
+                    if (Model.vwlist0[wctr] != null)
+                    {
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList(Model.vwlist0[wctr], "query0", "query1", Model.vwstrarray6[wctr]), "Select ", new { @class = "form-control" })
+                                @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.vwstrarray6[wctr])
+                    }
+                }*@
+
+                                </div>
+                                <br />
+                                @if (ViewBag.action_flag == "CreateDetails")
+                            {
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <button type="submit" class="btn btn-success " name="commandn" value="detailsub">Create New Entry</button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button type="reset" class="btn btnextra">Cancel</button>
+                                    </div>
+                            }
+                                @if (ViewBag.action_flag == "EditDetails")
+                            {
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <button type="submit" class="btn btn-success" name="commandn" value="detailsub">Update Entry</button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button type="reset" class="btn btnextra">Cancel</button>
+                                    </div>
+                            }
+
+                            </div>
+
+                    </div>
+                    <br />
+                    <hr />
+                    @Html.Partial("_list", (IEnumerable<CittaErp.Models.vw_genlay>)ViewBag.x1)
+                </div>
+
+
+           }
+        @Html.HiddenFor(m => m.vwstring8, new { id = "id_sales_quote" })
+        @Html.HiddenFor(m => m.vwstring4, new { id = "id_editexch" })
+
+
+    </div>
+

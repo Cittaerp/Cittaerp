@@ -1,0 +1,161 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.pubsess pubsess = (CittaErp.Models.pubsess)Session["pubsess"];
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string multi_curenchk = pubsess.multi_currency;
+   // string ctdis = psess.temp7.ToString();
+   // string dis_id = psess.temp5.ToString();
+}
+
+<div class="tabbable">
+    @*<div class="form-group col-sm-5">
+        <label for="CustomerID" class="col-sm-5 control-label">Customer ID</label>
+        <div class="col-sm-6">
+            @if (dis_id == "Y")
+            {
+                @Html.TextBoxFor(m => m.vwstring0, new { @disabled = "disabled", @maxlength = 10 })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-contrl", style = "display:inline", @maxlength = 10 } : new { @disabled = "disabled", @maxlength = 10 })
+                @Html.ValidationMessageFor(m => m.vwstring0)
+            }
+        </div>
+    </div>*@
+    
+        
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Customer Information</a></li>
+        <li><a href="#tab9" data-toggle="tab">Document Management</a></li>
+        <li><a href="#tab8" data-toggle="tab">Dimension</a></li>
+      </ul>
+    <br />
+
+    <div class="tab-content">
+
+        <div class="tab-pane active" id="tab1">
+                <div class="col-sm-7">
+                    <div class="row form-group" id="id_price_group">
+                        <label for="birthDate" class="col-sm-4 control-label">Contract Id</label>
+                        <div class="col-sm-6">
+                            @Html.DropDownListFor(m => m.vwstring1, ViewBag.cid as SelectList, "Select", new { @class = "form-control id_cont", @required = "required", id = "id_contr" })
+                        </div>
+                    </div>
+                   
+                    <div class=" row form-group" id="id_price_group">
+                        <label for="birthDate" class="col-sm-4 control-label">Transaction Date</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control datet", maxlength = 15 })
+                        </div>
+                    </div>
+                
+               
+                @Html.Partial("_navbuttonsNext")
+
+            </div>
+                <div class="col-sm-5">
+                    <div class=" row form-group">
+                        <label for="birthDate" class="col-sm-4 control-label"> Property </label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control numformat ", id = "id_spec", @readonly = "readonly" })
+                            @Html.HiddenFor(m => m.vwstring3, new { @id = "id_spec1" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="password" class="col-sm-4 control-label"> Property Price</label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwdecimal2, new { @class = "form-control numformat ", id = "id_sval", @readonly = "readonly" })
+                        </div>
+                        @* @Html.HiddenFor(m => m.vwdecimal2, new { @id="id_sval1"})*@
+                    </div>
+
+                    <div class="row form-group ">
+                        <label for="birthDate" class="col-sm-4 control-label"> Sales Commission</label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control numformat ", id = "id_scom", @readonly = "readonly" })
+                        </div>
+                       @* @Html.HiddenFor(m => m.vwdecimal1, new { @id = "id_scom1" })*@
+                    </div>
+                    <div class="row form-group">
+                        <label for="password" class="col-sm-4 control-label"> Payment To Date </label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwdecimal3, new { @class = "form-control numformat ", id = "id_damt", @readonly = "readonly" })
+                        </div>
+                       </div>
+                    <div class="row form-group">
+                        <label for="password" class="col-sm-4 control-label"> Payment Status</label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwdecimal4, new { @class = "form-control numformat ", id = "id_mamt", @readonly = "readonly" })
+                        </div>
+                         </div>
+                    @*<div class="row form-group">
+                        <label for="password" class="col-sm-4 control-label"> VAT</label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwdecimal5, new { @class = "form-control numformat ", id = "id_npyt", @readonly = "readonly" })
+                        </div>
+                     </div>*@
+                    @Html.HiddenFor(m => m.vwint4)
+                    @*<div class="row form-group">
+                        <label for="password" class="col-sm-4 control-label"> Gift Value</label>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat ", id = "id_gift", @readonly = "readonly" })
+                        </div>
+                    </div>*@
+                </div>
+
+        </div>
+
+      
+       
+        <div class="tab-pane" id="tab9">
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Documents</label>
+                <div class="col-sm-7">
+                    <input type="file" name="photofile" multiple />
+                </div>
+            </div>
+
+            @Html.Partial("_attachDoc")
+
+
+            @Html.Partial("_navbuttons")
+        </div>
+
+     
+        <div class="tab-pane" id="tab8">
+            <div>
+
+                @for (int wctr = 0; wctr < 10; wctr++)
+                {
+                    if (Model.vwlist0[wctr] != null)
+                    {
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList(Model.vwlist0[wctr], "query0", "query1", Model.vwstrarray6[wctr]), "Select ", new { @class = "form-control" })
+                                @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m => m.vwstrarray6[wctr])
+                    }
+                }
+
+                <div class="form-group">
+                    <label for="Note" class="col-sm-5 control-label"> Note</label>
+                    <div class="col-sm-5">
+                        @Html.TextAreaFor(m => m.vwstring4, new { @class = "form-control", rows = "6" })
+                    </div>
+                </div>
+
+
+
+                @Html.Partial("_navbuttons")
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿@model anchor1.Models.vw_collect 
+
+
+@using (Html.BeginForm()) {
+
+    @Html.AntiForgeryToken()    
+    @Html.ValidationSummary(true)
+
+       <p></p><p>
+            <input class="btn btn-info" type="submit" value="Process Log Selection" />
+        </p>
+
+    <fieldset>
+        <div class="container-fluid table-edit" >
+        
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">Selection</div>
+                <div class="col-sm-4"> 
+                    <select class = "form-control mypadding " id="pselect" name="ws_string0"></select>
+@*                    @Html.DropDownListFor(model => Model.ws_string0,ViewBag.selreport as SelectList )*@
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">User</div>
+                <div class="col-sm-2"> 
+                    @Html.TextBoxFor(model => Model.ws_string1,new {  @maxlength = "10", @class = "form-control mypadding " })
+                </div>
+                <div class="col-sm-1 text-centre"> To </div>
+                <div class="col-sm-2"> 
+                    @Html.TextBoxFor(model => Model.ws_string2,new { @maxlength = "10", @class = "form-control mypadding " })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">Date logged</div>
+                <div class="col-sm-2"> 
+                    @Html.TextBoxFor(model => model.ws_string3, new { @maxlength = "10", @class = "form-control mypadding dob" })
+                </div>
+                <div class="col-sm-1 text-centre"> To </div>
+                <div class="col-sm-2">
+                   @Html.TextBoxFor(model => model.ws_string4, new { @maxlength = "10", @class = "form-control mypadding dob" })
+                </div>           
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-sm-text-right">Log Action</div>
+                <div class="col-sm-6"> 
+                    <div class="col-sm-8 mycheckq">
+                        @Html.CheckBoxFor(model => model.ar_bool0[0], new { @id = "dataentry" })
+                        <label for="dataentry">Create</label> &nbsp;&nbsp;
+                        @Html.CheckBoxFor(model => model.ar_bool0[1], new { @id = "report" })
+                        <label for="report">Amend</label>
+                        @Html.CheckBoxFor(model => model.ar_bool0[2], new { @id = "report2" })
+                        <label for="report2">Delete</label>
+                    </div>
+
+                   @*@Html.CheckBoxFor(model => Model.ar_bool0[0])  Create &nbsp;&nbsp;&nbsp;&nbsp;
+                   @Html.CheckBoxFor(model => Model.ar_bool0[1])  Amend &nbsp;&nbsp;&nbsp;&nbsp;
+                   @Html.CheckBoxFor(model => Model.ar_bool0[2])  Delete &nbsp;&nbsp;&nbsp;&nbsp;*@
+                </div>
+            </div>
+    
+        </div>
+
+    @Html.HiddenFor(m => Model.ws_string5, new { id = "rtype1" })
+
+    </fieldset>
+}
+
+<div id="loading">
+    <div id="loadingcontent">
+        <p id="loadingspinner">
+            Pls wait...
+        </p>
+    </div>
+</div>
+
+
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+
+@section Scripts {
+
+<script>
+    parep($("#rtype1").val());
+
+</script>
+
+}
+

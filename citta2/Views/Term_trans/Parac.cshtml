@@ -1,0 +1,146 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string ptype = psess.temp0.ToString();
+    string plabel = ViewBag.plabel;
+}
+        <div>
+            @if (ptype == "02") 
+            { 
+            <div class="col-sm-12">
+                <h5 class="col-sm-1">From</h5>
+                <span class="col-sm-6"></span>
+                <h5 class="col-sm-1">To</h5>
+                <span class="col-sm-4"></span>
+            </div>
+            }
+             <div class="form-inline" >
+                <label for="birthDate" class="col-sm-2 control-label"> Customer  </label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.vwstring1, new SelectList(ViewBag.cus, "Value", "Text", Model.vwstring1), "select", new { @class = "form-control", id = "id_cust" })
+
+                </div>
+              </div> 
+            @if (ptype == "02")
+            {
+                <div class=" row form-inline">
+                    <label class="col-sm-2 control-label"> Customer </label>
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.vwstring4, new SelectList(ViewBag.cus, "Value", "Text", Model.vwstring4), "select", new { @class = "form-control", id = "id_cust" })
+                    </div>
+                </div>
+                
+          
+            } 
+            <p></p>     
+            <div class="form-inline">
+                <label for="birthDate" class="col-sm-2 control-label"> Contract  </label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(m => m.vwstring0, ViewBag.cont as SelectList, "select", new { @class = "form-control", id = "id_cont" })
+
+                </div>
+
+            </div>
+            @if (ptype == "02")
+            {
+                <div class="form-group">
+                <label for="Email" class="col-sm-2 control-label">Transfer Current Value</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.vwdecimal5, new { @class = "form-control numformat", maxlength = 20 })
+                </div>
+            </div>
+            }
+          <div class="row form-inline">
+              <div class="col-sm-6"></div>
+          </div>
+            <p></p>
+            <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-success " name="commandn" value="headedit" id="displayh" style="margin-left: 30%">Extract </button>
+            </div>
+          
+            <div class="col-sm-7">
+                <div class=" row form-group">
+                    <label for="birthDate" class="col-sm-3 control-label"> Contract Id </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control numformat ", id = "id_spec", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class=" row form-group">
+                    <label for="birthDate" class="col-sm-3 control-label"> Property </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control numformat ", id = "id_spec", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="password" class="col-sm-3 control-label"> Net Contract Value</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat ", id = "id_sval", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                <div class="row form-group ">
+                    <label for="birthDate" class="col-sm-3 control-label"> Tenor</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control numformat ", id = "id_scom", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="password" class="col-sm-3 control-label"> Payment To Date </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.vwdecimal2, new { @class = "form-control numformat ", id = "id_damt", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="password" class="col-sm-3 control-label"> Outstanding</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.vwdecimal3, new { @class = "form-control numformat ", id = "id_mamt", @readonly = "readonly" })
+                    </div>
+                </div>
+                @*<div class=" row form-group">
+                <label for="birthDate" class="col-sm-4 control-label"> Gift </label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control numformat ", id = "id_spec", @readonly = "readonly" })
+                </div>
+            </div>*@
+            </div> 
+            
+            <div class="col-sm-5">
+                @if (ptype == "02")
+                {
+                    <div class=" row form-group">
+                        <label for="birthDate" class="col-sm-3 control-label"> Transfer Fee </label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.vwdecimal4, new { @class = "form-control numformat ", id = "id_penalty", maxlength = 50, @readonly = "readonly" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class=" row form-group">
+                        <label for="birthDate" class="col-sm-3 control-label"> Termination Penalty </label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(m => m.vwdecimal4, new { @class = "form-control numformat ", id = "id_penalty", maxlength = 50, @readonly="readonly" })
+                        </div>
+                    </div>
+                }
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Documents</label>
+                        <div class="col-sm-7">
+                            <input type="file" name="photofile" multiple />
+                        </div>
+                    </div>
+                    @Html.Partial("_attachDoc")
+
+                    <div class="row form-group">
+                        <label for="Note" class="col-sm-3 control-label"> Note</label>
+                        <div class="col-sm-7">
+                            @Html.TextAreaFor(m => m.vwstring5, new { @class = "form-control", rows = "6" })
+                        </div>
+                    </div>
+               
+            </div>
+           
+      @Html.HiddenFor(m=>m.vwstring6)     
+            
+</div>
+

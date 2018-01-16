@@ -1,0 +1,33 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "log_in";
+}
+         
+            <div class="main-login main-center">
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(m =>m.vwstring0, new { @class = "form-control", required = "required", placeholder = "Enter your username", id = "username" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", required = "required", type="password", placeholder = "Enter your password", id = "password" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Proceed</button>
+                    </div>
+                    <div class="login-register">
+                       <a href="/Log_in/List">reset password</a>
+                    </div>
+            </div>
+        
+

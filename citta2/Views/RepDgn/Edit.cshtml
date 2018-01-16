@@ -1,0 +1,85 @@
+﻿@model anchor1.Models.vw_collect 
+
+@{
+    anchor1.Models.worksess worksess = (anchor1.Models.worksess)Session["worksess"];
+    string type1 = worksess.pc;
+}
+
+
+
+@using (Html.BeginForm()) {
+    
+    @Html.AntiForgeryToken()    
+    @Html.ValidationSummary(true)
+
+        if (Model.datmode == "E") {
+           @Html.Partial("_EditDelete")
+        } else {
+           @Html.Partial("_CreateBack") 
+        }
+
+    <fieldset>
+        <legend>tab_allow</legend>
+
+        @Html.Partial("_RepDgnEdit", @Model)
+
+        @Html.HiddenFor(model => model.ws_string8, new { id = "ktype" })
+        @Html.HiddenFor(model => model.ws_code)
+
+        @Html.Hidden("xhrt", "S", new { id = "id_xhrt" })
+        @Html.HiddenFor(model => model.ws_string3, new { id = "xstring3" })
+        @for (int ctr = 0; ctr < 5; ctr++)
+        {
+            @Html.HiddenFor(model => Model.ar_string0[ctr], new{id="xstring0"+ctr.ToString()})
+        }
+        
+       @Html.Hidden("rtype1",Model.ws_string10)
+    
+   </fieldset>
+}
+
+<div id="loader1" data-request-daily="@Url.Action("DailyList")"></div>
+<div id="loader2" data-request-daily2="@Url.Action("Daily2List")"></div>
+<div id="loader4" data-request-daily4="@Url.Action("Daily3List")"></div>
+<div id="loader3" data-request-updatev="@Url.Action("update_view")"></div>
+<div id="loader1b" data-request-dailyb="@Url.Action("DailyListb","scriptcall")"></div>
+<div id="loader5" data-request-daily5="@Url.Action("type1a")"></div>
+
+@section Scripts {
+
+    <script>
+        dgnrp();
+        $(function () {
+
+            var line1_chk = $("#multi_yesno:checked").val();
+            $("#line1_off").hide();
+            if (line1_chk )
+                $("#line1_off").show();
+
+            $("#trans_typex").change(function () {
+                var URL = $('#loader5').data('request-daily5');
+                URL = $.trim(URL);
+                var URLext = $('#trans_typex').val();
+                URLext = $.trim(URLext);
+                URL = URL + URLext;
+
+                $.ajax({
+                    type: "Post",
+                    url: URL,
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+
+
+                });
+            });
+
+        })
+
+    </script>
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Anchor1/ppscript.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Anchor1/pscript1.min.js")"></script>
+
+}
+

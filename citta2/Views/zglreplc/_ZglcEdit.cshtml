@@ -1,0 +1,76 @@
+﻿@model CittaErp.Models.vw_genlay 
+@{
+    string gctr = "";
+}
+<div class="container-fluid table-edit" >
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Id</div>
+        <div class="col-sm-2"> 
+            @Html.TextBoxFor(model => model.vwcode, @Model.datmode == "E" ? (object) new {@disabled="disabled", @class=" form-control mypadding readonly-color"} : new { @maxlength = "10", required="required", @class = " form-control mypadding " }) 
+            @Html.ValidationMessageFor(model => model.vwcode)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Line Number</div>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(model => model.vwint0, @Model.datmode == "E" ? (object)new { @disabled = "disabled", @class = " form-control mypadding readonly-color" } : new { @maxlength = "5", required = "required", @class = " form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.vwint0)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Line Description</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(model => model.vwstring0, new {  @maxlength = "40", required="required", @class = " form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.vwstring0)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Line Type</div>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(model => Model.vwstring1, ViewBag.ltype as SelectList, new { id = "rep_line_type", @class = " form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.vwstring1)
+        </div>
+    </div>
+    <div class="row" id="rep_category">
+        <div class="col-sm-3 col-sm-text-right">Line Content</div>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(model => Model.vwstring2, ViewBag.lcontent as SelectList,new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3  col-sm-text-right ">Display as Positive</div>
+        <div class="col-sm-8  myradioq">
+            @Html.RadioButtonFor(model => Model.vwstring3, "D", new { id = "mat_yes" })
+            <label for="mat_yes" class="myradio">Debit </label>  &nbsp;&nbsp;
+            @Html.RadioButtonFor(model => Model.vwstring3, "C", new { id = "mat_no" })
+            <label for="mat_no" class="myradio"> Credit</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Selection Criteria</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Account Category</div>
+        <div class="col-sm-3 ">@Html.DropDownListFor(model => model.vwstring4, new SelectList(ViewBag.select_cat, "Value", "Text", Model.vwstring4), "", new {  @class = " form-control mypadding " }) </div>
+        <div class="col-sm-1 text-centre">To</div>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(model => model.vwstring5, new SelectList(ViewBag.select_cat, "Value", "Text", Model.vwstring5), "", new {  @class = " form-control mypadding " })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Account Type</div>
+        <div class="col-sm-3 ">@Html.DropDownListFor(model => model.vwstring6, new SelectList(ViewBag.select_type, "Value", "Text", Model.vwstring6), "", new { @class = " form-control mypadding " }) </div>
+        <div class="col-sm-1 text-centre">To</div>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(model => model.vwstring7, new SelectList(ViewBag.select_type, "Value", "Text", Model.vwstring7), "", new { @class = " form-control mypadding " })
+        </div>
+
+    </div>
+
+    <br />
+            @Html.Hidden("rtype1",Model.vwstring10)
+
+  </div>
+

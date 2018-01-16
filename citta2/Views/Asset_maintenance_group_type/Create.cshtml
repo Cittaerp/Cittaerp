@@ -1,0 +1,107 @@
+﻿
+@model  CittaErp.Models.vw_genlay
+@{ViewBag.Title = "Asset maintenance group type";
+    ViewBag.action_flag = "Create";
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Maintenance Type</h3>
+        @Html.Partial("_listsubmit")
+        @Html.Partial("Asset_maintenance_group_type")
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck" })
+        @Html.Hidden("tabcheck", 1, new { @id = "id_tabcheck" })
+
+    </form>
+</div>
+
+<div id="loader5" data-request-ajax5="@Url.Action("assign2")"></div>
+<div id="loader6" data-request-ajax6="@Url.Action("assign")"></div>
+<div id="loader7" data-request-ajax7="@Url.Action("subcontract")"></div>
+<div id="loader8" data-request-ajax8="@Url.Action("job_details")"></div>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+
+            $("#running").hide();
+
+            var see = $("#schedule").val();
+
+            if (see == "sch1") {
+                $("#running").show();
+                $("label[for='asset']").html("Asset Running Days");
+            }
+            if (see == "sch2") {
+                $("#running").show();
+                $("label[for='asset']").html("Asset Running Hours");
+            }
+
+            if (see == "sch3") {
+                $("#running").show();
+                $("label[for='asset']").html("Asset Running Units");
+            }
+
+            $("#schedule").change(function () {
+
+                var see = $("#schedule").val();
+                if (see == "sch1") {
+                    $("#running").show();
+                    $("label[for='asset']").html("Maintenance Requred Days");
+                }
+                if (see == "sch2") {
+                    $("#running").show();
+                    $("label[for='asset']").html("Maintenance Required Hours");
+                }
+
+                if (see == "sch3") {
+                    $("#running").show();
+                    $("label[for='asset']").html("Maintenance Required Units");
+                }
+
+            });
+
+            $("#nature").change(function () {
+                var view = $("#nature").val();
+                if (view == "nat2" || view == "nat3" || view == "nat4" || view == "nat5" || view == "nat6" || view == "nat7" || view == "nat8") {
+                    $("#scheduling").hide();
+                    $("#running").hide();
+                }
+                if (view == "nat1") {
+                    $("#scheduling").show();
+                }
+            });
+
+            var recall = $("#nature").val();
+
+            if (recall != "nat1") {
+                $("#scheduling").hide();
+            }
+
+
+            var check1 = $("#hour").val();
+
+            if (check1 == "H") {
+                $("label[for='CompanyCode1']").html("Estd Time(mins)/head");
+                $("label[for='CompanyCode2']").html("Cost/hour");
+            }
+
+            //function findTotal() {
+            //    // var arr =
+            //    var arr = ()
+            //    alert
+            //    var tot = 0;
+            //    for (var i = 0; i < arr.length; i++) {
+            //        if (parseInt(arr[i].value))
+            //            tot += parseInt(arr[i].value);
+            //    }
+            //    document.getElementById('grand_item').value = tot;
+            //}
+
+
+        });
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/fixed.js")"></script>
+}

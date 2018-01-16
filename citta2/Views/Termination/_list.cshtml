@@ -1,0 +1,49 @@
+﻿<table id="myTable1" class="table table-bordred table-striped">
+
+    <thead>
+        <tr>
+            <th>Jrn Type </th>
+            <th>Batch.Desc </th>
+            <th>Manual Number</th>
+            <th>Tran Date</th>
+            <th>Period </th>
+            <th>Initiated By </th>
+            <th>Entry Date </th>
+            <th>Approved By </th>
+            <th>Post Date </th>
+            @*<th>Edit</th>
+              <th>Delete</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.x1)
+        {
+            <tr>
+                <td>@item.col1</td>
+                <td>@item.col2</td>
+                <td>@item.col3</td>
+                @if (item.col4 != "")
+                {
+                    <td>@item.col4.Substring(6, 2)/@item.col4.Substring(4, 2)/@item.col4.Substring(0, 4)</td>
+                }
+                else
+                {
+                    <td>01/01/0001</td>
+                }
+                <td>@item.col5</td>
+                <td>@item.col6</td>
+                <td>@item.col29</td>
+                <td>@item.col7</td>
+                <td>@item.col30</td>
+               @* <td>
+        @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwstring0, key2 = @item.vwstring1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+    </td>
+    <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring1"> <i class="glyphicon glyphicon-trash "></i> </span></td>*@
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

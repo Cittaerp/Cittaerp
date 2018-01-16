@@ -1,0 +1,65 @@
+﻿
+@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Asset Maintenance";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Work Center Maintainance</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Wkc")
+
+
+    </form>
+</div>
+
+<div id="loader5" data-request-ajax5="@Url.Action("asset")"></div>
+
+@section Scripts {
+    <script>
+
+
+        $(document).ready(function () {
+
+        $("#id_asset").change(function () {
+            var URL = $('#loader5').data('request-ajax5');
+            var URLext = $('#id_asset').val();
+            //var set_price = "N"
+
+            URL = $.trim(URL);
+            URLext = $.trim(URLext);
+            URL = URL + "/" + URLext;
+
+            $.ajax({
+
+                url: URL,
+                type: 'Post',
+
+                error: function (xhr, status, error) {
+                    alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                },
+                success: function (data) {
+                    var assets = '';
+                    $.each(data, function (i, state) {
+                        assets = state.Text;
+                        if (state.Value == "location")
+                            $("#id_location").html(assets);
+                        if (state.Value == "asset_user")
+                            $("#id_astuser").html(assets);
+                    });
+
+
+                }
+            });
+
+        });
+        });
+    </script>
+}
+
+

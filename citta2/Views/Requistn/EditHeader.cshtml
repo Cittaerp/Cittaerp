@@ -1,0 +1,43 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.action_flag = "EditHeader";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Purchase Requisition </h3>
+        @Html.Partial("_listupdelsend")
+        @Html.Partial("Cht")
+        @Html.Hidden("subcheck", "NR", new { @id = "id_subcheck" })
+        @Html.Hidden("id_xhrt", "K")
+        @Html.HiddenFor(m => m.vwint0)
+        @Html.HiddenFor(m => m.vwdecimal4)
+        @Html.HiddenFor(m => m.vwdecimal5)
+
+    </form>
+   
+
+
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#changer").hide();
+            var dis_rate = $("#fx_flag").val();
+            if (dis_rate == "Y") {
+                $("#changer").show();
+                $("#id_base").show();
+            }
+            else {
+                $("#changer").hide();
+                $("#id_base").hide();
+            }
+        });
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/quote.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/fixed.js")"></script>
+    }

@@ -1,0 +1,73 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Asset Activity Monitor";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Asset Meter Reading</h3>
+        @Html.Partial("_listsubmit")
+        @Html.Partial("Asset_Activity_Monitor")
+    </form>
+</div>
+<div id="loader5" data-request-ajax5="@Url.Action("asset")"></div>
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            $("#Activation_id").change(function () {
+                var URL = $('#loader5').data('request-ajax5');
+                var URLext = $('#Activation_id').val();
+                //alert(URLext);
+                //var set_price = "N"
+
+                URL = $.trim(URL);
+                URLext = $.trim(URLext);
+                URL = URL + "/" + URLext;
+
+                $.ajax({
+
+                    url: URL,
+                    type: 'Post',
+
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.status + " - " + error + " - " + URL);
+                    },
+                    success: function (data) {
+                        var assets = '';
+                        $.each(data, function (i, state) {
+                            assets = state.Text;
+                            if (state.Value == "mesdet")
+                                $("#id_level").val(assets);
+                            if (state.Value == "cumm")
+                                $("#id_cumread").val(assets);
+                        });
+
+
+                    }
+                });
+
+            });
+            //$(".figure").hide();
+
+            //$(".level").change(function () {
+
+            //    var see = $("#id_level").val();
+
+            //    if (see == "calf1") {
+            //        $(".figure").show();
+            //    }
+            //    if (see == "calf2") {
+            //        $(".figure").show();
+            //    }
+            //    if (see == "calf3") {
+            //        $(".figure").show();
+            //    }
+            //});
+
+        });
+    </script>
+}

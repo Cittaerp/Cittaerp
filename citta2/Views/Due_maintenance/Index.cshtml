@@ -1,0 +1,72 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "Due Maintenance";
+    DateTime dt;
+    DateTime at;
+    string me;
+    Decimal days;
+    Decimal days1;
+    string basis;
+}
+@*Html.Partial("menu")*@
+<h3>Due Maintenance Listing</h3>
+<table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th rowspan="2">Asset</th>
+            <th rowspan="2">Description</th>
+            <th rowspan="2">Last Cumulative Reading<th>
+            <th class="text-center" colspan="3">Meter Readings</th>
+        </tr>
+        <tr>
+            <th>UoR</th>
+            <th>Required Units</th>
+            <th>Incremental Actual Units</th>
+            <th>Convert to Work</th>
+            <th>Void</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring0</td>
+                <td>@item.vwstring1</td>
+                <td>@item.vwstring3</td>
+                <td>@item.vwstring6</td>
+                <td>@item.vwint2</td>
+                <td>@item.vwint1</td>
+                <td>
+                    @Html.ActionLink("C", "Convert", new { key1 = @item.vwstring0, key2 = @item.vwstring1}, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0"><i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.Hidden("id_xhrt", "K")
+<div>
+
+</div>
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+        $("#id_assetgroup").change(function () {
+            var $form = $(this).closest('form');
+            $("#id_subcheck").val("RR");
+            $form.trigger("submit");
+        });
+
+    </script>
+}
+
+
+
+

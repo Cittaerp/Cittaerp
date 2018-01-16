@@ -1,0 +1,94 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+<div>
+    <div class="form-group">
+        <label for="TermCode" class="col-sm-5 control-label">Reference Number</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.vwint0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control" } : new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.vwint0)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description" class="col-sm-5 control-label">Currency</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring1, ViewBag.currency as SelectList, "Select", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label">Posting Date</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control datet"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label">Account</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstring3, ViewBag.account as SelectList, "Select", new { @class = "form-control" })
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label">Currenct Balance</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat", id = "id_current" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label">Base Balance</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control numformat", id = "id_base" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NumberDays" class="col-sm-5 control-label">Closing Exchange Rate</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.vwdecimal2, new { @class = "form-control", id = "id_rate" })
+        </div>
+    </div>
+        <div class="form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Based Revalued Balance</label>
+            <div class="col-sm-3">
+                @Html.TextBoxFor(m => m.vwdecimal3, new { @class = "form-control numformat", id = "id_reval" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Unrealised Gain or Loss</label>
+            <div class="col-sm-3">
+                @Html.TextBoxFor(m => m.vwdecimal4, new { @class = "form-control numformat", id = "id_unrealised" })
+            </div>
+        </div>
+    <div class="form-group">
+        <label for="Analysis" class="col-sm-5 control-label">Auto Reversal Date</label>
+        <div class="col-sm-7">
+            @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control datet" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Analysis" class="col-sm-5 control-label">Approval Level Id</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwint1, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Analysis" class="col-sm-5 control-label"> Last Approval Name</label>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(m => m.vwstring6, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Note" class="col-sm-5 control-label"> Note</label>
+        <div class="col-sm-5">
+            @Html.TextAreaFor(m => m.vwstring7, new { @class = "form-control", rows = "6" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-5 control-label">Documents</label>
+        <div class="col-sm-7">
+            <input type="file" name="photofile" multiple />
+        </div>
+    </div>
+
+    @Html.Partial("_attachDoc")
+
+</div>
+

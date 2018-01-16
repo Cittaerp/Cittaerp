@@ -1,0 +1,38 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+<table id="mytable" class="table table-bordred table-striped myTable1">
+
+    <thead>
+        <tr>
+            <th>line No </th>
+            <th>Ref Nbr</th>
+            <th>Post Code</th>
+            <th>Tran Desc</th>
+            <th> Amount </th>
+            <th>Base Amount </th>
+            <th>Currency </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwint1</td>
+                <td>@item.vwstring1</td>
+                <td>@item.vwstring0 &nbsp; @item.vwstring7</td>
+                <td>@item.vwstring2</td>
+                <td class="numformat">@item.vwdecimal0</td>
+                <td><span class="numformat">@item.vwdecimal3</span><span>&nbsp;@item.vwstring5</span></td>
+                <td>@item.vwstring10</td>
+                <td>
+                    @Html.ActionLink("E", "EditDetails", new { key1 = @item.vwint0, key2 = @item.vwint1 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0&@item.vwint1"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

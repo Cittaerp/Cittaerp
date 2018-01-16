@@ -1,0 +1,39 @@
+﻿@model CittaErp.Models.vw_genlay 
+@{
+    string gctr = "";
+}
+<div class="container-fluid table-edit" >
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Id</div>
+        <div class="col-sm-2"> 
+            @Html.TextBoxFor(model => model.vwcode, @Model.datmode == "E" ? (object) new {@disabled="disabled", @class=" form-control mypadding readonly-color"} : new { @maxlength = "10", required="required", @class = " form-control mypadding " }) 
+            @Html.ValidationMessageFor(model => model.vwcode)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Report Description</div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(model => model.vwstring0, new {  @maxlength = "40", required="required", @class = " form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.vwstring0)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Line Row</div>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(model => Model.vwstring1, ViewBag.lrow as SelectList, new { id = "rep_line_type", @class = " form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.vwstring1)
+        </div>
+    </div>
+    <div class="row" id="rep_category">
+        <div class="col-sm-3 col-sm-text-right">Line Columns</div>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(model => Model.vwstring2, ViewBag.lcolumn as SelectList,new { @class = " form-control mypadding " })
+        </div>
+    </div>
+
+
+    <br />
+            @Html.Hidden("rtype1",Model.vwstring10)
+
+  </div>
+

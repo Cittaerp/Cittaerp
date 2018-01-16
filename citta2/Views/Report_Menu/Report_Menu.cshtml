@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>@Html.ActionLink("Account Category", "Index", "Parameter", new { ptype1 = "ACR", ptitle1 = "Account Category" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Account Type", "Index", "Parameter", new { ptype1 = "ATR", ptitle1 = "Account Type" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Charts of Account", "Index", "Parameter", new { ptype1 = "CA", ptitle1 = "Charts of Account" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Customer", "Index", "Parameter", new { ptype1 = "CUS", ptitle1 = "Customer Report" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Address", "Index", "Parameter", new { ptype1 = "ADDR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Vendor", "Index", "Parameter", new { ptype1 = "VEN" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Bank", "Index", "Parameter", new { ptype1 = "BAN" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Intercompany", "Index", "Parameter", new { ptype1 = "ICR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Price Matrix", "Index", "Parameter", new { ptype1 = "PM" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Tax", "Index", "Parameter", new { ptype1 = "TR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Fixed Asset", "Index", "Parameter", new { ptype1 = "FXA" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Item", "Index", "Parameter", new { ptype1 = "IR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Sales Transaction Type", "Index", "Parameter", new { ptype1 = "STT" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Purchase Transaction Type", "Index", "Parameter", new { ptype1 = "PTTL" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Document", "Index", "Parameter", new { ptype1 = "DOC" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Parameter Code", "Index", "Parameter", new { ptype1 = "PR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Warehouse", "Index", "Parameter", new { ptype1 = "WH" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Analysis Code Header", "Index", "Parameter", new { ptype1 = "ACH" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Analysis Code Detail", "Index", "Parameter", new { ptype1 = "ACD" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Employee", "Index", "Parameter", new { ptype1 = "ER" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Currency", "Index", "Parameter", new { ptype1 = "CUR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Exchange Rate", "Index", "Parameter", new { ptype1 = "EX" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Discount", "Index", "Parameter", new { ptype1 = "DC" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Discount Application Selection", "Index", "Parameter", new { ptype1 = "DAS" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Workflow", "Index", "Parameter", new { ptype1 = "WF" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Workflow Approval", "Index", "Parameter", new { ptype1 = "WFA" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Approval Delegation", "Index", "Parameter", new { ptype1 = "ADG" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Consignment Code  ", "Index", "Parameter", new { ptype1 = "CC" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GL Transaction", "Index", "Transaction", new { ptype1 = "GLT" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("QUOTE", "Index", "InvoiceR", new { ptype1 = "QUT" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("INVOICE", "Index", "InvoiceR", new { ptype1 = "INV" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("INVOICE2", "Invoice2", "InvoiceR", new { ptype1 = "INV" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("INVOICE3", "Invoice3", "InvoiceR", new { ptype1 = "INV" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Receipt1", "Index", "Receipt", new { ptype1 = "RCP" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Receipt2", "Receipt2", "Receipt", new { ptype1 = "RCP" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Receipt3", "Receipt3", "Receipt", new { ptype1 = "RCP" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Receipt4", "Receipt4", "Receipt", new { ptype1 = "RCP2" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Property Quote Receipt", "Receipt5", "Receipt", new { ptype1 = "PQR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Contract First Payment Receipt", "Receipt5", "Receipt", new { ptype1 = "CFP" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Contract Installment Receipt", "Receipt5", "Receipt", new { ptype1 = "CIR" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Budget", "Trans2", "Transaction", new { ptype1 = "BUD" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Budget vs Actual Report", "Trans2", "Transaction", new { ptype1 = "BVA" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Statement-GL Accts", "Tran", "Transaction", new { ptype1 = "STG" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GL Trial Balance - Detailed", "Tran", "Transaction", new { ptype1 = "GLTB" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Multi Currency Statement of GL Accounts", "Tran", "Transaction", new { ptype1 = "MCGL" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GL Analysis - Budget vs Actual- Sum", "Trans2", "Transaction", new { ptype1 = "GLAS" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GL TB  Sum by Account Types", "Trans2", "Transaction", new { ptype1 = "GLTA" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GL TB  Sum by Accounts", "Trans2", "Transaction", new { ptype1 = "GLTS" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GL Analysis Report Summary ", "Trans2", "Transaction", new { ptype1 = "GLAR" }, new { target = "_self" })</li>
+
+        </ul>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    CittaErp.Models.vw_genlay glayhead=(CittaErp.Models.vw_genlay) ViewBag.x2;
+}
+
+<div class="container-fluid">
+        <a class="btn  btn-primary btn-default" href="index">Back To List</a>
+        <button type="submit" class="btn btn-default col-sm-offset-11" name="commandn" value="headedit" id="displayh">Edit </button>
+
+        <br />
+        <br />
+   
+           <form class="form-horizontal" role="form" method="post" >
+                
+                
+                <div class="form-group" id="id_price_group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Journal Number  </label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(m => m.vwstring0, ViewBag.item as SelectList,"select" , new { @class = "form-control", id = "id_jrnbr" })
+                    
+                    </div>
+                </div>
+               <div class="form-group" id="id_price_group">
+                   <label for="Date" class="col-sm-2 control-label">Transaction Date  </label>
+                   <div class="col-sm-5">
+                       @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control datet" })
+                       @*@Html.DropDownListFor(m => m.vwstring0, ViewBag.custenq as SelectList, "select", new { @class = "form-control" })*@
+
+                   </div>
+                   <button type="submit" class="btn btn-lg btn-success col-sm-offset-0" name="commandn" value="headedit" id="displayh">Extract </button>
+               </div>
+
+            </form>
+         <!-- ./container -->
+
+
+        @Html.Partial("_list", (IEnumerable<CittaErp.Models.vw_genlay>)ViewBag.x1)
+        @Html.Partial("_listd", (IEnumerable<CittaErp.Models.vw_genlay>)ViewBag.x2)
+          
+    </div>
+
+
+

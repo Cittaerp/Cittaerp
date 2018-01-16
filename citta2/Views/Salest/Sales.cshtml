@@ -1,0 +1,173 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    CittaErp.Models.vw_genlay glayhead=(CittaErp.Models.vw_genlay) ViewBag.x2;
+}
+
+<div class="container-fluid">
+        <a class="btn  btn-primary btn-default" href="index">Back To List</a>
+        <button type="submit" class="btn btn-default col-sm-offset-11" name="commandn" value="headedit" id="displayh">Edit </button>
+
+        <br />
+        <br />
+        <div class="well">
+            <form class="form-inline">
+                <div class="row row-height">
+                    <div class="col-sm-2">Customer  </div>
+                    <div class="col-sm-3"> @Html.TextBoxFor(m => glayhead.vwstrarray1[0], new { @class = "", style = "width : 300px" })</div>
+                    <div class="col-sm-2  text-right">Payment term</div>
+                    <div class="col-sm-5"> @Html.TextBoxFor(m => glayhead.vwstrarray1[1], new { @class = "" })</div>
+                </div>
+                <div class="row row-height">
+                    <div class="col-sm-2"> Reference</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[2], new { @class = "" })</div>
+                    <div class="col-sm-2 text-right "> Quote Date</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[3], new { @class = "" })</div>
+                    <div class="col-sm-2  text-right"> Expiration date</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[4], new { @class = "" })</div>
+                    <div class="col-sm-2  text-right"> Quantity Total</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[5], new { @class = "" })</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"> Total Value</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[6], new { @class = "" })</div>
+                    <div class="col-sm-2 text-right "> Total Discount</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[7], new { @class = "" })</div>
+                    <div class="col-sm-2  text-right"> Total Tax</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[8], new { @class = "" })</div>
+                    <div class="col-sm-2  text-right"> Total Quote</div>
+                    <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[9], new { @class = "" })</div>
+
+                </div>
+
+               
+          </form>
+        </div>
+
+        <div class="container-fluid">
+            <form class="form-horizontal" role="form" method="post" id="head">
+              
+                <div class="form-group">
+                    <label for="code" class="col-sm-2 control-label">Customer </label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[0], ViewBag.cus as SelectList, "Select", new { @class = "form-control", id = "id_cust" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Transaction date</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwstrarray0[1], new { @class = "form-control datet" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Quote date</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control datet" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label"> Quote expiration date </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwstrarray0[3], new { @class = "form-control datet" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label"> Payment term </label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(m => m.vwstrarray0[4], ViewBag.pay as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+                
+                <!-- /.form-group -->
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary" name="commandn" value="headsub" >Create Header</button>
+                    </div>
+                </div>
+
+            </form> <!-- /form -->
+
+            <button type="button" class="btn btn-warning col-sm-offset-11" id="hide_details">Hide Details</button>
+            <form class="form-horizontal" role="form" method="post" id="details">
+                
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">Item </label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(m => m.vwstring1, ViewBag.item as SelectList, "Select", new { @class = "form-control class_price", id = "id_item", style = "display: inline" })
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div style="display:inline"> Unit of Measure : &nbsp;&nbsp; <span id="id_sku"></span></div>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="id_price_group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Price  </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwdclarray0[0],  new { @class = "form-control class_price", style = "width : 170px", id = "id_price" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label">  Quantity </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwdclarray0[1], new { @class = "form-control class_price", maxlength = 10, id = "id_qty" })
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Value  </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control ", id = "id_ext_price", @readonly = "readonly" })
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Discount Amount </label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwdclarray0[3],  new { @class = "form-control class_price", style = "width : 170px", maxlength = 10, id = "id_dis" })
+                    </div>
+                    <label for="birthDate" class="col-sm-2 control-label">OR Discount percent </label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.vwdclarray0[4], "{0:0.00}", new { @class = "form-control class_price", maxlength = 7, id = "id_dis1" })
+                    </div>
+                </div>
+                            
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Net Value </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwdclarray0[2], new { @class = "form-control", id = "id_net_amt", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Tax  </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control", id = "id_tax", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label"> Quote Amount </label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.vwdclarray0[5], new { @class = "form-control", id = "id_quote_amt", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                    
+                        <button type="submit" class="btn btn-primary" name="commandn" value="detailsub">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- ./container -->
+
+
+        @Html.Partial("_list", (IEnumerable<CittaErp.Models.vw_genlay>)ViewBag.x1)
+        
+        @Html.HiddenFor(m => m.vwstring8, new { id = "id_sales_quote"})
+
+    </div>
+
+
+

@@ -1,0 +1,59 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    ViewBag.Title = "Price";   
+}
+@*Html.Partial("menu")*@
+<h2>Price Matrix Listing</h2>
+@Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+
+        <table class="myTable1 display">
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Analysis</th>
+           @* <th>Tax Inclusive?</th>*@
+            <th>@psess.temp0</th>
+            <th>@psess.temp1</th>
+            <th>@psess.temp2</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.vwstring7 &nbsp;@item.vwstring0</td>
+                <td>@item.vwstring5</td>
+               @* <td>@item.vwstring8</td>*@
+                <td class="numformat">@item.vwdecimal0</td>
+                <td class="numformat">@item.vwdecimal1</td>
+                <td class="numformat">@item.vwdecimal2</td>
+                <td>@item.vwstring6</td>
+                @*<td><a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="Edit?key1=@item.vwstring0&key2=@item.vwstring1&key3=@item.vwstring2"></a></td>*@
+                <td>
+                    @Html.ActionLink("E", "Edit", new { key1 = @item.vwstring0, key2 = @item.vwstring1, key3 = @item.vwstring2 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                </td>
+                <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwstring0&@item.vwstring1&@item.vwstring2"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+        @Html.Hidden("id_xhrt", "K")
+
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+
+@section Scripts {
+    <script>
+
+    </script>
+}

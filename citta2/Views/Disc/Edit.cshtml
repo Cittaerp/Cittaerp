@@ -1,0 +1,83 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "discount";
+    ViewBag.action_flag = "Edit";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+
+        <h3>Discount Maintainance</h3>
+        @Html.Partial("_listupdel")
+
+        @Html.Partial("Dis")
+
+        <div class="form-group">
+
+        </div>
+        @Html.HiddenFor(m => m.vwstring0)
+        @Html.Hidden("id_xhrt", "K")
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            var clear = " "
+            $("#range").hide();
+            $("#yes").click(function () {
+                $("#range").show();
+            });
+            $("#no").click(function () {
+                $("#range").hide();
+                $(".dis_date").val(clear);
+            });
+
+
+            var x = $("#time").val();
+
+            if (x == "N") {
+                $("#range").hide();
+            }
+            if (x == "Y") {
+                $("#range").show();
+            }
+
+            var discountvalue = $("#discount").val();
+            if (discountvalue == "F") {
+                $("#click").show();
+            }
+            else if (discountvalue == "S") {
+                $("#click1").show();
+            }
+            else  {
+                $("#click2").show();
+            }
+            var promo_type = $("#promo_type").val();
+            if (promo_type == "Q") {
+                $("#shw_gift").hide();
+                $("#shw_qty").show();
+                $("#shw_flatgift").hide();
+            }
+            else if (promo_type == "G") {
+                $("#shw_gift").show();
+                $("#shw_qty").hide();
+                $("#shw_flatgift").hide();
+            }
+            else {
+                $("#shw_gift").show();
+                $("#shw_qty").hide();
+                $("#shw_flatgift").show();
+            }
+
+
+        });
+
+    </script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/fixed.js")"></script>
+
+}

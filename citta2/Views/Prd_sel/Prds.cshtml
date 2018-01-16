@@ -1,0 +1,136 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    string prd_dis = psess.temp0;
+}
+<div>
+    @*<div class="row form-group">
+        <label class="control-label col-sm-5">Period Closing Basis</label>
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="col-sm-7 myradio">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstrarray0[0], "P", new { @id = "yes2" }) Period
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstrarray0[0], "C", new { @id = "no2" }) Calender
+                    </label>
+                </div>
+                @Html.HiddenFor(m => m.vwstrarray0[0], new { id = "prdcal" })
+            </div>
+        </div>
+    </div>
+    <div class="row form-group cal_shw">
+        <label for=" tax" class="col-sm-5 control-label">
+        Financial-Year Month-End</label>
+        <div class="col-sm-3">
+            @Html.DropDownListFor(m => m.vwstrarray0[1], ViewBag.end as SelectList, new { @class = "form-control", id = "id_mthend" })
+        </div>
+    </div>
+    <div class="row form-group prd_shw" style="display:none;">
+        <label for="tax" class="col-sm-5 control-label">Financial-Year Month-End</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control", maxlength = 20 })
+        </div>
+    </div>
+    <div class="row form-group prd_shw">
+            <label for="Analysis" class="col-sm-5 control-label">Number Of Period</label>
+            <div class="col-sm-1">
+                @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control", maxlength = 2, id = "id_nump" })
+                @Html.HiddenFor(m => m.vwdecimal0)
+            </div>
+        </div>*@
+
+
+   @if (prd_dis == "P") {
+
+    <div class="row form-group">
+        <label for="Analysis" class="col-sm-5 control-label"> Current Period(pp/yyyy)</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control", maxlength = 10, id = "id_curtp" })
+            @Html.HiddenFor(m => m.vwstring0)
+        </div>
+    </div>
+       
+          <div class="row form-group">
+        <label class="control-label col-sm-5">Posting Period Waiver?</label>
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="col-sm-5 myradio">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring2, "Y", new { @id = "pyes" }) Yes
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring2, "N", new { @id = "pno" }) No
+                    </label>
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.vwstring2, new { @id = "ppw" })
+        </div>
+    </div>
+          <div id="popft">
+        <div class="row form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Open Period From(pp/yyyy)</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring6, new { @class = "form-control", maxlength = 10, id = "id_opf" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Open Period To(pp/yyyy)</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring7, new { @class = "form-control", maxlength = 10 })
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Expiring Date</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring8, new { @class = "form-control datet", maxlength = 10 })
+            </div>
+        </div>
+    </div>
+   }
+   else { 
+    <div class="row form-group">
+        <label class="control-label col-sm-5">Posting Calender Waiver?</label>
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="col-sm-5 myradio">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring1, "Y", new { @id = "cyes" }) Yes
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.vwstring1, "N", new { @id = "cno" }) No
+                    </label>
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.vwstring1, new { @id = "cppw" })
+        </div>
+    </div>
+ 
+    <div id="codft">
+        <div class="row form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Open Date From</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control datet", maxlength = 10 })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Open Date To</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring4, new { @class = "form-control datet", maxlength = 10 })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="Analysis" class="col-sm-5 control-label">Expiring Date</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring5, new { @class = "form-control datet", maxlength = 10 })
+            </div>
+        </div>
+    </div>
+   }
+  </div>
+

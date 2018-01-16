@@ -1,0 +1,15 @@
+﻿@using anchor1.Helpers
+
+<div class="row">
+    <div align="left" class="col-sm-4">
+        @Html.EncodedActionLink("Back To List", "index", null, new { pc = "" }, new { @class = "btn btn-primary", @style = " width : 160px; " })
+    </div>
+    <div align="center" class="col-sm-4">
+        <button type="submit" class="btn btn-success " style="width : 160px; display : inline" name="headtype" value="send_app" formnovalidate="formnovalidate">Send For Approval</button>
+    </div>
+    <div align="right" class="col-sm-4">
+        @Html.EncodedActionLink("Edit Batch Information", "EditHeader", null, new { pc = "" }, new { @class = "btn btn-warning", @style = "color:white; width : 170px;" })
+    </div>
+</div>
+
+

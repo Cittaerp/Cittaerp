@@ -1,0 +1,171 @@
+﻿@model anchor1.Models.vw_collect
+@{
+    string gctr = "";
+    anchor1.Models.worksess worksess = (anchor1.Models.worksess)Session["worksess"];
+    } 
+<div class="container-fluid table-edit" >
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Id</div>
+        <div class="col-sm-2 "> 
+            @Html.TextBoxFor(model => model.ws_code, @Model.datmode == "E" ? (object) new {@disabled="disabled", @class = "form-control  form-control mypadding readonly-color"} : new { @maxlength = "10", data_val = "true", data_val_required = "Input an Id", @class = "form-control mypadding " }) 
+            @Html.ValidationMessageFor(model => model.ws_code)            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-sm-text-right">Name</div>
+        <div class="col-sm-4 ">
+            @Html.TextBoxFor(model => model.ws_string0, new { @maxlength = "40", data_val = "true", data_val_required = "Name is required", @class = "form-control mypadding " })
+            @Html.ValidationMessageFor(model => model.ws_string0)
+        </div>
+    </div>
+
+    @if (worksess.pc == "H15")
+    {
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Transaction Type</div>
+            <div class="col-sm-3 ">
+                @Html.DropDownListFor(model => model.ws_string6, ViewBag.trans_type as SelectList, "",new { id = "trans_typex", @class = "form-control mypadding " })
+            </div>
+        </div>
+    }
+
+    <br />    
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab"  href="#Layout">Layout</a></li>
+        <li><a data-toggle="tab"  href="#Sorts">Sorts</a></li>
+    </ul>
+
+      <div class="tab-content">
+
+    <div id="Layout" class="tab-pane fade in active">
+        <div id="comp1">
+            @Html.Partial("_RdsgnView", @Model)
+        </div>
+    <hr class="hr-line color-green" />
+
+    <table  class="table-edit ">
+		<tr class="rowheader"><td>Folders</td><td>Names</td><td>Attributes</td>
+        @if (worksess.temp2 == "Y")
+        {<td>Period</td>}
+                        
+        </tr>
+        <tr>
+        <td>
+            @Html.DropDownList("folders", ViewBag.folders as SelectList, new { id = "reportID", size = 10, @class = "form-control mypadding " })
+        </td>
+        <td>
+            <select class = "form-control mypadding "  id="operandID"  name="States" size="10" style="min-width:100px" ></select>
+        </td>
+        <td>
+            <select class = "form-control mypadding " id="sourceID"  name="Attrb" size="10" style="min-width:100px" ></select>
+        </td>
+        @if (worksess.temp2 == "Y")
+        {
+        <td>
+            <select class = "form-control mypadding " id="periodID"  name="Period" size="10" style="min-width:100px" ></select>
+        </td>
+        }
+            <td>
+        <p>
+            <input class="btn-lg btn-info" id="insertd" type="button" value="Insert" />
+        </p>
+
+        </td>
+        </tr>
+    </table>
+  </div>
+
+    <div id="Sorts" class="tab-pane fade">
+    
+		
+        <div class="row rowheader">
+            <div class="col-sm-3 col-sm-offset-1">Sort Fields</div>
+            <div class="col-sm-2">Sort Order</div>
+            <div class="col-sm-1">Totals</div>
+            <div class="col-sm-1">Page Break</div>
+            <div class="col-sm-1">Staff Count</div>
+        </div>
+
+        @for (int ctr2 = 0; ctr2 < 5; ctr2++)
+        {
+            <div class="row">
+                <div class="col-sm-1 col-sm-text-right">@(ctr2 + 1).</div>
+                <div class="col-sm-3">
+                    @{
+                        gctr = "ar_string0" + ctr2.ToString();
+                    }
+                    <select class = "form-control mypadding radclass " id="@gctr" name="ar_string0[@ctr2]" ><option></option></select>
+@*                    @Html.DropDownListFor(model => model.ar_string0[ctr2], new SelectList(ViewBag.sort_query, "Value", "Text", @Model.ar_string0[ctr2]), "", new { @class = "radclass" })*@
+                </div>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.ar_string2[ctr2], new SelectList(ViewBag.sort_order, "Value", "Text", @Model.ar_string2[ctr2]), new { @class = "form-control mypadding " })
+                </div>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(model => Model.ar_bool0[ctr2])
+                </div>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(model => Model.ar_bool1[ctr2])
+                </div>
+                <div class="col-sm-1">
+                    @Html.CheckBoxFor(model => Model.ar_bool2[ctr2])
+                </div>
+            </div>
+        }
+        <br />
+
+		<div class="row">
+            <div class="col-sm-3 col-sm-text-right">Suppress Zeroes</div>
+            <div class="col-sm-8 mycheckq">
+                @Html.CheckBoxFor(model => Model.ar_bool0[5],new{@id="zero_yesno"})
+                    <label for="zero_yesno" >
+                        @( Model.ar_bool0[0] ? "On" : "Off")
+                    </label>  
+            </div>
+        </div>
+        <div class="row">
+		    <div class="col-sm-3 col-sm-text-right">Line Spacing</div>
+		    <div class="col-sm-1">
+                @Html.TextBoxFor(model => Model.ws_decimal0, new { @maxlength = "02", @class = "form-control mypadding digitform" })
+                @Html.ValidationMessageFor(model => model.ws_decimal0)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Menu Page</div>
+    		<div class="col-sm-3">
+                <select class = "form-control mypadding " id="menup" name="ws_string3"><option value=""></option></select>
+@*                @Html.DropDownListFor(model => Model.ws_string3, ViewBag.menu_group as SelectList, "Select Menu Option")*@
+                @Html.ValidationMessageFor(model => model.ws_string3)
+            </div>
+        </div>
+        <div class="row">
+		    <div class="col-sm-3 col-sm-text-right"> Use in Transfer?</div>
+            <div class="col-sm-8 mycheckq">
+                @Html.CheckBoxFor(model => Model.ws_bool0,new{@id="close_yesno"})
+                    <label for="close_yesno" >
+                        @( Model.ws_bool0 ? "On" : "Off")
+                    </label>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-sm-text-right">Multi-Line Report?</div>
+            <div class="col-sm-8 mycheckq">
+                @Html.CheckBoxFor(model => Model.ws_bool1,new{@id="multi_yesno"})
+                    <label for="multi_yesno" >
+                        @( Model.ws_bool1 ? "On" : "Off")
+                    </label>  
+            </div>
+        </div>
+        <div class="row" id="line1_off">
+		    <div class="col-sm-3 col-sm-text-right">No of Columns per Line</div>
+		    <div class="col-sm-1">
+                @Html.TextBoxFor(model => Model.ws_decimal1, new { @maxlength = "02", @class = "form-control mypadding digitform" })
+                @Html.ValidationMessageFor(model => model.ws_decimal1)
+            </div>
+        </div>
+		
+    </div>
+
+    </div>
+</div>
+

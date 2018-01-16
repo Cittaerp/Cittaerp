@@ -1,0 +1,20 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Account_type";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post">
+        @Html.ValidationSummary(true)
+
+        <h3>Account Type Maintainace</h3>
+        @Html.Partial("_listsubmit")
+
+
+        @Html.Partial("Account_type")
+    </form>
+</div>
+

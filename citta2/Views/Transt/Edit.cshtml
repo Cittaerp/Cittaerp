@@ -1,0 +1,42 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+    if (Model.datmode == "E")
+    {
+        ViewBag.action_flag = "Edit";
+    }
+    else
+    {
+        ViewBag.action_flag = "Create";
+    }
+
+    string plabel = ViewBag.plabel;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+        <h3>@psess.temp1   </h3>
+        @Html.Partial("_TransDetails")
+
+        @Html.Partial("Tran")
+
+        @Html.HiddenFor(m => m.vwstring9)
+        @Html.HiddenFor(m => m.vwdecimal4)
+        @Html.HiddenFor(m => m.vwdecimal5)
+        @Html.HiddenFor(m => m.vwstring3)
+
+
+}
+
+<div id="loader4" data-request-ajax4="@Url.Action("assign")"></div>
+<div id="loader1" data-request-ajax1="@Url.Action("budget_cal")"></div>
+
+@section Scripts {
+    <script>
+
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/CittaScripts/transt.js")"></script>
+}

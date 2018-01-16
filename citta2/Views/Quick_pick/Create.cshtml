@@ -1,0 +1,67 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Quick_pick";
+    ViewBag.action_flag = "Create";
+}
+
+
+<div class="container">
+    <h2>Create Quick Pick</h2>
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.Partial("_listsubmit")
+        <br />
+        <br />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Quick layout id</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwint0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", placeholder = "quick layout id", @disabled = "disabled", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Layout name</label>
+            <div class="col-sm-3">
+                @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control", required = "required", placeholder = "layout name", id = "" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Line number</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwint1, new { @class = "form-control", required = "required", placeholder = "line number", id = "" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Item id</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", required = "required", placeholder = "item id", id = "" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Variant id</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(m => m.vwstring2, new { @class = "form-control", required = "required", placeholder = "variant id", id = "" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="CompanyName" class="col-sm-5 control-label">Note</label>
+            <div class="col-sm-4">
+                @Html.TextAreaFor(m => m.vwstring3, new { @class = "form-control", placeholder = "note", rows = "4" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-5">Inactive</label>
+            <label class="radio-inline">
+                @Html.CheckBoxFor(m => m.vwbool0, new { type = "checkbox" })
+            </label>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,52 @@
+﻿@model  IEnumerable<CittaErp.Models.vw_genlay>
+@{
+    ViewBag.Title = "Technical Competency Listing";
+}
+@*Html.Partial("menu")*@
+<div class="new">
+    <h3>Technical Competency Listing</h3>
+    @Html.ActionLink("Add New", "Create", "", new { @class = "btn btn-primary", @style = "color:white" })
+
+    <table class="myTable1 display">
+        <thead>
+            <tr>
+                <th>Competency ID</th>
+                <th>Description</th>
+                <th>Required Competence</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.vwstring0</td>
+                    <td>@item.vwstring1</td>
+                    <td>@item.vwstring2</td>
+                    <td>@item.vwstring3</td>
+                    <td>
+                        @Html.ActionLink("E", "Edit", new { key1 = @item.vwstring0 }, new { @class = "btn btn-warning btn-xs glyphicon glyphicon-pencil" })
+                    </td>
+                    <td><span class="btn btn-danger btn-xs deleteitem" data-keyg="@item.vwint0"> <i class="glyphicon glyphicon-trash "></i> </span></td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+
+@Html.Hidden("id_xhrt", "K")
+
+<div id="loader2" data-request-ajax2="@Url.Action("delete_list")"></div>
+
+@section Scripts {
+    <script>
+    </script>
+}
+
+

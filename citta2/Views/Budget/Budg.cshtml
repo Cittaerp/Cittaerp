@@ -1,0 +1,288 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    CittaErp.Models.vw_genlay glayhead=(CittaErp.Models.vw_genlay) ViewBag.x2;
+    string cr_flag = ViewBag.action_flag;
+    string curren_name = Model.vwstrarray2[0];
+   // string amt_check = psess.temp4.ToString();
+}
+
+<div class="container-fluid">
+    <div>
+    <div align="left" class="col-sm-4">
+        <a class="btn  btn-primary btn-default"  style="width : 160px; display : inline-block" href="index">Back To List</a>
+    </div>
+    <div align="center" class="col-sm-4" >
+        <button type="submit" class="btn btn-success " style="width : 160px; display : inline" name="headtype" value="send_app">Send For Approval</button>
+    </div>
+    <div align="right" class="col-sm-4">
+        @Html.ActionLink("Edit Batch Information", "EditHeader", "", new { @class = "btn btn-warning", @style = "color:white; width : 160px; display : inline-block" })
+
+    </div>
+    </div>
+    <br />
+    <br />
+    <div class="well">
+        <form class="form-inline">
+            <div class="row row-height">
+                <div class="col-sm-2 text-right "> Journal Number </div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[0], new { @class = "" })</div>
+                <div class="col-sm-2  text-right"> Batch Number</div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[1], new { @class = "" })</div>
+                <div class="col-sm-2  text-right"> Budget Year</div>
+                <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[2], new { @class = "" })</div>
+
+            </div>
+            <div class="row row-height">
+                <div class="col-sm-2 text-right "> Total Debit</div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[3], new { @class = "" })</div>
+                <div class="col-sm-2  text-right"> Total Credit</div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[4], new { @class = "" })</div>
+                <div class="col-sm-2  text-right">Control</div>
+                <div class="col-sm-1"> @Html.TextBoxFor(m => glayhead.vwstrarray1[5], new { @class = "" })</div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-2 text-right "> Batch Description</div>
+                <div class="col-sm-2"> @Html.TextBoxFor(m => glayhead.vwstrarray1[6], new { @class = "", id = "id_debit" })</div>
+
+            </div>
+ 
+
+        </form>
+    </div>
+    <div class="container-fluid">
+
+    @if (cr_flag.IndexOf("Header") > 0)
+    {
+        <form class="form-horizontal" role="form" method="post" id="head">
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Batch Information</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Notes</a></li>
+                </ul>
+                <br />
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Batch Number</label>
+                            <div class="col-sm-4">
+                                @Html.TextBoxFor(m => m.vwstring0, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Batch Description</label>
+                            <div class="col-sm-4">
+                                @Html.TextBoxFor(m => m.vwstrarray0[2], new { @class = "form-control" })
+
+                            </div>
+                            @Html.HiddenFor(m => m.vwstrarray0[2])
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-2 control-label"> Period </label>
+                            <div class="col-sm-4">
+                                @Html.DropDownListFor(m => m.vwstrarray0[0], ViewBag.month as SelectList, "", new { @class = "form-control", style = "width : 100px; display : inline", @required = "requried" })
+                                &nbsp;&nbsp;&nbsp;
+                                @Html.DropDownListFor(m => m.vwstrarray0[1], new SelectList(ViewBag.year, "Value", "Text", @Model.vwstrarray0[1]),"", new { @class = "form-control year", style = "width : 80px; display : inline",@required = "requried" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- /.form-group -->
+                    <div class="tab-pane" id="tab2">
+                        <div class="form-group">
+                            <label for="Note" class="col-sm-2 control-label"> Note</label>
+                            <div class="col-sm-5">
+                                @Html.TextAreaFor(m => m.vwstrarray0[3], new { @class = "form-control", rows = "6", cols = "200" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Documents</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="photofile" multiple />
+                            </div>
+                        </div>
+
+                        @Html.Partial("_attachDoc")
+
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            @if (ViewBag.action_flag == "CreateHeader") {
+        <div class="col-sm-9 col-sm-offset-1">
+            <button type="submit" class="btn btn-success " name="commandn" value="headsub">Create New Batch</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn btnextra">Cancel</button>
+        </div>
+        }
+            @if (ViewBag.action_flag == "EditHeader") {
+        <div class="col-sm-9 col-sm-offset-3">
+            <button type="submit" class="btn btn-success" name="commandn" value="headsub">Update</button>
+        </div>
+        }
+        </form> <!-- /form -->
+    }
+    else
+    {
+        <div class="">
+            <button type="button" class="btn btn-primary col-sm-offset-11" id="hide_details">Hide Entry Screen</button>
+            <br />
+            <button type="button" class="btn btn-primary col-sm-offset-11" id="submit">Show Entry Screen</button>
+            <div class="tabbable" id="details">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#detail1" data-toggle="tab">Account</a></li>
+                    <li><a href="#detail2" data-toggle="tab">Dimension</a></li>
+                </ul>
+                <br />
+                <div class="tab-content">
+                    <div class="tab-pane active" id="detail1">
+
+
+                        <div class=" row form-group" id="id_price_group">
+                            <label for="birthDate" class="col-sm-2 control-label"> Reference Number  </label>
+                            <div class="col-sm-4">
+                                @Html.TextBoxFor(m => m.vwstring6, new { @class = "form-control " })
+                            </div>
+                        </div>
+                        <div class="row form-group" id="id_price_group">
+                            <label for="birthDate" class="col-sm-2 control-label"> Description  </label>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(m => m.vwstring3, new { @class = "form-control"})
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="password" class="col-sm-2 control-label"> Posting Class </label>
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(m => m.vwstring1, ViewBag.debit as SelectList, "Select", new { @class = "form-control", id = "id_atype"})
+                            </div>
+                        </div>
+                        <div class="row form-group" id="id_price_group">
+                            <label for="birthDate" class="col-sm-2 control-label">  Posting Code  </label>
+                            <div class="col-sm-3">
+                                @Html.DropDownListFor(m => m.vwstring2, ViewBag.code as SelectList, "Select", new { @class = "form-control", id = "id_acode", style = "display:inline" })
+                                @*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div style="display:inline"> <strong>Current Balance :</strong> &nbsp;&nbsp; <span id="id_cbal"></span></div>*@
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="email" class="col-sm-2 control-label">Currency </label>
+                            <div class="col-sm-3">
+                                @Html.TextBox("curren_name", curren_name, new { @class = "form-control ", @disabled = "disabled" })
+                            </div>
+                            @Html.HiddenFor(m => m.vwstring5, new { @id = "id_hcuren" })
+                        </div>
+
+                        @*<div class="row form-group" style="display:none;" id="changer">
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Exchange Rate </label>
+            <div class="col-sm-3">
+                @Html.TextBoxFor(m => m.vwdecimal5, new { @class = "form-control numformat", style = "width:150px", id = "id_rate", @required = "required" })
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.vwstring7, new { @id = "fx_flag" })
+    </div>*@
+                        @if (Model.vwstring9 == "Y")
+                        {
+                            <div class=" row form-group">
+                                <label for="birthDate" class="col-sm-2 control-label"> Exchange Rate  </label>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control  cls_rate2", id = "id_rate" })
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class=" row form-group">
+                                <label for="birthDate" class="col-sm-2 control-label"> Exchange Rate  </label>
+                                <div class="col-sm-2">
+                                    @Html.TextBox("wx_rate", Model.vwdecimal1, new { @class = "form-control  cls_rate2", id = "id_rate", @disabled = "disabled" })
+                                </div>
+                            </div>
+                            @Html.HiddenFor(m => m.vwdecimal1, new { id = "id_rate1", @class = "cls_rate2" })
+                        }
+                        <div class="row form-group">
+                            <label for="birthDate" class="col-sm-2 control-label">  Amount </label>
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat ", style = "display : inline", maxlength = 10, id = "id_amt"})
+                            </div>
+                            <div class="col-sm-4 myradio">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.vwstring4, "D", new { @id = "yes", style = "display:inline" }) Debit
+                                </label>
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.vwstring4, "C", new { @id = "no", style = "display:inline" }) Credit
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="birthDate" class="col-sm-2 control-label"> Base Amount   </label>
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.vwdecimal3, new { @class = "form-control class_price numformat", id = "id_bamt", @readonly = "readonly"})
+                            </div>
+                        </div>
+
+
+
+                    </div> <!-- ./container -->
+                    <div class="tab-pane" id="detail2">
+                        @for (int wctr = 0; wctr < 10; wctr++)
+                        {
+                            if (Model.vwlist0[wctr] != null)
+                            {
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownListFor(m => m.vwstrarray6[wctr], new SelectList(Model.vwlist0[wctr], "query0", "query1", Model.vwstrarray6[wctr]), "Select ", new { @class = "form-control" })
+                                        @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(m => m.vwstrarray6[wctr])
+                            }
+                        }
+
+                        @Html.HiddenFor(m => m.vwint4)
+                    </div>
+                    <br />
+                    @if (ViewBag.action_flag == "CreateDetails")
+                    {
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="submit" class="btn btn-success " name="commandn" value="detailsub">Create New Entry</button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="btn btnextra">Cancel</button>
+                        </div>
+                    }
+                    @if (ViewBag.action_flag == "EditDetails")
+                    {
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="submit" class="btn btn-success" name="commandn" value="detailsub">Update Entry</button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="btn btnextra">Cancel</button>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+            <br />
+            @Html.Partial("_list", (IEnumerable<CittaErp.Models.vw_genlay>)ViewBag.x1)
+
+        </div>
+    }
+        @Html.HiddenFor(m => m.vwstring8, new { id = "id_budget" })
+        @Html.HiddenFor(m => m.vwstring9, new { id = "id_editexch" })
+
+   </div>
+</div>

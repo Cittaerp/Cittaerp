@@ -1,0 +1,139 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <br />
+        <ul>
+            @*<li>@Html.ActionLink("Address", "Index", "Addrs", null, new { target = "_blank" })</li>*@
+            <li>@Html.ActionLink("Customer Address", "Index", "Addrs", new { atype = "CU" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Bank", "Index", "Bank", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Approval", "Index", "Approv", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Chart of Account", "Index", "Chart", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Company Information", "Edit", "Coy", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Branch Address", "Index", "Addrs", new { atype = "CY" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Credit Terms", "Index", "Cterms", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Currency Table", "Index", "Curren", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Customer", "Index", "Cust", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Analysis Codes", "Index", "Danaly", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Discount Table", "Index", "Disc", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Fixed Asset", "Index", "Fixed", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Screen Header", "Index", "Header", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Item Record", "Index", "Item", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Account Header", "Index", "Mcategory", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Account Type", "Index", "Account_type", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Site", "Index", "ParaCode", new { ptype1 = "01" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Bin Location", "Index", "ParaCode", new { ptype1 = "02" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Reason Code", "Index", "ParaCode", new { ptype1 = "03" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Job Role", "Index", "ParaCode", new { ptype1 = "04" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Department", "Index", "ParaCode", new { ptype1 = "05" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Period Definition", "Index", "PeriodR", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Price Table", "Index", "Price", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Purchase Definition", "Index", "Purchases", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Purchase Sequencing", "Index", "PurOrder", new { ptype1 = "PURSEQ" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Sales Definition", "Index", "Sales", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Sales Sequencing", "Index", "PurOrder", new { ptype1 = "SLSEQ" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Payment Terms", "Index", "Terms", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Vendor", "Index", "Vend", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Vendor Address", "Index", "Addrs", new { atype = "VR" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("WareHouse", "Index", "WareH", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("WorkFlow", "Index", "Wkflw", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Sku", "Index", "ParaCode", new { ptype1 = "10" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Asset Location", "Index", "ParaCode", new { ptype1 = "11" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Item Group", "Index", "ParaCode", new { ptype1 = "12" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Country", "Index", "ParaCode", new { ptype1 = "13" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("State", "Index", "ParaCode", new { ptype1 = "14" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Analysis Header", "Index", "Analysis_code_header", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Consignment", "Index", "Consignment", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Employee", "Index", "Employee", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("InterCompany", "Index", "Inter_company", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Tax", "Index", "Tax", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Exchange Rate", "Index", "Exchange_rate", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Discount Application", "Index", "Discount_application_selection", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Journal", "Index", "Journal", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Budget", "Index", "Budget", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Quote Transaction ", "Index", "Quote", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Customer Transaction", "Index", "Transt", new { ptype1 = "001" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Vendor Transaction", "Index", "Transt", new { ptype1 = "002" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Account Transaction", "Index", "Transt", new { ptype1 = "003" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Bank Transaction", "Index", "Transt", new { ptype1 = "004" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Consignment Transaction", "Index", "Transt", new { ptype1 = "012" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Order", "Index", "Order", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("GL Default ", "Index", "Gldefault", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Invoice", "Index", "Invoice", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Maintenance Asset Group", "Index", "AssetGrouping", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Sub Contract", "Index", "Sub_contract", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Task Checklist", "Index", "Task_Checklist", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Work Center", "Index", "Work_center", new { atype = "CY" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Asset Maintenance Type", "Index", "Asset_maintenance_group_type", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Work Order", "Index", "WorkOrder", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Due Maintenance", "Index", "Due_maintenance", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Repairs Maintenance Notification", "Create", "Maintenance_Activation", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Work Transaction Docket", "Index", "WorkTransDoc", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Job Role", "Index", "JobRole", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Fixed Asset", "Index", "Fixed", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Asset Meter Reading", "Index", "Asset_Activity_Monitor", null, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Meter Reset", "Create", "ResetActivity", null, new { target = "_blank" })</li>
+
+            <li>@Html.ActionLink("zglrepcc", "Index", "zglrepcc", new { pc = "Z13" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("zglrepw", "Index", "zglrepw", new { pc = "Z14" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("zglreplc", "Index", "zglreplc", new { pc = "Z15" }, new { target = "_self" })</li>
+
+            <li>@Html.ActionLink("Document", "Index", "SDocument", new { pc = "17" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Tapp", "Index", "Tapp", new { pc = "01" }, new { target = "_self" })</li>
+             <li><b>Reports</b></li>
+            <li>@Html.ActionLink("Countries", "preport", "PTransfer", new { pc = "02" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Tax", "preport", "PTransfer", new { pc = "03" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Employee", "preport", "PTransfer", new { pc = "04" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Payment Terms", "preport", "PTransfer", new { pc = "05" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Account Category", "preport", "PTransfer", new { pc = "06" }, new { target = "_self" })
+            <li>@Html.ActionLink("Account Type", "preport", "PTransfer", new { pc = "07" }, new { target = "_self" })
+            <li>@Html.ActionLink("Charts of Account", "preport", "PTransfer", new { pc = "08" }, new { target = "_self" })
+            <li>@Html.ActionLink("Address", "preport", "PTransfer", new { pc = "09" }, new { target = "_self" })
+            <li>@Html.ActionLink("Price Matrix", "preport", "PTransfer", new { pc = "10" }, new { target = "_self" })
+            <li>@Html.ActionLink("Property Price Matrix", "preport", "PTransfer", new { pc = "11" }, new { target = "_self" })
+            <li>@Html.ActionLink("Warehouse", "preport", "PTransfer", new { pc = "12" }, new { target = "_self" })
+            <li>@Html.ActionLink("Site", "preport", "PTransfer", new { pc = "13" }, new { target = "_self" })
+            <li>@Html.ActionLink("Unit of Measure", "preport", "PTransfer", new { pc = "14" }, new { target = "_self" })
+            <li>@Html.ActionLink("Reason Code", "preport", "PTransfer", new { pc = "15" }, new { target = "_self" })
+            <li>@Html.ActionLink("Bin Location", "preport", "PTransfer", new { pc = "16" }, new { target = "_self" })
+            <li>@Html.ActionLink("Item Group", "preport", "PTransfer", new { pc = "17" }, new { target = "_self" })
+            <li>@Html.ActionLink("Item Listing", "preport", "PTransfer", new { pc = "18" }, new { target = "_self" })
+            <li>@Html.ActionLink("Currency", "preport", "PTransfer", new { pc = "19" }, new { target = "_self" })
+            <li>@Html.ActionLink("Exchange Rates", "preport", "PTransfer", new { pc = "20" }, new { target = "_self" })
+            <li>@Html.ActionLink("Journal Types", "preport", "PTransfer", new { pc = "21" }, new { target = "_self" })
+            <li>@Html.ActionLink("GL Default Selection Control", "preport", "PTransfer", new { pc = "22" }, new { target = "_self" })
+            <li>@Html.ActionLink("Transaction Type", "preport", "PTransfer", new { pc = "23" }, new { target = "_self" })
+            <li>@Html.ActionLink("Discount", "preport", "PTransfer", new { pc = "24" }, new { target = "_self" })
+            <li>@Html.ActionLink("Purpose Options", "preport", "PTransfer", new { pc = "25" }, new { target = "_self" })
+            <li>@Html.ActionLink("Payment Options", "preport", "PTransfer", new { pc = "26" }, new { target = "_self" })
+            <li>@Html.ActionLink("Consignment", "preport", "PTransfer", new { pc = "27" }, new { target = "_self" })
+            <li>@Html.ActionLink("Insurance", "preport", "PTransfer", new { pc = "28" }, new { target = "_self" })
+            <li>@Html.ActionLink("Asset Location", "preport", "PTransfer", new { pc = "29" }, new { target = "_self" })
+            <li>@Html.ActionLink("Asset Class", "preport", "PTransfer", new { pc = "30" }, new { target = "_self" })
+            <li>@Html.ActionLink("Inter Company", "preport", "PTransfer", new { pc = "01" }, new { target = "_self" })
+
+<li>@Html.ActionLink("Userp", "Index", "Userp", null, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Staff Report", "StaffPrep", "RepScrn", new { pc = "test01" }, new { target = "_blank" })</li>
+            <li>@Html.ActionLink("Customer Transaction Report Writer", "Index", "RepDgn", new { pc = "30" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Vendor Transaction Report Writer", "Index", "RepDgn", new { pc = "31" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("GLTransaction Report Writer", "Index", "RepDgn", new { pc = "32" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Bank Transaction Report Writer", "Index", "RepDgn", new { pc = "33" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Property Transaction Report Writer", "Index", "RepDgn", new { pc = "34" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Customer Statement Definition", "Index", "Adlay", new { pc = "35" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Vendor Statement Definition", "Index", "Adlay", new { pc = "36" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Bank Statement Definition", "Index", "Adlay", new { pc = "38" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Customer Report Writer", "Index", "RepDgn", new { pc = "44" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Vendor Report Writer", "Index", "RepDgn", new { pc = "45" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Bank Report Writer", "Index", "RepDgn", new { pc = "47" }, new { target = "_self" })</li>
+            <li>@Html.ActionLink("Bank Listing", "TransPRep", "RepScrn", new { pc = "cus001", pcode = "44" }, new { target = "_self" })</li>
+        </ul>
+    </div>
+</body>
+</html>

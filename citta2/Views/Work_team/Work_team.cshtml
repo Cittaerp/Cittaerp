@@ -1,0 +1,253 @@
+﻿@model CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Work_team";
+}
+
+
+<div class="tabable">
+    <div class="form-group">
+        <label for="CompanyCode" class="col-sm-2 control-label">Work Team ID</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring0, ViewBag.action_flag == "Create" ? (object)new { @class = "form-control", placeholder = "Work team id", @maxlength = 10 } : new { @disabled = "disabled", @class = "form-control" })
+        </div>
+        <label for="CompanyCode" class="col-sm-3 control-label">Description</label>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", placeholder = "description" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Description</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.vwstring1, new { @class = "form-control", required = "required", placeholder = "description" })
+            </div>
+        </div>*@
+
+
+
+    @*<div class="form-group">
+            <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+            <div class="col-sm-3">
+                @Html.DropDownListFor(m => m.vwstring2, ViewBag.stf1 as SelectList, "SELECT", new { @class = "form-control", multiple = "multiple", placeholder = "staff id", id = "staff_id" })
+            </div>
+            <div class="col-sm-1">
+                <button type="button" id="right" style="width:100%">Add</button>
+                <br />
+                <br />
+                <button type="button" id="left">Remove</button>
+            </div>
+
+            @if (Session["action_flag"].ToString() == "Create")
+            {
+                <div class="col-sm-3">
+                    @Html.DropDownList("vwstrarray0", ViewBag.selected_staff as SelectList, new { @class = "form-control", multiple = "multiple", id = "select_item" })
+                </div>
+            }
+
+            @if (Session["action_flag"].ToString() == "Edit")
+            {
+                <div class="col-sm-3">
+                    @Html.DropDownList("vwstrarray0", ViewBag.edited_staff as SelectList, new { @class = "form-control", multiple = "multiple", id = "select_item" })
+                </div>
+            }
+
+        </div>*@
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Team List</a></li>
+        <li><a href="#tab2" data-toggle="tab">Note</a></li>
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+
+            <div id="look" >
+            <div class="form-group col-sm-6">
+                <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                <div class="col-sm-7">
+                    @Html.DropDownListFor(m => m.vwstrarray0[0], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[0]), "SELECT", new { @class = "form-control", placeholder = "Staff id" })
+                </div>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                <div class="col-sm-5">
+                    @Html.DropDownListFor(m => m.vwstrarray0[1], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[1]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                </div>
+                </div>
+            </div>
+
+            <div id="look1">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[2], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[2]), "SELECT", new { @class = "form-control", placeholder = "Staff id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[3], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[3]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look2">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[4], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[4]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[5], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[5]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look3">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[6], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[6]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[7], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[7]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look4">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[8], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[8]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[9], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[9]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look5">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[10], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[10]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[11], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[11]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look6">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[12], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[12]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[13], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[13]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look7">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[14], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[14]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[15], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[15]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look8">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[16], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[16]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[17], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[17]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+            <div id="look9">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-5 control-label">Staff ID</label>
+                    <div class="col-sm-7">
+                        @Html.DropDownListFor(m => m.vwstrarray0[18], new SelectList(ViewBag.stf1, "Value", "Text", Model.vwstrarray0[18]), "SELECT", new { @class = "form-control", placeholder = "Staff id", @id = "staff_id" })
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyCode" class="col-sm-7 control-label">Technical Competency Level</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(m => m.vwstrarray0[19], new SelectList(ViewBag.tcl1, "Value", "Text", Model.vwstrarray0[19]), "SELECT", new { @class = "form-control", placeholder = "technical competency level" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-primary btn-default" id="add">Add new staff</button>
+            </div>
+            <br/>
+            <br/>
+            @Html.Partial("_navbuttonsNext")
+                
+          </div>
+
+        <div class="tab-pane" id="tab2">
+
+            <div class="form-group">
+                <label for="CompanyName" class="col-sm-3 control-label">Note</label>
+                <div class="col-sm-6">
+                    @Html.TextAreaFor(m => m.vwstring3, new { @class = "form-control", placeholder = "note", rows = "4" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3">Attach Document</label>
+                <div class="col-sm-7">
+                    <input type="file" name="photofile1" multiple />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3">Inactive Status</label>
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                        @Html.CheckBoxFor(m => m.vwbool0, new { type = "checkbox" })
+                    </label>
+                </div>
+            </div>
+
+            @Html.Partial("_navbuttonsPrev")
+            </div>
+
+        </div>
+        </div>

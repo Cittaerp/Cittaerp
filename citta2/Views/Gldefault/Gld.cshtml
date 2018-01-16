@@ -1,0 +1,45 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+        <div>
+            <div class="form-group">
+                <label for="MainHeader" class="col-sm-5 control-label">GL Default Id </label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring0, ViewBag.gl_selectn as SelectList, "Select Type", ViewBag.action_flag == "Create" ? (object)new { @class = "form-control" } : new { @disabled = "disabled" })
+                    @Html.ValidationMessageFor(m => m.vwstring0)
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Account Type</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring1, new SelectList(ViewBag.acctype, "Value", "Text", Model.vwstring1), "Select", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Account Type</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring2, new SelectList(ViewBag.acctype, "Value", "Text", Model.vwstring2), "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Account Type</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring3, new SelectList(ViewBag.acctype, "Value", "Text", Model.vwstring3), "Select", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Account Type</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring4, new SelectList(ViewBag.acctype, "Value", "Text", Model.vwstring4), "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="DateTo" class="col-sm-5 control-label">Account Type</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring5, new SelectList(ViewBag.acctype, "Value", "Text", Model.vwstring5), "Select", new { @class = "form-control" })
+                </div>
+            </div>
+
+
+        </div>

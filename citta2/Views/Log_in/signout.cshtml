@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Sign Out";
+    Layout = null;
+    string byen = "";
+    if (ViewBag.byename != null)
+    {
+        byen = (string)ViewBag.byename;
+    }
+}
+
+        @Styles.Render("~/Content/bundles/cssbundle")
+        @Styles.Render("~/Content/themes/base/cssbundle")
+
+<h1>&nbsp;</h1>
+<P class="text-centre"><marquee class="marq1">
+	<span class="logoname"> AnchorSystems - A Human Capital Management System </span>
+                             </marquee>
+
+<br>
+
+<div class="text-centre">
+<p class="byemess">Thank you @byen, You are now logged out. </p>
+
+<P class="byemess">Have a nice day ! </P>
+    <p></p>
+    <a href="~/home"><span class="relogin-text">Login </span></a>
+    </div>
+
+    @section Scripts {
+
+        }

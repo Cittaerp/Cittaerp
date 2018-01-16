@@ -1,0 +1,201 @@
+﻿@model  CittaErp.Models.vw_genlay
+
+@{
+    SelectList[] head_det = (SelectList[])Session["head_det"];
+    ViewBag.Title = "Employee";
+     //string dis_id = psess.temp5.ToString();
+}
+
+<div class="tabbable" style="margin-bottom: 18px;">
+  
+
+    <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab"> Fee Description</a></li>
+        <li><a href="#tab5" data-toggle="tab">Termination & 3rd Party Transfer</a></li>
+        <li><a href="#tab3" data-toggle="tab">Commission</a></li>
+        <li><a href="#tab7" data-toggle="tab">Inventory</a></li>
+    </ul>
+    <br />
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+           
+          
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3 title_head"> Fee Description </div>
+            <div class="col-sm-1 title_head"> </div>
+            <div class="col-sm-3 title_head"> Gl Account</div>
+
+            @for (int i = 0; i < 10; i++) { 
+            <div class="form-group">
+                <label class="col-sm-4 control-label">@(i+1).</label>
+                <div class="col-sm-3">
+                   @Html.TextBoxFor(m => m.vwstrarray0[i], new { @class = "form-control"})
+                </div>
+                <label class="col-sm-1 control-label"></label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstrarray1[i], new SelectList(ViewBag.glfee,  "Value","Text", Model.vwstrarray1[i]), "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            }
+
+            @*<div class="row form-group">
+                <label class="col-sm-4 control-label">Inactive</label>
+                <div class="col-sm-6 mycheckq">
+                    @Html.CheckBoxFor(model => Model.vwbool0, new { @id = "activate_yesno" })
+                    <label for="activate_yesno">
+                        @( Model.vwbool0 ? "On" : "Off")
+                    </label>
+                </div>
+            </div>*@
+
+            @Html.Partial("_navbuttonsNext")
+        </div>
+
+    
+        <div class="tab-pane" id="tab5">
+            <h4>Termination Penalty</h4>
+            <div class=" form-inline">
+                <label class="col-sm-4 control-label">Percentage</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal1, new { @class = "form-control numformat", @maxlength = 11, style = "display:inline", id = "gt_disamountr" })
+                </div>
+            </div>
+
+            <div class=" row form-inline">
+                <label class="col-sm-4 control-label">Or Flat Amount </label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal0, new { @class = "form-control numformat", @maxlength = 7, style = "display:inline", id = "gt_dispercentr" })
+                </div>
+            </div>
+
+            <p></p>
+            <div class="form-group">
+                <label for="CompanyCode" class="col-sm-4 control-label">GL Account</label>
+                <div class="col-sm-5">
+                    @Html.DropDownListFor(m => m.vwstring1, ViewBag.glcomt as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <hr />
+            <h4>Transfer Fee</h4>
+            <div class=" form-inline">
+                <label class="col-sm-4 control-label"> Percentage</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal3, new { @class = "form-control numformat", @maxlength = 11, style = "display:inline", id = "gt_disamountr" })
+                </div>
+            </div>
+            <div class="row form-inline">
+                <label class="col-sm-4 control-label">Or Flat Amount</label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal2, new { @class = "form-control numformat", @maxlength = 7, style = "display:inline", id = "gt_dispercentr" })
+                </div>
+            </div>
+
+            <p></p>
+
+            <div class="form-group">
+                <label for="CompanyCode" class="col-sm-4 control-label">GL Account</label>
+                <div class="col-sm-5">
+                    @Html.DropDownListFor(m => m.vwstring2, ViewBag.glcom as SelectList, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <hr />
+          
+            @Html.Partial("_navbuttons")
+        </div>
+       
+        <div class="tab-pane" id="tab3">
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">WHT Rate </label>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(m => m.vwdecimal4, new { @class = "form-control numformat", @maxlength = 15 })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label"> GL WHT Account </label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring5, ViewBag.wht as SelectList, "Select", new { @class = "form-control", id = "glwht" })
+                </div>
+            </div>
+            <br />
+             <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label"> GL Commission Payable Account</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring0, ViewBag.ptty as SelectList, "Select", new { @class = "form-control", id = "glpty" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label"> GL Commission Expenses</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring3, ViewBag.comexp as SelectList, "Select", new { @class = "form-control", id = "glcom" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label"> GL Commission Deferred Expenses</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring4, ViewBag.dcomexp as SelectList, "Select", new { @class = "form-control", id = "gldcom" })
+                </div>
+            </div>
+            <br />
+            <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label"> Staff Analysis </label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring8, ViewBag.staff as SelectList, "Select", new { @class = "form-control", id = "gldcom" })
+                </div>
+            </div>
+
+            @Html.Partial("_navbuttons")
+        </div>
+       
+         <div class="tab-pane" id="tab7">
+
+            <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label"> Gift Reason Code </label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring6, ViewBag.rcode as SelectList, "Select", new { @class = "form-control", id = "glrcode" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="currency" class="col-sm-4 control-label">Default Warehouse </label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.vwstring7, ViewBag.ware as SelectList, "Select", new { @class = "form-control", id = "glware" })
+                </div>
+            </div>
+         
+            @Html.Partial("_navbuttons")
+        </div>
+
+
+        @*<div class="tab-pane" id="tab2">
+            @for (int wctr = 0; wctr < 10; wctr++)
+            {
+                if (head_det[wctr] != null)
+                {
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label"> @Model.vwstrarray5[wctr] </label>
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(m => m.vwstrarray6[wctr], head_det[wctr] as SelectList, "Select ", new { @class = "form-control" })
+                            @Html.HiddenFor(m => m.vwstrarray4[wctr])
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.vwstrarray6[wctr])
+                }
+            }
+
+
+            <div class="form-group">
+                <label for="CompanyName" class="col-sm-5 control-label">Note</label>
+                <div class="col-sm-5">
+                    @Html.TextAreaFor(m => m.vwstring9, new { @class = "form-control",  rows = "6" })
+                </div>
+            </div>
+           
+            @Html.Partial("_navbuttonsPrev")
+        </div>*@
+        </div>
+    </div>
+

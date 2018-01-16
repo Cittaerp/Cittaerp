@@ -1,0 +1,22 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Item Use";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" >
+        @Html.ValidationSummary(true)
+
+        <h3>Item Use Maintainance</h3>
+       @Html.Partial("_listsubmit")
+
+        @Html.Partial("Itmu")
+
+        <div class="form-group">
+
+        </div>
+    </form>
+</div>

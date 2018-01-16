@@ -1,0 +1,23 @@
+﻿@if (ViewBag.anapict != null)
+{
+    int pctr = 0;
+    <div class="form-group">
+        <br />
+        @foreach (var item in ViewBag.anapict)
+        {
+            <div class="col-sm-2 col-sm-offset-1">
+                @(pctr + 1). &nbsp;&nbsp;
+                <input type="checkbox" name="vwstrarray9[@pctr]" value="@item.document_sequence" />
+                <input type="hidden" name="vwstrarray9[@pctr]" value=" " />
+                Delete?
+                <img src="@Url.Action("show_doc", new { id = @item.document_sequence })" width="50" height="50" />
+                @*<img src="data:image/png;base64, @Convert.ToBase64String(item.document_image, 0, item.document_image.Length)" width="50" height="50" />*@
+
+            </div>
+            pctr++;
+            if ((pctr % 4) == 0) { 
+                <br /><br /><br /><br />
+             }
+        }
+    </div>
+}

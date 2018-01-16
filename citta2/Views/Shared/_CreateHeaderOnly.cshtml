@@ -1,0 +1,9 @@
+﻿@using anchor1.Helpers
+@{ 
+    CittaErp.Models.psess psess = (CittaErp.Models.psess)Session["psess"];
+
+}
+<span class="opt-title1">@psess.ptitle</span>
+
+<span>@Html.EncodedActionLink(" ", "CreateHeader", null, new { pc = 1 }, new { @class = "create_logo lgtime ", title = "New Record" }) </span>
+

@@ -1,0 +1,26 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "purchase";
+    ViewBag.action_flag = "Create";
+    string plabel = ViewBag.plabel;
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Purchase Transaction Type Maintainance</h3>
+
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Pur")
+
+
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(function(){
+           })
+    </script>
+}

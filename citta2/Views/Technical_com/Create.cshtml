@@ -1,0 +1,26 @@
+﻿@model  CittaErp.Models.vw_genlay
+@{
+    ViewBag.Title = "Technical Competency Maintenance";
+    ViewBag.action_flag = "Create";
+}
+@*Html.Partial("menu")*@
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        <h3>Technical Competency Maintenance</h3>
+        @Html.Partial("_listsubmit")
+
+        @Html.Partial("Tcl")
+
+    </form>
+</div>
+
+
+<div id="loader5" data-request-ajax5="@Url.Action("asset")"></div>
+
+@section Scripts {
+    <script>
+    </script>
+}
+
+

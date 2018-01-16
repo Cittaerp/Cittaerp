@@ -795,6 +795,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\soft.text" />
     <None Include="Properties\PublishProfiles\citta2proj.pubxml" />
     <None Include="Properties\PublishProfiles\Cittaprojects - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\cittavsproject.pubxml" />
